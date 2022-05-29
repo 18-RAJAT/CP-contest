@@ -54,9 +54,22 @@ while(ttt--) {
 //_______________________________________________________//
 Rajat_Joshi CSE;
 int n;cin>>n;
+int ct=0;
 int arr[n];
-for(int i=0;i<n;++i){cin>>arr[i];}
-
+for(int i=0;i<n;++i)
+cin>>arr[i];
+sort(arr,arr+n);
+ct=ct+arr[0];
+int i=1,j=n-1;
+while(i<n)
+{
+    ct=ct+arr[i]-arr[j];i++;j--;
+    if(ct<0)
+    {
+        cout<<"YES"<<endl;break;
+    }
+}
+if(ct>=0){cout<<"NO"<<endl;}
 }
 return 0;
 }
