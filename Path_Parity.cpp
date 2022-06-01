@@ -49,7 +49,7 @@ int32_t main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-int ttt; cin >> ttt;
+int ttt; cin >> ttt; 
 while(ttt--) {
 //_______________________________________________________//
 Rajat_Joshi CSE;
