@@ -72,3 +72,39 @@ cout<<min(odd,even)<<"\n";
 }
 return 0;
 }
+
+
+
+
+
+
+// #include <bits/stdc++.h>
+// using namespace std;
+
+// int main() {
+//   // your code goes here
+//   int q;cin>>q;
+//   while(q--)
+//   {
+//     int a;cin>>a;
+//     vector<int>d(a);
+//     for(int i=0;i<a;i++)
+//     {
+//       cin>>d[i];
+//     }
+//     int e=0,o=0;
+//     for(int i=0;i<a;i++)
+//     {
+//       if(d[i]%2==0)
+//       {
+//         e++;
+//       }
+//       else
+//       {
+//         o++;
+//       }
+//     }
+//     cout<<min(e,o)<<endl;
+//   }
+//   return 0;
+// }

@@ -53,10 +53,18 @@ int ttt; cin >> ttt;
 while(ttt--) {
 //_______________________________________________________//
 Rajat_Joshi CSE;
-int n,m;cin>>n>>m;
-if(n<m){swap(n,m);}
-if(m==1 && n>=3){cout<<-1<<endl;}
-else{cout<<2*n-2-(n+m)%2<<endl;}
+map<char,int> mp;
+	        string s,s1;
+	        cin>>s>>s1;
+	        int first=s.size()-1;
+	        int second=s1.size()-1;
+	        for(int i=first;i>=0;i--)
+	        {
+	            if(s[i]==s1[second]and mp[s[i]]==0)second--;
+	            else mp[s[i]]++;
+	        }
+	        if(second<0){cout<<"YES"<<endl;}
+	        else{cout<<"NO"<<endl;}
 }
-return 0; 
+return 0;
 }
