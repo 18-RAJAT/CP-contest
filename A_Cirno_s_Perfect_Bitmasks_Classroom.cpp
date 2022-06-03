@@ -29,8 +29,8 @@ using namespace std;
 #define read(type) readInt<type>()
 #define ll long long
 #define nL
-#define vll vector<ll>
-#define vvll vector<vector<ll>>
+
+
 #define pb push_back
 #define mk make_pair
 #define pii pair<int, int>
@@ -43,7 +43,6 @@ using namespace std;
 #define MOD 1000000007
 #define imax INT_MAX
 #define imin INT_MIN
-#define ll long long
 #define exp 1e9
 #define sz(x) (int((x).size()))
 int32_t main()
@@ -54,21 +53,27 @@ int ttt; cin >> ttt;
 while(ttt--) {
 //_______________________________________________________//
 Rajat_Joshi CSE;
-	int n;
-		cin>>n;
-		int A[n];
-		int x = 0;
-		for(int i=0;i<n;i++)
-		{
-			cin>>A[i];
-		}
-		while(x<n and A[x]==x+1)x++;
-		reverse(A+x,find(A,A+n,x+1)+1);
-		for(int a:A)
-		{
-			cout<<a<<' ';
-		}
-		cout<<"\n";
+int n;cin>>n;
+if(n%2==0)
+{
+    if(!(n&(n-1))) 
+            {
+                cout<<n+1<<"\n";
+            }
+            else
+            {
+                cout<<(n&~(n-1))<<"\n";
+            }
+        }
+        else {
+            if(n>1)
+            {
+                cout<<"1\n";
+            }
+            else {
+                cout<<"3\n";
+            }
+}
 }
 return 0;
 }
