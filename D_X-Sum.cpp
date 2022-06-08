@@ -114,7 +114,7 @@ template <typename T> inline T readInt()
 /******* Debugging Class Template *******/
 #define DEBUG
 
-// #ifdef DEBUG
+#ifdef DEBUG
 
     #define debug(args...)     (Debugger()) , args
 
