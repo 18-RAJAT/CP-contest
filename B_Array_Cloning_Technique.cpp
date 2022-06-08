@@ -166,7 +166,7 @@ freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i
 	while(tc--){
 		int n;
 	    cin>>n;
-	    unordered_map<int,int>mp;
+	    map<int,int>mp;
 	    int mx=0;
 	   
 	    for(int i=0;i<n;i++)
