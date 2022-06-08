@@ -49,22 +49,21 @@ int32_t main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-int ttt=1; cin >> ttt;
+int ttt; cin >> ttt;
 while(ttt--) {
 //_______________________________________________________//
 Rajat_Joshi CSE;
 int n,b,x,y;
-cin>>n>>b>>x>>y;
-
-int res=0;int answer=0;
-for(int i=1;i<n;++i)
-{
-    if(answer+x<=b){answer+=x;}
-    else{answer-=y+x;}
-
-res+=answer;
-cout<<res<<"\n";
-}
+		cin>>n>>b>>x>>y;
+		ll sum=0;
+		ll a=0;
+		for(int i=1;i<=n;i++)
+		{
+			if(a+x<=b) a+=x;
+			else a-=y;
+			sum+=a;	
+		}
+		cout<<sum<<endl;
 }
 return 0;
 }
