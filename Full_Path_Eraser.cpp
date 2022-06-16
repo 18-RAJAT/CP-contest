@@ -45,6 +45,7 @@ using namespace std;
 #define imin INT_MIN
 #define exp 1e9
 #define sz(x) (int((x).size()))
+
 int32_t main()
 {
 ios_base::sync_with_stdio(false);
@@ -53,25 +54,46 @@ int ttt; cin >> ttt;
 while(ttt--) {
 //_______________________________________________________//
 Rajat_Joshi CSE;
-long long int x=0,y=0;cin>>x>>y;
-long long int ct=0;
-if(x==y){cout<<x<<"\n";}
-else if(x==0 or y==0){cout<<-1<<"\n";}
-else{
-    long long int tpMin=min(x,y);
-    long long int tpMax=max(x,y);
-    while(tpMin<tpMax){tpMin=tpMin*2;ct++;}
-     if(tpMin>=tpMax){tpMin=tpMin/2;ct--;}
 
-     int s=tpMin-(tpMax-tpMin);
-     tpMin-=s;
-     tpMax-=s;
-     ct+=s;
-     ct++;
+void dfs(int s,vector<int>adj[],bool visited[])
+{
+    stack<int>stk;
+    stk.push(s);
+    visited[s]=true;
 
-     ct=ct+tpMax;
-     cout<<ct<<"\n";
+    while(!stk.empty())
+    {
+        int u=stk.top();
+        cout<<u;
+        stk.pop();
+
+        for(int i=0;i<adj[u].size();++i)
+        {
+            if(!visited[adj[u][i]])
+            {
+                stk.push(adj[u][i]);
+                visited[adj[u][i]]=true;
+            }
+        }
+    }
+int n;cin>>n;
+vector<int>a(n);
+vector<int>b(n);
+vector<int>c(n);
+
+int count=0;
+unordered_map<int,vector<int>>ump;
+for(int i=0;i<n;++i){cin>>a[i];}
+
+for(int i=0;i<n-1;++i)
+{
+int x,y;cin>>x>>y;
+ump[x].pb(y);
+ump[y].pb(x);
 }
+dfs(a[0],ump,visited);
+}
+cout<<count<<"\n";
 }
 return 0;
 }
