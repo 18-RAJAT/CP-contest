@@ -53,10 +53,20 @@ int ttt; cin >> ttt;
 while(ttt--) {
 //_______________________________________________________//
 Rajat_Joshi CSE;
-int x,y;
-cin>>x>>y;
-int tp=(x+y)/4;
-cout<<min(y,min(x,tp))<<"\n";
+ll n,m,r,c;
+cin>>n>>m>>r>>c;
+ll answer=-1;
+for(int i=0;i<n;++i)
+{
+    for(int j=0;j<m;++j)
+    {
+        char ch;cin>>ch;
+        if(c and ch=='B' and i+1==r and j+1==c){answer=0;}
+        else if(ch=='B' and (i+1==r or j+1==c)and answer!=0){answer=1;}
+        else if(ch=='B' and (answer!=0 and answer!=1)){answer=2;}
+    }
+}
+ cout<<answer<<"\n";
 }
 return 0;
 }
