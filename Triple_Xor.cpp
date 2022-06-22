@@ -46,37 +46,22 @@ using namespace std;
 #define exp 1e9
 #define sz(x) (int((x).size()))
 
-int mod = 1e9+7;
-
-int dp[1000001];
-
-long long power(int x , int n){
-
- if(x ==0 or x == 1)return x;
-
-   if(n == 1)return x;
-
-   if(n == 0)return 1;
-
- int ans = power(x,n/2 );
-
- ans=(ans*ans);
- if(n%2){ans =  (ans*x);}
-   return ans;
-}
 int32_t main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-int ttt; cin >> ttt;
+long long ttt; cin >> ttt;
 while(ttt--) {
 //_______________________________________________________//
 Rajat_Joshi CSE;
-int n , k ;
- string s;
- cin>>n>>k;
-int res = power(4,n)-3*(power(2, n)-1)-1;
-cout<<res<<"\n";
+ int n,k; 
+        cin>>n>>k; 
+        int ans=1; 
+        k=n; 
+        while(k--) 
+        { ans*=4; } 
+        ans-=((1<<n)-1)*3; 
+        cout<<ans-1<<endl;
 }
 return 0;
 }
