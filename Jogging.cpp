@@ -53,17 +53,24 @@ int ttt; cin >> ttt;
 while(ttt--) {
 //_______________________________________________________//
 Rajat_Joshi CSE;
-      int N,X;
-      cin>>N>>X;
-      int sum=0;
-      for(int i=2;i<=N;i++)
-            {
-                int pow2 = X*pow(2,i-2);
-                sum = sum + pow2;
-                // sum = sum % M;
-            }
-            double ans=sum%(1e9+7);
-            cout << ans<< endl;
+   int t;
+    t = 1;
+    cin>>t;
+ vector<int> powers;
+ powers.push_back(1);
+ int mod = 1000000007;
+ for (int i=0;i<1000010;i++){
+  int x = powers[powers.size()-1]*2;
+  x%=mod;
+  powers.push_back(x);
+ }
+    while(t--)
+{
+  int n,x;
+  cin>>n>>x;
+  int answer =(powers[n-1]*x)%mod;
+  cout<<answer<<"\n";
+    }
 }
 return 0;
 }

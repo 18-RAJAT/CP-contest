@@ -54,9 +54,9 @@ long long ttt; cin >> ttt;
 while(ttt--) {
 //_______________________________________________________//
 Rajat_Joshi CSE;
- int n,k; 
+ long long n,k; 
         cin>>n>>k; 
-        int ans=1; 
+        long long ans=1; 
         k=n; 
         while(k--) 
         { ans*=4; } 
