@@ -69,8 +69,8 @@ Rajat_Joshi CSE;
   int n,x;
   cin>>n>>x;
   int answer =(powers[n-1]*x)%mod;
-  cout<<answer<<"\n";
-    }
+  cout<<answer<<"\n";    
+}
 }
 return 0;
 }
