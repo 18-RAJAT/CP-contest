@@ -282,17 +282,17 @@ freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i
     tc = read(int);
         while(tc--)
         {
-            int n;
+        int n;
         string a;
-		cin>>n>>a;
-		for(int i=1;i<n-2;i++){
-			string s;
-			cin>>s;
-			if(a[a.size()-1]==s[0]) a+=s[1];
-			else a+=s;
-		}
-		if(a.size()!=n) a+=a[a.size()-1];
-        cout<<a<<endl;
+        cin>>n>>a;
+        for(int i=1;i<n-2;i++){
+            string s;
+            cin>>s;
+            if(a[a.size()-1]==s[0]) a+=s[1];
+            else a+=s;
+        }
+        if(a.size()!=n) a+=a[a.size()-1];
+        cout<<a<<"\n";
         }
             return 0;
 }
