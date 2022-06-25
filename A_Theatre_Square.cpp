@@ -282,16 +282,12 @@ freopen("input.txt","r",stdin); //file input.txt is opened in reading mode i.e "
 freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 #endif
 
-    int tc=1;
-    tc = read(int);
-        while(tc--)
-        {
-        int n,k;
-        cin>>n>>k;
-        int answer=k/2+(n-k);cout<<answer<<"\n";
-        for(int i=n-answer;i<=n;i++)
-        {if(i!=k)cout<<i<<" ";}
-        cout<<"\n";
-        }   
+    // int tc=1;
+    // tc = read(int);
+    //     while(tc--)
+    //     {
+            long long n,m,a;cin>>n>>m>>a;
+            cout<<((n+a-1)/a)*((m+a-1)/a);
+        // }   
             return 0;
 }
