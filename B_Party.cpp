@@ -97,11 +97,14 @@ typedef unsigned long int uint32;
 typedef long long int int64;
 typedef unsigned long long int  uint64;
 
-
-
-void solve() 
+int32_t main()
 {
-    int n,m;cin>>n>>m;int a[n];
+ios_base::sync_with_stdio(false);
+cin.tie(NULL);
+int ttt; cin >> ttt;
+while(ttt--) {
+
+int n,m;cin>>n>>m;int a[n];
     vvi v(n+1);
     vi visited(n+1,0);
     f1(i,0,n){cin>>a[i];}
@@ -115,7 +118,7 @@ void solve()
 
         minimum=min(minimum,a[x-1]+a[y-1]);
     }
-    if(ct%2==0){cout<<0<<"\n";}
+    if(ct%2==0){cout<<0<<"\n";continue;}
     cf(i,1,n)
     {
         if(v[i].size()%2==1)
@@ -123,17 +126,5 @@ void solve()
     }
     cout<<minimum<<"\n";
 }
-int main() {
-    ios_base::sync_with_stdio(0);
-    cin.tie(0); cout.tie(0);
-#ifndef ONLINE_JUDGE
-freopen("input.txt","r",stdin); //file input.txt is opened in reading mode i.e "r"
-freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
-#endif
-    int tc = 1;
-    cin >> tc;
-    for (int t = 1; t <= tc; t++) {
-        // cout << "Case #" << t << ": ";
-        solve();
-    }
+return 0;
 }
