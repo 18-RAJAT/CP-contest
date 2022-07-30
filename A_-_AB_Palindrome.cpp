@@ -5,7 +5,9 @@ using namespace std;
 #define ll long long
 #define ld long double
 #define sza(x) ((int)x.size())
-#define all(a) (a).begin(), (a).end()
+#define all(x) x.begin(), x.end()
+#define revall(x) x.rbegin(), x.rend()
+#define sortall(x) sort(all(x))
 
 const int MAX_N = 1e5 + 5;
 const ll MOD = 1e9 + 7;
@@ -46,6 +48,7 @@ typedef vector<pair<int,int>>VPII;
 typedef vector<string> VS;
 typedef vector<PII> VIII;
 typedef vector<VI> VVI;
+typedef queue<string> QS;
 typedef map<int,int> MPII;
 typedef set<int> SETI;
 typedef multiset<int> MSETI;
@@ -53,7 +56,9 @@ typedef long int int32;
 typedef unsigned long int uint32;
 typedef long long int int64;
 typedef unsigned long long int  uint64;
-#define ff(a,b) for(int i=a;i<b;i++) gotham
+#define ff(a,b) for(int i=a;i<b;i++)
+#define nl endl
+
 
 /* clang-format off */
 
@@ -118,6 +123,12 @@ bool isprime(ll n)
 }
 
 
+bool cmp(pair<int,int> &a,pair<int,int> &b){
+    if(a.first==b.first)return a.second>b.second;
+    return a.first<b.first;
+}
+ 
+
 void two_D_PrifixSum() 
 {
     //prefix sum in 2 D array
@@ -154,7 +165,6 @@ void two_D_PrifixSum()
 }
 
 
-
 //Scanline algorithm
 void scanlineAlgoritm()
 {
@@ -179,13 +189,26 @@ void scanlineAlgoritm()
     f1(i,0,n)cout<<a[i]<<" ";
 }
 
+const int N=200200;
+char s[N];
+int n;
 void solve()
 {
-    int n,a;cin>>n>>a;
-    if(n%2){cout<<n/2<<" "<<n/2<<" "<<1<<"\n";}
-    else if(n%4){cout<<n/2-1<<" "<<n/2-1<<" "<<2<<"\n";}
-    else{cout<<n/2<<" "<<n/4<<" "<<n/4<<"\n";}
+    cin>>n>>s;
+    if(n==2)
+    {
+        if(s[0]==s[1]){cout<<"Yes"<<nl;}
+        else{cout<<"No"<<nl;}
+    }
+    else
+    {
+        if(s[0]=='B' or s[n-1]=='A')
+            {cout<<"Yes"<<nl;}
+        else
+            {cout<<"No"<<nl;}
+    }   
 }
+
 
 int main() {
     ios_base::sync_with_stdio(0);
@@ -194,13 +217,13 @@ int main() {
 freopen("input.txt","r",stdin); //file input.txt is opened in reading mode i.e "r"
 freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 #endif
-    int tc = 1;
-    cin >> tc;
-    for (int t = 1; t <= tc; t++) {
+    // int tc = 1;
+    // cin >> tc;
+    // for (int t = 1; t <= tc; t++) {
         // cout << "Case #" << t << ": ";
         solve();
         // two_D_PrifixSum();
         // scanlineAlgoritm();
 
-    }
+    // }
 }
