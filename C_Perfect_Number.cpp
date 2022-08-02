@@ -66,8 +66,14 @@ using namespace std;
 int k, f;
 int main()
 {
-    cin>>k;
-    f=10-k;
-    cout<<k<<f;
+    // cin>>k;
+    // f=10-k;
+    // cout<<k<<f;
+
+
+    ////////////////
+
+       int n;cin>>n;
+   cout<<10+9*n+9*n/10<<"\n";
     return 0;
 }
