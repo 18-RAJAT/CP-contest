@@ -73,7 +73,14 @@ int main()
 
     ////////////////
 
-       int n;cin>>n;
-   cout<<10+9*n+9*n/10<<"\n";
+//        int n;cin>>n;
+//    cout<<10+9*n+9*n/10<<"\n";
+
+int  n;cin>>n; //int m=0;
+    // n=(n+1)*9;
+    // int ans=n+1;
+    int m=n/10;
+    int res=19+9*(n-1+m);
+    cout<<res<<"\n";
     return 0;
 }
