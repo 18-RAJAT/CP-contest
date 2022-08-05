@@ -29,6 +29,16 @@ using namespace std;
 #define read(type) readInt<type>()
 #define ll long long
 #define nL
+/* FUNCTIONS */
+#define f1(i,s,e) for(long long int i=s;i<e;i++)
+#define ff1(pass) for(long long int i=n-2;i>=0;--i)
+#define For1(i,n) or(long long int i=0;i<n+1;++i)
+#define cf(i,s,e) for(long long int i=s;i<=e;i++)
+// #define fo(i,s,e) for(long long int i=1;i*i<=;i++)
+#define FO(i,s,e) for(long long int i=1;i*i<=y;i++)
+#define rf(i,e,s) for(long long int i=e-1;i>=s;i--)
+#define pb push_back
+#define eb emplace_back
 
 
 #define pb push_back
@@ -49,12 +59,15 @@ int32_t main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
+int a[10];
 int ttt; cin >> ttt;
 while(ttt--) {
 //_______________________________________________________//
 Rajat_Joshi CSE;
-int a,b,c,d;cin>>a>>b>>c>>d>>d>>d>>d;
-cout<<a<<" "<<b<<" "<<d-a-b<<"\n";
+    f1(i,0,7){cin>>a[i];}
+    int x=a[0],y=a[1],z=a[6];
+    cout<<a<<" "<<a[0]-a[1];
+    cout<<x<<" "<<y<<" "<<z<<"\n";
 }
 return 0;
 }
