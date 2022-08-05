@@ -30,7 +30,15 @@ using namespace std;
 #define ll long long
 #define nL
 
-
+#define f1(i,s,e) for(long long int i=s;i<e;i++)
+#define ff1(pass) for(long long int i=n-2;i>=0;--i)
+#define For1(i,n) or(long long int i=0;i<n+1;++i)
+#define cf(i,s,e) for(long long int i=s;i<=e;i++)
+// #define fo(i,s,e) for(long long int i=1;i*i<=;i++)
+#define FO(i,s,e) for(long long int i=1;i*i<=y;i++)
+#define rf(i,e,s) for(long long int i=e-1;i>=s;i--)
+#define pb push_back
+#define eb emplace_back
 #define pb push_back
 #define mk make_pair
 #define pii pair<int, int>
@@ -50,25 +58,27 @@ int32_t main()
 {
 ios_base::sync_with_stdio(false);
 cin.tie(NULL);
-int ttt; cin >> ttt;
-while(ttt--) {
+// int ttt; cin >> ttt;
+// while(ttt--) {
 //_______________________________________________________//
 Rajat_Joshi CSE;
-    // Add your solution here
-    int n,m;cin>>n>>m;int a[n];
-    for(int i=0;i<n;++i)cin>>a[i];
-        vector<int>pre(n,0),suf(n,0);
-        for(int i=1;i<n;++i){pre[i]=pre[i-1]+max(a[i-1]-a[i],0LL);}
-        for(int i=n-2;i>=0;--i){suf[i]=suf[i+1]+max(a[i+1]-a[i],0LL);}
+    int a[10001],b[10001],c[10001];
+    int n,m;cin>>n>>m;
+    cf(i,1,n){cin>>a[i];}
+    cf(i,2,n)
+    {b[i]=b[i-1]+max(0,a[i-1]-a[i]);}
+    rf(i,n,1)
+    {c[i]=c[i+1]+max(0,a[i+1]-a[i]);}
 
-            for(int i=0;i<m;++i)
-            {
-                int x,y;cin>>x>>y;
-                if(x<y)
-                    {cout<<pre[y-1]-pre[x-1]<<"\n";}
-                else
-                    {cout<<suf[y-1]-pre[x-1]<<"\n";}
-            }
-}
+    while(m--)
+    {
+        int x,y;ll ans=0;
+        cin>>x>>y;
+
+        if(x<=y){ans+=b[y]-b[x];}
+        else{ans+=c[y]-c[x];}
+         cout<<ans<<"\n";
+    }
+// }
 return 0;
 }
