@@ -62,8 +62,8 @@ cin.tie(NULL);
 // while(ttt--) {
 //_______________________________________________________//
 Rajat_Joshi CSE;
-    int a[10001],b[10001],c[10001];
-    int n,m;cin>>n>>m;
+    ll a[10001],b[10001],c[10001];
+    ll n,m;cin>>n>>m;
     cf(i,1,n){cin>>a[i];}
     cf(i,2,n)
     {b[i]=b[i-1]+max(0,a[i-1]-a[i]);}
@@ -72,7 +72,7 @@ Rajat_Joshi CSE;
 
     while(m--)
     {
-        int x,y;ll ans=0;
+        ll x,y;ll ans=0;
         cin>>x>>y;
 
         if(x<=y){ans+=b[y]-b[x];}
