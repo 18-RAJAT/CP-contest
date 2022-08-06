@@ -52,6 +52,8 @@ cin.tie(NULL);
 // int ttt; cin >> ttt;
 // while(ttt--) {
 //_______________________________________________________//
+
+
 Rajat_Joshi CSE;
     int n;cin>>n;
    vector<int> v1;
@@ -59,7 +61,6 @@ Rajat_Joshi CSE;
     for (int x : v1)
         cout << x;
     int max = *max_element(v1.begin(), v1.end());
-
     cout<< max << endl;
 return 0;
 }
