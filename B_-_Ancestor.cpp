@@ -53,25 +53,13 @@ cin.tie(NULL);
 // while(ttt--) {
 //_______________________________________________________//
 Rajat_Joshi CSE;
-    
-  int n;
-    cin>>n;
-    int array[n];
-    for(int i=0; i<n;i++)
-    {
-        int a;
-        cout<<i+1;
-        cin>>a;
-    }
-    int max=array[0];
-    for(int i=0; i<n;i++)
-    {
-        if(array[i]>max)
-        {
-            max=array[i];
-        }
-    }
-    cout<<max;
+    int n;cin>>n;
+   vector<int> v1;
+   for(int i=0;i<v1.size();i++)
+    for (int x : v1)
+        cout << x;
+    int max = *max_element(v1.begin(), v1.end());
 
+    cout<< max << endl;
 return 0;
 }
