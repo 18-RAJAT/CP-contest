@@ -53,8 +53,14 @@ int ttt; cin >> ttt;
 while(ttt--) {
 //_______________________________________________________//
 Rajat_Joshi CSE;
+// int a,b,c;cin>>a>>b>>c;
+// cout<<max(max(b,c)-a+1,0)<<" "<<max(max(a,c)-b+1,0)<<" "<<max(max(a,b)-c+1,0)<<"\n";
 int a,b,c;cin>>a>>b>>c;
-cout<<max(max(b,c)-a+1,0)<<" "<<max(max(a,c)-b+1,0)<<" "<<max(max(a,b)-c+1,0)<<"\n";
+    int answer1=max(max(b,c)-a+1,0);
+    int answer2=max(max(c,a)-b+1,0);
+    int answer3=max(max(a,b)-c+1,0);
+
+    cout<<answer1<<" "<<answer2<<" "<<answer3<<"\n";
 }
 return 0;
 }
