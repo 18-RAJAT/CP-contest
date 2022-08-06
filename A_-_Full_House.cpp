@@ -1,7 +1,4 @@
 #include<bits/stdc++.h>
-#define Rajat_Joshi            main;
-#define  CSE             ios_base::sync_with_stdio(false);
-#define Joshi           cin.tie(NULL);
 #include <iostream>
 #include <string>
 #include <vector>
@@ -47,30 +44,13 @@ using namespace std;
 #define sz(x) (int((x).size()))
 int32_t main()
 {
-ios_base::sync_with_stdio(false);
-cin.tie(NULL);
-// int ttt; cin >> ttt;
-// while(ttt--) {
-//_______________________________________________________//
-Rajat_Joshi CSE;
-int n;cin>>n;
-int array[n];
-for(int i=0;i<n;i++)
-{
-    cin>>array[i];
-}
-
-for(int i=0;i<n;++i)
-{
-    sort(array,array+n);
-    if(array[i]==array[i+1])
-    {
-        cout<<"YES"<<endl;
-    }
-    else
-    {
-        cout<<"NO"<<endl;
-    }
-}
+long long a,b,c,d,e;cin>>a>>b>>c>>d>>e;
+if(a!=b and a==c and a!=d and a==e){cout<<"Yes"<<"\n";}
+else if(a==b and a!=c and a==d and a!=e){cout<<"Yes"<<"\n";}
+else if (a==b and a==c and a!=d and a==e){cout<<"Yes"<<"\n";}
+else if (a==b and a!=c and a==d and a==e){cout<<"Yes"<<"\n";}
+else if (a==b and a==c and a==d and a!=e){cout<<"Yes"<<"\n";}
+else if (a==b and a==c and a==d and a==e){cout<<"No"<<"\n";}
+else{cout<<"No"<<"\n";}
 return 0;
 }
