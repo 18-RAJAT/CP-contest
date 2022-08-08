@@ -10,6 +10,8 @@
         "xstring": "cpp",
         "xiosbase": "cpp",
         "utility": "cpp",
-        "xutility": "cpp"
+        "xutility": "cpp",
+        "deque": "cpp",
+        "list": "cpp"
     }
 }
