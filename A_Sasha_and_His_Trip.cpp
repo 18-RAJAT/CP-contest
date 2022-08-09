@@ -192,6 +192,7 @@ int solve()
     // if(n/2==0 and m/2==0){cout<<n<<nl;}
     // else if(n/2==1 and m/2==0){cout<<m<<nl;}
     // else{cout<<0<<nl;}
+    
     if(m>=n-1){cout<<n-1;}
     else{cout<<n-1+(n-m)*(n-m-1)/2;}
 }
