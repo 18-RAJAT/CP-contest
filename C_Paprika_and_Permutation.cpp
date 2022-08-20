@@ -239,10 +239,10 @@ int solve()
     {
         if(mp[i+1]==0)
         {
-            ll x=a.back();
-            a.pop_back();
+            ll x=a.back();a.pop_back();
             ll y=i+1;
-            if(x%(x-y)==y){continue;}
+            if(x%(x-y)==y)
+            {continue;}
             else{cout<<"-1"<<nl;return 0;}
         }
     }
