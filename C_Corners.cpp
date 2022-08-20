@@ -249,6 +249,7 @@ int dy[]={0,-1,1,0,1,-1,-1,1};
         }
     }
         if(c2){cout<<c<<nl;}
+     
         else if(c1){cout<<c-1<<nl;}
         else{cout<<c-2<<nl;}
 
