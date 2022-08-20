@@ -255,7 +255,6 @@ void solve()
         }
         
         cout<<out<<"\n";
-        
     }
 }
 
