@@ -216,40 +216,34 @@ int dist(VPII vis,int n)
     }
 }
 
-/*
-
-2/1 and 1/1 min
-6/3 and 2/1 min
-*/
 
 void solve()
 {
 
+       // int n;cin>>n;int a[n];
+       //  f1(i,0,n)cin>>a[i];
+       // sort(a,a+n);
+       // int res=a[n-1]-a[0]+a[n-2]-a[1];cout<<res<<nl;
 
-       int n;cin>>n;int a[n];
-        f1(i,0,n)cin>>a[i];
-       sort(a,a+n);
-       int res=a[n-1]-a[0]+a[n-2]-a[1];cout<<res<<nl;
+        ll n;cin>>n;
+        VI a(n);//FOREACH()
+        for(auto &it:a)cin>>it;
+            VI b=a;sort(all(b));
+        VI sequence={b[0],b[1],b[n-2],b[n-1]};//c
+        VI temp;
+        f1(i,0,n)
+        {
+            f1(j,0,sequence.size())
+            if(a[i]==sequence[j]){temp.PB(a[i]);sequence.erase(sequence.begin()+j);}
+        }
+        int res=0;
+        int a1=0+max({temp[1],temp[2],temp[3]})-min({temp[1],temp[2],temp[3]});
+        int a2=max({temp[1],temp[0]})-min({temp[0],temp[1]})+max({temp[2],temp[3]})-min({temp[2],temp[3]});
+        int a3 = max({temp[1],temp[2]})-min({temp[1],temp[2]}) + max({temp[0],temp[3]})-min({temp[0],temp[3]});
+        int a4=0+max({temp[1],temp[2],temp[0]})-min({temp[1],temp[2],temp[0]});
 
-        // ll n;cin>>n;
-        // VI a(n);//FOREACH()
-        // for(auto &it:a)cin>>it;
-        //     VI b=a;sort(all(b));
-        // VI sequence={b[0],b[1],b[n-2],b[n-1]};//c
-        // VI temp;
-        // f1(i,0,n)
-        // {
-        //     f1(j,0,sequence.size())
-        //     if(a[i]==sequence[j]){temp.PB(a[i]);sequence.erase(sequence.begin()+j);}
-        // }
-        // int res=0;
-        // int a1=0+max({temp[1],temp[2],temp[3]})-min({temp[1],temp[2],temp[3]});
-        // int a2=max({temp[1],temp[0]})-min({temp[0],temp[1]})+max({temp[2],temp[3]})-min({temp[2],temp[3]});
-        // int a3 = max({temp[1],temp[2]})-min({temp[1],temp[2]}) + max({temp[0],temp[3]})-min({temp[0],temp[3]});
-        // int a4=0+max({temp[1],temp[2],temp[0]})-min({temp[1],temp[2],temp[0]});
-
-        // res = max({a1,a2,a3,a4});cout<<res<<nl;
-    
+        res = max({a1,a2,a3,a4});cout<<res<<nl;
+        
 }
  
 int main() {
