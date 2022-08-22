@@ -234,7 +234,8 @@ bool binarySearch(ll mid,ll k,ll x)
 
 void solve()
 {
-    int t;cin>>t;
+    int t;
+    cin>>t;
     while(t--)
     {
         ll k,x;
@@ -252,7 +253,9 @@ void solve()
             else
                 r=mid-1;
         }
+        
         cout<<out<<"\n";
+        
     }
 }
 
