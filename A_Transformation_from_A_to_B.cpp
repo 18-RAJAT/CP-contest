@@ -245,7 +245,8 @@ int solve()
         cout<<"YES"<<nl;
         cout<<v.size()<<nl;
         ff1(i,v.size()-1,0)cout<<v[i]<<" ";
-    }else {cout<<"NO";}
+    }
+    else {cout<<"NO";}
     // else {cout<<"NO"<<nl;}
 }
  
