@@ -61,11 +61,11 @@ int ttt; cin >> ttt;
 while(ttt--) {
 //_______________________________________________________//
 Rajat_Joshi CSE;
-int n;cin>>n;if(n==1){cout<<"-1"<<endl;}
+int n;cin>>n;if(n==1){cout<<"-1"<<"\n";}
     else
     {
         f1(i,0,n-1)
-        cout<<"3";cout<<"7"<<endl;
+        cout<<"3";cout<<"7"<<"\n";
     }
 }
 return 0;
