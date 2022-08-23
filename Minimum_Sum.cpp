@@ -192,8 +192,7 @@ void scanlineAlgoritm()
 
 int solve()
 {
-    ll n;cin>>n;
-    VI v(n);
+    ll n;cin>>n;VI v(n);
     f1(i,0,n)cin>>v[i];
     int first=v[0];f1(i,0,n)
     first=__gcd(first,v[i]);cout<<n*first<<nl;
