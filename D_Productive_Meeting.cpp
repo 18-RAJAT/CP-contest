@@ -136,9 +136,7 @@ void two_D_PrifixSum()
     f1(i,0,n)
     {
         f1(j,0,m)
-        {
-            cin>>a[i][j];
-        }
+        {cin>>a[i][j];}
     }
 
     //create a prefix array
