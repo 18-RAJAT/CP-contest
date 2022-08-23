@@ -59,7 +59,6 @@ int ttt; cin >> ttt;
 while(ttt--) {
 //_______________________________________________________//
 Rajat_Joshi CSE;
-
 }
 return 0;
 }
