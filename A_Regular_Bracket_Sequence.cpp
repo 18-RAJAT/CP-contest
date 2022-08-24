@@ -221,6 +221,9 @@ int solve()
 {
     string s;cin>>s;
     // if(s[1]!=')' and s[0]==')')cout<<"YES"<<nl;
+
+    // if(s[0]!=')' and s.length()%2==0)cout<<"YES"<<nl;
+    // else cout<<"NO"<<nl;
     if(s.size()%2 or s[0]==')' or s.back()=='(')
         cout<<"NO"<<nl;else cout<<"YES"<<nl;
 }
