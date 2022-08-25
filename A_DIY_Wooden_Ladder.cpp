@@ -369,7 +369,8 @@ void alarmClock()
 void wooden()
 {
     ll n;cin>>n;ll a[n];
-    f1(i,0,n)cin>>a[i];
+    f1(i,0,n)
+    cin>>a[i];
     // sort(a,a+n,greater<ll>());
     // f1(i,0,n-1)
     // {
