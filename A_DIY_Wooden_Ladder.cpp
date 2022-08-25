@@ -375,8 +375,7 @@ void wooden()
     // {
     //     ll value=min(a[i+1]-1,a[i]-1);
     //     if(n-2>=value){cout<<value<<nl;return;}
-    // }
-    // cout<<0<<nl;
+    // }// cout<<0<<nl;
     sort(a,a+n);
     cout<<min(n-2,a[n-2]-1)<<nl;
 }
