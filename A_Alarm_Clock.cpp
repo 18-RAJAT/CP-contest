@@ -358,8 +358,7 @@ void alarmClock()
         // ll sub=a-b;time=b;
         a-=b;
         // while(sub>0)
-        // {
-        //     sub-=c-d;ct++;//cout<<time<<nl;
+        // {sub-=c-d;ct++;//cout<<time<<nl;
         // }
         // time+=c*ct;cout<<time<<nl;
         ct+=a/(c-d)+(a%(c-d)!=0);cout<<ct*c+b<<nl;
