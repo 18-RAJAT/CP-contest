@@ -298,8 +298,7 @@ void dfs(int v,string color,VB &visited,VPII &dp,const VII &graph)
 
 void run_TC()
 {
-    int n;cin>>n;
-    a.resize(n,0);
+    int n;cin>>n;a.resize(n,0);
 
     VII graph(n);VPII dp(n,make_pair(0,0));
     VB visited(n,false);
