@@ -454,8 +454,7 @@ void bs()
         if(ct>=z)
         right=mid;
         else left=mid+1; 
-    }
-    cout<<left<<nl;
+    }cout<<left<<nl;
 }
 
 int main() {
