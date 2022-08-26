@@ -346,7 +346,6 @@ void solve()
 //     }cout<<nl;
 // }
 
-
 void alarmClock()
 {
      int a,b,c,d;cin>>a>>b>>c>>d;
