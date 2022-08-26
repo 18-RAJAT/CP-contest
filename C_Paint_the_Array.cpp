@@ -416,7 +416,8 @@ void q3()
     cf(i,1,n)
     {
         cin>>a[i];
-        if(i%2==0){x=__gcd(x,a[i]);}
+        if(i%2==0)
+        {x=__gcd(x,a[i]);}
         else {y=__gcd(y,a[i]);}
     }
     cf(i,1,n)
