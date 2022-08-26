@@ -434,8 +434,7 @@ void Medians()
     ll n,k;cin>>n>>k;
     VI v(n*k);
     for(auto &it:v)
-    cin>>it;
-        ll res=0;
+    cin>>it;ll res=0;
     cf(i,1,k)res=res+v[n*k-i*(n/2+1)];
     cout<<res<<nl;
 }
