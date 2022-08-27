@@ -107,7 +107,7 @@ void yes() { cout<<"YES\n"; }
 void no() { cout<<"NO\n"; }
  
  
- 
+
  
 /*  All Required define Pre-Processors and typedef Constants */
 typedef long int int32;
