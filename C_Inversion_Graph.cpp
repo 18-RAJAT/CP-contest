@@ -215,7 +215,7 @@ int dist(VPII vis,int n)
     }
 }
 
-
+ 
 bool binarySearch(ll mid,ll k,ll x)
 {
     ll tot=0;
