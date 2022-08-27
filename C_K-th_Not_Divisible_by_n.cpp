@@ -163,7 +163,7 @@ void two_D_PrifixSum()
         int i1,i2,j1,j2;cin>>i1>>i2>>j1>>j2;
     }
 }
- 
+
  
 //Scanline algorithm
 void scanlineAlgoritm()
