@@ -123,7 +123,7 @@ bool isprime(ll n)
     return false;
 }
  
- 
+
 bool cmp(pair<int,int>x,pair<int,int>y){
     return x.second<y.second;
 }
