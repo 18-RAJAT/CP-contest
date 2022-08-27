@@ -163,7 +163,7 @@ void two_D_PrifixSum()
     }
 }
  
- 
+
 //Scanline algorithm
 void scanlineAlgoritm()
 {
