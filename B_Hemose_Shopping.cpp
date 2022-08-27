@@ -107,7 +107,7 @@ void no() { cout<<"NO\n"; }
  
  
  
- 
+
 /*  All Required define Pre-Processors and typedef Constants */
 typedef long int int32;
 typedef unsigned long int uint32;
