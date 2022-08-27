@@ -336,7 +336,7 @@ void solve()
         else{cout<<"NO"<<nl;}
     }
 }
-
+ 
 
 int main() {
 ios_base::sync_with_stdio(0);
