@@ -276,6 +276,7 @@ void test()
     }
 }
 
+
 void solve()
 {
     int x,y,z;cin>>x>>y>>z;
