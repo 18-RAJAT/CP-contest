@@ -300,6 +300,7 @@ void solve()
    if(length%2==0)answer+=length/2;
    else answer+=(length+1)/2;cout<<answer<<nl;
 }
+
 int main() {
 ios_base::sync_with_stdio(0);
 cin.tie(0); cout.tie(0);
