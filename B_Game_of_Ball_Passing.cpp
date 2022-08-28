@@ -288,7 +288,6 @@ void solve()
    if(x>(s-x))cout<<1LL*2*x-s<<nl;else cout<<1<<nl;
 }
 
-
 int main() {
 ios_base::sync_with_stdio(0);
 cin.tie(0); cout.tie(0);
