@@ -337,4 +337,4 @@ freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i
         // cout << "Case #" << t << ": ";
        solve();
     }
-}
+} 
