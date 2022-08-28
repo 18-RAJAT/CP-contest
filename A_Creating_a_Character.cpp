@@ -288,6 +288,7 @@ void solve()
     cout<<((a+b)%3 or 2*a<b?"NO":"YES")<<nl;
 }
 
+
 int main() {
 ios_base::sync_with_stdio(0);
 cin.tie(0); cout.tie(0);
