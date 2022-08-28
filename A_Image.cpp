@@ -276,6 +276,7 @@ void test()
     }
 }
 
+
 void solve()
 {
     char temp;
