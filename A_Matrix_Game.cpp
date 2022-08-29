@@ -280,19 +280,19 @@ void test()
 
 int solve()
 {
-    ll n,m;cin>>n>>m;
+    int n,m;cin>>n>>m;
     SETI row,cols;
     f1(i,0,n)
     {
         f1(j,0,m)
         {
-            ll x;cin>>x;
+            int x;cin>>x;
             if(x==1){row.insert(i);cols.insert(j);}
         }
     }
 
-    ll answer=min(n-row.size(),m-cols.size());
-    if(answer%2==1){cout<<"Vivek"<<nl;}
+    int answer=min(n-row.size(),m-cols.size());
+    if(answer%2==0){cout<<"Vivek"<<nl;}
     else{cout<<"Ashish"<<nl;}
 }
 
