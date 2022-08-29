@@ -295,6 +295,7 @@ int solve()
     if(answer%2==0){cout<<"Vivek"<<nl;}
     else{cout<<"Ashish"<<nl;}
 }
+
 int main() {
 ios_base::sync_with_stdio(0);
 cin.tie(0); cout.tie(0);
