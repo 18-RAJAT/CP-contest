@@ -335,6 +335,8 @@ int solve()
     if(z<x){cout<<z<<nl;}
     else cout<<(y/z)*z+z<<nl;
 }
+
+
 int main() {
 ios_base::sync_with_stdio(0);
 cin.tie(0); cout.tie(0);
