@@ -327,6 +327,8 @@ void solve()
     f1(i,1,n){total+=sum(n-i);}cout<<2*total<<nl;
 }
 
+
+
 int main() {
 ios_base::sync_with_stdio(0);
 cin.tie(0); cout.tie(0);
