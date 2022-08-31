@@ -279,7 +279,6 @@ void test()
 }
 
 
-
 void solve()
 {
     ll n;cin>>n;
@@ -309,7 +308,6 @@ void solve()
     cout<<dp[0]<<" "<<dp[1]<<" "<<dp[2]<<nl;
 
 }
-
 
 int main() {
 ios_base::sync_with_stdio(0);
