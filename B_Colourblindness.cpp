@@ -279,7 +279,6 @@ void test()
 }
 
 
-
 void solve()
 {
       int n; cin >> n;
