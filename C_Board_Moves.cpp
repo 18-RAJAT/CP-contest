@@ -282,6 +282,7 @@ ll sum(ll value)
     return(value*(value+1))/2;
 }
 
+
 void solve()
 {
     // ll n;cin>>n;int a[n];
