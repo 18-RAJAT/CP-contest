@@ -278,6 +278,7 @@ void test()
     }
 }
 
+
 void solve()
 {
     ll n;cin>>n;int a[n];
