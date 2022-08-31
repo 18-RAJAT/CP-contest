@@ -278,7 +278,6 @@ void test()
 }
 
 
-
 ll dp[1001][1001];
 void solve()
 {
@@ -290,7 +289,6 @@ void solve()
     cf(i,1,n)res=(res+dp[2*m][i])%MOD;
         cout<<res<<nl;
 }
-
 
 int main() {
 ios_base::sync_with_stdio(0);
