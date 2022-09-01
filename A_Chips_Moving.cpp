@@ -244,6 +244,7 @@ bool binarySearch(ll mid,ll k,ll x)
 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0
 */
+
 void test()
 {
     int a[8][8];
