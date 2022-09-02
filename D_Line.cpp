@@ -302,7 +302,7 @@ void solve()
 }
 
 
-int main() {
+int main(){
 ios_base::sync_with_stdio(0);
 cin.tie(0); cout.tie(0);
 #ifndef ONLINE_JUDGE
@@ -314,5 +314,5 @@ freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i
     for (int t = 1; t <= tc; t++) {
         // cout << "Case #" << t << ": ";
        solve();
-   }
+    }
 }
