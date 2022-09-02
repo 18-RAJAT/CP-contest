@@ -293,6 +293,7 @@ void solve()
     cout<<(a*n)+max(b*n,b*((ct/2)+1))<<nl;
 }
 
+
 int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
