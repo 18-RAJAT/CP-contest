@@ -277,11 +277,13 @@ void test()
     }
 }
 
+
 void solve()
 {
     int n,x,y;cin>>n>>x>>y;
     cout<<2*n-2+min(x-1,y-1)+min(x-1,n-y)+min(n-x,n-y)+min(y-1,n-x)<<nl;
 }
+
 
 int main() {
 ios_base::sync_with_stdio(0);
