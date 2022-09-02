@@ -230,6 +230,7 @@ bool binarySearch(ll mid,ll k,ll x)
     return tot<x;
 }
 
+
 ll n,a[MAX_N],b,w,ct;
 void solve()
 {
@@ -239,6 +240,7 @@ void solve()
   // cout<<"test";
   ct=ct-abs(b-w);cout<<(ct%4==0 ? "Bob":"Alice")<<nl;
 }
+
 
 int main() {
 ios_base::sync_with_stdio(0);
