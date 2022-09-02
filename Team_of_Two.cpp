@@ -234,7 +234,7 @@ bool binarySearch(ll mid,ll k,ll x)
     return tot<x;
 }
 
-    
+
 /*
 0 0 2 0 0 0 0 0
 1 0 0 0 0 0 0 0
@@ -281,13 +281,35 @@ void test()
 int n;
 void solve()
 {
-    int n;cin>>n;
-    SETI st;bool f=true;
-    f1(i,0,n){int m;cin>>m;st.insert(m);}
-    if(st.size()&1){if(n-st.size()){f=false;}}
-    cout<<(f?"YES":"NO")<<nl;   
+     int n;cin>>n;
+     VSI a(n);
+    f1(i,0,n)
+    {
+        int m;cin>>m;
+        f1(j,0,m)
+        {
+            int tp;cin>>tp;
+            a[i].insert(tp);
+        }
+    }
+    f1(i,0,n)
+    {
+        f1(j,i+1,n)
+        {
+            bool f=true;
+            cf(k,1,5)
+            {
+                f&=a[i].count(k) or a[j].count(k);
+            }
+            if(f)
+            {
+                cout<<"YES"<<nl;
+                return;
+            }
+        }
+    }
+    cout<<"NO"<<nl;
 }
-
 
 int main() {
 ios_base::sync_with_stdio(0);
