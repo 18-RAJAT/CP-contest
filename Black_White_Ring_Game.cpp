@@ -231,7 +231,7 @@ bool binarySearch(ll mid,ll k,ll x)
 }
 
 
-ll n,a[MAX_N],b,w,ct;
+ll n,a[MAX_N],b,w,ct; 
 void solve()
 {
   cin>>n;b=0,w=0,ct=0;
