@@ -305,6 +305,7 @@ void solve()
     int x,y;cin>>x>>y;
     cout<<x-1<<" "<<y<<nl;
 }
+
     
 int main() {
 ios_base::sync_with_stdio(0);
