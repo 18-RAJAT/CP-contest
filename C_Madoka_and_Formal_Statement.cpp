@@ -85,7 +85,7 @@ typedef unsigned long long int  uint64;
 #define For1(i,n) or(long long int i=0;i<n+1;++i)
 #define cf(i,s,e) for(long long int i=s;i<=e;i++)
 #define FO(i,s,e) for(long long int i=1;i*i<=y;i++)
-#define rf(i,e,s) for(long long int i=n-1;i>0;i--)
+#define rf(i,e,s) for(long long int i=n;i>=0;i--)
 #define pass(a)  for(long long int i=n-1;i>=1;i-=2)
 #define pb push_back
 #define eb emplace_back
@@ -278,42 +278,84 @@ void test()
     }
 }
 
-ll n,m;
-vector<ll> siz,parent;
-vector<vector<ll>> adj,adj1;
-vector<pair<ll,ll>> v;
-int find_set(ll a)
-{
-    if(a==parent[a]) return a;
-    return parent[a] = find_set(parent[a]);
-}
+// ll n,m;
+// vector<ll> siz,parent;
+// vector<vector<ll>> adj,adj1;
+// vector<pair<ll,ll>> v;
+// int find_set(ll a)
+// {
+//     if(a==parent[a]) return a;
+//     return parent[a] = find_set(parent[a]);
+// }
 
-void union_set(ll a,ll b)
-{
-    ll aa = find_set(a);
-    ll bb = find_set(b);
-    if(aa==bb) return;
-    if(siz[aa]<siz[bb]) swap(aa,bb);
-    adj1[a].push_back(b);
-    parent[bb] = aa;
-    siz[aa]+=siz[bb];
-}
+// void union_set(ll a,ll b)
+// {
+//     ll aa = find_set(a);
+//     ll bb = find_set(b);
+//     if(aa==bb) return;
+//     if(siz[aa]<siz[bb]) swap(aa,bb);
+//     adj1[a].push_back(b);
+//     parent[bb] = aa;
+//     siz[aa]+=siz[bb];
+// }
 
-void solve()
+int solve()
 {
-    int n;cin>>n;int a[n];
-    int res=INT_MAX;
-    MPII mp;
-    f1(i,0,n)
-    {
-        cin>>a[i];
-        if(i==0)continue;
-        if(a[i]!=a[i-1])mp[a[i]]++;
-    }
-    mp[a[n-1]]--;
-    f1(i,0,n){res=min(res,mp[a[i]]);}cout<<res+1<<nl;
+    // int n;cin>>n;
+    // int a[n],b[n];
+    // int i=0;
+    // f1(i,0,n){cin>>a[i];}
+    // f1(i,0,n){cin>>b[i];}
+    //     if(a[i] and a[i+1] and b[i] and b[i+1]){cout<<"YES"<<nl;}
+    //     else {cout<<"NO"<<nl;}
+    // sort(a,a+n);
+    // if(a[i]==b[0])
+    // if(a[0]==1){cout<<"YES"<<nl;}
+    // else if(a[i]>a[i+1]){cout<<"NO"<<nl;}
+    // else if(a[i]<a[i+1]){cout<<"YES"<<nl;}
+    // else {cout<<"NO"<<nl;}
+    // if(a[i]==b[i])cout<<"YES"<<nl;else{cout<<"NO"<<nl;}
+
+    // int tp1=0,tp2=0,tp3=0;
+    // f1(i,0,n)
+    // {
+    //     if(a[i]!=b[i]){tp1=1;}
+    //     if(i>0 and a[i]<a[i-1]){tp2=1;}
+    //     if(i>0 and b[i]<b[i-1]){tp3=1;}
+    // }
+    // if(a[i]==a[i+1]){cout<<"NO"<<nl;}
+    // else if(tp1==0 or tp2==0){cout<<"YES"<<nl;}
+    // else if(tp1==1 and tp2==0 and tp3==0){cout<<"NO"<<nl;}
+    // else{cout<<"NO"<<nl;}
+//     VI a(n+1);
+//     VI b(n+1);
+//     f1(i,0,n){cin>>a[i];}
+//     f1(i,0,n){cin>>b[i];}
+
+//     bool f=1;
+//     f1(i,0,n-1)
+//     {
+//         if(a[i]>b[i] or a[i]>a[i+1])
+//         {
+//             f=0;
+//             break;
+//         }
+//         else{continue;}}
+//     if(f){cout<<"YES"<<nl;}
+//     else{cout<<"NO"<<nl;}    
+
+        int n,a[MAX_N],b[MAX_N];cin>>n;
+        int f=1;
+        cf(i,1,n)cin>>a[i];
+        cf(i,1,n)cin>>b[i];
+        b[n+1]=b[1];
+        cf(i,1,n)
+        if((a[i]!=b[i] and b[i]-1>b[i+1] or b[i]<a[i]))f=0;
+        if(f)cout<<"YES"<<nl;
+        else cout<<"NO"<<nl;
 }
     
+
 int main() {
 ios_base::sync_with_stdio(0);
 cin.tie(0); cout.tie(0);
