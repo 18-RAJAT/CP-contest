@@ -299,7 +299,6 @@ void union_set(ll a,ll b)
     siz[aa]+=siz[bb];
 }
 
-
 void solve()
 {
     // int n;cin>>n;int a[n];
