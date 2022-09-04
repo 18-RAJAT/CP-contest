@@ -278,7 +278,7 @@ void test()
         f1(j,0,8)
         {cout<<a[i][j]<<" ";}cout<<nl;
     }
-}
+} 
 
 void solve()
 {
@@ -291,7 +291,6 @@ void solve()
     // cout<<"R"<<" "<<4*s.length()-7<<nl;
     cout<<"L"<<" "<<2<<nl;
 }
-
 
 int main() {
 ios_base::sync_with_stdio(0);
