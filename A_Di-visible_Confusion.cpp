@@ -280,7 +280,6 @@ void test()
 }
 
 
-
 void solve()
 {
     // ll n;cin>>n;ll a[MAX_N];
