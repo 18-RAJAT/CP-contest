@@ -280,7 +280,7 @@ void test()
     }
 }
 
-
+ 
 void solve()
 {
     string s;cin>>s;
