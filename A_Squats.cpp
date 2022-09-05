@@ -280,6 +280,7 @@ void test()
     }
 }
 
+
 int solve()
 {
     int n;cin>>n;string s;cin>>s;
