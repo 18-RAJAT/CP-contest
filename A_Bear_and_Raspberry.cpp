@@ -280,6 +280,7 @@ void test()
     }
 }
 
+
 int solve()
 {
     int n,k,res=0;cin>>n>>k;
