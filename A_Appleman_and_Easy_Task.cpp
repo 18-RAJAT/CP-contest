@@ -280,6 +280,7 @@ void test()
     }
 }
 
+
 int solve()
 {
     char a[1001][1001];
