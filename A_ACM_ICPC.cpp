@@ -278,7 +278,7 @@ void test()
         f1(j,0,8)
         {cout<<a[i][j]<<" ";}cout<<nl;
     }
-}
+}   
 
 int solve()
 {
