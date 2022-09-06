@@ -298,6 +298,7 @@ ll power(ll x, ll n)   //x base n exponent
     return pow;
 }
 
+
 void solve()
 {
     int n,a,b;cin>>n>>a>>b;
@@ -314,7 +315,7 @@ void solve()
             x*=a;
         }
         if(flag){cout<<"No"<<nl;}
-    }
+    }   
 }
 
 int main() {
