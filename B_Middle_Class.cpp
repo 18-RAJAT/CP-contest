@@ -280,6 +280,7 @@ void test()
     }
 }
 
+
 void solve()
 {
     ll n,x;cin>>n>>x;
