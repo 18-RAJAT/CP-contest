@@ -298,6 +298,7 @@ ll power(ll x, ll n)   //x base n exponent
     return pow;
 }
 
+
 int a[MAX_N],b[MAX_N];
 int solve()
 {
