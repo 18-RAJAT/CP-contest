@@ -298,6 +298,7 @@ ll power(ll x, ll n)   //x base n exponent
     return pow;
 }
 
+
 void solve()
 {
    double n;cin>>n;
@@ -307,6 +308,7 @@ void solve()
    {answer+=1/n;n--;}
    cout<<answer<<nl;
 }
+
 
 int main() {
 ios_base::sync_with_stdio(0);
