@@ -331,7 +331,6 @@ int solve()
     }
 }
 
-
     // if(n==1)
     // {
     //     cout<<"Yes"<<nl;
