@@ -314,7 +314,8 @@ void solve()
     if(n%2==0 and maximum<=n/2){cout<<0<<nl;}
     else if(n%2==1 and maximum<=n/2){cout<<1<<nl;}
     else cout<<2*maximum-n<<nl;
-}
+} 
+
 
 int main() {
 ios_base::sync_with_stdio(0);
