@@ -298,6 +298,7 @@ ll power(ll x, ll n)   //x base n exponent
     return pow;
 }
 
+
 int solve()
 {
     ll n,m;cin>>n>>m;
