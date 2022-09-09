@@ -255,6 +255,7 @@ ll power(ll x, ll n)   //x base n exponent
     return pow;
 }
 
+
 void solve()
 {
     int n;cin>>n;
@@ -269,6 +270,7 @@ void solve()
         answer=max(answer,count);
     }cout<<answer<<nl;
 }
+
 
 int main() {
 ios_base::sync_with_stdio(0);
