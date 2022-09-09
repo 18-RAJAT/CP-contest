@@ -255,6 +255,7 @@ ll power(ll x, ll n)   //x base n exponent
     return pow;
 }
 
+
 void solve()
 {
     int a,b;cin>>a>>b;
@@ -263,6 +264,7 @@ void solve()
     cf(i,1,a)f1(j,0,b)if(i>=arr[j])
     {cout<<arr[j]<<" ";break;}
 }
+
 
 int main() {
 ios_base::sync_with_stdio(0);
