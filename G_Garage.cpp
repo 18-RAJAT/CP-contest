@@ -265,6 +265,8 @@ ll power(ll x, ll n)   //x base n exponent
     return pow;
 }
 
+
+
 void solve()
 {
     ll n;cin>>n;
@@ -274,7 +276,7 @@ void solve()
     else{cout<<7+(n/3-1)*4+n%3;}
 }
 
-//5
+
 int main() {
 ios_base::sync_with_stdio(0);
 cin.tie(0); cout.tie(0);
