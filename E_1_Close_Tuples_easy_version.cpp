@@ -265,6 +265,7 @@ ll power(ll x, ll n)   //x base n exponent
     return pow;
 }
 
+
 void solve()
 {
    ll n;cin>>n;
@@ -277,6 +278,7 @@ void solve()
         res+=val*(val-1)/2;
     }cout<<res<<nl;
 }
+
 
 int main() {
 ios_base::sync_with_stdio(0);
