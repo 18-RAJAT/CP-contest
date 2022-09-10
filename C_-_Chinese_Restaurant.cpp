@@ -62,13 +62,14 @@ int ans=0;
 // if yes then update the ans
 // and then print the ans
 //_______________________________________________________// 
-    int i=0,j=0;
+    int i=0,j=n-1;
     ll counter=0;
     while(j<n){
         if(a[j]==0) counter++;
-        while(counter>1){
+        while(counter>1)
+        {
             if(a[i]==0) counter--;
-            i++;
+            i++;j--;
         }
         ans=max(ans,j-i+1);
         j++;
