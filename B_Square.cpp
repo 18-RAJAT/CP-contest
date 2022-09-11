@@ -266,7 +266,7 @@ ll power(ll x, ll n)   //x base n exponent
     return pow;
 }
 
-void solve()
+void solve()   
 {
     int a1,b1,a2,b2;cin>>a1>>b1>>a2>>b2;
     int a=max(a1,b1);
