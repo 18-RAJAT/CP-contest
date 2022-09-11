@@ -265,7 +265,6 @@ ll power(ll x, ll n)   //x base n exponent
     return pow;
 }
 
-
 void solve()
 {
     ll n;cin>>n;
