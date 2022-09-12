@@ -251,6 +251,7 @@ int check(int x)
 }
 
 
+
 void solve()
 {
     int n;cin>>n;
