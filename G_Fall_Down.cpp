@@ -250,6 +250,7 @@ int check(int x)
     return num;
 }
 
+
 string s[100];
 void solve()
 {
@@ -266,6 +267,7 @@ void solve()
     }
     f1(i,0,n)cout<<s[i]<<nl;
 }
+
 
 int main() {
 ios_base::sync_with_stdio(0);
