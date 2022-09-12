@@ -252,7 +252,7 @@ int check(int x)
 
 
 void solve()
-{
+{ 
      ll x,y;
       cf(i,1,7)
       cf(j,i+1,7) 
