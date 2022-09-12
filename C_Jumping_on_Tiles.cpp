@@ -255,17 +255,35 @@ void solve()
 {
     string s;cin>>s;
     int n=s.length();
-    char ch1=min(s[0],s[n-1]);
-    char ch2=max(s[0],s[n-1]);
+
+    bool flag;
+    // char ch1=min(s[0],s[n-1]);
+    // char ch2=max(s[0],s[n-1]);
+
+    if(s[0]<s[n-1]){flag=true;}
+    else{flag=false;}
 
     VPCI res;
-    f1(i,0,n){
-    {if(ch1<=s[i] and ch2>=s[i])res.pb({s[i],i+1});}}
-    sort(all(res));
-    if(s[n-1]<s[0]){reverse(all(res));}
+    f1(i,1,n-1)
+    {
+        if((s[i]>=s[0] and s[i]<=s[n-1]) or (s[i]<=s[0] and s[i]>=s[n-1])){res.pb({s[i],i+1});}
+    }
+    if(flag)sort(all(res));
+    // else sort(all(res));reverse(all(res));
+    else(sort(res.rbegin(),res.rend()));
+
+    int maxi=max(s[n-1]-s[0],s[0]-s[n-1]);
+    // sort(all(res));
+    // if(s[n-1]<s[0]){reverse(all(res));}
     // cout<<res.size()<<nl;
-    cout<<ch2-ch1<<" "<<res.size()<<nl;
-    for(auto x:res)cout<<x.second<<" ";cout<<nl;
+    // cout<<ch2-ch1<<" "<<res.size()<<nl;
+    // for(auto x:res)cout<<x.second<<" ";cout<<nl;
+    cout<<maxi<<" "<<res.size()+2<<nl;
+    cout<<1<<" ";
+    // for(auto x:res)cout<<x.second<<" ";cout<<nl;
+    for(auto x:res)cout<<x.second<<" ";
+    cout<<n<<nl;
+    
 }
 
 
