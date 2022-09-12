@@ -253,10 +253,21 @@ int check(int x)
 
 void solve()
 {
-    ll n;cin>>n;
     ll a,b,c;cin>>a>>b>>c;
 
-    int x=floor()
+    // ll res1=abs(a-1)<<nl;
+    // ll resabs(b-c)+abs(c-1)<<nl;
+    // cout<<res2+res1<<nl;
+
+        if((abs(b-c)+abs(c-1))>abs(a-1))
+        {
+            cout<<1<<nl;
+        }
+        else if((abs(b-c)+abs(c-1))<abs(a-1))
+        {
+            cout<<2<<nl;
+        }
+        else cout<<3<<nl;
 }
 
 
@@ -267,10 +278,10 @@ cin.tie(0); cout.tie(0);
 freopen("input.txt","r",stdin); //file input.txt is opened in reading mode i.e "r"
 freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 #endif
-    // ll tc;
-    // cin >> tc;
-    // for (int t = 1; t <= tc; t++) {
+    ll tc;
+    cin >> tc;
+    for (int t = 1; t <= tc; t++) {
     //     cout << "Case #" << t << ": ";
         solve();
-    // }
+    }
 }
