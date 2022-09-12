@@ -283,6 +283,7 @@ void solve()
     // ans+=a[n-1];
     // if(ans==k)cout<<"YES"<<nl;
     // else cout<<"NO"<<nl;
+    
     int n,m,k;
     cin>>n>>m>>k;
     VI v(n+1,INT_MAX);
