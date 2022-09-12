@@ -250,7 +250,6 @@ int check(int x)
     return num;
 }
 
-
 string s[100];
 void solve()
 {
