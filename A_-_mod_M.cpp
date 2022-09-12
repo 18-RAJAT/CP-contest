@@ -61,12 +61,11 @@ int n;cin>>n;
 int a[n];
 
 sort(a,a+n);
-int mini=*min_element(a,a+n);
 f1(i,0,n)
 {
     cin>>a[i];
-    a[i]-=mini;
-}
+
+a[i]-=mini;
 int g = __gcd(a[0],a[1]);
 f1(x,2,n)
 {
@@ -76,17 +75,15 @@ f1(x,2,n)
 // ll g=__gcd(a[0],a[1]);
 // f1(i,2,n)
 // g=__gcd(g,a[i]);
-// cout<<g<<nl;
-int ans=0;
-    if(g>1 or g!=0)
+    if(g>1 or g==0)
     {
-        ans=1;
+        cout<<1<<nl;
     }
+    // else if(g<1){cout<<2<<nl;}
     else
     {
-        ans=2;
+        cout<<1<<nl;
     }
-    cout<<ans<<nl;
 
 return 0;
 }
