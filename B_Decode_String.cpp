@@ -254,7 +254,6 @@ int check(int x)
 
 void solve()
 {
-
         ll n;cin>>n;string s;cin>>s;
         string str = "" ; stack<char>ch;
         f1(i,0,n)
