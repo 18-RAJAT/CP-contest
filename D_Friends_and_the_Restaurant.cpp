@@ -254,29 +254,27 @@ int check(int x)
 void solve()
 {
     int n;cin>>n;
-    int a[n],b[n];
-    f1(i,0,n)
+    VI a(n);
+    for(auto &it:a)cin>>it;
+        f1(i,0,n)
+    {int m;cin>>m;a[i]=m-a[i];}
+    sort(all(a));
+    int ct=0;
+    int first=0,last=n-1;
+    while(first<last)
     {
-        cin>>a[i];
-    }
-    f1(i,0,n)
-    {
-        cin>>b[i];
-    }
-    while(i<j)
-    {
-        if(abs())
-    }
+        if(a[first]+a[last]>=0){ct++;last--;}first++;
+    }cout<<ct<<nl;
 }
 
 
 int main() {
 ios_base::sync_with_stdio(0);
 cin.tie(0); cout.tie(0);
-// #ifndef ONLINE_JUDGE
-// freopen("input.txt","r",stdin); //file input.txt is opened in reading mode i.e "r"
-// freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
-// #endif
+#ifndef ONLINE_JUDGE
+freopen("input.txt","r",stdin); //file input.txt is opened in reading mode i.e "r"
+freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
+#endif
     ll tc;
     cin >> tc;
     for (int t = 1; t <= tc; t++) {
