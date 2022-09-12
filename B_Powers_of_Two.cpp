@@ -248,7 +248,7 @@ int check(int x)
         x/=10;
     }
     return num;
-}
+}     
 
 
 void solve()
