@@ -251,6 +251,7 @@ int check(int x)
 }
 
 
+
 void solve()
 {
 
@@ -280,6 +281,7 @@ void solve()
         reverse(str.begin(),str.end());
         cout << str << nl;
 }
+
 
 
 int main() {
