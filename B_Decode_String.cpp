@@ -253,63 +253,42 @@ int check(int x)
 
 void solve()
 {
-    stack<char>st;
-    string s;cin>>s;
-    int n=s.size();
-    int ans=0;
-    cf(i,0,n)
-    {
-        if(s[i]='0')
-        {
-            if(st.empty())
-            {
-                st.push(s[i]);
-            }
-            else
-            {
-                if(st.top()=='1')
-                {
-                    st.pop();
-                    ans+=2;
-                }
-                else
-                {
-                    st.push(s[i]);
-                }
-            }
-        }
-        else
-        {
-            if(st.empty())
-            {
-                st.push(s[i]);
-            }
-            else
-            {
-                if(st.top()=='0')
-                {
-                    st.pop();
-                    ans+=2;
-                }
-                else
-                {
-                    st.push(s[i]);
-                }
-            }
-        }
-    }
-    cout<<ans<<endl;
 
+        ll n;cin>>n;string s;cin>>s;
+        string str = "" ; stack<char>ch;
+        f1(i,0,n)
+        {
+            ch.push(s[i]);
+        }
+        while(!ch.empty())
+        {
+            int val=ch.top()-'0';
+            ch.pop();
+            if(val!=0){
+                str+=(val-1 + 'a');
+            }
+            else
+            {
+                int x=ch.top()-'0';
+                ch.pop();
+                int a=ch.top()-'0';
+                ch.pop();
+                int ch=a*10+x;
+                str+=(ch-1+'a');
+            }
+        }
+        reverse(str.begin(),str.end());
+        cout << str << nl;
 }
 
 
 int main() {
 ios_base::sync_with_stdio(0);
 cin.tie(0); cout.tie(0);
-// #ifndef ONLINE_JUDGE
-// freopen("input.txt","r",stdin); //file input.txt is opened in reading mode i.e "r"
-// freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
-// #endif
+#ifndef ONLINE_JUDGE
+freopen("input.txt","r",stdin); //file input.txt is opened in reading mode i.e "r"
+freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
+#endif
     ll tc;
     cin >> tc;
     for (int t = 1; t <= tc; t++) {
