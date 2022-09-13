@@ -261,7 +261,8 @@ void solve()
     MPII mp1,mp2;
     f1(i,0,k)
     {
-        res+=ct-mp1[ar[i]]-mp2[br[i]];ct++;
+        res+=ct-mp1[ar[i]]-mp2[br[i]];
+        ct++;
         mp1[ar[i]]++;
         mp2[br[i]]++;
     }cout<<res<<nl;
