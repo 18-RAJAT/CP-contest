@@ -326,6 +326,7 @@ void solve()
     int val1=ct>=k;
     if(val1){cout<<"YES"<<nl;}
     else{cout<<"NO"<<nl;}
+    
 }
  
 int main() {
