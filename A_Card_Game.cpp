@@ -267,7 +267,8 @@ void solve()
     m['8']=3;
     m['7']=2;
     m['6']=1;
-    if(s1[1]==s2[1] and m[s1[0]]>m[s2[0]] or s1[1]!=s2[1] and s1[1]==ch)cout<<"YES";else cout<<"NO";
+    if(s1[1]==s2[1] and m[s1[0]]>m[s2[0]] or s1[1]!=s2[1] and s1[1]==ch)
+    cout<<"YES";else cout<<"NO";
 }
 
 
