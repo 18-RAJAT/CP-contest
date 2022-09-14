@@ -250,6 +250,7 @@ int check(int x)
 }
 
 
+
 void solve()
 {
     ll a,b,k;cin>>a>>b>>k;
