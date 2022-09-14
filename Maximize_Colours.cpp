@@ -305,7 +305,6 @@ void solve()
     //1 1 1 a[0]==1 0+2=2
     if(arr[0]==1)if(arr[2]>=2){cout<<color+2<<nl;return;}else{cout<<color+1<<nl;return;}   
     if(arr[1]==0){cout<<color<<nl;}else{cout<<color+1<<nl;}
-
 }
  
 int main() {
