@@ -250,7 +250,6 @@ int check(int x)
     return num;
 }
 
-
 void solve()
 {
      int n;
