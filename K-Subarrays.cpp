@@ -307,7 +307,7 @@ void solve()
     // if(arr[0]==1)if(arr[2]>=2){cout<<color+2<<nl;return;}else{cout<<color+1<<nl;return;}
     
     // //3 3 0  a[0]>=2 0+3=3
-    // if(arr[0]>=2){cout<<color+3<<nl;}
+    // if(arr[0]>=2){cout<<color+3<<nl;} 
 
     int n,k;cin>>n>>k;
     VI a;
