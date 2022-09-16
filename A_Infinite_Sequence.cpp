@@ -277,14 +277,12 @@ void test()
     }
 }
 
-
 void solve()
 {
     ll n;cin>>n;
     f1(i,0,n)n-=i;
     cout<<n;
 }
-
 
 int main() {
     ios_base::sync_with_stdio(0);
