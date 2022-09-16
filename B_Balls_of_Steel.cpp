@@ -277,7 +277,6 @@ void test()
     }
 }
 
-
 void solve()
 {
     int n,k;cin>>n>>k;
