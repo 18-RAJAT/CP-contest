@@ -291,6 +291,7 @@ void solve()
     // else if(s[0]==41)cout<<"balance";
     // for(auto ch:s)
 
+
     long long int sum=0,temp;
     f1(i,0,s.size()){if(s[i]=='^'){temp=i;}}
     f1(i,0,s.size()){if(s[i]=='^' or s[i]=='='){continue;}sum+=(s[i]-'0')*(i-temp);}
