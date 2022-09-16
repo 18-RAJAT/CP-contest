@@ -268,7 +268,7 @@ void test()
         a[row-1][cols-2]=2;
     }
     
-
+      
     else if(cols<=2){a[row+1][cols+2]=2;a[row-1][cols+2]=2;}
     f1(i,0,8)
     {
