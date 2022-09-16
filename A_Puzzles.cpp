@@ -277,7 +277,6 @@ void test()
     }
 }
 
-
 void solve()
 {
     int n,m;cin>>n>>m;
@@ -297,7 +296,6 @@ void solve()
         // cout<<maxi;
     }cout<<res<<nl;
 }
-
 
 int main() {
     ios_base::sync_with_stdio(0);
