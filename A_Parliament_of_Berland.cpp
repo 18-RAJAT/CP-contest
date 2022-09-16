@@ -284,6 +284,7 @@ void solve()
     ll odd=1,even=2;
     int arr[a][b];
     if(a*b<n){cout<<-1;return;}
+    
     // else
     // {
         f1(i,0,a)
