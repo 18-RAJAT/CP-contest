@@ -287,6 +287,7 @@ void solve()
     // {cin>>arr[i];res+=arr[i];}
     // int diff=abs(res);
     // cout<<diff<<nl;
+    
     int n,m;cin>>n>>m;
     int minimum=INT_MAX;
     int sum=0,negative=0;
