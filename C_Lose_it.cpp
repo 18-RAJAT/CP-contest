@@ -251,6 +251,7 @@ int check(int x)
 
 
 // int ar[10001];
+
 MPII mp;
 void solve()
 {
