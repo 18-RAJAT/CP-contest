@@ -381,21 +381,41 @@ void solve()
     //         }
     //     }
     // }
-    VS v(10);
-    int a=11,b=-1,c=11,d=-1;
-        for (int i = 0; i < 10; i++) {
-        for (int j = 0; j < v[i].size(); j++) {
-            if (v[i][j] == '#') {
-                a = min(a,i);
-                b = max(b,i);
-                c = min(c,j);
-                d = max(d,j);
+    string s[10];
+    
+    for(int i = 0;i < 10;i++)cin >> s[i];
+    int a=1,b=10,c=1,d=10;
+    bool flag = true;
+    for(int i = 0;i < 10;i++){
+        if(s[i] != ".........."){
+            if(flag){
+                a = i+1;
+                flag = false;
+            }
+        }else{
+            if(!flag){
+                b = i;
+                break;
             }
         }
-        cout<<a+1<<" "<<b+1<<nl;
-        cout<<c+1<<" "<<d+1<<nl;
-        return;
+    }
+    flag = true;
+    for(int i = 0;i < 10;i++){
+        if(s[a-1][i] == '#'){
+            if(flag){
+                c = i+1;
+                flag = false;
+            }
+        }else{
+            if(!flag){
+                d = i;
+                break;
+            }
         }
+    }
+ 
+    cout << a << " " << b << endl;
+    cout << c << " " << d << endl;
 }
 
 
