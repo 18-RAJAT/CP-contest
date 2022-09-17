@@ -410,7 +410,7 @@ void solve()
             if(!flag){
                 d = i;
                 break;
-            }
+            } 
         }
     }
  
