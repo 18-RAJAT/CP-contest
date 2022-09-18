@@ -323,7 +323,6 @@ void solve()
     f1(i,0,v.size())cout<<v[i]<<" ";
 }
 
-
 int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
