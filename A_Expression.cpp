@@ -299,7 +299,6 @@ void test()
     }
 }
 
-
  
 void solve() 
 {
