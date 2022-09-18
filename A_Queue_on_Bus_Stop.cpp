@@ -234,26 +234,6 @@ bool binarySearch(ll mid,ll k,ll x)
     return tot<x;
 }
 
-int power(int b, int e)
-{
-    int ret = 1;
-    for(int i=0; i<e; ++i) ret *= b;
-    return ret;
-}
-
-
-ll help( long long x )
-{
-    ll sum = 0 ;
-    while ( x )
-    { 
-        sum += x % 10 ;
-        x /= 10 ;
-    }
-    return sum ;
-}
- 
-
 
 /*
 0 0 2 0 0 0 0 0
@@ -301,131 +281,29 @@ void test()
 
 
  
-// void solve() 
-// {
-// string s;cin>>s;
-// int n=s.size();
-//   f1(a,0,10)
-//     {
-//         f1(b,0,10)
-//         {
-//             f1(c,0,10)
-//             {
-//                 f1(d,0,10)
-//                 {
-                   
-//                     f1(i,0,10)
-//                     {
-//                         f1(j,0,10)
-//                         {
-//                             if(i=='#' or j=='#')continue;
-//                             int x=0;
-//                             if(s[x]==i or s[x]=='.')x++;
-//                             if(s[x]==a or s[x]=='.')x++;
-//                             if(s[x]==j or s[x]=='.')x++;
-//                             if(s[x]==b or s[x]=='.')x++;
-//                             if(s[x]==i or s[x]=='.')x++;
-//                             if(s[x]==c or s[x]=='.')x++;
-//                             if(s[x]==j or s[x]=='.')x++;
-//                             if(s[x]==d or s[x]=='.')x++;
-//                             if(x==n)
-//                             {
-//                                 cout<<a<<" "<<b<<nl;
-//                                 cout<<c<<" "<<d<<nl;
-//                                 return;
-//                             }
-//                         }
-//                     }
-//                 }
-//             }
-//         }
-//     }
-// }
-
-
-void solve()
+void solve() 
 {
-    // bool f=1;
-    // f1(a,0,10)
-    // {
-    //     f1(b,0,10)
-    //     {
-    //         f1(c,0,10)
-    //         {
-    //             f1(d,0,10)
-    //             {
-    //                 f1(i,0,10)
-    //                 {
-    //                     // f1(j,0,10)
-    //                     // {
-    //                         string s;cin>>s;
-    //                         int n=s.size();
+    int n,m;cin>>n>>m;
+    int a[n];
+    f1(i,0,n)cin>>a[i];
 
-    //                     // }
-    //                     f1(j,0,n)
-    //                     {
-    //                         if(s[j]=='#' and f==0)
-    //                         {
-    //                             a=i+1;c=j+1;f=1;
-    //                         }
-    //                         else if(s[j]=='#')
-    //                         {
-    //                             b=i+1;d=j+1;f=true;
-    //                         }
-    //                     }
-    //                 }
-    //                 cout<<a<<" "<<b<<nl;
-    //                 cout<<c<<" "<<d<<nl;
-    //                 return;
-    //             }
-    //         }
-    //     }
-    // }
-    string s[10];
-    
-    for(int i = 0;i < 10;i++)cin >> s[i];
-    int a=1,b=10,c=1,d=10;
-    bool flag = true;
-    for(int i = 0;i < 10;i++){
-        if(s[i] != ".........."){
-            if(flag){
-                a = i+1;
-                flag = false;
-            }
-        }else{
-            if(!flag){
-                b = i;
-                break;
-            }
-        }
-    }
-    flag = true;
-    for(int i = 0;i < 10;i++){
-        if(s[a-1][i] == '#'){
-            if(flag){
-                c = i+1;
-                flag = false;
-            }
-        }else{
-            if(!flag){
-                d = i;
-                break;
-            } 
-        }
-    }
- 
-    cout << a << " " << b << endl;
-    cout << c << " " << d << endl;
+    int i=0,ans=0;
+    while(i<n)
+    {
+        int tp=i,sum=0;
+        while(tp<n and sum+a[tp]<=m)sum+=a[tp],tp++;
+        i=tp;ans++;
+    }cout<<ans<<nl;
 }
 
 
 int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
-// #ifndef ONLINE_JUDGE
-// freopen("input.txt","r",stdin); //file input.txt is opened in reading mode i.e "r"
-// freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
-// #endif
+#ifndef ONLINE_JUDGE
+freopen("input.txt","r",stdin); //file input.txt is opened in reading mode i.e "r"
+freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
+#endif
     // int tc = 1;
     // cin >> tc;
     // for (int t = 1; t <= tc; t++) {
