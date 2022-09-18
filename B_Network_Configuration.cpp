@@ -294,7 +294,7 @@ void solve()
     {cin>>a[i];}
  
     sort(a,a+cnt,greater<int>());
-    cout<<a[k-1];
+    cout<<a[k-1];  
 }
 
 
