@@ -317,7 +317,8 @@ void solve()
         a[i]/=x;i++;
         if(i==n)i=0;
     }cout<<sum<<nl;
-}
+} 
+
 
 
 int main() {
