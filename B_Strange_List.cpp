@@ -300,6 +300,7 @@ void test()
 }
 
 
+
 void solve()
 {
     ll n,sum=0,x;cin>>n>>x;
