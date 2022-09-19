@@ -314,7 +314,7 @@ void solve()
 
      int na,nb;
     cin>>na>>nb;
- 
+
     int k,m;
     cin>>k>>m;
  
