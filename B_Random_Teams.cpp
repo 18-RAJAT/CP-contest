@@ -307,11 +307,11 @@ void solve()
     ll mini=n/m;ll value=n-m;
     if(n%m==0)
     {
-          cout<<((mini-1)*n)/2<<" "<<((value+1)*(value))/2;
+        cout<<((mini-1)*n)/2<<" "<<((value+1)*(value))/2;
     }
     else
     {
-        cout<<((mini*(mini+1)*(n-(mini*m)))/2) + (((m-(n-(mini*m)))*mini*(mini-1))/2)<<" "<<((value+1)*(value))/2;
+       cout<<((mini*(mini+1)*(n-(mini*m)))/2) + (((m-(n-(mini*m)))*mini*(mini-1))/2)<<" "<<((value+1)*(value))/2;
     }
 }
 
