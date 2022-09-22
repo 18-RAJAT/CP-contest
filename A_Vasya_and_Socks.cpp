@@ -332,6 +332,7 @@ void dfs(int node,int par,int d)
 
 }
 
+
 void solve()
 {
     int n,m;cin>>n>>m;
@@ -342,6 +343,7 @@ void solve()
     // else{cout<<max(n,m)+mini+1;}
     cout<<n+(n-1)/(m-1);
 }
+
 
 int main() {
     ios_base::sync_with_stdio(0);
