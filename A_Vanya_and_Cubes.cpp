@@ -332,6 +332,7 @@ void dfs(int node,int par,int d)
 
 }
 
+
 void solve()
 {
     int n;
@@ -346,6 +347,7 @@ void solve()
     int res=c-1;
     cout<<res;
 }
+ 
 
 int main() {
     ios_base::sync_with_stdio(0);
