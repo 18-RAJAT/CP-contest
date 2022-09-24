@@ -397,7 +397,7 @@ bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
 
 }
 
- 
+
 void solve()
 {
     int x,y,z;cin>>x>>y>>z;
