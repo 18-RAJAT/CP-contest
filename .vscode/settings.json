@@ -12,6 +12,8 @@
         "utility": "cpp",
         "xutility": "cpp",
         "deque": "cpp",
-        "list": "cpp"
+        "list": "cpp",
+        "xhash": "cpp",
+        "xtree": "cpp"
     }
 }
