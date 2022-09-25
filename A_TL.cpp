@@ -397,7 +397,7 @@ bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
 
 }
 
-int a[1001],b[1001];
+int a[101],b[101];
 void solve()
 {
     int n,m;
@@ -426,4 +426,4 @@ int main() {
         solve();
     // }
     return 0;
-}
+}   
