@@ -427,7 +427,7 @@ void solve()
     //     }
     // }
     // cout<<ans<<nl;
-     ll n, c;
+    ll n, c;
     cin >> n >> c;
     VI arr(n, 0);
     MPII mp;
