@@ -396,7 +396,6 @@ bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
       return (x.second.second < y.second.second);
 
 }
-
  
 void solve()
 {
