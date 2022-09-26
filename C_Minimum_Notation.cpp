@@ -421,7 +421,8 @@ string s;
             }
         }
         f1(i,0,10)
-        while(val[i]--)cout<<i;cout<<nl;
+        while(val[i]--)
+        cout<<i;cout<<nl;
 }
 
 int main() {
