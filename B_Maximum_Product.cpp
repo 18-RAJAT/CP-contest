@@ -409,8 +409,7 @@ void solve()
     // res=max(res,a[n-1]*a[3]*a[2]*a[0]*a[1]);
     cout<<max({a[n-1]*a[n-2]*a[n-3]*a[n-4]*a[n-5],
         a[n-1]*a[n-2]*a[n-3]*a[1]*a[0],
-        a[n-1]*a[3]*a[2]*a[1]*a[0]});
-    cout<<nl;
+        a[n-1]*a[3]*a[2]*a[1]*a[0]});cout<<nl;
 }
 
 int main() {
