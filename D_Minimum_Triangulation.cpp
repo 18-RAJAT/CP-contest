@@ -397,6 +397,7 @@ bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
 
 }
 
+
 void solve()
 {
     int n; cin>>n;
@@ -405,6 +406,7 @@ void solve()
     int ans=0;
     cf(i,2,n-1){ans+=i*(i+1);}cout<<ans;
 }
+
 
 int main() {
     ios_base::sync_with_stdio(0);
