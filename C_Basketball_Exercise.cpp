@@ -406,6 +406,7 @@ bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
 
 }
 
+
 void solve()
 {
     // int a[1001][2],dp[1001][2];
@@ -433,6 +434,7 @@ void solve()
     ll mx=max(dp1[n-1],dp2[n-1]);
     cout<<mx;
 }
+
 
 int main() {
     ios_base::sync_with_stdio(0);
