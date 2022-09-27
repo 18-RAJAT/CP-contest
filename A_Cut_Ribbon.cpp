@@ -406,6 +406,7 @@ bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
 
 }
 
+
 void solve()
 {
     // ll a,b,c,d;cin>>a>>b>>c>>d;
@@ -432,6 +433,7 @@ void solve()
         }
     }cout<<dp[n]<<nl;
 }
+
 
 int main() {
     ios_base::sync_with_stdio(0);
