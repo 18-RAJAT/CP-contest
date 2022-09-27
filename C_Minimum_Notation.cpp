@@ -400,38 +400,49 @@ bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
 void solve()
 {
     
-    string s;
-        cin>>s;
-        int n=s.size();
-        reverse(all(s));
-        int maxi=101;
-        int val[10]={0};
-        for(auto i:s) 
-        {
-            if(i<=char(maxi)) 
-            {
-                val[i-'0']++;
-                maxi=i;
-            }
-            else 
-            {
-                if(i!='9') 
-                val[i-'0'+1]++;
-                else val[10-1]++;
-            }
-        }
-        f1(i,0,10)
-        while(val[i]--)
-        cout<<i;cout<<nl;
+// string s;
+//         cin>>s;
+//         int n=s.size();
+//         reverse(all(s));
+//         int maxi=101;
+//         int val[10]={0};
+//         for(auto i:s) 
+//         {
+//             if(i<=char(maxi))
+//             {
+//                 val[i-'0']++;
+//                 maxi=i;
+//             }
+//             else 
+//             {
+//                 if(i!='9') 
+//                 val[i-'0'+1]++;
+//                 else val[10-1]++;
+//             }
+//         }
+//         f1(i,0,10)
+//         while(val[i]--) cout<<i;cout<<nl;
+
+    string s;cin>>s;
+    char ch='9';
+    int n=s.length();
+    // reverse(all(s));
+    // f1(i,0,s.size()-1)
+    for(int i=n-1;i>=0;--i)
+    {
+        ch=min(ch,s[i]);
+        if(s[i]>ch and s[i]!='9')s[i]++;
+    }sort(all(s));
+    cout<<s<<nl;
 }
 
 int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
-// #ifndef ONLINE_JUDGE
-// freopen("input.txt","r",stdin); //file input.txt is opened in reading mode i.e "r"
-// freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
-// #endif
+#ifndef ONLINE_JUDGE
+freopen("input.txt","r",stdin); //file input.txt is opened in reading mode i.e "r"
+freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
+#endif
     int tc = 1;
     cin >> tc;
     for (int t = 1; t <= tc; t++) {
