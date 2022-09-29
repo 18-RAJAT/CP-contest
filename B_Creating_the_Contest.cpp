@@ -416,6 +416,7 @@ void solve()
     f1(i,1,n)
     {
         if(a[i]<=2*a[i-1])x++;
+        
         else x=1;
 
         sum=max(sum,x);
