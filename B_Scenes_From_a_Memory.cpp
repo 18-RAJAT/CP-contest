@@ -406,6 +406,7 @@ bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
 
 }
 
+
 string s,u[17]={"1","4","6","8","9","22","25","27","32","33","35","52","55","57","72","75","77"};
 void solve()
 {
@@ -424,6 +425,7 @@ void solve()
         }
     }
 }
+
 
 int main() {
     ios_base::sync_with_stdio(0);
