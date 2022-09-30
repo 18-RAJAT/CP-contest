@@ -406,6 +406,7 @@ bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
 
 }
 
+
 void solve()
 {
     ll n,m,k;cin>>n>>m>>k;
@@ -419,7 +420,6 @@ void solve()
         cout<<k+v[r-1]-v[l-1]-2*(r-l)-1<<nl;
     }
 }
-
 
 int main() {
     ios_base::sync_with_stdio(0);
