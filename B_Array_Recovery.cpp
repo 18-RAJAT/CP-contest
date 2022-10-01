@@ -345,27 +345,29 @@ bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
 
 void solve()
 {
-  ll n;cin>>n;
-  ll ar[n] ; 
-  ll dr[n] ; 
-
-memset((ar),0,sizeof((ar)));
-memset((dr),0,sizeof((dr)));
- 
-  f1(i,0,n) cin>>dr[i] ; 
- 
- ar[0]=dr[0] ; 
-
- f1(i,1,n)
+int n,m;
+cin>>n;
+vi d(n),a(n);
+f1(i,0,n)
 {
-  ll a=dr[i]-ar[i-1];
-  ll b=ar[i-1]-dr[i];
-
-  if(a!=b and a>0 and b>0){cout << -1; return;}
-   ar[i]=max(a,b);
+    cin>>d[i];
 }
-
-   f1(i,0,n) cout<<ar[i]<<" ";cout<<nl;
+a[0]=d[0];
+bool flag=false;
+f1(i,1,n)
+{
+    if(d[i]==0)a[i]=a[i-1];
+    else
+    {
+        if(a[i-1]<d[i])a[i]=a[i-1]+d[i];
+        else{flag=true;break;}
+    }
+}
+if(flag)cout<<-1<<endl;
+else
+{
+    f1(i,0,n)
+    {cout<<a[i]<<" ";}cout<<nl;}
 }
 
 
