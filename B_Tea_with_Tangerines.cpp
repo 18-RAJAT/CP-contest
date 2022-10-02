@@ -297,10 +297,12 @@ bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
 
 }
 
+ll s,n,a[10001];
+ 
 void solve()
 {
-    ll n;cin>>n;
-    ll a[n];ll ct=1;
+    // ll n;cin>>n;
+    // ll a[n];ll ct=1;
     // priority_queue<int>pq;
     // f1(i,0,n)
     // {
@@ -321,16 +323,22 @@ void solve()
     // // if(ct<=5){cout<<ct-1<<nl;return;}
     // cout<<ct<<nl;
 
-    f1(i,0,n)cin>>a[i];sort(a,a+n);
-    ll res=0;
-    f1(i,1,n)
-    {
-        ll x=2*a[0];
-        if((a[i]+x-2)/(x-1)>1)
-        {
-            res+=(a[i]+x-2)/(x-1)-1;
-        }
-    }cout<<res<<nl;
+    // f1(i,0,n)cin>>a[i];sort(a,a+n);
+    // ll res=0;
+    // f1(i,1,n)
+    // {
+    //     ll x=2*a[0];
+    //     if((a[i]+x-2)/(x-1)>1)
+    //     {
+    //         res+=(a[i]+x-2)/(x-1)-1;
+    //     }
+    // }cout<<res<<nl;
+    // cin>>s;
+    cin>>n;s=0;
+        cf(i,1,n) cin>>a[i];
+        sort(a,a+n);
+        cf(i,1,n) s+=(a[i]-1)/(2*a[1]-1);
+        cout<<s<<nl;
 }
 
 int main() {
