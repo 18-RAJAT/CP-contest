@@ -343,46 +343,33 @@ bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
 
 }
 
-void solve()
-{
-    string s;cin>>s;
-    int n=s.length();
-    // f1(i,0,n)
-    //     if(s[i]==s[i+1])
-    //     {
-    //         cout<<"Yes"<<nl;
-    //         return;
-    //     }
-    //     else
-    //     {
-    //         cout<<"No"<<nl;
-    //         return;
-    //     }
-    stack<int>stk;
-    int res=0;
-    f1(i,0,n)
-    {
-        if(!stk.empty() and stk.top()==s[i])
-        {
-            res++;
-            stk.pop();
-        }
-        else
-        {
-            stk.push(s[i]);
-        }
-    }
-    if(res%2==0)
-    {
-        cout<<"No"<<nl;
-    }
-    else
-    {
-        cout<<"Yes"<<nl;
-    }
-
+void find_lis1(vector<int> a) {
+	int lis = 0;
+	vector<int> dp(a.size(), 1);
+	for (int i = 0; i < a.size(); i++) {
+		for (int j = 0; j < i; j++) {
+			if (a[j] < a[i]) {
+				dp[i] = max(dp[i], dp[j] + 1);
+			}
+		}
+		lis = max(lis, dp[i]);
+	}
+	cout<< lis;
 }
 
+void find_lis2(vector<int> b) {
+	int lis1 = 0;
+	vector<int> dp(b.size(), 1);
+	for (int i = 0; i < b.size(); i++) {
+		for (int j = 0; j < i; j++) {
+			if (b[j] < b[i]) {
+				dp[i] = max(dp[i], dp[j] + 1);
+			}
+		}
+		lis1 = max(lis1, dp[i]);
+	}
+	cout << lis1;
+}
 
 int main() {
     ios_base::sync_with_stdio(0);
@@ -395,7 +382,11 @@ int main() {
     // cin >> tc;
     // for (ll t = 1; t <= tc; t++) {
         // //cout << "Case #" << t << ": ";
-       solve();
+    //    twoLisSum();
+    vector<int>a,b;
+    int n;cin>>n;
+        // cout<< find_lis2(a)+find_lis1(b);
+        // return lis1+lis2;
     // }
     return 0;
 }

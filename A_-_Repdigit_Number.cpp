@@ -345,42 +345,7 @@ bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
 
 void solve()
 {
-    string s;cin>>s;
-    int n=s.length();
-    // f1(i,0,n)
-    //     if(s[i]==s[i+1])
-    //     {
-    //         cout<<"Yes"<<nl;
-    //         return;
-    //     }
-    //     else
-    //     {
-    //         cout<<"No"<<nl;
-    //         return;
-    //     }
-    stack<int>stk;
-    int res=0;
-    f1(i,0,n)
-    {
-        if(!stk.empty() and stk.top()==s[i])
-        {
-            res++;
-            stk.pop();
-        }
-        else
-        {
-            stk.push(s[i]);
-        }
-    }
-    if(res%2==0)
-    {
-        cout<<"No"<<nl;
-    }
-    else
-    {
-        cout<<"Yes"<<nl;
-    }
-
+    
 }
 
 
