@@ -343,32 +343,37 @@ bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
 
 }
 
-void find_lis1(vector<int> a) {
-	int lis = 0;
-	vector<int> dp(a.size(), 1);
-	for (int i = 0; i < a.size(); i++) {
-		for (int j = 0; j < i; j++) {
-			if (a[j] < a[i]) {
-				dp[i] = max(dp[i], dp[j] + 1);
-			}
-		}
-		lis = max(lis, dp[i]);
-	}
-	cout<< lis;
-}
+void solve()
+{
+    int n;cin>>n;
 
-void find_lis2(vector<int> b) {
-	int lis1 = 0;
-	vector<int> dp(b.size(), 1);
-	for (int i = 0; i < b.size(); i++) {
-		for (int j = 0; j < i; j++) {
-			if (b[j] < b[i]) {
-				dp[i] = max(dp[i], dp[j] + 1);
-			}
-		}
-		lis1 = max(lis1, dp[i]);
-	}
-	cout << lis1;
+    set<int>a;
+    set<int>b;
+
+    a.find()==a.end();
+    f1(i,0,n)
+    {
+        int x;cin>>x;
+        a.insert(x);
+    }
+    f1(i,0,n)
+    {
+        int x;cin>>x;
+        b.insert(x);
+    }
+    int ans=0;
+    for(auto i:a)
+    {
+        for(auto j:b)
+        {
+            if(i==j)
+            {
+                ans++;
+                break;
+            }
+        }
+    }
+    cout<<ans<<nl;
 }
 
 int main() {
@@ -382,11 +387,7 @@ int main() {
     // cin >> tc;
     // for (ll t = 1; t <= tc; t++) {
         // //cout << "Case #" << t << ": ";
-    //    twoLisSum();
-    vector<int>a,b;
-    int n;cin>>n;
-        // cout<< find_lis2(a)+find_lis1(b);
-        // return lis1+lis2;
+    solve();
     // }
     return 0;
 }
