@@ -345,19 +345,19 @@ bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
 
 void solve()
 {
-    string s;cin>>s;
-    int n=s.length();
-    f1(i,0,n)
-        if(s[i]==s[i+1])
-        {
-            cout<<"Yes"<<nl;
-            return;
-        }
-        else
-        {
-            cout<<"No"<<nl;
-            return;
-        }
+    // string s;cin>>s;
+    // int n=s.length();
+    // f1(i,0,n)
+    //     if(s[i]==s[i+1])
+    //     {
+    //         cout<<"Yes"<<nl;
+    //         return;
+    //     }
+    //     else
+    //     {
+    //         cout<<"No"<<nl;
+    //         return;
+    //     }
 }
 
 
