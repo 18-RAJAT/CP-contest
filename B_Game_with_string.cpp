@@ -67,7 +67,7 @@ const ll INF = 1e9;
 const double pi=acos(-1.0);
 #define ll long long
 typedef pair<long,long> PII;
-typedef vector<int> VI;
+typedef vector<long long> VI;
 typedef vector<bool> VB;
 typedef vector<char> VC;
 typedef vector<vector<ll>> VII;
@@ -345,8 +345,21 @@ bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
 
 void solve()
 {
-
+    string s;cin>>s;
+    int n=s.length();
+    f1(i,0,n)
+        if(s[i]==s[i+1])
+        {
+            cout<<"Yes"<<nl;
+            return;
+        }
+        else
+        {
+            cout<<"No"<<nl;
+            return;
+        }
 }
+
 
 int main() {
     ios_base::sync_with_stdio(0);
@@ -355,9 +368,9 @@ int main() {
 // freopen("input.txt","r",stdin); //file input.txt is opened in reading mode i.e "r"
 // freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 // #endif
-    // int tc = 1;
+    // ll tc = 1;
     // cin >> tc;
-    // for (int t = 1; t <= tc; t++) {
+    // for (ll t = 1; t <= tc; t++) {
         // //cout << "Case #" << t << ": ";
        solve();
     // }
