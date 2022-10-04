@@ -299,7 +299,16 @@ bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
 
 void solve()
 {
-    
+    int n;
+    cin>>n;
+    int fibonacci[n+1];
+    fibonacci[0]=0;
+    fibonacci[1]=1;
+    cf(i,2,n)
+    {
+        fibonacci[i]=fibonacci[i-1]+fibonacci[i-2];
+    }
+    cout<<fibonacci[n]<<nl;
 }
 
 int main() {
@@ -309,11 +318,11 @@ int main() {
 // freopen("input.txt","r",stdin); //file input.txt is opened in reading mode i.e "r"
 // freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 // #endif
-    ll tc = 1;
-    cin >> tc;
-    for (ll t = 1; t <= tc; t++) {
+    // ll tc = 1;
+    // cin >> tc;
+    // for (ll t = 1; t <= tc; t++) {
         // //cout << "Case #" << t << ": ";
        solve();
-    }
+    // }
     return 0;
 }
