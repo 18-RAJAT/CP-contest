@@ -280,52 +280,6 @@ ll help( long long x )
 }
  
 
-
-/*
-0 0 2 0 0 0 0 0
-1 0 0 0 0 0 0 0
-0 0 2 0 0 0 0 0
-0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0
-*/
-void test()
-{
-    int a[8][8];
-    f1(i,0,8)
-    {
-        f1(j,0,8)
-        {a[i][j]=0;}
-    }
-    int row,cols;cin>>row>>cols;
-    a[row][cols]=1;
-    // if(row>2 and row<8)
-    if(cols>=2 and cols<=8)
-    {
-        /*
-            case 1: n pos row and 2nd col then 2
-            case 2: n-1 pos row and 2nd pos col then 2
-            case 3: n pos row and m-1 col then 2
-            case 4: n-1 pos row and m pos col then 2
-        */
-        a[row+1][cols+2]=2;
-        a[row+1][cols-2]=2;
-        a[row-1][cols+2]=2;
-        a[row-1][cols-2]=2;
-    }
-    
-
-    else if(cols<=2){a[row+1][cols+2]=2;a[row-1][cols+2]=2;}
-    f1(i,0,8)
-    {
-        f1(j,0,8)
-        {cout<<a[i][j]<<" ";}cout<<nl;
-    }
-}
-
-
 bool c2(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
 {
     if(x.second.first!=y.second.first)
@@ -346,34 +300,20 @@ bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
 void solve()
 {
     int n;cin>>n;
+    string a,b;cin>>a>>b;
 
-    set<int>a;
-    set<int>b;
-
-    a.find()==a.end();
-    f1(i,0,n)
-    {
-        int x;cin>>x;
-        a.insert(x);
-    }
-    f1(i,0,n)
-    {
-        int x;cin>>x;
-        b.insert(x);
-    }
     int ans=0;
-    for(auto i:a)
+    f1(i,0,n)
     {
-        for(auto j:b)
+        if(a[i]!=b[i])
         {
-            if(i==j)
+            ans++;
+            if(a[i+1]!=b[i+1] and a[i]!=a[i+1])
             {
-                ans++;
-                break;
+                i++;
             }
         }
-    }
-    cout<<ans<<nl;
+    }cout<<ans<<nl;
 }
 
 int main() {
@@ -387,7 +327,7 @@ int main() {
     // cin >> tc;
     // for (ll t = 1; t <= tc; t++) {
         // //cout << "Case #" << t << ": ";
-    solve();
+       solve();
     // }
     return 0;
 }
