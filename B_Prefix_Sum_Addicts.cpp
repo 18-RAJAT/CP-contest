@@ -67,7 +67,7 @@ const ll INF = 1e9;
 const double pi=acos(-1.0);
 #define ll long long
 typedef pair<long,long> PII;
-typedef vector<int> VI;
+typedef vector<long long> VI;
 typedef vector<bool> VB;
 typedef vector<char> VC;
 typedef vector<vector<ll>> VII;
@@ -105,7 +105,7 @@ typedef unsigned long long int  uint64;
 #define vi vector<int>
  
 /* FUNCTIONS */
-#define f1(i,s,e) for(long long int i=s;i<e;i++)
+#define f1(i,s,e) for(int i=s;i<e;i++)
 #define ff1(i,s,e) for(long long int i=s;i>=e;--i)
 #define For1(i,n) or(long long int i=0;i<n+1;++i)
 #define cf(i,s,e) for(long long int i=s;i<=e;i++)
@@ -345,19 +345,69 @@ bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
 
 void solve()
 {
-    int n,m;cin>>n>>m;
-    int a[n],b[m];
-    f1(i,0,n)cin>>a[i];
-    f1(i,0,m)cin>>b[i];
-    int ct=0;
-    f1(i,0,n)
-    {
-        f1(j,0,m)
+    // ll n;cin>>n;
+    // bool a[n+2];
+    // VI o,z;
+    // f1(i,0,n){cin>>a[i];}
+    // f1(i,0,n)
+    // {
+    //     ll it;cin>>it;
+    //     if(a[i])o.pb(it);
+    //     else z.pb(it);
+    // }
+    // sort(all(o));reverse(all(o));
+    // sort(all(z));reverse(all(z));
+    // ll t=0;
+    // ll i=0,j=0;
+    // ll oo=o.size(),zz=z.size();
+    // while(i<zz and j<zz)
+    // {
+    //     t+=(o[i]*2);
+    //     t+=(z[j]*2);i++;j++;
+    // }
+    // if(oo==zz)
+    // {
+    //     ll mini=min(oo,zz);
+    //     t=t-mini;
+    // }
+    // f1(p,i,oo)t+=o[p];
+    // f1(p,j,zz)t+=z[p];
+    // cout<<t<<nl;
+     ll n,k;
+    // ll b[MAX_N];
+    // ll n,k;cin>>n>>k;ll a[MAX_N];
+    // f1(i,0,n)cin>>b[i];
+    // ll val=n-k+1;
+    // cf(i,val,n)cin>>a[i];
+    // bool f=1;
+    // for(ll i=n;i>val;--i)
+    // {
+    //     b[i]=a[i]-a[i-1];
+    //     if(i<n and b[i]>b[i+1])f=0;
+    // }
+    // ll eps=MAX_N;
+    // if(k>1)eps=b[n-k+2];
+    // if(1ll*(val)*eps<a[val])f=0;
+    // cout<<(f?"Yes\n":"No\n");
+
+      cin>>n>>k;
+      int val=n-k+1;
+      ll s[k],a[k];
+      f1(i,0,k){cin>>s[i];}
+      if(s[0]<=0){a[0]=s[0]/val;}
+      else{a[0]=(s[0]/val);if((s[0]%val)>0){a[0]++;}}
+      f1(i,1,k){a[i]=s[i]-s[i-1];}
+      int f=0;
+      f1(i,1,k)
+      {
+        if(a[i]<a[i-1])
         {
-            if(a[0]==3 and b[0]>=2)cout<<"No"<<nl;
+            f++;
+            break;
         }
-    }
-    cout<<"Yes"<<nl;
+      }
+    // f==0;
+    cout<<(f==0?"Yes\n":"No\n");
 }
 
 
@@ -368,9 +418,9 @@ int main() {
 // freopen("input.txt","r",stdin); //file input.txt is opened in reading mode i.e "r"
 // freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 // #endif
-    int tc = 1;
+    ll tc = 1;
     cin >> tc;
-    for (int t = 1; t <= tc; t++) {
+    for (ll t = 1; t <= tc; t++) {
         // //cout << "Case #" << t << ": ";
        solve();
     }
