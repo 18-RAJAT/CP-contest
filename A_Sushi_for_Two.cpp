@@ -297,6 +297,7 @@ bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
 
 }
 
+
 void solve()
 {
     int n,m=0,a=0,b=0,result=0,k=0;
@@ -317,6 +318,7 @@ void solve()
     }
     cout<<2*result<<nl;
 }
+
 
 int main() {
     ios_base::sync_with_stdio(0);
