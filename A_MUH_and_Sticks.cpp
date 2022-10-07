@@ -297,7 +297,6 @@ bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
 
 }
 
-
 void solve()
 {
     int dp[10]={0};
