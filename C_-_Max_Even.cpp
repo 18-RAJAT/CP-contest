@@ -299,13 +299,59 @@ bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
 }
 
 
-void solve()
+// void solve()
+// {
+//     int n;cin>>n;
+//     int a[n];
+//     f1(i,0,n){cin>>a[i];
+//     int prefixSum=0;
+
+//     if(a[0]%2==0)
+//     {
+//         prefixSum+=a[i];
+//     }
+//     else
+//     {
+//         prefixSum-=a[i];
+//     }
+
+//     if(prefixSum==0)
+//     {
+//         cout<<-1<<endl;
+//         return;
+//     }
+//     map<int,int>mp;
+//     mp[0]=1;
+//     int ans=0;
+//     f1(i,0,n)
+//     {
+//         if(a[i]%2==0)
+//         {
+//             prefixSum++;
+//         }
+//         else
+//         {
+//             prefixSum--;
+//         }
+//         if(mp.find(prefixSum)!=mp.end())
+//         {
+//             ans+=mp[prefixSum];
+//         }
+//         mp[prefixSum]++;
+//     }
+//     cout<<ans<<endl;return;
+//     }
+// }
+
+
+int solve()
 {
+    int removeOdd=0;int ans=0;
+
     int n;cin>>n;
     int a[n];
     f1(i,0,n){cin>>a[i];
     int prefixSum=0;
-
     if(a[0]%2==0)
     {
         prefixSum+=a[i];
@@ -314,35 +360,44 @@ void solve()
     {
         prefixSum-=a[i];
     }
-
+    cout<<prefixSum<<nl;
     if(prefixSum==0)
     {
         cout<<-1<<endl;
-        return;
+        return 0;
     }
-    map<int,int>mp;
-    mp[0]=1;
-    int ans=0;
-    f1(i,0,n)
+    if(prefixSum%2==0)
     {
-        if(a[i]%2==0)
-        {
-            prefixSum++;
-        }
-        else
-        {
-            prefixSum--;
-        }
-        if(mp.find(prefixSum)!=mp.end())
-        {
-            ans+=mp[prefixSum];
-        }
-        mp[prefixSum]++;
+        removeOdd=1;
     }
-    cout<<ans<<endl;return;
+    else
+    {
+        removeOdd=0;
     }
-}
 
+    }
+    // map<int,int>mp;
+    // mp[0]=1;
+    // // int ans=0;
+    // f1(i,0,n)
+    // {
+    //     if(a[i]%2==0)
+    //     {
+    //         prefixSum++;
+    //     }
+    //     else
+    //     {
+    //         prefixSum--;
+    //     }
+    //     if(mp.find(prefixSum)!=mp.end())
+    //     {
+    //         ans+=mp[prefixSum];
+    //     }
+    //     mp[prefixSum]++;
+    // }
+    // }
+    // cout<<ans<<endl;return 0;
+}
 
 int main() {
     ios_base::sync_with_stdio(0);
@@ -355,7 +410,6 @@ int main() {
     // cin >> tc;
     for (ll t = 1; t <= tc; t++) {
         // //cout << "Case #" << t << ": ";
-    //    solve();
-    addEven();
+       solve();
     }
 }
