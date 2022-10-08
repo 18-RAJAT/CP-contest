@@ -301,7 +301,44 @@ bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
 
 void solve()
 {
-    
+    ll n,m;cin>>n>>m;
+    ll a[n][m];
+    f1(i,0,n)
+    {
+        f1(j,0,m)
+        {
+            cin>>a[i][j];
+        }
+    }
+    int ans=0;
+    if(a[0]==a[n-1])
+    {
+        cout<<"Yes"<<nl;
+        return;
+    }
+    else
+    {
+        f1(i,0,n)
+        {
+            f1(j,0,m)
+            {
+                if(a[i][j]==1)
+                {
+                    ans++;
+                }
+            }
+        }
+        if(ans==0)
+        {
+            cout<<"No"<<nl;
+            return;
+        }
+        else
+        {
+            cout<<"Yes"<<nl;
+            return;
+        }
+    }
 }
 
 int main() {
