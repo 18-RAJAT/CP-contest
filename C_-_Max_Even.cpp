@@ -299,48 +299,53 @@ bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
 }
 
 
-void solve()
-{
-    ll n,m;cin>>n>>m;
-    ll a[n][m];
-    f1(i,0,n)
-    {
-        f1(j,0,m)
-        {
-            cin>>a[i][j];
-        }
-    }
-    int ans=0;
-    if(a[0]==a[n-1])
-    {
-        cout<<"Yes"<<nl;
-        return;
-    }
-    else
-    {
-        f1(i,0,n)
-        {
-            f1(j,0,m)
-            {
-                if(a[i][j]==1)
-                {
-                    ans++;
-                }
-            }
-        }
-        if(ans==0)
-        {
-            cout<<"No"<<nl;
-            return;
-        }
-        else
-        {
-            cout<<"Yes"<<nl;
-            return;
-        }
-    }
-}
+// void solve()
+// {
+//     int n;cin>>n;
+//     int a[n];
+//     f1(i,0,n){cin>>a[i];
+//     int prefixSum=0;
 
+//     if(a[0]%2==0)
+//     {
+//         prefixSum+=a[i];
+//     }
+//     else
+//     {
+//         prefixSum-=a[i];
+//     }
+
+//     if(prefixSum==0)
+//     {
+//         cout<<-1<<endl;
+//         return;
+//     }
+//     map<int,int>mp;
+//     mp[0]=1;
+//     int ans=0;
+//     f1(i,0,n)
+//     {
+//         if(a[i]%2==0)
+//         {
+//             prefixSum++;
+//         }
+//         else
+//         {
+//             prefixSum--;
+//         }
+//         if(mp.find(prefixSum)!=mp.end())
+//         {
+//             ans+=mp[prefixSum];
+//         }
+//         mp[prefixSum]++;
+//     }
+//     cout<<ans<<endl;return;
+//     }
+// }
+
+void addEven()
+{
+}
 
 int main() {
     ios_base::sync_with_stdio(0);
@@ -353,6 +358,7 @@ int main() {
     // cin >> tc;
     for (ll t = 1; t <= tc; t++) {
         // //cout << "Case #" << t << ": ";
-       solve();
+    //    solve();
+    addEven();
     }
 }
