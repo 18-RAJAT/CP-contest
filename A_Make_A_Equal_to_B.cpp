@@ -299,7 +299,6 @@ bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
 
 }
 
-
 void solve()
 {
     int n;cin>>n;
@@ -317,7 +316,6 @@ void solve()
     }
     int mini=min(f,abs(c1-c2)+1);
     cout<<mini<<nl;
-
 }
 
 int main() {
