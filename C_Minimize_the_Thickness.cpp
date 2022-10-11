@@ -300,43 +300,18 @@ bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
 }
 
 
-int main()
-{
-    int tc;
-    cin>>tc;
-    for(int i=0;i<tc;i++)
-    {
-        ll n;
-        cin>>n;
-        if(n==3 or n==1)
-        {
-            cout<<-1<<nl;
-            continue;
-        }
-    
-    if(n%2!=0)
-    {
-        ll m=n/2;
-        n=n-n/2;
-        ll o =m;
-    f1(j,0,m)
-    {
-            cout<<n + o<<" ";
-            o--;
-    }
-        o=1;
-        while(o<=n)
-        {
-            cout<<o<<" ";
-            o = o + 1;
-        }
-    }
-    else{
-        for(int i=n;i>=1;i--)
-        {
-            cout<<i<<" ";
-        }
-    }cout<<nl;
 
+int main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0); cout.tie(0);
+// #ifndef ONLINE_JUDGE
+// freopen("input.txt","r",stdin); //file input.txt is opened in reading mode i.e "r"
+// freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
+// #endif
+    ll tc = 1;
+    cin >> tc;
+    for (ll t = 1; t <= tc; t++) {
+        // //cout << "Case #" << t << ": ";
+       solve();
     }
 }
