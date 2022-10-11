@@ -269,6 +269,39 @@ int power(int b, int e)
     return ret;
 }
 
+vi helper(int n)
+{
+    vi v;
+    for (int i = 1; i <=sqrt(n); i++) 
+    {
+        if (n % i == 0) {
+            if (n / i == i)
+            {
+                v.push_back(i);
+            }else
+            {
+                v.push_back(n/i);
+            }
+        }
+    }
+    return v;
+}
+
+
+
+vi helppp(ll n)
+{
+    vi div;
+    for(ll i=1;i*i<=n;i++)
+    { 
+        if(n%i==0) 
+    { 
+        div.pb(i); 
+        if(n/i!=i) div.pb(n/i); 
+    }
+    } return div;
+    }
+
 
 ll help( long long x )
 {
@@ -299,7 +332,54 @@ bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
 
 }
 
+void solve()
+{
+    ll n;
+    cin>>n; 
+    ll a[n];
 
+    int sum=0;
+    f1(i,0,n)
+    {cin>>a[i];sum+=a[i];}
+    vi x=helppp(sum);
+
+    ll ans= n;
+
+    if(x.size()<=2)
+    {
+        cout<<n<<nl;
+        return;
+    }
+    for(auto it:x)
+    {
+        ll rem=sum/it;
+        bool b=false;
+
+        ll s=0,mx=0,temp=0;
+
+        f1(i,0,n)
+        {   
+            s+=a[i];
+            temp++;
+
+            if(s==rem)
+            {
+                mx=max(temp,mx);s=0;temp=0;
+            }
+            else if(s>rem)
+            {
+                b=true;
+                break;
+            }
+        }
+        if(!b)
+        {
+            ans=min(ans,mx);
+        }
+        // if(ans==4){cout<<ans<<nl;return;}
+        // else cout<<ans-2<<nl;return;
+    }cout<<ans<<nl;
+}  
 
 int main() {
     ios_base::sync_with_stdio(0);
