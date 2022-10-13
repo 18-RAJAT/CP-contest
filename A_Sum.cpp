@@ -337,7 +337,6 @@ void solve()
     int a,b,c;cin>>a>>b>>c;
     if(a+c>b)cout<<"NO"<<endl;
     else cout<<"YES"<<endl;
-
 }
 
 int main() {
