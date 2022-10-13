@@ -350,6 +350,7 @@ void solve()
     // {
     //     cout<<"NO\n";
     // }
+    
     set<int>s;
     int f=0;
     f1(i,0,n)
