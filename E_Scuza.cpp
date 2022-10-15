@@ -334,20 +334,20 @@ bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
 
 
 
-ll n,q,x,dp[MAX_N],prifixSum[MAX_N],maxi[MAX_N];
+ll n,q,x,dp[MAX_N],prefixSum[MAX_N],maxi[MAX_N];
 void solve()
 {
     cin>>n>>q;
     cf(i,1,n) 
    {
       cin>>dp[i];
-      prifixSum[i]=prifixSum[i-1]+dp[i];
+      prefixSum[i]=prefixSum[i-1]+dp[i];
       maxi[i]=max(maxi[i-1],dp[i]);
    }
    while(q--) 
    {
       cin>>x;
-      cout<<prifixSum[upper_bound(maxi+1,maxi+1+n,x)-maxi-1]<<" ";
+      cout<<prefixSum[upper_bound(maxi+1,maxi+1+n,x)-maxi-1]<<" ";
    }
    cout<<nl;
 }
