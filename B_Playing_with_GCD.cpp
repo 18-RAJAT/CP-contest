@@ -299,6 +299,7 @@ bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
 
 }
 
+
 void solve()
 {
     // int n;cin>>n;
@@ -342,12 +343,12 @@ void solve()
     //     cout<<"NO"<<nl;
     // }
 
-    int n;cin>>n;
-    int a[n];
-    f1(i,0,n)
-    {
-        cin>>a[i];
-    }
+    // ll n;cin>>n;
+    // ll a[n];
+    // f1(i,0,n)
+    // {
+    //     cin>>a[i];
+    // }
     // int s=0;
     // f1(i,0,n)
     // {
@@ -357,14 +358,78 @@ void solve()
     // else if(s==1){cout<<"YES"<<nl;}
     // else{cout<<"NO"<<nl;}
     // cout<<"YES"<<nl;return;
-    f1(i,0,n-2)
+    // f1(i,0,n-2)
+    // {
+    //     if(gcd(a[i],a[i+2])>gcd(a[i],a[i+1]))
+    //     {
+    //         cout<<"NO"<<nl;return;
+    //     }
+    // }
+    // cout<<"YES"<<nl;
+
+
+    // ll n;cin>>n;
+    // vi a(n);//cin>>a;
+    // vi b(n);
+    // b[0]=a[0];
+    // b[n]=a[n-1];
+    // f1(i,0,n)
+    // {
+    //     b[i]=lcm(a[i],a[i-1]);
+    // }
+    // f1(i,0,n)
+    // {
+    //     if(a[i]!=gcd(b[i],b[i+1]))
+    //     {
+    //         cout<<"NO"<<nl;
+    //         return;
+    //     }
+    // }
+    // cout<<"YES"<<nl;
+    // int n;cin>>n;
+    // VI a(n);
+    // int f=0;
+    // f1(i,0,n)cin>>a[i];
+    // f1(i,1,n-1)
+    // {
+    //     if(a[i]%(__gcd(a[i-1],a[i+1]))==0)
+    //     {
+    //         f++;
+    //     }
+    //     // int x=(f==0);
+    //     // cout<<x?"YES\n":"NO\n";
+    //     if(f==0)
+    //     {
+    //         cout<<"YES"<<nl;
+    //         // return;
+    //     }
+    //     else
+    //     {
+    //         cout<<"NO"<<nl;
+    //         // return;
+    //     }
+    // }
+
+    ll n;cin>>n;
+    VI v(n);
+    f1(i,0,n)cin>>v[i];
+    if(n==1){cout<<"YES"<<nl;return;}
+    VI b;
+    b.pb(v[0]);
+    f1(i,1,n)
     {
-        if(gcd(a[i],a[i+2])>gcd(a[i],a[i+1]))
-        {
-            cout<<"NO"<<nl;return;
-        }
-    }
-    cout<<"YES"<<nl;
+        ll x=v[i-1];
+        ll g =gcd(v[i],v[i-1]);
+        g=v[i]/g;
+        g=g*x;
+        b.pb(g);
+  }
+  b.pb(v[n-1]);
+  
+  f1(i,1,b.size()){
+    if(gcd(b[i-1],b[i])!=v[i-1]){cout<<"NO"<<nl;return;}
+  }
+  cout<<"YES"<<nl;
 }
 
 int main() {
