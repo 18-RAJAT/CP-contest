@@ -32,7 +32,6 @@ using namespace std;
 #define all(x) x.begin(), x.end()
 #define revall(x) x.rbegin(), x.rend()
 #define sortall(x) sort(all(x))
- 
 const int MAX_N = 2e5 + 5;
 const int MAX_NN = 2e5 + 7;
 const ll MOD = 10e9 + 7;
@@ -269,6 +268,39 @@ int power(int b, int e)
     return ret;
 }
 
+vi helper(int n)
+{
+    vi v;
+    for (int i = 1; i <=sqrt(n); i++) 
+    {
+        if (n % i == 0) {
+            if (n / i == i)
+            {
+                v.push_back(i);
+            }else
+            {
+                v.push_back(n/i);
+            }
+        }
+    }
+    return v;
+}
+
+
+
+vi helppp(ll n)
+{
+    vi div;
+    for(ll i=1;i*i<=n;i++)
+    { 
+        if(n%i==0) 
+    { 
+        div.pb(i); 
+        if(n/i!=i) div.pb(n/i); 
+    }
+    } return div;
+    }
+
 
 ll help( long long x )
 {
@@ -299,37 +331,60 @@ bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
 
 }
 
-int a[200001],n,dp[200011];
-vector<int> Q[200011];
-void solve() {
-   cin >> n;
-   for(int i=1;i<=n;++i) cin >> a[i];
-   for(int i=0;i<=n+10;++i) {Q[i].clear();dp[i]=false;}
-   for(int i=1;i<=n;++i) {
-      int l=i,r=a[i]+i;
-      if(r<=n) Q[l].push_back(r);
-      l=i-a[i],r=i;
-      if(l>=1) Q[l].push_back(r);
-   }
-   dp[1]=true;
-   for(int i=1;i<=n;++i) {
-      if(!dp[i]) continue;
-      for(int j:Q[i]) dp[j+1]=true;
-   }
-   cout << (dp[n+1]?"YES":"NO") << endl;
-}
+
+bool solve()
+{
+    ll n;cin>>n;
+    // vi dp(n+1);
+    // MEM(dp,0);
+    // dp[0]=1;
+    // cf(i,1,n)cin>>dp[i];
+    // cf(i,1,n)
+    // {
+    //     if(i+dp[i]<=n and dp[i-1]==1)
+    //     {
+    //         dp[i+dp[i]]=1;
+    //     }
+    // }
+    // return dp[n];
+    vi a(n+1);vi dp(n+1,0);
+    dp[0]=1;
+    cf(i,1,n)
+    {
+        cin>>a[i];
+    }
+    cf(i,1,n)
+    {
+        if(i-(a[i]+1)>=0 and dp[i-(a[i]+1)])
+        {
+            dp[i]=1;
+        }
+        if(i+a[i]<=n and dp[i-1]==1)
+        {
+            dp[i+a[i]]=1;
+        }
+    }
+    return dp[n];
+}  
 
 int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
-// #ifndef ONLINE_JUDGE
-// freopen("input.txt","r",stdin); //file input.txt is opened in reading mode i.e "r"
-// freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
-// #endif
+#ifndef ONLINE_JUDGE
+freopen("input.txt","r",stdin); //file input.txt is opened in reading mode i.e "r"
+freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
+#endif
     ll tc = 1;
     cin >> tc;
     for (ll t = 1; t <= tc; t++) {
         // //cout << "Case #" << t << ": ";
-       solve();
+       if(solve())
+       {
+         cout<<"YES"<<nl;
+       }
+       else
+       {
+         cout<<"NO"<<nl;
+       }
     }
 }
