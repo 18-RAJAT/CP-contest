@@ -107,10 +107,10 @@ typedef unsigned long long int  uint64;
 #define vi vector<int>
  
 /* FUNCTIONS */
-#define f1(i,s,e) for(long long int i=s;i<e;i++)
+#define f1(i,s,e) for(int i=s;i<e;i++)
 #define ff1(i,s,e) for(long long int i=s;i>=e;--i)
 #define For1(i,n) or(long long int i=0;i<n+1;++i)
-#define cf(i,s,e) for(long long int i=s;i<=e;i++)
+#define cf(i,s,e) for(int i=s;i<=e;i++)
 #define FO(i,s,e) for(long long int i=1;i*i<=y;i++)
 #define rf(i,e,s) for(long long int i=e-1;i>=s;i--)
 #define pass(a)  for(long long int i=n-1;i>=1;i-=2)
@@ -386,14 +386,14 @@ void solve()
 //     }
 //     cout<<nl;
     // f1(i,0,n)
-    // vi a(n,0);
+    vi a(n+1);
     // f1(i,0,n)
     // {
     //     cin>>a[i];
     // }
-    // // memset(a,0,sizeof(a));
-    // // f1(i,a,n)
-    // vi ans;
+    // memset(a,0,sizeof(a));
+    // f1(i,a,n)
+    // vi ans(n+10);
     // int tp=1;
     // f1(i,1,n)
     // {
@@ -414,59 +414,24 @@ void solve()
     // {
     //     cout<<it<<" ";
     // }cout<<nl;
-
-    vi a(n);
-    f1(i,0,n){cin>>a[i];}
-    // int c=0;
-    // // f1(i,0,n)
-    // for(int i=n-1;i>0;--i)
-    // {
-    //     while(1)
-    //     {
-    //         if(a[i-1]<a[i])
-    //         {
-    //             return;
-    //         }
-    //         a[i]++;
-    //         cout<<i+1<<" ";c++;
-
-    //         if(n<=c)
-    //         {
-    //             return;
-    //         }
-    //     }
-    //     while(c!=n)
-    //     {
-    //         cout<<1<<" ";c++;
-    //     }cout<<nl;
-    // }
-    set<int>s;
-    for(int i=n-1;i>0;--i)
+    cf(i,1,n)
     {
-        s.insert(i);
+        int x;cin>>x;
+        a[x]=i;
     }
-    vi res(n+1,n);
-    f1(i,0,n-1)
+    cf(i,1,n)
     {
-        if(a[i]>a[i+1])
-        {
-            res[*s.lower_bound(a[i]-a[i+1])]=i+2;
-            s.erase(*s.lower_bound(a[i]-a[i+1]));
-        }
-    }
-    f1(i,0,n)
-    {
-        cout<<res[i+1]<<" ";
+        cout<<min(n,a[i]+1)<<" ";
     }cout<<nl;
 }
 
 int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
-// #ifndef ONLINE_JUDGE
-// freopen("input.txt","r",stdin); //file input.txt is opened in reading mode i.e "r"
-// freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
-// #endif
+#ifndef ONLINE_JUDGE
+freopen("input.txt","r",stdin); //file input.txt is opened in reading mode i.e "r"
+freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
+#endif
     ll tc = 1;
     cin >> tc;
     // int n;cin>>n;
