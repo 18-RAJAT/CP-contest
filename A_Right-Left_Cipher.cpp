@@ -302,22 +302,26 @@ bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
 
 void solve()
 {
-    int n;cin>>n;
-    vi a(n),b(n);
-    int c1=0,c2=0;
-    int f=0;
+    string s;cin>>s;
+    int n=s.size();
+    int l=0,r=n-1;
+    VC ans;
+    for(int i=n-1;i>=0;--i)
+    {
+        if(i%2==0)
+        {
+            ans.pb(s[l]);l++;
+        }
+        else
+        {
+            ans.pb(s[r]);r--;
+        }
+    }
+    reverse(all(ans));
     f1(i,0,n)
     {
-        cin>>a[i];c1+=a[i];
+        cout<<ans[i];
     }
-    f1(i,0,n)
-    {
-        cin>>b[i];c2+=(b[i]);
-        f+=(a[i]!=b[i]);
-    }
-    int mini=min(f,abs(c1-c2)+1);
-    cout<<mini<<nl;
-
 }
 
 int main() {
@@ -328,7 +332,7 @@ freopen("input.txt","r",stdin); //file input.txt is opened in reading mode i.e "
 freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 #endif
     ll tc = 1;
-    cin >> tc;
+    // cin >> tc;
     for (ll t = 1; t <= tc; t++) {
         // //cout << "Case #" << t << ": ";
        solve();

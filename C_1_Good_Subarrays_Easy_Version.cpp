@@ -302,22 +302,43 @@ bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
 
 void solve()
 {
-    int n;cin>>n;
-    vi a(n),b(n);
-    int c1=0,c2=0;
-    int f=0;
+    ll n;cin>>n;
+    ll a[n];
     f1(i,0,n)
     {
-        cin>>a[i];c1+=a[i];
+        cin>>a[i];
     }
-    f1(i,0,n)
+    // f1(i,0,n)
+    // {
+    //     if(a[i]==a[i+1])
+    //     {
+    //         cout<<a[i]+a[i+1]+a[i+2]<<nl;return;     
+    //     }
+    //     else if(a[i]+a[i+1]+a[i+2]<=6)
+    //     {
+    //         cout<<a[i]+a[i+1]+a[i+2]<<nl;return;
+    //     }
+    //     else
+    //     {
+    //         // cout<<7<<nl;return;
+    //         if(a[i]>a[i+1])
+    //         {
+    //             cout<<a[i]+5<<nl;return;
+    //         }
+    //     }
+    // }
+    ll f=0,l=0;
+    ll temp=1;ll answer=0;
+    while(l<n)
     {
-        cin>>b[i];c2+=(b[i]);
-        f+=(a[i]!=b[i]);
+        while(f<n and a[l]<temp)
+        {
+            f++;temp--;
+        }
+        answer+=(l-f+1);
+        l++;temp++;
     }
-    int mini=min(f,abs(c1-c2)+1);
-    cout<<mini<<nl;
-
+    cout<<answer<<nl;
 }
 
 int main() {
