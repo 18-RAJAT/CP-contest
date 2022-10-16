@@ -297,30 +297,49 @@ bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
 
 }
 
-
+int val,tp;
+int n,m;
 void solve()
 {
-    int n;cin>>n;
-    int arr[3];
-    cin>>arr[0]>>arr[1]>>arr[2];
-    int dp[n+1];
-    memset(dp,0,sizeof(dp));
-    // dp[0]=0;
-    
-    cf(i,1,n)dp[i]=INT_MIN;
+    cin>>n>>m;
+    // int dp[n];
+    // int counter=0;
+
+    // f1(i,0,n)
+    // {
+    //     cin>>dp[i];
+    // }
+    // dp[0]=1;dp[n]=0;
+    // f1(i,1,n-1)
+    // {
+    //     if(dp[i]+dp[i-1]<=m)
+    //     {
+    //         cout<<0;
+    //         counter++;
+    //     }
+    //     else
+    //     {
+    //         counter++;
+    //     }
+    // }
+    // cout<<dp[n]<<nl;
+    tp=1;
     cf(i,1,n)
     {
-        f1(j,0,3)
+        cin>>val;
+        if(val*2<m)cout<<"0 ";
+        else if(val*2>m)cout<<"1 ";
+        else
         {
-            if(arr[j]<=i)
-            {
-                dp[i]=max(1+dp[i-arr[j]],dp[i]);
-            }
+            if(tp==1)
+                cout<<"0 ";
+            else
+                cout<<"1 ";
+            tp*=-1;
         }
     }
-    cout<<dp[n]<<nl;
+    cout<<nl;
 }
-
 
 int main() {
     ios_base::sync_with_stdio(0);
@@ -330,7 +349,7 @@ freopen("input.txt","r",stdin); //file input.txt is opened in reading mode i.e "
 freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 #endif
     ll tc = 1;
-    // cin >> tc;
+    cin >> tc;
     for (ll t = 1; t <= tc; t++) {
         // //cout << "Case #" << t << ": ";
        solve();

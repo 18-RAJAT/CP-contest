@@ -300,27 +300,24 @@ bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
 
 void solve()
 {
-    int n;cin>>n;
-    int arr[3];
-    cin>>arr[0]>>arr[1]>>arr[2];
-    int dp[n+1];
-    memset(dp,0,sizeof(dp));
-    // dp[0]=0;
-    
-    cf(i,1,n)dp[i]=INT_MIN;
-    cf(i,1,n)
+    string s;cin>>s;
+    int n=s.length();
+    f1(i,0,n)
     {
-        f1(j,0,3)
+        if(s[i]>=65 and s[i]<=91)
         {
-            if(arr[j]<=i)
-            {
-                dp[i]=max(1+dp[i-arr[j]],dp[i]);
-            }
+            s[i]=s[i]+'a'-'A';
         }
-    }
-    cout<<dp[n]<<nl;
+        if(s[i]=='a' or s[i]=='e' or s[i]=='i' or s[i]=='o' or s[i]=='u' or s[i]=='y')
+        {
+            continue;
+        }
+        else
+        {
+            cout<<"."<<s[i];
+        }
+    }    
 }
-
 
 int main() {
     ios_base::sync_with_stdio(0);

@@ -77,6 +77,7 @@ typedef vector<PII> VIII;
 typedef vector<VI> VVI;
 // typedef vector<string> VS;
 typedef map<int,int> MPII;
+typedef map<char,int> MPCI;
 typedef set<long long> seti;
 typedef multiset<int> MSETI;
 typedef priority_queue<pair<int,int>> PQPII;
@@ -297,30 +298,51 @@ bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
 
 }
 
-
 void solve()
 {
-    int n;cin>>n;
-    int arr[3];
-    cin>>arr[0]>>arr[1]>>arr[2];
-    int dp[n+1];
-    memset(dp,0,sizeof(dp));
-    // dp[0]=0;
-    
-    cf(i,1,n)dp[i]=INT_MIN;
-    cf(i,1,n)
+    int n,k,m;cin>>n>>k;
+    string s;cin>>s;
+    int x=s.length();
+
+
+    string ans="";
+    MPCI mp;
+    for(auto it:s)mp[it]++;
+        int dp[26];
+    f1(i,0,26)
+    dp[i]=0;
+
+    for(auto it:mp)
     {
-        f1(j,0,3)
+        dp[it.first-'a']=it.second;
+    }
+    m=k;
+    // int f=1;
+    while(m--)
+    {
+        int f=1;
+        int j=0;
+        // f1(i,0,min(n/k,26))
+        // ++j;
+        for(int i=0;i<min(n/k,26);++i,++j)
         {
-            if(arr[j]<=i)
+            if(dp[i]==0)
             {
-                dp[i]=max(1+dp[i-arr[j]],dp[i]);
+                f=0;break;
             }
+            dp[i]--;
+        }
+        if(f)
+        {
+            ans.pb('a'+n/k);
+        }
+        else
+        {
+            ans.pb('a'+j);
         }
     }
-    cout<<dp[n]<<nl;
+    cout<<ans<<nl;
 }
-
 
 int main() {
     ios_base::sync_with_stdio(0);
@@ -330,7 +352,7 @@ freopen("input.txt","r",stdin); //file input.txt is opened in reading mode i.e "
 freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 #endif
     ll tc = 1;
-    // cin >> tc;
+    cin >> tc;
     for (ll t = 1; t <= tc; t++) {
         // //cout << "Case #" << t << ": ";
        solve();
