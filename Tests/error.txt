@@ -1,0 +1,1 @@
+Command failed: "r:/Competitive_Programmin_Cp/Tests/a.exe" 1 < "r:/Competitive_Programmin_Cp/Tests/input_1.txt" > "r:/Competitive_Programmin_Cp/Tests/code_output_1.txt"
