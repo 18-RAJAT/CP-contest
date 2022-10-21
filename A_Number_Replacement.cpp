@@ -318,61 +318,10 @@ bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
 void equal_hamming_distance()
 {
     int n;cin>>n;
-    // int a[n];
-    // f1(i,0,n)cin>>a[i];
-    // int q;cin>>q;
-    // while(q--)
-    // {
-    //     int l,r,x;cin>>l>>r>>x;
-    //     int ans=0;
-    //     f1(i,l,r)
-    //     {
-    //         if(a[i]^x<=x)
-    //         {
-    //             ans++;
-    //         }
-    //     }
-    //     cout<<ans<<endl;
-    // }
-    // int s,t;cin>>s>>t;
-    // int a[s],b[t];
-    // f1(i,0,s)cin>>a[i];
-    // f1(i,0,t)cin>>b[i];
-    // int ans=0;
-    // f1(i,0,s)
-    // {
-    //     f1(j,0,t)
-    //     {
-    //         // if(a[i]==0 and b[j]==1)
-    //         // {
-    //         //     cout<<-1<<nl;
-    //         //     return;
-    //         // }
-    //         if(a[i]^b[j]<b[j])
-    //         {
-    //             ans++;
-    //         }
-    //         if(a[i]==0 and b[j]==1)
-    //         {
-    //             cout<<-1<<nl;
-    //             return;
-    //         }
-    //     }
-    // }
-    // cout<<ans<<endl;
+    int a[n];
+    f1(i,0,n)cin>>a[i];
 
-    string t,s;
-    int f,x,i;
-	cin>>s>>t;
-	f1(i,0,s.length())
-	{
-		if(s[i]!=t[i])x++;
-		if(x%2==0)s[i]=t[i];
-	}
-	if(x&1)
-	cout<<"-1";
-	else
-	cout<<s;
+    unordered_map<int,unordered_set<int>>mp;
 }
 
 int main() {
@@ -383,7 +332,7 @@ int main() {
 // freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 // #endif
     ll tc = 1;
-    // cin >> tc;
+    cin >> tc;
     for (ll t = 1; t <= tc; t++) {
     // cout << "Case #" << t << ": ";
         equal_hamming_distance();

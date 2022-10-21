@@ -1,11 +1,3 @@
-// Problem: C. Sum of Cubes
-// Contest: Codeforces - Codeforces Round #702 (Div. 3)
-// URL: https://codeforces.com/problemset/problem/1490/C
-// Memory Limit: 256 MB
-// Time Limit: 2000 ms
-// 
-// Powered by CP Editor (https://cpeditor.org)
-
 #include <bits/stdc++.h>
 using namespace std;
  
@@ -61,6 +53,7 @@ typedef vector<VI> VVI;
 // typedef vector<string> VS;
 typedef map<int,int> MPII;
 typedef map<char,int> MPCI;
+typedef map<string,int> MPSI;
 typedef set<long long> seti;
 typedef multiset<int> MSETI;
 typedef priority_queue<pair<int,int>> PQPII;
@@ -315,64 +308,71 @@ bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
 }
 
 
-void equal_hamming_distance()
-{
-    int n;cin>>n;
-    // int a[n];
-    // f1(i,0,n)cin>>a[i];
-    // int q;cin>>q;
-    // while(q--)
-    // {
-    //     int l,r,x;cin>>l>>r>>x;
-    //     int ans=0;
-    //     f1(i,l,r)
-    //     {
-    //         if(a[i]^x<=x)
-    //         {
-    //             ans++;
-    //         }
-    //     }
-    //     cout<<ans<<endl;
-    // }
-    // int s,t;cin>>s>>t;
-    // int a[s],b[t];
-    // f1(i,0,s)cin>>a[i];
-    // f1(i,0,t)cin>>b[i];
-    // int ans=0;
-    // f1(i,0,s)
-    // {
-    //     f1(j,0,t)
-    //     {
-    //         // if(a[i]==0 and b[j]==1)
-    //         // {
-    //         //     cout<<-1<<nl;
-    //         //     return;
-    //         // }
-    //         if(a[i]^b[j]<b[j])
-    //         {
-    //             ans++;
-    //         }
-    //         if(a[i]==0 and b[j]==1)
-    //         {
-    //             cout<<-1<<nl;
-    //             return;
-    //         }
-    //     }
-    // }
-    // cout<<ans<<endl;
 
-    string t,s;
-    int f,x,i;
-	cin>>s>>t;
-	f1(i,0,s.length())
-	{
-		if(s[i]!=t[i])x++;
-		if(x%2==0)s[i]=t[i];
-	}
-	if(x&1)
-	cout<<"-1";
-	else
-	cout<<s;
+void solve()
+{
+    int n=0,h;
+    int ans=0;
+    cin>>h;
+    int a[h+1],idx=-1;
+    f1(i,0,h+1)
+    {
+        cin>>a[i];
+        n+=a[i];
+    }
+    bool flag=false;
+    f1(i,0,h)
+    {
+        if(a[i]>=2 and a[i+1]<=2)
+        {
+            flag=true;
+            idx=i;
+            break;
+        }
+    }
+    if(flag==0)
+    {
+        cout<<"perfect"<<nl;
+    }
+    else
+    {
+        cout<<"ambiguous"<<nl<<"0";
+        int sum=0;
+        cf(i,1,h)
+        {
+            sum+=a[i-1];
+            f1(j,0,a[i])
+            {
+                cout<<sum<<" ";
+            }
+        }
+        cout<<nl;
+        sum=0;cout<<sum<<" ";
+        cf(i,1,h)
+        {
+            sum+=a[i-1];
+            f1(j,0,a[i])
+            {
+                if(idx!=i)
+                {
+                    cout<<sum<<" ";
+                }
+                else
+                {
+                    if(j==0)
+                    {
+                        cout<<sum<< " ";
+                    }
+                    else
+                    {
+                        cout<<sum-1<< " ";
+                    }
+                }
+            }
+            // cout<<nl;
+        }
+    }
+    return;
 }
 
 int main() {
@@ -385,7 +385,7 @@ int main() {
     ll tc = 1;
     // cin >> tc;
     for (ll t = 1; t <= tc; t++) {
-    // cout << "Case #" << t << ": ";
-        equal_hamming_distance();
+    // //cout << "Case #" << t << ": ";
+        solve();
     }
 }
