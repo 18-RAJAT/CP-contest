@@ -323,7 +323,7 @@ void solve()
     bool flag=false;
     f1(i,0,h)
     {
-        if(a[i]>=2 and a[i+1]<=2)
+        if(a[i]>=2 and a[i+1]>=2)
         {
             flag=true;
             idx=i;
@@ -336,18 +336,20 @@ void solve()
     }
     else
     {
-        cout<<"ambiguous"<<nl<<"0";
+        cout<<"ambiguous"<<nl<< "0 ";
         int sum=0;
         cf(i,1,h)
         {
             sum+=a[i-1];
             f1(j,0,a[i])
             {
-                cout<<sum<<" ";
+                cout<<sum<< " ";
             }
         }
         cout<<nl;
-        sum=0;cout<<sum<<" ";
+        sum=0;
+        
+        cout<<sum<< " ";
         cf(i,1,h)
         {
             sum+=a[i-1];
