@@ -332,22 +332,29 @@ bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
 
 }
 
-
 void solve()
 {
-    int n,m;cin>>n>>m;
-    int a[n];
-    int tp=0;
-    f1(i,0,n)cin>>a[i];
-
+    string s;cin>>s;
+    bool f=false;
+    int o=0,z=0;
+    int n=s.size();
     f1(i,0,n)
     {
-        if(a[i]==1)
+        if(s[i]=='1')
         {
-            tp=1;//return;
+            o++;z=0;
+        }
+        else
+        {
+            z++;o=0;
+        }
+        if(o==7 or z==7)
+        {
+            f=true;
+            // return;
         }
     }
-    if(tp)
+    if(f==true)
     {
         cout<<"YES"<<nl;
     }
@@ -365,12 +372,9 @@ freopen("input.txt","r",stdin); //file input.txt is opened in reading mode i.e "
 freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 #endif
     ll tc = 1;
-    cin >> tc;
-    // int n;cin>>n;
-    // int dp[n];
+    // cin >> tc;
     for (ll t = 1; t <= tc; t++) {
-        solve();
-        // cout << "Case #" << t << ": ";
-       // solve(dp,t);
+        // //cout << "Case #" << t << ": ";
+       solve();
     }
 }

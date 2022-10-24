@@ -32,7 +32,6 @@ using namespace std;
 #define all(x) x.begin(), x.end()
 #define revall(x) x.rbegin(), x.rend()
 #define sortall(x) sort(all(x))
- 
 const int MAX_N = 2e5 + 5;
 const int MAX_NN = 2e5 + 7;
 const ll MOD = 10e9 + 7;
@@ -289,19 +288,14 @@ vi helper(int n)
 
 
 
-vi helppp(ll n)
+bool find(int k)
 {
-    vi div;
-    for(ll i=1;i*i<=n;i++)
-    { 
-        if(n%i==0) 
-    { 
-        div.pb(i); 
-        if(n/i!=i) div.pb(n/i); 
+    for(int i=2;i*i<=k;i++)
+    {
+        if(k%i==0)return false;
     }
-    } return div;
-    }
-
+    return true;
+}
 
 ll help( long long x )
 {
@@ -333,27 +327,31 @@ bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
 }
 
 
+
+
 void solve()
 {
-    int n,m;cin>>n>>m;
-    int a[n];
-    int tp=0;
-    f1(i,0,n)cin>>a[i];
-
+    int n;cin>>n;
+    int arr[n];
     f1(i,0,n)
     {
-        if(a[i]==1)
+        cin>>arr[i];
+    }
+    f1(i,0,n)
+    {
+        int ct=1;
+        f1(j,0,n)
         {
-            tp=1;//return;
+            if(arr[i]==arr[j] and i!=j)
+            {
+                ct++;
+            }
         }
-    }
-    if(tp)
-    {
-        cout<<"YES"<<nl;
-    }
-    else
-    {
-        cout<<"NO"<<nl;
+        if(ct==1)
+        {
+            cout<<i+1<<nl;
+            return;
+        }
     }
 }
 
@@ -366,11 +364,8 @@ freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i
 #endif
     ll tc = 1;
     cin >> tc;
-    // int n;cin>>n;
-    // int dp[n];
     for (ll t = 1; t <= tc; t++) {
+        // //cout << "Case #" << t << ": ";
         solve();
-        // cout << "Case #" << t << ": ";
-       // solve(dp,t);
     }
 }

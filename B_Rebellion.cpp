@@ -335,26 +335,51 @@ bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
 
 void solve()
 {
-    int n,m;cin>>n>>m;
+    int n;cin>>n;
     int a[n];
-    int tp=0;
-    f1(i,0,n)cin>>a[i];
-
     f1(i,0,n)
     {
-        if(a[i]==1)
+        cin>>a[i];
+    }
+
+    // f1(i,0,n)
+    // {
+    //     f1(j,i+1,n)
+    //     {
+    //         if(a[i]==0)
+    //         {
+    //             cout<<0<<nl;return;
+    //         }
+    //         else if(a[i]==1 and a[j]==0)
+    //         {
+    //             cout<<1<<nl;return;
+    //         }
+    //         else
+    //         {
+    //             cout<<a[i]+a[i+1]+1<<nl;
+    //             return;
+    //         }
+    //     }
+    // }
+    int res=0;
+    int i=0,j=n-1;
+    while(i<j)
+    {
+        while(i<n and !a[i])
         {
-            tp=1;//return;
+            i++;
         }
+        while(j>=0 and a[j])
+        {
+            j--;
+        }
+        if(i<j)
+        {
+            res++;
+        }
+        i++;j--;
     }
-    if(tp)
-    {
-        cout<<"YES"<<nl;
-    }
-    else
-    {
-        cout<<"NO"<<nl;
-    }
+    cout<<res<<nl;
 }
 
 int main() {
