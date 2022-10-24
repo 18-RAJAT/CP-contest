@@ -316,16 +316,9 @@ bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
 
 void solve()
 {
-    int a,b,c,d;
-    cin>>a>>b>>c>>d;
-    if(a>b)
-    {
-        cout<<"First"<<nl;
-    }
-    else
-    {
-        cout<<"Second"<<nl;
-    }
+    int a,b;cin>>a>>b;
+    int ab=abs(a-b)/2;
+    cout<<min(a,b)<<" "<<ab<<nl;
 }
 
 int main() {
