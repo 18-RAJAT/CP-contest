@@ -332,24 +332,52 @@ bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
 
 }
 
-
-
-ll n,q,x,dp[MAX_N],prifixSum[MAX_N],maxi[MAX_N];
 void solve()
 {
-    cin>>n>>q;
-    cf(i,1,n) 
-   {
-      cin>>dp[i];
-      prifixSum[i]=prifixSum[i-1]+dp[i];
-      maxi[i]=max(maxi[i-1],dp[i]);
-   }
-   while(q--) 
-   {
-      cin>>x;
-      cout<<prifixSum[upper_bound(maxi+1,maxi+1+n,x)-maxi-1]<<" ";
-   }
-   cout<<nl;
+    int n;cin>>n;
+    int c=0;
+    int a[n],b[n];
+    f1(i,0,n)
+    {
+        cin>>a[i]>>b[i];
+        if(a[i]!=b[i])
+        {
+            c=1;
+        }
+    }
+    if(c==1)
+    {
+        cout<<"rated"<<nl;
+        return;
+    }
+    f1(i,0,n-1)
+    {
+        f1(j,i+1,n)
+        {
+            if(a[i]<a[j])
+            {
+                c=-1;
+            }
+        }
+    }
+    // f1(i,0,n-1)
+    // {
+    //     f1(j,i+1,n)
+    //     {
+    //         if(a[i]<a[j])
+    //         {
+    //             c=-1;
+    //         }
+    //     }
+    // }
+    if(c==-1)
+    {
+        cout<<"unrated"<<nl;
+    }
+    else
+    {
+        cout<<"maybe"<<nl;
+    }
 }
 
 int main() {
@@ -360,7 +388,7 @@ freopen("input.txt","r",stdin); //file input.txt is opened in reading mode i.e "
 freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 #endif
     ll tc = 1;
-    cin >> tc;
+    // cin >> tc;
     for (ll t = 1; t <= tc; t++) {
         // //cout << "Case #" << t << ": ";
        solve();
