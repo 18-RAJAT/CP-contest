@@ -332,20 +332,52 @@ bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
 
 }
 
-
 void solve()
 {
     string s[8];
-    f1(i,0,8){cin>>s[i];}
+    f1(i,0,8)cin>>s[i];
 
-    int r=0,b=0;
+    int r=0,b=0;bool f=0;
     f1(i,0,8)
     {
+        // f=0;
+        r=0;
         f1(j,0,8)
-            if(s[i][j]=='R')r++;
-            else if(s[i][i]=='B')b++;
-        if(r>b){cout<<"B"<<nl;return;}
-        else{cout<<"R"<<nl;return;}
+        //     if(s[i][j]=='R')r++;
+        //     else if(s[i][j]=='B')b++;
+        // if(r>b){cout<<"R"<<nl;return;}
+        // else{cout<<"B"<<nl;return;}
+        {
+            if(s[i][j]=='R')
+            {
+                r++;
+            }
+        }
+        if(r==8)
+        {
+            cout<<"R"<<nl;
+            f=1;
+            return;
+        }
+    }
+    if(f==0)
+    {
+        f1(i,0,8)
+        {
+            b=0;
+            f1(j,0,8)
+            {
+                if(s[i][j]=='B')
+                {
+                    b++;
+                }
+            }
+            if(b=8)
+            {
+                cout<<"B"<<nl;
+                return;
+            }
+        }
     }
 }  
 
