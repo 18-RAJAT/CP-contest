@@ -337,38 +337,18 @@ void solve()
     int n;cin>>n;
     set<int>st;
     int a[n];
-    // f1(i,0,n)
-    // {
-    //     cin>>a[i];
-    //     st.insert(a[i]);
-    // }
-    // if(st.size()==n)
-    // {
-    //     cout<<"YES\n";
-    // }
-    // else
-    // {
-    //     cout<<"NO\n";
-    // }
-    
-    set<int>s;
-    int f=0;
     f1(i,0,n)
     {
-        int x;cin>>x;
-        if(s.find(x)!=s.end())
-        {
-            f=1;
-        }
-        s.insert(x);
+        cin>>a[i];
+        st.insert(a[i]);
     }
-    if(f==1)
+    if(st.size()==n)
     {
-        cout<<"NO\n";
+        cout<<"YES\n";
     }
     else
     {
-        cout<<"YES\n";
+        cout<<"NO\n";
     }
 }  
 
