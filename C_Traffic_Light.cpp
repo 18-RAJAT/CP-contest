@@ -317,31 +317,58 @@ bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
 
 void solve()
 {
-    ll n;cin>>n;
-    ll a[n];
-    f1(i,0,n)
-    {
-        cin>>a[i];
-    }
-    string s;cin>>s;
-    map<ll,set<char>>mp;
-    f1(i,0,n)
-    {
-        mp[a[i]].insert(s[i]);
-    }
-    for(auto it:mp)
-    {
-        // if(it.second.size()<=2){cout<<"YES"<<nl;return;}
-        if(it.second.size()>=2)
-        {
-            cout<<"NO"<<nl;
+    // int n;cin>>n;
+    // int a[n];
+    // f1(i,0,n)
+    // {
+    //     cin>>a[i];
+    // }
+    // f1(i,0,n)
+    // {
+    //     if(a[i]==2)
+    //     {
+    //         cout<<0<<nl;
+    //         return; 
+    //     }
+    //     else if((a[i]>a[i+1]))
+    //     {
+    //         cout<<1<<nl;
+    //         return;
+    //     }
+    //     else if(a[i]==a[i+1])
+    //     {
+    //         cout<<2<<nl;
+    //         return;
+    //     }
+    //     else
+    //     {
+    //         cout<<-1<<nl;
+    //         return;
+    //     }
+    // }
+    int n;char c;
+        cin>>n>>c;
+         string s;cin>>s;
+         string str=s+s;
+         if(c=='g')
+         {
+            cout<<0<<nl;
             return;
+         }
+         VI a;
+         f1(i,0,2*n)
+            if(str[i]=='g')a.pb(i);
+        int mx=INT_MIN;
+        f1(i,0,n)
+        {
+            if (s[i]==c)
+            {
+                int value=*upper_bound(a.begin(),a.end(),i);
+                mx=max(mx,value-i);
+            }
         }
-    }
-    // cout<<"NO"<<nl;
-    cout<<"YES"<<nl;
+        cout<<mx<<nl;
 }
-
 int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);

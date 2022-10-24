@@ -317,29 +317,39 @@ bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
 
 void solve()
 {
-    ll n;cin>>n;
-    ll a[n];
-    f1(i,0,n)
-    {
+    ll n,q;
+      cin>>n>>q;
+      ll a[n],even=0,odd=0,ans=0;
+      f1(i,0,n)
+      {
         cin>>a[i];
-    }
-    string s;cin>>s;
-    map<ll,set<char>>mp;
-    f1(i,0,n)
-    {
-        mp[a[i]].insert(s[i]);
-    }
-    for(auto it:mp)
-    {
-        // if(it.second.size()<=2){cout<<"YES"<<nl;return;}
-        if(it.second.size()>=2)
+        if(a[i]%2==0)
         {
-            cout<<"NO"<<nl;
-            return;
+            even++;
         }
-    }
-    // cout<<"NO"<<nl;
-    cout<<"YES"<<nl;
+        else
+        {
+            odd++;
+        }
+        ans+=a[i];
+      }
+      while(q--)
+      {
+        ll num,x;
+        cin>>num>>x;
+        if(num==0)
+        {
+          ans+=x*even;
+          if(x%2!=0){odd+=even;even=0;}
+        }
+        if(num==1)
+        {
+          ans+=x*odd;
+          if(x%2!=0)
+          {even+=odd;odd=0;}
+        }
+          cout<<ans<<nl;
+      }
 }
 
 int main() {
