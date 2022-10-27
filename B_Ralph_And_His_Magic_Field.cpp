@@ -262,8 +262,6 @@ vi helper(int n)
     return v;
 }
 
-
-
 ll dmod(ll x)
 {
     return ((x+1000000007)%1000000007);
