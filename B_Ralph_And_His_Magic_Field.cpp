@@ -292,7 +292,6 @@ ll help( long long x )
     }
     return sum ;
 }
- 
 
 bool c2(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
 {
