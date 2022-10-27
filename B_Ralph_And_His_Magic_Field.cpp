@@ -311,8 +311,7 @@ bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
 
 void solve()
 {
-    ll m,n;cin>>m>>n;
-    ll k;cin>>k;
+    ll m,n;cin>>m>>n;ll k;cin>>k;
     // if(k==-1 and n%2!=m%2)
     if((m+n)&1 and k==-1)
     {
