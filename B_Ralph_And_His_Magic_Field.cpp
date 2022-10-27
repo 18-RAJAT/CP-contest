@@ -339,4 +339,4 @@ freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i
         solve();
     }
     return 0;
-}
+} 
