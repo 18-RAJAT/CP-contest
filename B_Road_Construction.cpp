@@ -141,7 +141,6 @@ void solve()
         return;
     }
 }
-
   //   if(adj[i].size()==0)
   //   {
   //       cout<<n-1<<"\n";
