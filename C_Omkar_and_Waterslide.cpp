@@ -1,83 +1,3 @@
-///
-///░░░░░░░░░░░░░▄░░░░░░░░░░░░░░░░░░░░░
-///░░░░░░░░░░░▄▐░▄▄█████▄▄░░░░░░░░░░░░░░
-///░░░░░░░░░▄█████████████▄▀▄▄░▄▄▄░░░░░░░
-///░░░░░░░░█████████████████▄██████░░░░░░░
-///░░░░░░░████▐█████▌████████▌█████▌░░░░░░░
-///░░░░░░████▌█████▌█░████████▐▀██▀░░░░░░░
-///░░░░▄█████░█████▌░█░▀██████▌█▄▄▀▄░░░░░░░
-///░░░░▌███▌█░▐███▌▌░░▄▄░▌█▌███▐███░▀░░░░░░░
-///░░░▐░▐██░░▄▄▐▀█░░░▐▄█▀▌█▐███▐█░░░░░░░
-///░░░░░███░▌▄█▌░░▀░░▀██░░▀██████▌░░░░░░░
-///░░░░░░▀█▌▀██▀░▄░░░░░░░░░███▐███░░░░░░░░
-///░░░░░░░██▌░░░░░░░░░░░░░▐███████▌░░░░░░░░
-///░░░░░░░███░░░░░▀█▀░░░░░▐██▐███▀▌░░░░░░░░
-///░░░░░░░▌█▌█▄░░░░░░░░░▄▄████▀░▀░░░░░░░
-///░░░░░░░░░█▀██▄▄▄░▄▄▀▀▒█▀█░▀░░░░░░░
-///░░░░░░░░░░░░▀░▀█▀▌▒▒▒░▐▄▄░░░░░░░
-///░░░░░░░░░░░▄▄▀▀▄░░░░░░▄▀░▀▀▄▄░░░░░░░
-///░░░░░░░░░▄▀░▄▀▄░▌░░░▄▀░░░░░░▄▀▀▄░░░░░░░
-///░░░░░░░░▐▒▄▀▄▀░▌▀▄▄▀░░░░░░▄▀▒▒▒▐░░░░░░░
-///░░░░░░░▐▒▒▌▀▄░░░░░▌░░░░▄▄▀▒▐▒▒▒▒▌░░░░░░░
-///░░░░░░▐▒▒▐░▌░▀▄░░▄▀▀▄▀▀▒▌▒▐▒▒▒▒▐▐░░░░░░░░
-///░░░░░░▌▄▀░░░▄▀░█▀▒▒▒▒▀▄▒▌▐▒▒▒▒▒▌▌░░░░░░░
-///░░░░░▄▀▒▐░▄▀░░░▌▒▐▒▐▒▒▒▌▀▒▒▒▒▒▐▒▌░░░░░░
- 
-/*
- 
- 
- 
-                              _,add8ba,
-                            ,d888888888b,
-                           d8888888888888b                        _,ad8ba,_
-                          d888888888888888)                     ,d888888888b,
-                          I8888888888888888 _________          ,8888888888888b
-                __________`Y88888888888888P"""""""""""baaa,__ ,888888888888888,
-            ,adP"""""""""""9888888888P""^                 ^""Y8888888888888888I
-         ,a8"^           ,d888P"888P^                           ^"Y8888888888P'
-       ,a8^            ,d8888'                                     ^Y8888888P'
-      a88'           ,d8888P'                                        I88P"^
-    ,d88'           d88888P'                 18-RAJAT                 "b,
-   ,d88'           d888888'                                            `b,
-  ,d88'           d888888I                                              `b,
-  d88I           ,8888888'            ___                                `b,
- ,888'           d8888888          ,d88888b,              ____            `b,
- d888           ,8888888I         d88888888b,           ,d8888b,           `b
-,8888           I8888888I        d8888888888I          ,88888888b           8,
-I8888           88888888b       d88888888888'          8888888888b          8I
-d8886           888888888       Y888888888P'           Y8888888888,        ,8b
-88888b          I88888888b      `Y8888888^             `Y888888888I        d88,
-Y88888b         `888888888b,      `""""^                `Y8888888P'       d888I
-`888888b         88888888888b,                           `Y8888P^        d88888
- Y888888b       ,8888888888888ba,_          _______        `""^        ,d888888
- I8888888b,    ,888888888888888888ba,_     d88888888b               ,ad8888888I
- `888888888b,  I8888888888888888888888b,    ^"Y888P"^      ____.,ad88888888888I
-  88888888888b,`888888888888888888888888b,     ""      ad888888888888888888888'
-  8888888888888698888888888888888888888888b_,ad88ba,_,d88888888888888888888888
-  88888888888888888888888888888888888888888b,`"""^ d8888888888888888888888888I
-  8888888888888888888888888888888888888888888baaad888888888888888888888888888'
-  Y8888888888888888888888888888888888888888888888888888888888888888888888888P
-  I888888888888888888888888888888888888888888888P^  ^Y8888888888888888888888'
-  `Y88888888888888888P88888888888888888888888888'     ^88888888888888888888I
-   `Y8888888888888888 `8888888888888888888888888       8888888888888888888P'
-    `Y888888888888888  `888888888888888888888888,     ,888888888888888888P'
-     `Y88888888888888b  `88888888888888888888888I     I888888888888888888'
-       "Y8888888888888b  `8888888888888888888888I     I88888888888888888'
-         "Y88888888888P   `888888888888888888888b     d8888888888888888'
-            ^""""""""^     `Y88888888888888888888,    888888888888888P'
-                             "8888888888888888888b,   Y888888888888P^
-                              `Y888888888888888888b   `Y8888888P"^
-                                "Y8888888888888888P     `""""^
-                                  `"YY88888888888P'
-                                       ^""""""""'
- 
- 
- 
-*/
- 
-
-
-
 #include <bits/stdc++.h>
 using namespace std;
  
@@ -90,7 +10,7 @@ using namespace std;
 const int MAX_N = 2e5 + 5;
 const int MAX_NN = 2e5 + 7;
 const ll MOD = 10e9 + 7;
-const ll INF = 1e9;
+const ll INF = 1e18+20;
 #define revall(x) x.rbegin(), x.rend()
 #define ALL(x) sort(x.begin(), x.end())
 #define sortall(x) sort(all(x))
@@ -116,21 +36,26 @@ const ll INF = 1e9;
 #define INF (int)1e9
 #define EPS 1e-9
 // #define MOD 998244353 
+#define ff first
+#define ss second
 #define PI 3.1415926535897932384626433832795
 #define read(type) readInt<type>()
 const double pi=acos(-1.0);
 #define ll long long
-typedef pair<long,long> PII;
-typedef vector<int> VI;
+typedef pair<int,int> PII;
+typedef vector<long long> VI;
 typedef vector<bool> VB;
 typedef vector<char> VC;
-typedef vector<vector<ll>> VII;
+typedef vector<char> VC;
+typedef vector<vector<long long>> VII;
 typedef vector<pair<int,int>>VPII;
 typedef vector<string> VS;
 typedef vector<PII> VIII;
 typedef vector<VI> VVI;
 // typedef vector<string> VS;
-typedef map<int,int> MPII;
+typedef map<ll,ll> MPII;
+typedef map<char,int> MPCI;
+typedef map<string,int> MPSI;
 typedef set<long long> seti;
 typedef multiset<int> MSETI;
 typedef priority_queue<pair<int,int>> PQPII;
@@ -138,7 +63,6 @@ typedef long int int32;
 typedef unsigned long int uint32;
 typedef long long int int64;
 typedef unsigned long long int  uint64;
-#define ff(a,b) for(int i=a;i<b;i++)
 #define nl endl
  
  
@@ -162,7 +86,7 @@ typedef unsigned long long int  uint64;
 #define f1(i,s,e) for(long long int i=s;i<e;i++)
 #define ff1(i,s,e) for(long long int i=s;i>=e;--i)
 #define For1(i,n) or(long long int i=0;i<n+1;++i)
-#define cf(i,s,e) for(int i=s;i<=e;i++)
+#define cf(i,s,e) for(long long int i=s;i<=e;i++)
 #define FO(i,s,e) for(long long int i=1;i*i<=y;i++)
 #define rf(i,e,s) for(long long int i=e-1;i>=s;i--)
 #define pass(a)  for(long long int i=n-1;i>=1;i-=2)
@@ -321,6 +245,43 @@ int power(int b, int e)
     return ret;
 }
 
+vi helper(int n)
+{
+    vi v;
+    for (int i = 1; i <=sqrt(n); i++) 
+    {
+        if (n % i == 0) {
+            if (n / i == i)
+            {
+                v.push_back(i);
+            }else
+            {
+                v.push_back(n/i);
+            }
+        }
+    }
+    return v;
+}
+
+
+
+ll dmod(ll x)
+{
+    return ((x+1000000007)%1000000007);
+}
+
+ll take(ll x,ll y)
+{
+    ll ans=1;
+    while(y)
+    {
+        if(y&1)ans=dmod(ans*x);
+        y/=2;
+        // x=dmod(sqrt(x));
+        x=dmod(x*x);
+    }
+    return ans;
+}
 
 ll help( long long x )
 {
@@ -333,52 +294,6 @@ ll help( long long x )
     return sum ;
 }
  
-
-
-/*
-0 0 2 0 0 0 0 0
-1 0 0 0 0 0 0 0
-0 0 2 0 0 0 0 0
-0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0
-*/
-void test()
-{
-    int a[8][8];
-    f1(i,0,8)
-    {
-        f1(j,0,8)
-        {a[i][j]=0;}
-    }
-    int row,cols;cin>>row>>cols;
-    a[row][cols]=1;
-    // if(row>2 and row<8)
-    if(cols>=2 and cols<=8)
-    {
-        /*
-            case 1: n pos row and 2nd col then 2
-            case 2: n-1 pos row and 2nd pos col then 2
-            case 3: n pos row and m-1 col then 2
-            case 4: n-1 pos row and m pos col then 2
-        */
-        a[row+1][cols+2]=2;
-        a[row+1][cols-2]=2;
-        a[row-1][cols+2]=2;
-        a[row-1][cols-2]=2;
-    }
-    
-
-    else if(cols<=2){a[row+1][cols+2]=2;a[row-1][cols+2]=2;}
-    f1(i,0,8)
-    {
-        f1(j,0,8)
-        {cout<<a[i][j]<<" ";}cout<<nl;
-    }
-}
-
 
 bool c2(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
 {
@@ -397,21 +312,31 @@ bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
 
 }
 
+
 void solve()
 {
-    int n;
-        cin >> n;
-        ll arr[n];
-        f1(i,0,n)
-            cin>>arr[i];
-        ll ans=0;
-        f1(i,1,n)
+    ll n;cin>>n;
+    ll a[n];
+    f1(i,0,n)
+    {
+        cin>>a[i];
+    }    
+    ll temp=a[n-1];
+    ll res=0;
+    // rf(i,n-2,0)
+    for(ll i=n-2;i>=0;i--)
+    {
+        if(a[i]>temp)
         {
-            if(arr[i]>arr[i-1])
-                continue;
-            else
-                ans+=arr[i-1]-arr[i];
-        }cout<<ans<<nl;
+            res+=(a[i]-temp);
+            temp=a[i];
+        }
+        else
+        {
+            temp=a[i];
+        }
+    }
+    cout<<res<<nl;
 }
 
 int main() {
@@ -421,10 +346,10 @@ int main() {
 freopen("input.txt","r",stdin); //file input.txt is opened in reading mode i.e "r"
 freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 #endif
-    int tc = 1;
+    ll tc = 1;
     cin >> tc;
-    for (int t = 1; t <= tc; t++) {
-        // cout << "Case #" << t << ": ";
+    for (ll t = 1; t <= tc; t++) {
+    // //cout << "Case #" << t << ": ";
         solve();
     }
     return 0;
