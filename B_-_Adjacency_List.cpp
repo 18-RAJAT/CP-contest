@@ -350,6 +350,7 @@ void solve()
       f[a].insert(b);
       f[b].insert(a);
     }
+    
     cf(i,1,n)
     {
       cout<<f[i].size()<<" ";
