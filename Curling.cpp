@@ -38,17 +38,17 @@ int main(){
         ll temp = 0;
         ll a=0, b=0;
 
-        if(m!=0 && n!=0){
+        if(m!=0  and  n!=0){
             if(a1[0]<a2[0]){
                 
-                while(temp<n && a1[temp] < a2[0] &&  a1[temp]-rs<=rh){
+                while(temp<n  and  a1[temp] < a2[0]  and   a1[temp]-rs<=rh){
                     temp++;
                     a++;
                 }
 
             } else {                  
                 
-                while(temp<m && a2[temp]<a1[0] &&  a2[temp]-rs<=rh){
+                while(temp<m  and  a2[temp]<a1[0]  and   a2[temp]-rs<=rh){
                     temp++;
                     b++;
                 }
@@ -56,12 +56,12 @@ int main(){
             }
         } else {
 
-            while(n!=0 && temp<n &&  a1[temp]-rs <= rh){
+            while(n!=0  and  temp<n  and   a1[temp]-rs <= rh){
                 temp++;
                 a++;
             }
 
-            while(m!=0 && temp<m && a2[temp]-rs <= rh){
+            while(m!=0  and  temp<m  and  a2[temp]-rs <= rh){
                 temp++;
                 b++;
             }

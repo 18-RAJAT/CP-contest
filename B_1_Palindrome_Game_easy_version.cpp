@@ -29,7 +29,7 @@ const ld EPS = 1e-9;
 #define RREP(i, j) RFOR(i, j, 0, 1)
 #define rall(cont) cont.end(), cont.begin()
 #define FOREACH(it, l) for (auto it = l.begin(); it != l.end(); it++)
-#define IN(A, B, C) assert( B <= A && A <= C)
+#define IN(A, B, C) assert( B <= A  and  A <= C)
 #define MP make_pair
 #define PB push_back
 #define INF (int)1e9
@@ -91,8 +91,8 @@ ll max(ll a,int b) { if (a>b) return a; return b; }
 ll max(int a,ll b) { if (a>b) return a; return b; }
 ll gcd(ll a,ll b) { if (b==0) return a; return gcd(b, a%b); }
 ll lcm(ll a,ll b) { return a/gcd(a,b)*b; }
-string to_upper(string a) { for (int i=0;i<(int)a.size();++i) if (a[i]>='a' && a[i]<='z') a[i]-='a'-'A'; return a; }
-string to_lower(string a) { for (int i=0;i<(int)a.size();++i) if (a[i]>='A' && a[i]<='Z') a[i]+='a'-'A'; return a; }
+string to_upper(string a) { for (int i=0;i<(int)a.size();++i) if (a[i]>='a'  and  a[i]<='z') a[i]-='a'-'A'; return a; }
+string to_lower(string a) { for (int i=0;i<(int)a.size();++i) if (a[i]>='A'  and  a[i]<='Z') a[i]+='a'-'A'; return a; }
 
 
 void yes() { cout<<"YES\n"; }

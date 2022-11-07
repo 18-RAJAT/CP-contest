@@ -2,7 +2,7 @@
 #define nl "\n"
 #define ll long long
 #define loop x == '#' x == '@' ||x == '*'  x == '&'
-#define loop1  x >= 'A' && x <= 'Z'
+#define loop1  x >= 'A'  and  x <= 'Z'
 #define loop2 s.size() < 7
 #define loop3
 #define loop4

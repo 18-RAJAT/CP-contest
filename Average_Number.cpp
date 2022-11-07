@@ -69,7 +69,7 @@ int n, k, v;
 	    
 	    int total = result - sum;
 	    
-	    if(sum + total == (n + k) * v && total > 0 && total % k == 0)
+	    if(sum + total == (n + k) * v  and  total > 0  and  total % k == 0)
 	        cout << total / k << endl;
 	    else
 	        cout << "-1" << endl;

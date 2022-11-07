@@ -58,7 +58,7 @@
 // #define all(cont) cont.begin(), cont.end()
 // #define rall(cont) cont.end(), cont.begin()
 // #define FOREACH(it, l) for (auto it = l.begin(); it != l.end(); it++)
-// #define IN(A, B, C) assert( B <= A && A <= C)
+// #define IN(A, B, C) assert( B <= A  and  A <= C)
 // #define MP make_pair
 // #define PB push_back
 // #define INF (int)1e9
@@ -215,11 +215,11 @@
 //     char p=getchar();
 //     if(p=='-')
 //         s=-1;
-//     while((p<'0'||p>'9')&&p!=EOF&&p!='-')
+//     while((p<'0'||p>'9') and p!=EOF and p!='-')
 //         p=getchar();
 //     if(p=='-')
 //         s=-1,p=getchar();
-//     while(p>='0'&&p<='9') {
+//     while(p>='0' and p<='9') {
 //         n = (n<< 3) + (n<< 1) + (p - '0');
 //         p=getchar();
 //     }
@@ -340,7 +340,7 @@
 //             for(int i = 0; i<n; i++){
 //                 for(int j = 0; j<n; j++){ 
 //                     for(int x = 0; x<n; x++){
-//                         if(i!=j&&j!=x&&i!=x){
+//                         if(i!=j and j!=x and i!=x){
 //                             int sum = a[i]+a[j]+a[x];
 //                             if(st.find(sum)==st.end()){
 //                                 flag = true;

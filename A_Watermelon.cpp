@@ -57,7 +57,7 @@
 // #define all(cont) cont.begin(), cont.end()
 // #define rall(cont) cont.end(), cont.begin()
 // #define FOREACH(it, l) for (auto it = l.begin(); it != l.end(); it++)
-// #define IN(A, B, C) assert( B <= A && A <= C)
+// #define IN(A, B, C) assert( B <= A  and  A <= C)
 // #define MP make_pair
 // #define PB push_back
 // #define INF (int)1e9
@@ -214,11 +214,11 @@
 //     char p=getchar();
 //     if(p=='-')
 //         s=-1;
-//     while((p<'0'||p>'9')&&p!=EOF&&p!='-')
+//     while((p<'0'||p>'9') and p!=EOF and p!='-')
 //         p=getchar();
 //     if(p=='-')
 //         s=-1,p=getchar();
-//     while(p>='0'&&p<='9') {
+//     while(p>='0' and p<='9') {
 //         n = (n<< 3) + (n<< 1) + (p - '0');
 //         p=getchar();
 //     }

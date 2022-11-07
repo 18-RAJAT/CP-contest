@@ -46,8 +46,8 @@ int dy[] = {+1, -1, 0, 0};
 //int dy[] = {0, +1, 0, -1, +1, -1, +1, -1};
  
 inline bool EQ(double a, double b) { return fabs(a-b) < 1e-9; }
-inline bool isLeapYear(ll year) { return (year%400==0) || (year%4==0 && year%100!=0); }
-inline void normal(ll &a) { a %= MOD; (a < 0) && (a += MOD); }
+inline bool isLeapYear(ll year) { return (year%400==0) || (year%4==0  and  year%100!=0); }
+inline void normal(ll &a) { a %= MOD; (a < 0)  and  (a += MOD); }
 inline ll modMul(ll a, ll b) { a %= MOD, b %= MOD; normal(a), normal(b); return (a*b)%MOD; }
 inline ll modAdd(ll a, ll b) { a %= MOD, b %= MOD; normal(a), normal(b); return (a+b)%MOD; }
 inline ll modSub(ll a, ll b) { a %= MOD, b %= MOD; normal(a), normal(b); a -= b; normal(a); return a; }

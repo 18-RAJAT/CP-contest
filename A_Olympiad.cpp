@@ -51,7 +51,7 @@ int ttt; cin >> ttt;
 while(ttt--) {
 cin>>x;
 
-if(!mp[x]&&x!=0)mp[x]=1,++s;
+if(!mp[x] and x!=0)mp[x]=1,++s;
 
 }
 

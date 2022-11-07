@@ -55,7 +55,7 @@ while(ttt--) {
 Rajat_Joshi CSE;
 int n,m;
         cin>>n>>m;
-        if(m>=2&&n%2)cout<<"NO"<<"\n";
+        if(m>=2 and n%2)cout<<"NO"<<"\n";
         else
         
         {

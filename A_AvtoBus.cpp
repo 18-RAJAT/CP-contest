@@ -55,7 +55,7 @@ while(ttt--) {
 Rajat_Joshi CSE;
  long long n; 
         cin>>n; 
-        if(n%4!=0 && n%4!=2 ) 
+        if(n%4!=0  and  n%4!=2 ) 
         { 
             cout<<"-1"<<endl; 
         } 

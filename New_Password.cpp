@@ -30,7 +30,7 @@ GO_FAST();
      }
      
       }
-           if(a && b && c && u && z)cout<<"Case #"<<T<<": "<<s<<endl;
+           if(a  and  b  and  c  and  u  and  z)cout<<"Case #"<<T<<": "<<s<<endl;
            else{
              if(!a)s+="A";
        if(!b)s+="a";
