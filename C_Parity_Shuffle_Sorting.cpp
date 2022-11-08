@@ -347,6 +347,7 @@ void solve()
     {
         cin>>a[i];
     }
+    
     if(n==1)
     {
         cout<<0<<nl;
