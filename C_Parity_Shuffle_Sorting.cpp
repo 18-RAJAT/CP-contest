@@ -339,7 +339,7 @@ bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
 
 }
 
-
+ 
 int a[100001];
 void solve()
 {
