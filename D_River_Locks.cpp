@@ -389,6 +389,7 @@ bool solve()
         int m=sum+i-1;
         mx=max(mx,m/i);
     }
+    
     ll m;cin>>m;
     while(m--)
     {
