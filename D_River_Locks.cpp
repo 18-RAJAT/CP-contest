@@ -382,6 +382,7 @@ bool solve()
     // int temp,sum=0;//cin>>temp;
 
     // int mx=INT_MIN;
+    
     cf(i,1,n)
     {
         cin>>temp;
