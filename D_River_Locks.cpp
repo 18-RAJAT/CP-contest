@@ -370,7 +370,6 @@ int findGCD(vi& a,int n)
   return totalGCD;
 }
 
-
 ll n;
     ll temp,sum=0;//cin>>temp;
 
