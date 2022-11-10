@@ -106,7 +106,7 @@ typedef unsigned long long int  uint64;
 
 #define f1(i,s,e) for(long long int i=s;i<e;i++)
 #define ff1(i,s,e) for(long long int i=s;i>=e;--i)
-#define For1(i,n) or(long long int i=0;i<n+1;++i)
+#define For1(i,n) (long long int i=0;i<n+1;++i)
 #define cf(i,s,e) for(long long int i=s;i<=e;i++)
 #define FO(i,s,e) for(long long int i=1;i*i<=y;i++)
 #define rf(i,e,s) for(long long int i=e-1;i>=s;i--)
@@ -370,13 +370,13 @@ int findGCD(vi& a,int n)
   return totalGCD;
 }
 
-ll n;
-    ll temp,sum=0;//cin>>temp;
-
-    ll mx=INT_MIN;
 
 bool solve()
 {
+    ll n;
+    ll temp,sum=0;//cin>>temp;
+
+    ll mx=0;
     cin>>n;
     // int n;cin>>n;
     // int temp,sum=0;//cin>>temp;
@@ -386,10 +386,9 @@ bool solve()
     {
         cin>>temp;
         sum+=temp;
-        int m=sum+i-1;
-        mx=max(mx,m/i);
+        // int m=sum+i-1;
+        mx=max(mx,(sum+i-1)/i);
     }
-    
     ll m;cin>>m;
     while(m--)
     {
@@ -404,7 +403,6 @@ bool solve()
         }
     }
 }
-
 
 int main() {
     ios_base::sync_with_stdio(0);
