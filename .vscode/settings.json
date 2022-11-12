@@ -17,6 +17,8 @@
         "xtree": "cpp",
         "cmath": "cpp",
         "bitset": "cpp",
-        "set": "cpp"
+        "set": "cpp",
+        "algorithm": "cpp",
+        "limits": "cpp"
     }
 }
