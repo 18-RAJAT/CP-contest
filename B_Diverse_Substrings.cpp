@@ -387,7 +387,7 @@ bool solve()
     {
         vi dp(10);
         int dif=0;
-        int mn=i+10;
+        int mn=i+101;
         f1(j,i,min(mn,n))
         {
             auto it=s[j]-'0';
