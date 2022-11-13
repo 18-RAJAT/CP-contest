@@ -351,16 +351,6 @@ int findGCD(vi& a,int n)
     return a[n];
   }
 
-  // f1(i,0,n)
-  // {
-  //   tp=gcd(a[i],tp);
- 
-  //   if(tp==true)
-  //   {
-  //       return true;
-  //   }
-  // }
-  // return tp;
   if(tp==0)
   {
     return false;
@@ -374,35 +364,115 @@ int findGCD(vi& a,int n)
 }
 
 
+
+bool leftShift()
+{
+    int n;cin>>n;
+    int i;cin>>i;
+    int left_shift=n<<i;
+    cout<<left_shift<<nl;
+}
+
+bool rightShift()
+{
+    int n;cin>>n;
+    int i;cin>>i;
+    int right_shift=n>>i;
+    cout<<right_shift<<nl;
+}
+
+
 bool solve()
 {
-    ll n;cin>>n;
-    int tp=-1;int x;
+    ll n,w;
+    cin>>n>>w;
+    // ll arr[n];ll result=0;
+    // MPII mp;
+    // f1(i,0,n)
+    // {
+    //     cin>>arr[i];
+    //     mp[arr[i]]++;
+    //     result=max(result,mp[arr[i]]);
+    // }cout<<result<<nl;
+    VI a(n);
+    // sort(a,a+1);
+    // for(auto &i:a)cin>>i;
+    // // sort(a.rbegin(),a.rend());
+    // int ans=0;
+    // f1(i,0,n)
+    // {
+    //     if(a[i]!=-1)
+    //     {
+    //         int val=w;
+    //         f1(j,i,n)
+    //         {
+    //             if(val>=a[j] and a[j]!=1)
+    //                 {val=val-a[j];a[j]=-1;}
+    //         }
+    //         ans++;
+    //     }
+    //     // cout<<"1 "<<" "<<"2 "<<nl;
+    // }
+    // cout<<ans<<nl;
 
+    multiset<ll>s;//(all(a));
     f1(i,0,n)
     {
-        cin>>x;
-        if(tp+1<x)
-        {
-            cout<<i+1<<nl;
-            return true;
-        }
-        tp=max(tp,x);
+        int x;cin>>x;
+        s.insert(x);
+        // cin>>a[i];
     }
-    cout<<-1<<nl;
-    return false;
+    // int h=1;
+    // int fit=w;
+
+    // if(s.empty()==false)
+    // {
+    //     auto it=s.upper_bound(fit);
+
+    //     if(it!=s.begin())
+    //     {
+    //         --it;
+    //         fit-=*it;
+    //         s.erase(it);
+    //     }
+    //     else
+    //     {
+    //         fit=w;h+=1;
+    //     }
+    // }
+    // cout<<h<<nl;
+    ll ans=0;
+    
+    while(!s.empty())
+    {
+        // ans++;
+        ll cur=0;
+        while(!s.empty())
+        {
+            auto it=s.upper_bound(w-cur);
+            if(it==s.begin())break;
+            --it;
+
+            cur+=*it;
+            s.erase(it);
+        }
+        // ll x=*s.begin();
+        // int sum=x;
+        ++ans;
+    }
+    cout<<ans<<nl;
 }
 
 
 int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
-// #ifndef ONLINE_JUDGE
-// freopen("input.txt","r",stdin); //file input.txt is opened in reading mode i.e "r"
-// freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
-// #endif
+#ifndef ONLINE_JUDGE
+freopen("input.txt","r",stdin); //file input.txt is opened in reading mode i.e "r"
+freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
+#endif
     ll tc = 1;
-    // cin >> tc;
+    cin >> tc;
     for (ll t = 1; t <= tc; t++) {
     // //cout << "Case #" << t << ": ";
         if(solve())
