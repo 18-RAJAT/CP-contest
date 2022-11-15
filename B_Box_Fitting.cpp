@@ -402,7 +402,7 @@ bool solve()
     // f1(i,0,n)
     // {
     //     if(a[i]!=-1)
-    //     {
+    //     {    
     //         int val=w;
     //         f1(j,i,n)
     //         {
