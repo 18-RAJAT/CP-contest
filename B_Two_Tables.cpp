@@ -381,7 +381,6 @@ bool rightShift()
     cout<<right_shift<<nl;
 }
 
-
 bool solve()
 {
     ll w,h,newW,newH;
