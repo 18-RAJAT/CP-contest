@@ -452,7 +452,7 @@ bool solve()
         std::cout << "Impossible\n";
         return false;
     }
-    
+
     int lo = 0, hi = d + 1;
     while (lo < hi) {
         int k = (lo + hi + 1) / 2;
