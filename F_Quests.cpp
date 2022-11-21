@@ -92,7 +92,7 @@ typedef unsigned long long int  uint64;
 #define si set<int>
 #define sc set<char>
 #define vi vector<int>
-
+#define in(arr,n) for(int i=0;i<n;i++){cin>>arr[i];}
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -437,71 +437,43 @@ int ctSetBit(int n)
 
 bool solve()
 {
-     int n,coins,d;cin>>n>>coins>>d;
- 
-    vi arr(n);
-    f1(i,0,n)cin>>arr[i];
-    sortall(arr);reverseall(arr);
- 
-//    int imposible=arr[0]*d;
-//    if(imposible<coins){
-//        show("Impossible");
-//        return;
-//    }
-    int sum=0;
-    for(int x:arr)
-    {
-        sum+=x;
+    int n, d;
+    ll c;
+    std::cin >> n >> c >> d;
+    
+    std::vector<int> a(n);
+    for (int i = 0; i < n; i++) {
+        std::cin >> a[i];
     }
- 
-//    if(arr[0]>=coins){
-//        show("INFinity");return;
-//    }
- 
-    int low=0;int high=INF;
-    int ans=0;
-    while(low<=high)
-    {
-        int mid=low+(high-low)/2;
-        int temp=0;
- 
-        //cout<<"mid "<<mid<<endl;
-        int index=0;
-        int k=mid;
-        int j=d;
-        while(j--)
-        {
-            if(index<n)
-            temp+=arr[index];
-            index=(index+1)%(k+1);
+    
+    std::sort(a.begin(), a.end(),greater<>());
+    
+    if (1LL * a[0] * d < c) {
+        std::cout << "Impossible\n";
+        return false;
+    }
+    
+    int lo = 0, hi = d + 1;
+    while (lo < hi) {
+        int k = (lo + hi + 1) / 2;
+        
+        ll res = 0;
+        for (int i = 0; i < std::min(n, k + 1); i++) {
+            res += 1LL * a[i] * (d / (k + 1) + (d % (k + 1) > i));
         }
- 
-        //cout<<"temp "<<temp<<endl;
-        if(temp>=coins)
-        {
-            ans=max(ans,mid);
-            low=mid+1;
-            //cout<<"Mid "<<mid<<endl;
-        }
-        else
-        {
-            high=mid-1;
+        if (res >= c) {
+            lo = k;
+        } else {
+            hi = k - 1;
         }
     }
- 
- 
-    if(low==0)
-    {
-        cout<<"Impossible"<<nl;
+    
+    if (lo > d) {
+        std::cout << "Infinity\n";
+        return false;
     }
-    else if(low>=INF)
-    {
-        cout<<"INFinity"<<nl;
-    }
-    else
-    {
-        cout<<ans<<nl;
-    }
+    
+    std::cout << lo << "\n";
 }
 
 int main() {  
