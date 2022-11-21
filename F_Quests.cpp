@@ -437,51 +437,48 @@ int ctSetBit(int n)
 
 bool solve()
 {
-    int n, d;
     ll c;
-    std::cin >> n >> c >> d;
-    
-    std::vector<int> a(n);
-    for (int i = 0; i < n; i++) {
-        std::cin >> a[i];
-    }
-    
-    std::sort(a.begin(), a.end(),greater<>());
-    
-    if (1LL * a[0] * d < c) {
-        std::cout << "Impossible\n";
-        return false;
-    }
+    int n,d;cin>>n>>c>>d;
+    vi a(n);
+    f1(i,0,n)cin>>a[i];
+    sort(all(a),greater<int>());
+    if(1LL*a[0]*d<c)
+        {cout<<"Impossible"<<nl;return false;}
 
-    int lo = 0, hi = d + 1;
-    while (lo < hi) {
-        int k = (lo + hi + 1) / 2;
-        
-        ll res = 0;
-        for (int i = 0; i < std::min(n, k + 1); i++) {
-            res += 1LL * a[i] * (d / (k + 1) + (d % (k + 1) > i));
+    int lo=0,hi=d+1;
+    while(lo<hi)
+    {
+        int mid=(lo+hi+1)/2;
+
+        ll res=0;
+        f1(i,0,min(n,mid+1))
+        {
+            res+=1LL*a[i]*(d/(mid+1)+(d%(mid+1)>i));
         }
-        if (res >= c) {
-            lo = k;
-        } else {
-            hi = k - 1;
+        if(res>=c)
+        {
+            lo=mid;
         }
-    }
-    
-    if (lo > d) {
-        std::cout << "Infinity\n";
+        else
+        {
+            hi=mid-1;
+        }
+    }    
+    if(lo>d) 
+    {
+        cout<<"Infinity\n";
         return false;
     }
     
-    std::cout << lo << "\n";
+    cout<<lo<<nl;
 }
 
 int main() {  
     Rajat
-// #ifndef ONLINE_JUDGE
-// freopen("input.txt","r",stdin); //file input.txt is opened in reading mode i.e "r"
-// freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
-// #endif
+#ifndef ONLINE_JUDGE
+freopen("input.txt","r",stdin); //file input.txt is opened in reading mode i.e "r"
+freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
+#endif
     ll tc = 1;
     cin >> tc;
 
