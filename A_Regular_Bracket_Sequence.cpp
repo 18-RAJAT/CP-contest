@@ -1,22 +1,25 @@
 #include <bits/stdc++.h>
 using namespace std;
  
- 
-#define ar array
 #define ll long long
 #define sza(x) ((int)x.size())
 #define all(x) x.begin(), x.end()
 #define revall(x) x.rbegin(), x.rend()
 #define sortall(x) sort(all(x))
-
-const int MAX_NN = 2e5 + 10; 
+ 
 const int MAX_N = 2e5 + 5;
+const int MAX_NN = 2e5 + 8;
 const ll MOD = 1e9 + 7;
-const ll INF = 1e9;
+const ll INF = 1e18+20;
 #define revall(x) x.rbegin(), x.rend()
 #define ALL(x) sort(x.begin(), x.end())
 #define sortall(x) sort(all(x))
 #define reverseall(x) reverse(all(x))
+#define Rajat ios_base::sync_with_stdio(0), cin.tie(0), cout.tie(0);
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
 #define SCD(t) scanf("%d",&t)
 #define SCLD(t) scanf("%ld",&t)
 #define SCLLD(t) scanf("%lld",&t)
@@ -25,10 +28,17 @@ const ll INF = 1e9;
 #define SCF(t) scanf("%f",&t)
 #define SCLF(t) scanf("%lf",&t)
 #define MEM(a, b) memset(a, (b), sizeof(a))
-#define FOR(i, j, k, in) for (int i=j ; i<k ; i+=in)
+
+#define FOR(i, j, k, in) for (int i=j ; i<=k ; i+=in)
 #define RFOR(i, j, k, in) for (int i=j ; i>=k ; i-=in)
 #define REP(i, j) FOR(i, 0, j, 1)
 #define RREP(i, j) RFOR(i, j, 0, 1)
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 #define rall(cont) cont.end(), cont.begin()
 #define FOREACH(it, l) for (auto it = l.begin(); it != l.end(); it++)
 #define IN(A, B, C) assert( B <= A  and  A <= C)
@@ -37,28 +47,33 @@ const ll INF = 1e9;
 #define PF push_front
 #define INF (int)1e9
 #define EPS 1e-9
-#define MOD 1000000007
+// #define MOD 998244353 
+#define ff first
+#define ss second
 #define PI 3.1415926535897932384626433832795
 #define read(type) readInt<type>()
 const double pi=acos(-1.0);
 #define ll long long
-typedef pair<long,long> PII;
+typedef pair<int,int> PII;
 typedef vector<long long> VI;
-typedef vector<vector<ll>> VII;
-typedef vector<pair<int,int>>VPII;
+typedef vector<bool> VB;
+typedef vector<char> VC;
+typedef vector<vector<long long>> VII;
+typedef vector<pair<ll,ll>>VPII;
 typedef vector<string> VS;
 typedef vector<PII> VIII;
 typedef vector<VI> VVI;
 // typedef vector<string> VS;
-typedef map<int,int> MPII;
-typedef set<long long> SETI;
+typedef map<ll,ll> MPII;
+typedef map<char,int> MPCI;
+typedef map<string,int> MPSI;
+typedef set<long long> seti;
 typedef multiset<int> MSETI;
 typedef priority_queue<pair<int,int>> PQPII;
 typedef long int int32;
 typedef unsigned long int uint32;
 typedef long long int int64;
 typedef unsigned long long int  uint64;
-#define ff(a,b) for(int i=a;i<b;i++)
 #define nl endl
  
  
@@ -77,17 +92,34 @@ typedef unsigned long long int  uint64;
 #define si set<int>
 #define sc set<char>
 #define vi vector<int>
- 
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
 /* FUNCTIONS */
+
+
+
 #define f1(i,s,e) for(long long int i=s;i<e;i++)
 #define ff1(i,s,e) for(long long int i=s;i>=e;--i)
-#define For1(i,n) or(long long int i=0;i<n+1;++i)
+#define For1(i,n) (long long int i=0;i<n+1;++i)
 #define cf(i,s,e) for(long long int i=s;i<=e;i++)
 #define FO(i,s,e) for(long long int i=1;i*i<=y;i++)
 #define rf(i,e,s) for(long long int i=e-1;i>=s;i--)
+#define fr(i,e,s) for(long long int i=e-2;i>=s;i--)
 #define pass(a)  for(long long int i=n-1;i>=1;i-=2)
 #define pb push_back
+#define ppb pop_back
 #define eb emplace_back
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
  
 /* PRINTS */
 template <class T>
@@ -104,8 +136,8 @@ string to_upper(string a) { for (int i=0;i<(int)a.size();++i) if (a[i]>='a'  and
 string to_lower(string a) { for (int i=0;i<(int)a.size();++i) if (a[i]>='A'  and  a[i]<='Z') a[i]+='a'-'A'; return a; }
  
  
-void yes() { cout<<"YES\n"; }
-void no() { cout<<"NO\n"; }
+#define yes cout<<"YES\n"
+#define no cout<<"NO\n"
  
  
  
@@ -116,13 +148,13 @@ typedef unsigned long int uint32;
 typedef long long int int64;
 typedef unsigned long long int  uint64;
  
-bool isprime(ll n)
-{
-    ll x=sqrt(n);
-    for(int i=2;i<=x;i++)
-    {if(n%i==0)return true;}
-    return false;
-}
+// bool isprime(ll n)
+// {
+//     ll x=sqrt(n);
+//     for(int i=2;i<=x;i++)
+//     {if(n%i==0)return true;}
+//     return false;
+// }
  
  
 bool cmp(pair<int,int>x,pair<int,int>y){
@@ -187,8 +219,12 @@ void scanlineAlgoritm()
         s+=prefixSum[i];
         a[i]+=s;
     }
-    f1(i,0,n)cout<<a[i]<<" ";
+    f1(i,0,n)
+    {
+        cout<<a[i]<<" ";
+    }
 }
+
 
 int findMin(vector<bool>&vis,VI distance)
 {
@@ -217,29 +253,214 @@ int dist(VPII vis,int n)
     }
 }
 
-int solve()
-{
-    string s;cin>>s;
-    // if(s[1]!=')' and s[0]==')')cout<<"YES"<<nl;
 
-    // if(s[0]!=')' and s.length()%2==0)cout<<"YES"<<nl;
-    // else cout<<"NO"<<nl;
-    if(s.size()%2 or s[0]==')' or s.back()=='(')
-        cout<<"NO"<<nl;else cout<<"YES"<<nl;
+bool binarySearch(ll mid,ll k,ll x)
+{
+    ll tot=0;
+    mid-=1;
+    if(mid<=k)
+        tot=(mid*(mid+1))/2;
+    else
+    {
+        tot=(k*(k+1))/2;
+        mid=2*k-1-mid;
+        tot+=((k*(k-1))/2-(mid*(mid+1))/2);
+    }
+    return tot<x;
 }
 
-int main() {
-ios_base::sync_with_stdio(0);
-cin.tie(0); cout.tie(0);
+int power(int b, int e)
+{
+    int ret = 1;
+    for(int i=0; i<e; ++i) ret *= b;
+    return ret;
+}
+
+vi helper(int n)
+{
+    vi v;
+    for (int i = 1; i <=sqrt(n); i++) 
+    {
+        if (n % i == 0) {
+            if (n / i == i)
+            {
+                v.push_back(i);
+            }else
+            {
+                v.push_back(n/i);
+            }
+        }
+    }
+    return v;
+}
+
+
+
+ll dmod(ll x)
+{
+    return ((x+1000000007)%1000000007);
+}
+
+ll take(ll x,ll y)
+{
+    ll ans=1;
+    while(y)
+    {
+        if(y&1)ans=dmod(ans*x);
+        y/=2;
+        // x=dmod(sqrt(x));
+        x=dmod(x*x);
+    }
+    return ans;
+}
+
+ll help( long long x )
+{
+    ll sum = 0 ;
+    while ( x )
+    { 
+        sum += x % 10 ;
+        x /= 10 ;
+    }
+    return sum ;
+}
+ 
+
+bool c2(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
+{
+    if(x.second.first!=y.second.first)
+     return (x.second.first < y.second.first);
+     else
+     return (x.second.second < y.second.second);
+
+}
+bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
+{
+    if(x.first!=y.first)
+     return (x.first < y.first);
+     else
+      return (x.second.second < y.second.second);
+
+}
+
+int findGCD(vi& a,int n)
+{
+  int tp=a[0];
+  if(n==a.size()-1)
+  {
+    return a[n];
+  }
+
+  if(tp==0)
+  {
+    return false;
+  }
+
+  int x=a[n];
+  int y=findGCD(a,n+1);
+
+  int totalGCD=__gcd(x,y);
+  return totalGCD;
+}
+
+void MissingRepeatingNumber()
+{
+    int n;cin>>n;
+    int l=0,r=0;
+    int a[n+1];
+    cf(i,1,n)
+    {
+        cin>>a[i];
+    }
+    int res=0;
+    cf(i,1,n)
+    {
+        res^=a[i];
+    }
+    cf(i,1,n)
+    {
+        res^=i;
+    }
+    int setBit=res&~(res-1);
+    cf(i,1,n)
+    {
+        if(a[i]&setBit)
+        {
+            l^=a[i];
+        }
+        else
+        {
+            r^=a[i];
+        }
+    }
+    cf(i,1,n)
+    {
+        if(i&setBit)
+        {
+            l^=i;
+        }
+        else
+        {
+            r^=i;
+        }
+    }
+    bool missingL=true;
+    cf(i,1,a[i])
+    {
+        if(a[i]==l)
+        {
+            missingL=false;
+            break;
+        }
+    }
+    if(missingL)
+    {
+        cout<<"missing number->"<<l<<"\n"<<"repeating number->"<<r<<nl;
+    }
+    else
+    {
+        cout<<"missing number->"<<r<<"\n"<<"repeating number->"<<l<<nl;
+    }
+}
+
+
+int nthBit(int n,int i)
+{
+    return(n>>i)&1;
+}
+
+
+void solve()
+{
+    ll a,b,c,d;cin>>a>>b>>c>>d;
+    if(a==d)
+    {
+        if(a==0 and c>0)cout<<0<<nl;
+        else cout<<1<<nl;
+    }
+    else cout<<0<<nl;
+}
+
+int main() {  
+    Rajat
 #ifndef ONLINE_JUDGE
 freopen("input.txt","r",stdin); //file input.txt is opened in reading mode i.e "r"
 freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 #endif
-    int tc;
-    cin >> tc;
-    for (int t = 1; t <= tc; t++) {
-        // cout << "Case #" << t << ": "<<nl;
-       solve();
+    ll tc = 1;
+    // cin >> tc;
+
+    for (ll t = 1; t <= tc; t++) {
+    // //cout << "Case #" << t << ": ";
+        // if(solve())
+        // {
+        //     // cout<<"YES"<<nl;
+        // }
+        // else
+        // {
+        //     // cout<<"NO"<<nl;
+        // }
+        solve();
     }
     return 0;
 }
