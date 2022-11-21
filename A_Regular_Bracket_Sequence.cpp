@@ -441,6 +441,7 @@ void solve()
     else cout<<0<<nl;
 }
 
+
 int main() {  
     Rajat
 #ifndef ONLINE_JUDGE
