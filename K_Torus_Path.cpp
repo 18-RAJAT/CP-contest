@@ -377,44 +377,38 @@ int findGCD(vi& a,int n)
 bool solve()
 {
     int n;cin>>n;
-    if(n==1)return false;
-
-    // f1(i,2,n+1)
-    // {
-    //     if(i*i>n)break;
-    //     if(n%i==0)return false;
-    // }
-    // return true;
-
-    // if(isprime(n))
-    // {
-    //     cout<<1<<" "<<n-1<<nl;
-    // }
-    // else
-    // {
-    //     // f1(i,2,n+1)
-    //     for(int i=2;i*i<=n;i++)
-    //     {
-    //         if(n%i==0)
-    //         {
-    //             cout<<n/i<<" "<<n-n/i<<nl;
-    //             break;
-    //         }
-    //     }
-        // {
-        //     if(i*i>n)break;
-        // // }
-        //     if(n%i==0)
-        //         cout<<n/i<<" "<<i*(i-1)<<nl;
-        //     // break;
-        // }
-    // }
+    int a[n];
+    f1(i,0,n)
+    {
+        cin>>a[i];
+    }
+    int b[n];
+    f1(i,0,n)
+    {
+        cin>>b[i];
+    }
+    int sumofGrid=0;
+    f1(i,0,n)
+    {
+        sumofGrid+=a[i];
+    }
+    int sumofB=0;
+    f1(i,0,n)
+    {
+        sumofB+=b[i];
+    }
+    int minimumOfGrid=INT_MAX;
+    f1(i,0,n)
+    {
+        minimumOfGrid=min(minimumOfGrid,a[i]);
+    }
+    cout<<sumofGrid+sumofB-(2*minimumOfGrid)<<endl;
 }
 
 
 int main() {
-    ios_base::sync_with_stdio(0);
-    cin.tie(0); cout.tie(0);
+//     ios_base::sync_with_stdio(0);
+//     cin.tie(0); cout.tie(0);
 // #ifndef ONLINE_JUDGE
 // freopen("input.txt","r",stdin); //file input.txt is opened in reading mode i.e "r"
 // freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
