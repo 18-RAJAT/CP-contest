@@ -407,7 +407,7 @@ bool solve()
         // mx=max(ans,p);
 
         // cout<<mx<<nl;
-        cout<<max(max(ans,n-ans1),max(ans1,n-ans1))<<nl;
+        cout<<max(max(ans,n-ans),max(ans1,n-ans1))<<nl;
     }
     // if(mx==1)
     // {
