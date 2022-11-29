@@ -383,6 +383,7 @@ bool solve()
     // {
     //     cin>>it;
     // }
+    int ans1=0;int ct=0;
     cf(i,1,n)
     {
         ll tp;cin>>tp;
@@ -392,17 +393,21 @@ bool solve()
 
         if(temp!=0)
         {
+            if(ct==0)
+            ans1=i;
             ans=i;
+            ct++;
         }
     }
-    ll mx;
+    // ll mx;
     if(ans)
     {
         //1-2 and 2 ......n-1
-        ll p=n-ans;
-        mx=max(ans,p);
+        // ll p=n-ans;
+        // mx=max(ans,p);
 
-        cout<<mx<<nl;
+        // cout<<mx<<nl;
+        cout<<max(max(ans,n-ans1),max(ans1,n-ans1))<<nl;
     }
     // if(mx==1)
     // {
