@@ -381,6 +381,10 @@ bool solve()
 
     for(auto &it:a)cin>>it;
     ll sum=0;
+    // for(auto it:a)
+    // {
+    //     sum+=it-1;
+    // }
     f1(i,0,n)
     {
         if(a[i]>sum)
@@ -393,12 +397,21 @@ bool solve()
         }
             // sum=max(sum,a[i]);
         // }
+        else if(sum<0)
+        {
+            // if(sum<0)
+            // {
+                a[i]=b[i];
+            // }
+        }
         else
         {
             b[i]=a[i];
         }
         sum=max(sum,a[i]);
-        cout<<b[i]<<" ";//<<nl;
+        // sum=max(sum,b[i]);
+        // cout<<abs(a[i]-1)<<" ";//<<nl;
+        cout<<b[i]<<" ";
     }
 }
 
