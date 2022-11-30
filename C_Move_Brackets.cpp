@@ -376,56 +376,27 @@ int findGCD(vi& a,int n)
 
 bool solve()
 {
-    ll n;cin>>n;
-    vi ins(n);
-    VI a(n),b(n);
-
-    for(auto &it:a)cin>>it;
-    // ll sum=0;
-    // for(auto it:a)
-    // {
-    //     sum+=it-1;
-    // }
-    cf(i,0,n)b[i]=i,ins[i]=i;
-    // f1(i,0,n)
-    // {
-    //     if(a[i]>sum)
-    //     {
-    //         b[i]=sum;
-    //     }
-    //     else if(a[i]==sum)
-    //     {
-    //         b[i]=sum+1;
-    //     }
-    //         // sum=max(sum,a[i]);
-    //     // }
-    //     else if(sum<0)
-    //     {
-    //         // if(sum<0)
-    //         // {
-    //             a[i]=b[i];
-    //         // }
-    //     }
-    //     else
-    //     {
-    //         b[i]=a[i];
-    //     }
-    //     sum=max(sum,a[i]);
-    //     // sum=max(sum,b[i]);
-    //     // cout<<abs(a[i]-1)<<" ";//<<nl;
-    //     cout<<b[i]<<" ";
-    // }
-    cf(i,1,n)
-    {
-        int x=i,y=b[a[i]],z=ins[x],w=ins[y];
-
-        swap(ins[x],ins[y]),swap(b[x],b[y]);
-    }
+    int n;cin>>n;
+    int brack=0;
+    string s;cin>>s;
     f1(i,0,n)
     {
-        cout<<ins[i]<<" ";
+        if(s[i]=='(')
+        {
+            brack++;
+        }
+        else
+        {
+            brack--;
+            if(brack<0)
+            {
+                brack=0;
+            }
+        }
     }
+    cout<<brack<<nl;
 }
+
 
 int main() {
     ios_base::sync_with_stdio(0);
@@ -435,7 +406,7 @@ int main() {
 // freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 // #endif
     ll tc = 1;
-    // cin >> tc;
+    cin >> tc;
     for (ll t = 1; t <= tc; t++) {
     // //cout << "Case #" << t << ": ";
         if(solve())
@@ -447,7 +418,7 @@ int main() {
             // cout<<"NO"<<nl;
         }
     }
-        // solve();
+    //     solve();
     // }
     return 0;
 }
