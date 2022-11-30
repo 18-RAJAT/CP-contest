@@ -377,24 +377,45 @@ int findGCD(vi& a,int n)
 bool solve()
 {
     int n;cin>>n;
-    int brack=0;
-    string s;cin>>s;
-    f1(i,0,n)
+    int m;cin>>m;
+    vi a(n);
+    // cout<<*max_element(all(a));
+    // f1(i,0,n)
+    cf(i,1,n)
     {
-        if(s[i]=='(')
-        {
-            brack++;
-        }
-        else
-        {
-            brack--;
-            if(brack<=0)
-            {
-                brack=0;
-            }
-        }
+        cin>>a[i];
     }
-    cout<<brack<<nl;
+    // int max=*max_element(all(a));
+    // if(a[0]>a[i])
+    // {
+    //     cout<<a[0]<<nl;
+    // }
+    // else
+    // {
+    //     cout<<a[i]<<nl;
+    // }
+    // return true;
+    // cout<<max-2<<nl;
+    int left=-1;
+    int right=1;
+    int ans=0;
+
+    int sum=0;
+    for(left=1;left<=n;++left)
+    {
+        while(right<=n and sum+a[right]<=m)
+        {
+            sum+=a[right];
+            right++;
+        }
+        ans=max(ans,right-left);
+        // if(right==left)
+        // {
+        //     right++;
+        // }
+        sum-=a[left];
+    }
+    cout<<ans<<nl;
 }
 
 
@@ -406,7 +427,7 @@ int main() {
 // freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 // #endif
     ll tc = 1;
-    cin >> tc;
+    // cin >> tc;
     for (ll t = 1; t <= tc; t++) {
     // //cout << "Case #" << t << ": ";
         if(solve())
