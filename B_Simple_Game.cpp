@@ -475,9 +475,47 @@ bool solve()
     int n;cin>>n;
     int m;cin>>m;
 
-    
-}
+    int half=n/2;
 
+    // if(n%2==0)
+    // {
+    //     half--;
+    // }
+    if(n==1)
+    {
+        cout<<m<<nl;
+        debug(m*m);
+        return false;
+    }
+    // else if(m==1)
+    // {
+    //     // cout<<n<<nl;
+    //     cout<<n-1<<nl;
+    //     return false;
+    // }
+    if(m>half)
+    {
+        // cout<<m+1<<nl;
+        // return true;
+        cout<<m-1<<nl;
+    }
+    else
+    {
+        int ans=0;
+        // while(n<=half)
+        // {
+        //     n*=2;
+        //     ans++;
+        // }
+        cout<<m+1<<nl;
+        // ans++;
+        // debug(m);
+        // cout<<m*ans<<nl;
+        debug(ans);
+        // cout<<m-2<<nl;
+        return true;
+    }
+}
 
 int main() {
     ios_base::sync_with_stdio(0);
