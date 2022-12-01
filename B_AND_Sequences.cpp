@@ -472,13 +472,7 @@ int findGCD(vi& a,int n)
 
 bool solve()
 {
-    int a,b;
-	cin>>a>>b;
-	int res=1;
-    cf(i,1,min(a,b))
-		res*=i;//<<nl;
-        debug(res+1);
-        cout<<res<<nl;
+    
 }
 
 
@@ -490,7 +484,7 @@ int main() {
 // freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 // #endif
     ll tc = 1;
-    // cin >> tc;
+    cin >> tc;
     for (ll t = 1; t <= tc; t++) {
     // //cout << "Case #" << t << ": ";
         if(solve())

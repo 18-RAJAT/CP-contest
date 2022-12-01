@@ -472,13 +472,79 @@ int findGCD(vi& a,int n)
 
 bool solve()
 {
-    int a,b;
-	cin>>a>>b;
-	int res=1;
-    cf(i,1,min(a,b))
-		res*=i;//<<nl;
-        debug(res+1);
-        cout<<res<<nl;
+    int n;cin>>n;
+    vi og(n);
+    vi state(n);
+    int ans=0;
+
+    f1(i,0,n)
+    {
+        int ch;
+        cin>>ch;
+        og[i]=ch-'0';
+        // state[i]=ch-'0';
+        state[i]=og[i];
+        ans+=state[i];
+
+        // debug(ans);
+    }
+    vi a(n),b(n);
+    // VVI dp(n+1,vi(1001,0));
+    vector<vector<int>>dp(n,vector<int>(501,0));
+    // dp[0][0]=1;
+    f1(i,0,n)
+    {
+        cin>>a[i];
+        cin>>b[i];
+    }
+    f1(i,0,n)
+    {
+        // f1(j,0,1001)
+        // {
+        //     if(j>=a[i] and j<=b[i])
+        //     {
+        //         dp[i][j]=1;
+        //     }
+        // }
+        dp[i][b[i]]=1;
+        int add=a[i]+b[i];
+
+        FOR(j,add,500,a[i])
+        {
+            dp[i][j]=1;
+        }
+    }
+    f1(i,1,n)
+    {
+        int tp=0;
+        f1(j,0,n)
+        {
+            // if(dp[i-1][j]==1)
+            // {
+            //     tp=1;
+            //     break;
+            // }
+            if(dp[i][j])
+            {
+                state[j]=abs(state[j]-1);
+            }
+            tp+=state[j];
+            debug(tp);
+        }
+        ans=min(ans,tp);
+    //     f1(j,0,1001)
+    //     {
+    //         if(dp[i-1][j]==1)
+    //         {
+    //             tp=1;
+    //         }
+    //         if(tp==1)
+    //         {
+    //             dp[i][j]=1;
+    //         }
+    //     }
+    }
+    cout<<ans<<nl;
 }
 
 
