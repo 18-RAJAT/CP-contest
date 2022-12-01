@@ -472,7 +472,54 @@ int findGCD(vi& a,int n)
 
 bool solve()
 {
-    
+    string s;//cin>>s;
+    ll n,m,k,op,ct;cin>>m>>n;
+
+    char ch;cin>>s;
+
+    // while(n--)
+    for(ll i=n-1;i>=0;--i)
+    {
+        cin>>k>>ch;
+        k-=1;
+        s[k]=ch;
+        // k=k-1;
+        op=0;
+        f1(i,0,101)
+        {
+            ct=0;
+            while(s[i]=='.')
+            {
+                ct++;
+                i++;
+            }
+            while(s[i]=='#')
+            {
+                ct--;
+                i--;
+            }
+            // if(ct>=m)
+            if(ct>1)
+            {
+                // op=1;
+                op+=ct-1;
+                // debug(op);
+            }
+            // else if(ct==1)
+            // {
+            //     op+=1;
+            // }
+        // }
+            // else
+            // {
+            //     op=0;
+
+            // }
+        }
+        debug(op);
+        cout<<op<<nl;
+    }
+    // cout<<op<<nl;
 }
 
 int main() {

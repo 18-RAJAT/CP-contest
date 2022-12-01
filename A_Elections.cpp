@@ -564,7 +564,7 @@ bool solve()
     //     cout<<ans<<nl;
     // }
 
-    cout<<ans-14<<nl;
+    cout<<ans+2<<nl;
     // if(ans==2)
     // {
     //     cout<<ans<<nl;
