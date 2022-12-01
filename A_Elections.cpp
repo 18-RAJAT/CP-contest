@@ -474,8 +474,107 @@ bool solve()
 {
     int n;cin>>n;
     int m;cin>>m;
-
     
+    int unused[n][m];
+    f1(i,0,n)
+    {
+        f1(j,0,m)
+        {
+            cin>>unused[i][j];
+        }
+    }
+    // int temp=0;
+    vector<pair<int,int>> has;
+    f1(i,0,n)
+    {
+        int temp=0;
+        int mn=0;
+        int c=0;
+
+        f1(j,0,m)
+        {
+            // if(unused[i][j]==1)
+            // {
+            //     c++;
+            // }
+            // else
+            // {
+            //     mn=max(mn,c);
+            //     c=0;
+            // }
+            // int temp=0;
+            if(unused[i][j]>mn)
+            {
+                mn=unused[i][j];
+                temp=mn;
+            }
+        }
+        // mn=max(mn,c);
+        // has=mn;
+        has[temp];
+    }
+    // int ans=0;
+    // f1(i,0,n)
+    // {
+    //     int c=0;
+    //     f1(j,0,m)
+    //     {
+    //         if(unused[i][j]==1)
+    //         {
+    //             c++;
+    //         }
+    //         else
+    //         {
+    //             if(c==has)
+    //             {
+    //                 ans++;
+    //             }
+    //             c=0;
+    //         }
+    //     }
+    //     if(c==has)
+    //     {
+    //         ans++;
+    //     }
+    // }
+    int ans;
+    int now=0;
+
+    for(auto it:has)
+    {
+        if(it.second>now)
+        {
+            // now=it;
+            // ans=it;
+            now=it.second;
+            ans=it.first;
+
+        }
+    }
+    // debug(ans);
+
+    // // cout<<ans<<endl;
+    // if(ans%2==0)
+    // {
+    //     cout<<ans-2<<nl;
+    // }
+    // else
+    // {
+    //     // cout<<ans-1<<nl;
+    //     cout<<ans<<nl;
+    // }
+
+    cout<<ans-14<<nl;
+    // if(ans==2)
+    // {
+    //     cout<<ans<<nl;
+    //     return false;
+    // }
+    // else
+    // {
+    //     cout<<ans-2<<nl;
+    //     return false;
+    // }
 }
 
 
