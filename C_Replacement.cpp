@@ -95,16 +95,16 @@ typedef unsigned long long int  uint64;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /* FUNCTIONS */
 
 
 
-#define f1(i,s,e) for(long long int i=s;i<e;i++)
+#define f1(i,s,e) for(int i=s;i<e;i++)
 #define ff1(i,s,e) for(long long int i=s;i>=e;--i)
 #define For1(i,n) (long long int i=0;i<n+1;++i)
-#define cf(i,s,e) for(long long int i=s;i<=e;i++)
+#define cf(i,s,e) for(int i=s;i<=e;i++)
 #define FO(i,s,e) for(long long int i=1;i*i<=y;i++)
 #define rf(i,e,s) for(long long int i=e-1;i>=s;i--)
 #define pass(a)  for(long long int i=n-1;i>=1;i-=2)
@@ -113,6 +113,9 @@ typedef unsigned long long int  uint64;
 #define eb emplace_back
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -472,54 +475,128 @@ int findGCD(vi& a,int n)
 
 bool solve()
 {
-    string s;//cin>>s;
-    ll n,m,k,op,ct;cin>>m>>n;
+    // string s;//cin>>s;
+    // ll n,m,k,op,ct;cin>>m>>n;
 
-    char ch;cin>>s;
+    // char ch;cin>>s;
 
-    // while(n--)
-    for(ll i=n-1;i>=0;--i)
-    {
-        cin>>k>>ch;
-        k-=1;
-        s[k]=ch;
-        // k=k-1;
-        op=0;
-        f1(i,0,101)
-        {
-            ct=0;
-            while(s[i]=='.')
-            {
-                ct++;
-                i++;
-            }
-            while(s[i]=='#')
-            {
-                ct--;
-                i--;
-            }
-            // if(ct>=m)
-            if(ct>1)
-            {
-                // op=1;
-                op+=ct-1;
-                // debug(op);
-            }
-            // else if(ct==1)
-            // {
-            //     op+=1;
-            // }
-        // }
-            // else
-            // {
-            //     op=0;
+    // // while(n--)
+    // for(ll i=n-1;i>=0;--i)
+    // {
+    //     cin>>k>>ch;
+    //     k-=1;
+    //     s[k]=ch;
+    //     // k=k-1;
+    //     op=0;
+    //     f1(i,0,101)
+    //     {
+    //         ct=0;
+    //         while(s[i]=='.')
+    //         {
+    //             ct++;
+    //             i++;
+    //         }
+    //         while(s[i]=='#')
+    //         {
+    //             ct--;
+    //             i--;
+    //         }
+    //         // if(ct>=m)
+    //         if(ct>1)
+    //         {
+    //             // op=1;
+    //             op+=ct-1;
+    //             // debug(op);
+    //         }
+    //         // else if(ct==1)
+    //         // {
+    //         //     op+=1;
+    //         // }
+    //     // }
+    //         // else
+    //         // {
+    //         //     op=0;
 
-            // }
-        }
-        debug(op);
-        cout<<op<<nl;
-    }
+    //         // }
+    //     }
+    //     debug(op);
+    //     cout<<op<<nl;
+    // }
     // cout<<op<<nl;
+    int n,m;cin>>n>>m;
+    string s;cin>>s;
+    int ct=0;
+
+    f1(i,0,n-1)
+    {
+        if(s[i]=='.' and s[i+1]=='.')
+        {
+            ct++;
+        }
+    }
+    debug(ct);
+    // cout<<nl;
+    int idx;
+    char ch;
+    // while(m--)
+    for(int i=m-1;i>=0;--i)
+    {
+        cin>>idx>>ch;
+        // idx-=1;
+        idx--;
+
+        if(ch=='.')
+        {
+            //add
+            int inc=0;
+            if(idx-1>=0 and s[idx-1]=='.' and s[idx]!='.')
+            {
+                inc++;
+            }
+            if(idx+1<n and s[idx+1]=='.' and s[idx]!='.')
+            {
+                inc++;
+            }
+            // if(idx-1>=0 and s[idx-1]!='.' and s[idx]=='.')
+            // {
+            //     inc--;
+            // }
+            // if(idx+1<n and s[idx+1]!='.' and s[idx]=='.')
+            // {
+            //     inc--;
+            // }
+            s[idx]=ch;
+            ct+=inc;
+            cout<<ct<<nl;
+            debug(ct);
+        }
+        else
+        {
+
+            //subtract
+            int dec=0;
+            if(idx-1>=0 and s[idx-1]=='.' and s[idx]=='.')
+            {
+                dec++;
+            }
+            if(idx+1<n and s[idx+1]=='.' and s[idx]=='.')
+            {
+                dec++;
+            }
+            // if(idx-1>=0 and s[idx-1]!='.' and s[idx]=='.')
+            // {
+            //     dec--;
+            // }
+            // if(idx+1<n and s[idx+1]!='.' and s[idx]=='.')
+            // {
+            //     dec--;
+            // }
+            s[idx]=ch;
+            ct-=dec;
+            cout<<ct<<nl;
+            debug(ct);
+        }
+    }
 }
 
 int main() {
@@ -533,16 +610,16 @@ int main() {
     // cin >> tc;
     for (ll t = 1; t <= tc; t++) {
     // //cout << "Case #" << t << ": ";
-        if(solve())
-        {
-            // cout<<"YES"<<nl;
-        }
-        else
-        {
-            // cout<<"NO"<<nl;
-        }
-    }
-    //     solve();
+    //     if(solve())
+    //     {
+    //         // cout<<"YES"<<nl;
+    //     }
+    //     else
+    //     {
+    //         // cout<<"NO"<<nl;
+    //     }
     // }
+        solve();
+    }
     return 0;
 }
