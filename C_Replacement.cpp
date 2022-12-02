@@ -534,7 +534,7 @@ bool solve()
             ct++;
         }
     }
-    debug(ct);
+    // debug(ct);
     // cout<<nl;
     int idx;
     char ch;
@@ -568,8 +568,25 @@ bool solve()
             s[idx]=ch;
             ct+=inc;
             cout<<ct<<nl;
-            debug(ct);
+            // debug(ct);
         }
+        
+        else if(ch=='.')
+        {
+            int strCt=0;
+            int temp;
+            int sp=1;
+            if(idx+1<=0 and s[idx+1]=='.' and s[idx]=='.')
+            {
+                strCt++;
+                sp++;
+            }
+            else if(idx==strCt and strCt<=sp+temp)
+            {
+                temp++;
+            }
+        }
+        
         else
         {
 
@@ -594,7 +611,7 @@ bool solve()
             s[idx]=ch;
             ct-=dec;
             cout<<ct<<nl;
-            debug(ct);
+            // debug(ct);
         }
     }
 }
