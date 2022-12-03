@@ -473,23 +473,30 @@ int findGCD(vi& a,int n)
 }
 
 
-int countPairs(string s1, int n1, string s2, int n2)
+void solve()
 {
-    int freq1[26] = { 0 };
-    int freq2[26] = { 0 };
-    int i, count = 0;
-
-    for (i = 0; i < n1; i++)
-        freq1[s1[i] - 'a']++;
-    
-    for (i = 0; i < n2; i++)
-        freq2[s2[i] - 'a']++;
-
-    for (i = 0; i < 26; i++)
-        count += min(freq1[i], freq2[i]);
-    
-    return count;
-    
+    int ans=-1;
+    string a,b;
+    cin>>a>>b;
+    int x=a.size();
+    int y=b.size();
+    int temp=max(x,y);
+    for(int i=0;i<temp;i++)
+    {
+        if(a[i]!=b[i])
+        {
+            ans=i;
+            break;
+        }
+    }
+    if(ans==-1)
+    {
+        cout<<y<<endl;
+    }
+    else
+    {
+        cout<<ans+1<<endl;
+    }
 }
 
 int main() {
@@ -512,11 +519,7 @@ int main() {
     //         // cout<<"NO"<<nl;
     //     }
     // }
-    string s;cin>>s;string s1;cin>>s1;
-    int n=s.size();
-    int n1=s1.size();
-        // solve();
-       cout<< countPairs(s,n,s1,n1)-2;
+        solve();
     }
     return 0;
 }
