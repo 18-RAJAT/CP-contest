@@ -29,8 +29,8 @@ const ll INF = 1e18+20;
 #define SCLF(t) scanf("%lf",&t)
 #define MEM(a, b) memset(a, (b), sizeof(a))
 
-#define FOR(i, j, k, in) for (int i=j ; i<k ; i+=in)
-#define RFOR(i, j, k, in) for (int i=j ; i>=k ; i-=in)
+#define FOR(i, j, k, in) for (ll i=j ; i<k ; i+=in)
+#define RFOR(i, j, k, in) for (ll i=j ; i>=k ; i-=in)
 #define rall(cont) cont.end(), cont.begin()
 #define FOREACH(it, l) for (auto it = l.begin(); it != l.end(); it++)
 #define IN(A, B, C) assert( B <= A && A <= C)
@@ -476,29 +476,64 @@ int findGCD(vi& a,int n)
 void solve()
 {
 	ll n;cin>>n;
-	// ll a[n];
-	map<int,int>mp;
-	int mxi=0;
+    // ll used[n+1];
+    map<ll,ll>mp;
+    // memset(used,0,sizeof(used));
 
-	f1(i,0,n)
-	{
-		// cin>>a[i];
-		int x;cin>>x;
-		mxi=max(mxi,++mp[x]);
-	}
-	// int mxi=max(mxi,++mp[x]);
-	// int isSame=0;int ct=0;
-	int cpy=0,tp=mxi;
+    f1(i,2,n+1)
+    // while(n--)
+    // FOR(i,1,n-1,1)
+    {
+        ll x;cin>>x;
+        // used[x]++;
+        mp[x]++;
+    }
+    // ll ans=1;
+    VI ans;
+    // f1(i,1,n+1)
+    // // {
+    //     // int y=used[i]>0;
+    //     ans+=used[i]>0;
+    //     // if(used[i]>0)ans+=used[i];
+    //     ll leafNodes=(n-ans);
+    //     leafNodes=max(leafNodes-(ans-1),0);
+    //     // debug(leafNodes);
+    //     // int res=ans;
+    //     ans+=(leafNodes+1)/2;
+    //     // debug(ans);
+    // // }
+    for(auto &it:mp)
+    {
+        ans.pb(it.second);
+        // debug(ans);
+    }
+    sort(all(ans));
+    // FOR(i,0,ans.size()-1,1)
+    f1(i,0,ans.size()-1)
+    {
+        // ans[i+1]+=ans[i];
+        ans[i]+=i;
+    }
+    priority_queue<int>pq{all(ans)};//{a.begin(),a.end()};//(all(ans));
+    ll tp=ans.size()+1;
 
-	while(tp<n)
-	{
-		cpy++;
-		tp=tp*2;
-	}
-	// cout<<abs(mxi-n+cpy)<<endl;
-	cout<<n-mxi+cpy<<endl;
-	// mp.clear();
-	// mxi=0;
+    while(pq.top()>tp)
+    {
+        pq.push(pq.top()-1);//-tp);
+        pq.pop();
+        // tp--;
+        ++tp;
+        // debug(tp);
+    }
+    cout<<tp<<nl;
+    // if(ans==7 and ans==2)
+    // {
+    //     cout<<ans-1<<nl;
+    //     return;
+    // }
+    // else
+    // cout<<ans<<nl;
+    // debug(ans+1);
 }
 
 int main() {
