@@ -476,58 +476,71 @@ int findGCD(vi& a,int n)
 
 bool solve()
 {
-    ll n;cin>>n;
-    // ll x;cin>>x;
-    string min,max;
-    string num;//=to_string(x);
-    cin>>num;
-    bool isSame=true;
-    ll m=num.size();
-    f1(i,0,m)
+    ll a,b;cin>>a>>b;
+    if(a==0)
     {
-        // if(num[i]!=num[0])
-        // {
-        //     isSame=false;
-        //     break;
-        // }
-        if(num[i]=='1' and isSame)
-        {
-            min+="0";
-            max+="1";
-            isSame=false;
-        }
-        else if(num[i]=='1' and !isSame)
-        {
-            min+="1";
-            // max+="1";
-            max+="0";
-        }
-        else if(num[i]=='0')
-        {
-            min+="0";
-            max+="0";
-        }
-        // else if (num[i]=='2')
-        // {
-        //     min+="1";
-        //     max+="1";
-        // }
-        else if(num[i]=='2' and isSame)
-        {
-            // min+="0";
-            // max+="0";
-            min+="1";
-            max+="1";
-        }
-        else if(num[i]=='2' and !isSame)
-        {
-            // min+="0";
-            min+="2";
-            // max+="1";
-            max+="0";
-        }
+        cout<<0<<nl;
+        // return;
+        // continue;
     }
-    cout<<max<<nl<<min<<nl;
+    // if(a>b)
+    // 	{
+    // 		if(a&1 and b&1)
+    // 	    {
+    // 		cout<<1<<nl;
+    // 	    }
+    // 	    else if(a&1 and b%2==0)
+    // 	    {
+    // 	    	cout<<2<<nl;
+    // 	    }
+    // 	    else if(a%2==0 and b&1)
+    // 	    {
+    // 	    	cout<<2<<nl;
+    // 	    }
+    // 	    else
+    // 	    {
+    // 	    	cout<<1<<nl;
+    // 	    }
+    // 	}
+    // 	if(a<b)
+    // 	{
+    // 		 if(a&1 and b%2==0)
+    // 	    {
+    // 	    	cout<<1<<nl;
+    // 	    }
+ 
+    // 	     else if(a%2==0 and b&1)
+    // 	    {
+    // 	    	cout<<1<<nl;
+    // 	    }
+    // 	    else if(a&1 and b&1)
+    // 	    {
+    // 		   cout<<2<<nl;
+    // 	    }
+    // 	    else
+    // 	    {
+    // 	    	cout<<2<<nl;
+    // 	    }
+    // }
+    if(a==b)
+    {
+        cout<<0<<nl;
+        return false;
+    }
+    int diff=abs(a-b);
+    diff%=2;
+
+    if(a<b and diff==1)
+    {
+        cout<<1<<nl;
+        return false;
+    }
+    if(a>b and diff==0)
+    {
+        cout<<1<<nl;
+        return false;
+    }
+    cout<<2<<nl;
 }
 
 
@@ -551,7 +564,7 @@ int main() {
             // cout<<"NO"<<nl;
         }
     }
-        // solve();
+    //     solve();
     // }
     return 0;
 }
