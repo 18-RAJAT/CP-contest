@@ -479,8 +479,8 @@ bool solve()
     ll n;cin>>n;
     ll x;cin>>x;
     string min,max;
-    string num=to_string(x);
-
+    string num;//=to_string(x);
+    cin>>num;
     bool isSame=true;
     ll m=num.size();
     f1(i,0,m)
