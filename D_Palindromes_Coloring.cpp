@@ -480,8 +480,8 @@ void solve()
 
     string str;cin>>str;
     map<char,int>mp;
-    int colorPairs=0;
-    int noMatchingPairs=0;
+    ll colorPairs=0;
+    ll noMatchingPairs=0;
     f1(i,0,n)
     {
         mp[str[i]]++;
@@ -501,11 +501,26 @@ void solve()
     int ans=(colorPairs/m)*2;
     int rem=m-(colorPairs%m);
 
-    if(rem!=0 and rem<=noMatchingPairs)
+    // if(rem!=0 and rem<=noMatchingPairs)
+    if(noMatchingPairs>=m)
     {
         ans++;
-        debug(ans);
+        // debug(ans);
     }
+    // else
+    // {
+    //     debug(ans);
+    //     ans=colorPairs*2;
+    //     noMatchingPairs+=(colorPairs%m)*2+ans;
+
+    //     ans++;
+    // }
+    if(noMatchingPairs%m==0)
+    {
+        // ans=(noMatchingPairs/m)*2;
+    }
+
+
     // else
     // {
     //     debug(ans);

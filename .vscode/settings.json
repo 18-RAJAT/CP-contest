@@ -19,6 +19,7 @@
         "bitset": "cpp",
         "set": "cpp",
         "algorithm": "cpp",
-        "limits": "cpp"
+        "limits": "cpp",
+        "sstream": "cpp"
     }
 }
