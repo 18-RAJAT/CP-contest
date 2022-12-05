@@ -8,13 +8,18 @@ using namespace std;
 #define sortall(x) sort(all(x))
  
 const int MAX_N = 2e5 + 5;
-const int MAX_NN = 2e5 + 7;
-const ll MOD = 10e9 + 7;
+const int MAX_NN = 2e5 + 8;
+const ll MOD = 1e9 + 7;
 const ll INF = 1e18+20;
 #define revall(x) x.rbegin(), x.rend()
 #define ALL(x) sort(x.begin(), x.end())
 #define sortall(x) sort(all(x))
 #define reverseall(x) reverse(all(x))
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
 #define SCD(t) scanf("%d",&t)
 #define SCLD(t) scanf("%ld",&t)
 #define SCLLD(t) scanf("%lld",&t)
@@ -24,24 +29,16 @@ const ll INF = 1e18+20;
 #define SCLF(t) scanf("%lf",&t)
 #define MEM(a, b) memset(a, (b), sizeof(a))
 
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-#define FOR(i, j, k, in) for (int i=j ; i<k ; i+=in)
-#define RFOR(i, j, k, in) for (int i=j ; i>=k ; i-=in)
-#define REP(i, j) FOR(i, 0, j, 1)
-#define RREP(i, j) RFOR(i, j, 0, 1)
-
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
-
+#define FOR(i, j, k, in) for (ll i=j ; i<k ; i+=in)
+#define RFOR(i, j, k, in) for (ll i=j ; i>=k ; i-=in)
 #define rall(cont) cont.end(), cont.begin()
 #define FOREACH(it, l) for (auto it = l.begin(); it != l.end(); it++)
-#define IN(A, B, C) assert( B <= A  and  A <= C)
+#define IN(A, B, C) assert( B <= A && A <= C)
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
 #define MP make_pair
 #define PB push_back
 #define PF push_front
@@ -60,7 +57,7 @@ typedef vector<bool> VB;
 typedef vector<char> VC;
 typedef vector<char> VC;
 typedef vector<vector<long long>> VII;
-typedef vector<pair<int,int>>VPII;
+typedef vector<pair<ll,ll>>VPII;
 typedef vector<string> VS;
 typedef vector<PII> VIII;
 typedef vector<VI> VVI;
@@ -94,29 +91,133 @@ typedef unsigned long long int  uint64;
 #define sc set<char>
 #define vi vector<int>
 
+#define revs(x,y,z) for(ll i=x;i<=y;i+=z)
 
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
 
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /* FUNCTIONS */
 
 
 
-#define f1(i,s,e) for(long long int i=s;i<e;i++)
+#define f1(i,s,e) for(int i=s;i<e;i++)
 #define ff1(i,s,e) for(long long int i=s;i>=e;--i)
-#define For1(i,n) or(long long int i=0;i<n+1;++i)
-#define cf(i,s,e) for(long long int i=s;i<=e;i++)
+#define For1(i,n) (long long int i=0;i<n+1;++i)
+#define cf(i,s,e) for(int i=s;i<=e;i++)
 #define FO(i,s,e) for(long long int i=1;i*i<=y;i++)
 #define rf(i,e,s) for(long long int i=e-1;i>=s;i--)
 #define pass(a)  for(long long int i=n-1;i>=1;i-=2)
 #define pb push_back
+#define ppb pop_back
 #define eb emplace_back
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+
+
+
+// ----------------------</BITWISE>-------------------------- 
+/* a=target variable, b=bit number to act upon 0-n */
+#define BIT_SET(a,b) ((a) |= (1ULL<<(b)))
+#define BIT_CLEAR(a,b) ((a) &= ~(1ULL<<(b)))
+#define BIT_FLIP(a,b) ((a) ^= (1ULL<<(b)))
+
+// '!!' to make sure this returns 0 or 1
+#define BIT_CHECK(a,b) (!!((a) & (1ULL<<(b))))
+
+#define BITMASK_SET(x, mask) ((x) |= (mask))
+#define BITMASK_CLEAR(x, mask) ((x) &= (~(mask)))
+#define BITMASK_FLIP(x, mask) ((x) ^= (mask))
+#define BITMASK_CHECK_ALL(x, mask) (!(~(x) & (mask)))
+#define BITMASK_CHECK_ANY(x, mask) ((x) & (mask))
+// ----------------------</BITWISE END>--------------------------
+
+
+
+
+
+/****************** Prime Generator **********************/ 
+// const int N=1e7+10; int prime[20000010]; 
+// bool isprime[N]; int nprime; 
+// template <typename T> void Sieve(T a) 
+// {nprime = 0;memset(isprime,true,sizeof(isprime));
+// isprime[1]=false;for(int i=2;i<N;i++){
+// if(isprime[i]){prime[nprime++]=i;for(int j=2;i*j<N;j++)
+// isprime[i*j]=false;}}}
+// template <typename T> inline T PrimeFactors(T n)
+// {ll cnt=0,sum=1;for(int i=0; prime[i]*prime[i]<=n 
+// and i<nprime;i++){cnt=0;while(n%prime[i]==0)
+// {cnt++;n/=prime[i];}sum*=(cnt+1);}
+// if(n>1)sum*=2;return sum;} 
+/**************** Prime Generator End ********************/
+
+
+
+
+
+
+/****************** Geometry *****************/ 
+template <typename T> inline T PointDistanceHorVer(T x1,T y1,T x2, T y2) 
+{return abs(x1-x2)+abs(y1-y2);} 
+template <typename T> inline T PointDistanceDiagonally(T x1,T y1,T x2, T y2) 
+{return sqrt((x2-x1)*(x2-x1) + (y2-y1)*(y2-y1));} 
+template <typename T> inline T PointDistanceMinimum(T x1,T y1,T x2, T y2) 
+{ T tmp1=abs(x1-x2); T tmp2=abs(y1-y2); T tmp3=abs(tmp1-tmp2); 
+T tmp4=min(tmp1, tmp2); return tmp3+tmp4; } 
+template <typename T> inline T PointDistance3D(T x1,T y1,T z1,T x2,T y2,T z2)
+{return sqrt(square(x2-x1)+square(y2-y1)+square(z2-z1));} 
+ 
+template <typename T> inline T Cube(T a){return a*a*a;} 
+template <typename T> inline T RectengularPrism(T a,T b,T c)
+{return a*b*c;}
+template <typename T> inline T Pyramid(T base, T height)
+{return (1/3)*base*height;}
+template <typename T> inline T Ellipsoid(T r1,T r2,T r3) 
+{return (4/3)*PI*r1*r2*r3;} 
+template <typename T> inline T IrregualarPrism(T base, T height)
+{return base*height;} 
+template <typename T> inline T Sphere(T radius)
+{ return (4/3)*PI*radius*radius*radius;} 
+template <typename T> inline T CylinderB(T base, T height)
+{return base*height;} // base and height 
+template <typename T> inline T CylinderR(T radius, T height)
+{return PI*radius*radius*height;} // radius and height 
+template <typename T> inline T Cone (T radius,T base, T height)
+{return (1/3)*PI*radius*radius*height;} 
+/****************** Geometry end *****************/ 
+
+
+/******* Debugging Class Template *******/
+
+
+    #define debug(args...)     (Debugger()) , args
+
+    class Debugger
+    {
+        public:
+        Debugger(const std::string& _separator = " - ") :
+        first(true), separator(_separator){}
+
+        template<typename ObjectType> Debugger& operator , (const ObjectType& v)
+        {
+            if(!first)
+                std:cerr << separator;
+            std::cerr << v;
+            first = false;
+            return *this;
+        }
+        ~Debugger() {  std:cerr << endl;}
+
+        private:
+        bool first;
+        std::string separator;
+    };
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
  
@@ -137,7 +238,7 @@ string to_lower(string a) { for (int i=0;i<(int)a.size();++i) if (a[i]>='A'  and
  
 void yes() { cout<<"YES\n"; }
 void no() { cout<<"NO\n"; }
- 
+bool isSorted(vi &arr){for(int i=0;i<(int)arr.size()-1;i++) if(arr[i] >= arr[i+1]) return false;return true;}
  
  
  
@@ -218,7 +319,10 @@ void scanlineAlgoritm()
         s+=prefixSum[i];
         a[i]+=s;
     }
-    f1(i,0,n)cout<<a[i]<<" ";
+    f1(i,0,n)
+    {
+        cout<<a[i]<<" ";
+    }
 }
 
 
@@ -339,24 +443,53 @@ bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
 
 }
 
+int findGCD(vi& a,int n)
+{
+  int tp=a[0];
+  if(n==a.size()-1)
+  {
+    return a[n];
+  }
+
+  // f1(i,0,n)
+  // {
+  //   tp=gcd(a[i],tp);
+ 
+  //   if(tp==true)
+  //   {
+  //       return true;
+  //   }
+  // }
+  // return tp;
+  if(tp==0)
+  {
+    return false;
+  }
+
+  int x=a[n];
+  int y=findGCD(a,n+1);
+
+  int totalGCD=__gcd(x,y);
+  return totalGCD;
+}
 
 void solve()
 {
-    ll n;cin>>n;
-    vi a;
-    // f1(i,0,n)
-    // {
-    //     cin>>a[i];
-    // }
-    int mn=INT_MAX;
+    int n;cin>>n;
+    vi a(n);
     f1(i,0,n)
     {
-        ll tp;cin>>tp;
-        a.pb(tp);
-        mn=min(mn,tp);
+        cin>>a[i];
     }
-
-    if(mn==a[0])
+    // sort(all(a));
+    int firstElement=a[0];
+    // if(firstElement==1)
+    // {
+    //     cout<<"Bob"<<nl;
+    //     return;
+    // }
+    sort(all(a));
+    if(firstElement==a[0])
     {
         cout<<"Bob"<<nl;
     }
@@ -369,14 +502,23 @@ void solve()
 int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
-#ifndef ONLINE_JUDGE
-freopen("input.txt","r",stdin); //file input.txt is opened in reading mode i.e "r"
-freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
-#endif
-    ll tc = 1;
+// #ifndef ONLINE_JUDGE
+// freopen("input.txt","r",stdin); //file input.txt is opened in reading mode i.e "r"
+// freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
+// #endif
+    int tc = 1;
     cin >> tc;
-    for (ll t = 1; t <= tc; t++) {
+    for (int t = 1; t <= tc; t++) {
     // //cout << "Case #" << t << ": ";
+    //     if(solve())
+    //     {
+    //         // cout<<"YES"<<nl;
+    //     }
+    //     else
+    //     {
+    //         // cout<<"NO"<<nl;
+    //     }
+    // }
         solve();
     }
     return 0;
