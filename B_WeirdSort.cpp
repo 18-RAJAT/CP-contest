@@ -473,12 +473,76 @@ int findGCD(vi& a,int n)
   return totalGCD;
 }
 
-
-bool solve()
+void solve()
 {
-    
-}
+    int n,m;//cin>>n>>m;
+    int a[101],b[101],mark[101];
 
+    memset(mark,0,sizeof(mark));
+
+    cin>>n>>m;
+    cf(i,1,n)
+    {
+        cin>>a[i];
+    }
+    cf(i,1,m)
+    {
+        cin>>b[i];
+        mark[b[i]]=1;
+    }
+    // cf(i,1,n)
+    // {
+    //     if(mark[i]==0)
+    //     {
+    //         cout<<"NO"<<nl;
+    //         return;
+    //     }
+    // }
+    // debug(n);
+    // debug(m);
+    cf(i,1,n)
+    {
+        // cf(j,1,n)
+        for(int j=1;j+1<=n;j++)
+        {
+            if(mark[j] and a[j]>a[j+1])
+            {
+                swap(a[j],a[j+1]);
+            }
+        }
+    }
+    // cf(i,1,n)
+    // {
+    //     cout<<a[i]<<" ";
+    // }
+    // cout<<nl;
+
+        bool sort=1;
+        // cf(i,1,n)
+        for(int i=1;i+1<=n;i++)
+        sort&=(a[i]<=a[i+1]);
+
+        // f1(i,0,n)
+        // {
+        //     if(a[i]<i+1)
+        //     {
+        //         sort=0;
+        //         break;
+        //     }
+        // }
+
+        if(!sort)
+        {
+            cout<<"NO"<<endl;
+            // return;
+        }
+        else
+        {
+            cout<<"YES"<<endl;
+            // return;
+        // }
+    }
+}
 
 int main() {
     ios_base::sync_with_stdio(0);
@@ -491,16 +555,16 @@ int main() {
     cin >> tc;
     for (int t = 1; t <= tc; t++) {
     // //cout << "Case #" << t << ": ";
-        if(solve())
-        {
-            // cout<<"YES"<<nl;
-        }
-        else
-        {
-            // cout<<"NO"<<nl;
-        }
-    }
-    //     solve();
+    //     if(solve())
+    //     {
+    //         // cout<<"YES"<<nl;
+    //     }
+    //     else
+    //     {
+    //         // cout<<"NO"<<nl;
+    //     }
     // }
+        solve();
+    }
     return 0;
 }
