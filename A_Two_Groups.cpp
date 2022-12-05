@@ -360,7 +360,7 @@ int main() {
     cin.tie(0); cout.tie(0);
 // #ifndef ONLINE_JUDGE
 // freopen("input.txt","r",stdin); //file input.txt is opened in reading mode i.e "r"
-// freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
+// freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode 4i.e "w"
 // #endif
     ll tc = 1;
     cin >> tc;
