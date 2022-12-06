@@ -476,24 +476,67 @@ int findGCD(vi& a,int n)
 void solve()
 {
     ll n;cin>>n;
-    vi a(n);
-
+    // vi a(n);
+    set<ll>a;
     f1(i,0,n)
+    // cf(i,1,n)
     {
-        cin>>a[i];
+        ll x;cin>>x;
+        // cin>>a[i];
+        a.insert(x);
     }
     // sort(all(a));
     // if(a[0]==a[n-1])
     // yes;
     // else no;
     // cout<<a[0]<<" "<<a[n-1]<<nl;
-    if(a[0]==a[n-1] or a[0]==0)
+    if(a.size()==1)
+    {
+        cout<<"YES"<<nl;
+        // return;
+    }
+    else if(a.size()==2)
+    {
+        cout<<"YES"<<nl;
+        // return;
+    }
+    // else
+    // {
+    //     cout<<"no"<<nl;
+    //     // return;
+    // }
+    // if(a[0]==a[n-1] or a[0]==0)
     // {
     //     yes;
     //     return;
     // }
-    cout<<"YES"<<nl;
-    else cout<<"NO"<<nl;
+    else if(a.size()==3)
+    // cout<<"YES"<<nl;
+    // else cout<<"NO"<<nl;
+    {
+        VI nums;
+        for(auto &it:a)
+        // {
+            nums.pb(it);
+            sort(all(nums));
+
+            if(abs(nums[1]-nums[0])==abs(nums[2]-nums[1]))
+            {
+                cout<<"YES"<<nl;
+                // return;
+            }
+            else
+            {
+                cout<<"NO"<<nl;
+            //     return;
+            }
+        // }
+    }
+    else
+    // {
+        cout<<"NO"<<nl;
+    //     return;
+    // }
 }
 
 int main() {
