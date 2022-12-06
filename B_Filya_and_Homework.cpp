@@ -520,7 +520,7 @@ void solve()
             nums.pb(it);
             sort(all(nums));
 
-            if(abs(nums[1]-nums[0])==abs(nums[2]-nums[1]))
+            if(abs(nums[1]+nums[0])==abs(nums[2]+nums[1]))
             {
                 cout<<"YES"<<nl;
                 // return;
