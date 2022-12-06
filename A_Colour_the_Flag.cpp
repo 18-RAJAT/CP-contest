@@ -475,16 +475,49 @@ int findGCD(vi& a,int n)
 
 void solve()
 {
-    string s;cin>>s;
-    int n=s.length();
-    FOR(i,0,n,2)FOR(j,0,n,2)
+    int n, m;
+    cin>>n>>m;
+ 
+    int PR[2];
+    memset(PR,0,sizeof(PR));
+    cf(i,1,n)
     {
-        if(s[i]<=s[j])
+        cf(j,1,m)
         {
-            swap(s[i],s[j]);
+            char x; cin>>x;
+            if(x=='R')
+            {
+                int y = i+j;
+                y%=2;
+                PR[y]=1;
+            }
+            if(x=='W')
+            {
+                int y = i+j+1;
+                y%=2;
+                PR[y]=1;
+            }
         }
     }
-    cout<<s<<nl;
+ 
+    if(PR[0]==1 && PR[1]==1) 
+    { cout<<"NO"<<endl; return; }
+    if(PR[0]==0 && PR[1]==0) PR[0]=1;
+ 
+    int p=0;
+    if(PR[1]==1) p=1;
+ 
+    cout<<"YES"<<nl;
+    cf(i,1,n)
+    {
+        cf(j,1,m)
+        {
+            int y=(i+j)%2;
+            if(y==p) cout<<"R";
+            else cout<<"W";
+        }
+        cout<<nl;
+    }
 }
 
 int main() {
@@ -495,7 +528,7 @@ int main() {
 // freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 // #endif
     int tc = 1;
-    // cin >> tc;
+    cin >> tc;
     for (int t = 1; t <= tc; t++) {
     // //cout << "Case #" << t << ": ";
     //     if(solve())
