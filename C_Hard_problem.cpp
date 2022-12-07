@@ -476,43 +476,42 @@ int findGCD(vi& a,int n)
 void solve()
 {
     int n;
-	cin >> n;
-	int a[n];
+    cin >> n;
+    int a[n];
     f1(i,0,n)cin>>a[i];
-	// string str[n];
+    // string str[n];
     vector<string>str(n);
-	f1(i,0,n)cin>>str[i];
-	vector<vector<int>>dp(n,vector<int>(2,INF));
-	dp[0][0]=0;
-	dp[0][1]=a[0];
-	string rev=str[0];
+    f1(i,0,n)cin>>str[i];
+    vector<vector<int>>dp(n,vector<int>(2,INF));
+    dp[0][0]=0;
+    dp[0][1]=a[0];
+    string rev=str[0];
     reverse(all(rev));
-	f1(i,1,n)
+    f1(i,1,n)
     {
-		if(str[i]>str[i-1])
+        if(str[i]>str[i-1])
         {
-			dp[i][0] = min(dp[i][0],dp[i-1][0]);
-		}
+            dp[i][0] = min(dp[i][0],dp[i-1][0]);
+        }
         // debug(str[i]);
-		if(str[i]>rev)
+        if(str[i]>rev)
         {
-			dp[i][0]=min(dp[i][0],dp[i-1][1]);
-		}
+            dp[i][0]=min(dp[i][0],dp[i-1][1]);
+        }
         // debug(dp[0][0]);
-
         reverse(all(str));
-		if(str[i]>str[i-1]) 
+        if(str[i]>str[i-1]) 
         {
-			dp[i][1]=min(dp[i-1][0]+a[i],dp[i][1]);
-		}
-		else if(str[i]>rev) 
+            dp[i][1]=min(dp[i-1][0]+a[i],dp[i][1]);
+        }
+        else if(str[i]>rev) 
         {
-			dp[i][1]=min(dp[i][1],dp[i-1][1]+a[i]);
+            dp[i][1]=min(dp[i][1],dp[i-1][1]+a[i]);
             // debug(rev);
-		}
+        }
         rev=str[i];
         reverse(all(str));
-	}
+    }
     // for(int i=0;i<101;++i)
     // {
     //     for(int j=0;j<101;++j)
@@ -520,17 +519,17 @@ void solve()
     //         cout<<dp[i][j]<<nl;
     //     }
     // }
-	if(min(dp[n-1][1],dp[n-1][0])==INF) 
+    if(min(dp[n-1][1],dp[n-1][0])==INF) 
     {
         cout<<-1<<nl;
         return;
-	}
+    }
     else
-	// cout << min(dp[n-1][1], dp[n-1][0]);
+    // cout << min(dp[n-1][1], dp[n-1][0]);
     {
         // cout<<1<<nl;
-        cout<<1+min(dp[n-1][1], dp[n-1][0])<<nl;
-        return;
+        cout<<min(dp[n-1][1], dp[n-1][0])<<nl;
+        // return;
     }
 }
 
@@ -543,7 +542,7 @@ int main() {
 // freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 // #endif
     int tc = 1;
-    cin >> tc;
+    // cin >> tc;
     for (int t = 1; t <= tc; t++) {
     // //cout << "Case #" << t << ": ";
     //     if(solve())
