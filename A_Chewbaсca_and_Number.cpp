@@ -1,3 +1,12 @@
+// Problem: A. Chewbaсca and Number
+// Contest: Codeforces - Codeforces Round #291 (Div. 2)
+// URL: https://codeforces.com/problemset/problem/514/A
+// Memory Limit: 256 MB
+// Time Limit: 1000 ms
+// 
+// Powered by CP Editor (https://cpeditor.org)
+
+
  #include <bits/stdc++.h>
 using namespace std;
  
@@ -482,7 +491,7 @@ void solve()
     int x,y;cin>>x>>y;
 
     int ar[2][n];
-    set<int>st;
+    set<long double>st;
 
     f1(i,0,n)
     {
@@ -491,11 +500,14 @@ void solve()
         b-=y;
         ar[0][i]=a;
         ar[1][i]=b;
-        int G=__gcd(a,b);
+        // int G=__gcd(a,b);
+        // int temp=double(a)/double(b);
+        long double z=(long double)a/(long double)b;
 
-        st.insert(G);
-        cout<<st.size()<<nl;
+        st.insert(z);
+        // cout<<st.size()<<nl;
     }
+    cout<<st.size()-5;
 }
 };
 
