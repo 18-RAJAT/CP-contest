@@ -448,56 +448,34 @@ class Solution {
 public:
 void solve()
 {
-    int n;cin>>n;
-    vi arr;
-    cf(i,1,n)
-    {
-        int x;cin>>x;
-        arr.pb(x);
-    }
-    int ans=0;
-    while(1)
-    {
-        
-        if(arr.size()==1)
-        break;
-        //2 steps to be taken
-        vi b;
-        n=arr.size();
-        // FOR(i,0,n,2)
-        for(int i=0;i<n;i+=2)
+    ll n,m,a,b;cin>>n>>m>>a>>b;
+    // if(m==a)
+    // {
+    //     cout<<n+b<<nl;
+    // }
+    // else
+    // {
+    //     cout<<max({n,m,a,b});
+    // }
+    ll cost=0;
+    // while(n>0)
+    // {
+        // if(n<m and a<b)
+        if(a*m<=b)
         {
-            int difference=abs(arr[i]-arr[i+1]);
-
-            if(difference!=1)
-            {
-                cout<<-1<<nl;
-                return;
-            }
-            // debug(difference);
-            if(arr[i]>arr[i+1])
-            // {
-                ans++;
-            // }
-            // int rep=arr[i]>arr[i+1]?arr[i]:arr[i+1];
-            int rep=(arr[i]+arr[i+1]+1)/4;
-            b.pb(rep);
-            
-            // int rep1=arr[i]>arr[i+1]?arr[i+1]:arr[i];
-            // arr.pb(rep1);
-
-            // debug(arr[i],arr[i+1],rep);
-            arr=b;
+            // n-=1;
+            // cost+=a;
+            cost=a*n;
         }
-        // for(auto x:b)
-        // {
-        //     cout<<x<<" ";
-        // }
-        // cout<<endl;
-        
-        // arr=b;
-    }
-    cout<<ans<<endl;
+        else
+        {
+            // n-=m;
+            // cost+=b;
+            // cost=b*(n/m);
+            cost=(n/m)*b+min((n%m)*a,b);
+        }
+    // }
+    cout<<cost<<nl;
 }
 };
 
@@ -509,7 +487,7 @@ int main() {
 // freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 // #endif
     ll tc = 1;
-    cin >> tc;
+    // cin >> tc;
     for (ll t = 1; t <= tc; t++) {
     // //cout << "Case #" << t << ": ";
     //     if(solve())
