@@ -504,14 +504,60 @@ void solve()
     // {
     //     cout<<(colors[0]+colors[1]+colors[2])/2<<nl;
     // }
-    else if(colors[0]==colors[1] and colors[1]==colors[2])
+    // else if(colors[0]==colors[1] and colors[1]==colors[2])
+    // {
+    //     cout<<colors[0]<<nl;
+    //     return;
+    // }
+    int x=ceil(1.0*((2*colors[0])-colors[1]-colors[2])/3);
+    int ans=colors[0]-x;
+    cout<<ans<<nl;
+    vi a(3);
+    f1(i,0,3)
     {
-        cout<<colors[0]<<nl;
-        return;
+        cin>>a[i];
     }
-    ll x=((2*colors[0])-colors[1]-colors[2])/3;
-    ll ans=colors[0];
-    cout<<ans-1<<nl;
+    sort(all(a));
+    int p=a[0];
+    int q=a[1];
+    int r=a[2];
+
+    if((q+r)*2<=p)
+    {
+        cout<<q+r<<nl;
+    }
+    else
+    {
+        // cout<<p+q<<nl;
+        cout<<(p+q+r)/3<<nl;
+    }
+}
+};
+
+
+class sol {
+public:
+void solve()
+{
+    vi a(3);
+    f1(i,0,3)
+    {
+        cin>>a[i];
+    }
+    sort(all(a));
+    int p=a[0];
+    int q=a[1];
+    int r=a[2];
+
+    if((q+r)*2<=p)
+    {
+        cout<<q+r<<nl;
+    }
+    else
+    {
+        // cout<<p+q<<nl;
+        cout<<(p+q+r)/3<<nl;
+    }
 }
 };
 
@@ -536,7 +582,8 @@ int main() {
     //     }
     // }
         // solve();
-        Solution s;
+        // Solution s;
+        sol s;
         s.solve();
     }
     return 0;
