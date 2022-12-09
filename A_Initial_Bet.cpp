@@ -487,24 +487,42 @@ class Solution {
 public:
 void solve()
 {
-    int n;int sum=0;
+    // int n;int sum=0;
 
-    f1(i,0,5)
+    // f1(i,0,5)
+    // {
+    //     cin>>n;
+    //     sum+=n;
+    // }
+    // if(sum==0)
+    // {
+    //     cout<<0<<nl;
+    // }
+    // else if(sum%5==0)
+    // {
+    //     cout<<sum/5<<nl;
+    // }
+    // else
+    // {
+    //     cout<<-1<<nl;
+    // }
+    int a,b,c,d,e;
+    cin>>a>>b>>c>>d>>e;
+
+    if(a+b+c+d+e==0)
     {
-        cin>>n;
-        sum+=n;
-    }
-    if(sum==0)
-    {
-        cout<<0<<nl;
-    }
-    else if(sum%5==0)
-    {
-        cout<<sum/5<<nl;
+        cout<<-1<<nl;
     }
     else
     {
-        cout<<-1<<nl;
+        if((a+b+c+d+e)%5==0)
+        {
+            cout<<(a+b+c+d+e)/5<<nl;
+        }
+        else
+        {
+            cout<<-1<<nl;
+        }
     }
 }
 };
