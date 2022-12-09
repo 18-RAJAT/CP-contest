@@ -456,32 +456,46 @@ void solve()
         arr.pb(x);
     }
     int ans=0;
-    int m=arr.size();
     while(true)
     {
-        // if(m==1)
-        // {
-        //     // break;
-        //     return;
-        // }
+        n=arr.size();
+        if(n==1)
+        {
+            break;
+        }
         //2 steps to be taken
         vi b;
-        FOR(i,0,n,2)
+        // FOR(i,0,n,2)
+        for(int i=0;i<n;i+=2)
         {
-            int difference=abs(arr[i]-arr[i+1]);
+            int difference=abs(arr[i+1]-arr[i]);
 
             if(difference!=1)
             {
                 cout<<-1<<endl;
                 return;
             }
+            debug(difference);
             if(arr[i]>arr[i+1])
-            {
+            // {
                 ans++;
-            }
-            b.pb(max(arr[i],arr[i+1]));
+            // }
+            // int rep=arr[i]>arr[i+1]?arr[i]:arr[i+1];
+            int rep=(arr[i]+arr[i+1]+1)/4;
+            b.pb(rep);
+            
+            // int rep1=arr[i]>arr[i+1]?arr[i+1]:arr[i];
+            // arr.pb(rep1);
+
+            debug(arr[i],arr[i+1],rep);
         }
-        // arr=b;
+        // for(auto x:b)
+        // {
+        //     cout<<x<<" ";
+        // }
+        // cout<<endl;
+        
+        arr=b;
     }
     cout<<ans<<endl;
 }
