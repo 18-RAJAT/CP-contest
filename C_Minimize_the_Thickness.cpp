@@ -334,51 +334,41 @@ bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
 
 void solve()
 {
-    ll n;
-    cin>>n; 
-    ll a[n];
+    int n;cin>>n;
+    int a[n];
+    memset(a,0,sizeof(a));
 
-    int sum=0;
-    f1(i,0,n)
-    {cin>>a[i];sum+=a[i];}
-    vi x=helppp(sum);
-
-    ll ans= n;
-
-    if(x.size()<=2)
+    cf(i,1,n)
     {
-        cout<<n<<nl;
-        return;
+        int x;cin>>x;
+        // a[x]++;
+        a[i]=a[i-1]+x;
     }
-    for(auto it:x)
+    int ans=n;
+    f1(i,1,n)
     {
-        ll rem=sum/it;
-        bool b=false;
+        int x=i;
+        int sum=i;
 
-        ll s=0,mx=0,temp=0;
-
-        f1(i,0,n)
-        {   
-            s+=a[i];
-            temp++;
-
-            if(s==rem)
-            {
-                mx=max(temp,mx);s=0;temp=0;
-            }
-            else if(s>rem)
-            {
-                b=true;
-                break;
-            }
-        }
-        if(!b)
+        if(a[n]%a[i]==0)
         {
-            ans=min(ans,mx);
+            cf(j,i+1,n)
+            {
+                if(a[j]-a[x]==a[i])
+                {
+                    sum=max(sum,abs(x-j));
+                    x=j;
+                }
+            }
+            if(x==n)
+            {
+                ans=min(ans,sum);
+
+                // debug(ans);
+            }
         }
-        // if(ans==4){cout<<ans<<nl;return;}
-        // else cout<<ans-2<<nl;return;
-    }cout<<ans<<nl;
+    }
+    cout<<ans<<nl;
 }  
 
 int main() {
