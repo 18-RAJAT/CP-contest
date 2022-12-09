@@ -512,42 +512,24 @@ void solve()
     int x=ceil(1.0*((2*colors[0])-colors[1]-colors[2])/3);
     int ans=colors[0]-x;
     cout<<ans<<nl;
-    vi a(3);
-    f1(i,0,3)
-    {
-        cin>>a[i];
-    }
-    sort(all(a));
-    int p=a[0];
-    int q=a[1];
-    int r=a[2];
-
-    if((q+r)*2<=p)
-    {
-        cout<<q+r<<nl;
-    }
-    else
-    {
-        // cout<<p+q<<nl;
-        cout<<(p+q+r)/3<<nl;
-    }
 }
 };
 
 
+//another approach wa10
 class sol {
 public:
 void solve()
 {
-    vi a(3);
+    VI a(3);
     f1(i,0,3)
     {
         cin>>a[i];
     }
     sort(all(a));
-    int p=a[0];
-    int q=a[1];
-    int r=a[2];
+    ll p=a[0];
+    ll q=a[1];
+    ll r=a[2];
 
     if((q+r)*2<=p)
     {
