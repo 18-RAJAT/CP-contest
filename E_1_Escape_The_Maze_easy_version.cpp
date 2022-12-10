@@ -448,8 +448,8 @@ class Solution {
 public:
 void solve()
 {
-    int n,k;cin>>n>>k;
-    int visited[n+1];
+    ll n,k;cin>>n>>k;
+    ll visited[n+1];
     memset(visited,0,sizeof(visited));
 
     bool flag;
@@ -458,10 +458,10 @@ void solve()
         int x;cin>>x;
         visited[x]=true;
     }
-    vector<int>used[n+1];
+    vector<ll>used[n+1];
     f1(i,1,n)
     {
-        int x,y;cin>>x>>y;
+        ll x,y;cin>>x>>y;
         // if(visited[x] and visited[y])
         // {
         //     used[x]=true;
