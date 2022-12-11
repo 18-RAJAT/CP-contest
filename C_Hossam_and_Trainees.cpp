@@ -471,8 +471,9 @@ bool solve()
         //     f=false;
         //     break;
         // }
-        f1(j,i+1,n)
-        {
+        // f1(j,i+1,n)
+        // {
+            int j=i+1;
             // if(a[i]>a[j])
             // {
             //     f=false;
@@ -483,7 +484,7 @@ bool solve()
                 f=false;
                 break;
             }
-        }
+        // }
     }
     if(f)
     {

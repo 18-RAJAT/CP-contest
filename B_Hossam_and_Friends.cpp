@@ -477,7 +477,7 @@ bool solve()
     {
         dp[i]=max(dp[i],dp[i-1]);
         // ans+=dp[i];
-        ans+=(i-dp[i]+1);
+        ans+=(i-dp[i])+1;
     }
     cout<<ans<<nl;
 }
