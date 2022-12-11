@@ -20,6 +20,8 @@
         "set": "cpp",
         "algorithm": "cpp",
         "limits": "cpp",
-        "sstream": "cpp"
+        "sstream": "cpp",
+        "ios": "cpp",
+        "tuple": "cpp"
     }
 }
