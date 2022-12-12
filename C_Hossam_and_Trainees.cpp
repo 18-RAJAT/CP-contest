@@ -464,24 +464,42 @@ bool solve()
     ll a[n];
     f1(i,0,n)cin>>a[i];
     bool f=true;
-    f1(i,0,n)
+
+    string str="NO";
+    f1(i,0,n-1)
     {
-        int gcd=__gcd(a[i],a[(i+1)%n]);
-        if(gcd>1)
+        // int gcd=__gcd(a[i],a[(i+1)%n]);
+        f1(j,i+1,i+10001)
         {
-            f=false;
-            break;
+            if(j==n)
+            {
+                break;
+            }
+            int gcd=__gcd(a[i],a[j]);//__gcd(a[i],a[(i+1)%n]);
+
+            if(gcd>1)
+            {
+                // f=false;
+                str="YES";
+                break;
+            }
         }
+        // if(gcd>1)
+        // {
+        //     f=false;
+        //     break;
+        // }
 
     }
-    if(f)
-    {
-        cout<<"NO"<<nl;
-    }
-    else
-    {
-        cout<<"YES"<<nl;
-    }
+    // if(f)
+    // {
+    //     cout<<"NO"<<nl;
+    // }
+    // else
+    // {
+    //     cout<<"YES"<<nl;
+    // }
+    cout<<str<<nl;
 }
 };
 
