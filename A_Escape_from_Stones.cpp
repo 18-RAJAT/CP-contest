@@ -467,7 +467,7 @@ bool solve()
 
     f1(i,0,n)
     {
-        ll val=(start+end)/2;
+        ll val=start+(end-start)/2;
         stones.push_back(make_pair(val,i+1));
         if(s[i]=='l')
         {
