@@ -23,6 +23,8 @@
         "sstream": "cpp",
         "ios": "cpp",
         "tuple": "cpp",
-        "initializer_list": "cpp"
+        "initializer_list": "cpp",
+        "iterator": "cpp",
+        "unordered_map": "cpp"
     }
 }
