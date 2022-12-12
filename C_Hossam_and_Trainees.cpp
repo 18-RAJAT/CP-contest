@@ -466,25 +466,13 @@ bool solve()
     bool f=true;
     f1(i,0,n)
     {
-        // if(a[i]!=i+1)
-        // {
-        //     f=false;
-        //     break;
-        // }
-        // f1(j,i+1,n)
-        // {
-            int j=i+1;
-            // if(a[i]>a[j])
-            // {
-            //     f=false;
-            //     break;
-            // }
-            if(__gcd(a[i],a[j])!=1)
-            {
-                f=false;
-                break;
-            }
-        // }
+        int gcd=__gcd(a[i],a[(i+1)%n]);
+        if(gcd>1)
+        {
+            f=false;
+            break;
+        }
+
     }
     if(f)
     {
