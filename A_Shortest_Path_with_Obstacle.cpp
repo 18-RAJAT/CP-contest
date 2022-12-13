@@ -480,9 +480,8 @@ void solve()
     grid2[4]=min(grid2[1],grid2[2]);
     grid2[5]=max(grid2[1],grid2[2]);
 
-    int ans=0;
 
-    ans=abs((grid1[2]-grid1[1])+(grid2[2]-grid2[1]));
+    int ans=abs(grid1[2]-grid1[1])+abs(grid2[2]-grid2[1]);
 
     if(grid1[1]==grid1[2] and grid1[3]==grid1[1] and grid2[4]<=grid2[3] and grid2[3]<=grid2[5])  
     {
