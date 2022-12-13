@@ -465,16 +465,16 @@ bool isPrime(int n)
 
 class Solution {
 public:
-bool solve()
+void solve()
 {
-    int n,s;cin>>n>>s;
+    ll n,s;cin>>n>>s;
 
     // int x[n];
     // int y[n];
-    int ans=-1;
+    ll ans=-1;
     cf(i,1,n)
     {
-        int x,y;cin>>x>>y;
+        ll x,y;cin>>x>>y;
         // cin>>x[i]>>y[i];
 
         if(x<=s)
@@ -505,18 +505,18 @@ int main() {
     for (ll t = 1; t <= tc; t++) {
     // //cout << "Case #" << t << ": ";
     Solution s;
-        if(s.solve())
-        {
-            // cout<<"Yes"<<nl;
-        }
-        else
-        {
-            // cout<<"No"<<nl;
-        }
-    }
+        // if(s.solve())
+        // {
+        //     // cout<<"Yes"<<nl;
+        // }
+        // else
+        // {
+        //     // cout<<"No"<<nl;
+        // }
+    // }
         // solve();
         // Solution s;
-        // s.solve();
+        s.solve();
     // }
     return 0;
 }
