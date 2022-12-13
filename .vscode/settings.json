@@ -25,6 +25,7 @@
         "tuple": "cpp",
         "initializer_list": "cpp",
         "iterator": "cpp",
-        "unordered_map": "cpp"
+        "unordered_map": "cpp",
+        "type_traits": "cpp"
     }
 }
