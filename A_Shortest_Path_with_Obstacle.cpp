@@ -484,11 +484,11 @@ void solve()
 
     ans=abs((grid1[2]-grid1[1])+(grid2[2]-grid2[1]));
 
-    if(grid1[1]==grid1[2] and grid1[3]==grid1[1] and grid2[4]<grid2[3] and grid2[3]<=grid2[5])  
+    if(grid1[1]==grid1[2] and grid1[3]==grid1[1] and grid2[4]<=grid2[3] and grid2[3]<=grid2[5])  
     {
         ans+=2;
     }
-    if(grid2[1]==grid2[2] and grid2[3]==grid2[1] and grid1[4]<grid1[3] and grid1[3]<=grid1[5])  
+    if(grid2[1]==grid2[2] and grid2[3]==grid2[1] and grid1[4]<=grid1[3] and grid1[3]<=grid1[5])  
     {
         ans+=2;
     }
