@@ -29,8 +29,8 @@ const ll INF = 1e18+20;
 #define SCLF(t) scanf("%lf",&t)
 #define MEM(a, b) memset(a, (b), sizeof(a))
 
-#define FOR(i, j, k, in) for (int i=j ; i<k ; i+=in)
-#define RFOR(i, j, k, in) for (int i=j ; i>=k ; i-=in)
+#define FOR(i, j, k, in) for (ll i=j ; i<k ; i+=in)
+#define RFOR(i, j, k, in) for (ll i=j ; i>=k ; i-=in)
 #define rall(cont) cont.end(), cont.begin()
 #define FOREACH(it, l) for (auto it = l.begin(); it != l.end(); it++)
 #define IN(A, B, C) assert( B <= A && A <= C)
@@ -90,12 +90,12 @@ typedef unsigned long long int  uint64;
 #define si set<int>
 #define sc set<char>
 #define vi vector<int>
+#define revs(x,y,z) for(ll i=x;i<=y;i+=z)
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /* FUNCTIONS */
 
@@ -113,6 +113,9 @@ typedef unsigned long long int  uint64;
 #define eb emplace_back
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -216,7 +219,7 @@ template <typename T> inline T Cone (T radius,T base, T height)
     };
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
- 
+
 /* PRINTS */
 template <class T>
 void print_v(vector<T> &v) { cout << "{"; for (auto x : v) cout << x << ","; cout << "\b}"; }
@@ -438,43 +441,62 @@ bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
       return (x.second.second < y.second.second);
 
 }
-
-int findGCD(vi& a,int n)
+bool isPrime(int n)
 {
-  int tp=a[0];
-  if(n==a.size()-1)
-  {
-    return a[n];
-  }
-
-  // f1(i,0,n)
-  // {
-  //   tp=gcd(a[i],tp);
+    // Corner case
+    if (n <= 1)
+        return false;
+    for (int i = 2; i < n; i++)
+        if (n % i == 0)
+            return false;
  
-  //   if(tp==true)
-  //   {
-  //       return true;
-  //   }
-  // }
-  // return tp;
-  if(tp==0)
-  {
-    return false;
-  }
-
-  int x=a[n];
-  int y=findGCD(a,n+1);
-
-  int totalGCD=__gcd(x,y);
-  return totalGCD;
+    return true;
 }
 
-
-bool solve()
+int ft(char c)
 {
-    
+    return c - 'a';
 }
+char fr(int i)
+{
+    return i+'a';
+}
+class Solution {
+public:
+void solve()
+{
+    ll n;cin>>n;
+    ll a[n+1];
+    cf(i,1,n)
+    {
+        cin>>a[i];
+    }
+    ll sum=a[1];
+    cf(i,1,n)
+    {
+        // sum+=a[i];
+        sum&=a[i];
+    }
+    ll ct=0;
 
+    cf(i,1,n)
+    {
+        if(a[i]==sum)
+        {
+            ct++;
+        }
+    }
+
+    // bool flag=true;
+    ll f=1;
+    cf(i,1,n-2)
+    {
+        f*=i;
+    }
+    ll res=f*ct*(ct-1);
+    cout<<res%MOD<<nl;
+}
+};
 
 int main() {
     ios_base::sync_with_stdio(0);
@@ -487,16 +509,19 @@ int main() {
     cin >> tc;
     for (ll t = 1; t <= tc; t++) {
     // //cout << "Case #" << t << ": ";
-        if(solve())
-        {
-            // cout<<"YES"<<nl;
-        }
-        else
-        {
-            // cout<<"NO"<<nl;
-        }
-    }
-    //     solve();
+    Solution s;
+    //     if(s.solve())
+    //     {
+    //         // cout<<"Yes"<<nl;
+    //     }
+    //     else
+    //     {
+    //         // cout<<"No"<<nl;
+    //     }
     // }
+        // solve();
+        // Solution s;
+        s.solve();
+    }
     return 0;
 }
