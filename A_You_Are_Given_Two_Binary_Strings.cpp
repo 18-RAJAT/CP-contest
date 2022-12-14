@@ -457,102 +457,39 @@ char fr(int i)
     return i+'a';
 }
 
-ll power(ll x,ll y,ll p=MOD) 
-{
-    ll res=1;
-    x=x%p;
-    while(y>0)
-    {
-        if(y&1)res=(res*x)%p;
-        y=y>>1;
-        x=(x*x)%p;
-    }
-    return res;
-}
-
-ll modInverse(ll n,ll p=MOD) 
-{
-    return power(n,p-2,p);
-} 
-
-ll NCR(ll n,ll r,ll p=MOD)
-{
-    if(r>n)return 0;
-    if(r==0)return 1;
-    ll fac[n+1];
-    fac[0]=1;
-    for(ll i=1;i<=n;i++)
-    {
-        fac[i]=fac[i-1]*i;
-        fac[i]%=p;
-    }
-    return (fac[n]*modInverse(fac[r],p)%p*modInverse(fac[n-r],p)%p)%p;
-}
-
-ll fact[1000001];
 class Solution {
 public:
 void solve()
 {
-    ll n;cin>>n;
-    // ll a[n+1];
-    vi a(n+1);
+    string a,b;cin>>a>>b;
+    int ans=0;
 
-    ll sum;
-    cf(i,1,n)
+    reverse(all(b));
+
+    int temp=0;
+    int n=a.length();
+    int m=b.length();
+
+    f1(i,0,m)
     {
-        cin>>a[i];
-        if(i==0)
-        sum=a[0];
-
-        sum&=a[i];
+        if(b[i]=='1')
+        {
+            temp=i;
+            break;
+        }
     }
-    // cf(i,1,n-1)
-    // {
-    //     // sum+=a[i];
-    //     sum&=a[i];
-    // }
-    // ll ct=0;
-    ll mini=*min_element(a.begin(),a.end());
 
+    reverse(all(a));
 
-    int cnt=count(a.begin(),a.end(),mini);
-    // cf(i,0,n-1)
-    // {
-    //     // if(a[i]==sum)
-    //     // {
-    //     //     ct++;
-    //     // }
-    //     a[i]^=sum;
-    //     if(a[i]==0)
-    //     {
-    //         ct++;
-    //     }
-    // }
-
-    if(sum==mini)
+    f1(i,temp,n)
     {
-        // ll ans=ncr(cnt,2)*fact[n-2]%MOD;
-        // cout<<2*ans%MOD<<nl;
-        // return;
-
-    // bool flag=true;
-    // ll f=1;
-
-    cout<<(2*NCR(cnt,2)*fact[n-2])%MOD<<nl;
-    // cf(i,1,n-2)
-    // {
-    //     f*=i;
-    // }
-    // ll ans=ncr(ct,2)*fact[n-2]%MOD;
-    // ll res=f*ct*(ct-1);
-    // cout<<abs(res)<<nl;
-    // cout<<2*ans%MOD<<nl;
+        if(a[i]=='1')
+        {
+            ans=i-temp;
+            break;
+        }
     }
-    else
-    {
-        cout<<0<<nl;
-    }
+    cout<<ans<<nl;
 }
 };
 
