@@ -458,14 +458,30 @@ char fr(int i)
 }
 
 
+set<ll> s;
+
+ll countIn(ll n,ll countFours,ll countSevens)
+{
+    if(countFours+countSevens>10)return 0;
+    if(countFours==countSevens)
+    {
+        s.insert(n);
+    }
+    countIn(n*10+4,countFours+1,countSevens);
+    countIn(n*10+7,countFours,countSevens+1);
+
+    return 0;
+}
+
 class Solution {
 public:
 void solve()
 {
-    string str;cin>>str;
-    string s="474747474747474747";
-    int n=str.size();
-    cout<<s.substr(0,n)<<nl;
+    ll n;
+    countIn(0,0,0);
+    cin>>n;
+
+    cout<<*s.lower_bound(n)<<nl;
 }
 };
 
