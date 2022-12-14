@@ -462,6 +462,41 @@ class Solution {
 public:
 void solve()
 {
+    int n;cin>>n;
+    int a[10];
+    n++;
+    bool f;
+
+    for(;1;n++)
+    {
+        int temp=n;
+
+        memset(a,0,sizeof(a));
+        f=true;
+
+        while(temp)
+        {
+            int res=temp%10;
+            if(a[res])
+            {
+                f=false;
+                break;
+            }
+
+            else
+            {
+                a[res]=true;
+            }
+                temp/=10;
+            // }
+        }
+
+        if(f)
+        {
+            cout<<n<<nl;
+            break;
+        }
+    }
 }
 };
 
