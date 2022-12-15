@@ -101,10 +101,10 @@ typedef unsigned long long int  uint64;
 
 
 
-#define f1(i,s,e) for(int i=s;i<e;i++)
+#define f1(i,s,e) for(ll int i=s;i<e;i++)
 #define ff1(i,s,e) for(long long int i=s;i>=e;--i)
 #define For1(i,n) (long long int i=0;i<n+1;++i)
-#define cf(i,s,e) for(int i=s;i<=e;i++)
+#define cf(i,s,e) for(ll int i=s;i<=e;i++)
 #define FO(i,s,e) for(long long int i=1;i*i<=y;i++)
 #define rf(i,e,s) for(long long int i=e-1;i>=s;i--)
 #define pass(a)  for(long long int i=n-1;i>=1;i-=2)
@@ -461,7 +461,40 @@ class Solution {
 public:
 void solve()
 {
-    
+    ll n,x,y;
+    cin>>n>>x>>y;
+
+    VI a(n);
+
+    f1(i,0,n)
+    {
+        cin>>a[i];
+    }
+
+    f1(i,0,n)
+    {
+        bool flag=true;
+
+        cf(j,i-x,i+y)
+        {
+            if(j<0 or j>=n)
+            {
+                // flag=false;
+                // break;
+                continue;
+            }
+            if(a[j]<a[i])
+            {
+                flag=false;
+                // break;
+            }
+        }
+        if(flag)
+        {
+            cout<<i+1<<nl;
+            return;
+        }
+    }
 }
 };
 
