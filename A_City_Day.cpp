@@ -461,13 +461,7 @@ class Solution {
 public:
 void solve()
 {
-    long double height,length;
-    cin>>height>>length;
-
-    long double surface=((height*height*1.0)+(length*length*1.0))/(2.0*height);//-height;
-
-    // cout<<(long double)surface-height<<nl;
-    cout<<fixed<<" "<<setprecision(15)<<surface-height<<nl;
+    
 }
 };
 
