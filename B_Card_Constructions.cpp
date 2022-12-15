@@ -457,7 +457,6 @@ char fr(int i)
     return i+'a';
 }
 
-
 class Solution {
 public:
 void solve()
