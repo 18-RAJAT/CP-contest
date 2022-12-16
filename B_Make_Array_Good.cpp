@@ -531,10 +531,9 @@ void solve()
     int n;cin>>n;
 
     int count=0;
-    bool flag=false;
+    // bool flag=false;
 
     int arr[n];
-    vi a,b;
     
     f1(i,0,n)
     {
@@ -543,15 +542,14 @@ void solve()
     cout<<n<<nl;
     f1(i,0,n)
     {
-        int count=1;
+        count=1;
 
-
-        while(count<=a[i])
+        while(count<=arr[i])
         {
             count*=2;
         }
 
-        cout<<i+1<<" "<<count-a[i]<<nl;
+        cout<<i+1<<" "<<count-arr[i]<<nl;
     }
 }
 };
