@@ -461,69 +461,97 @@ class Solution {
 public:
 void solve()
 {
+    // int n;cin>>n;
+    // // vi a(n);
+    // vector<pair<int,int>>v(n),a(n);
+    // f1(i,0,n)
+    // {
+    //     cin>>v[i].first;
+    //     v[i].second=i;
+    // }
+    // sort(all(v));
+
+    // int currentPos=v[0].first;
+    // // a[v[0].second].first=0;
+    // int ans=0;
+    // f1(i,0,n)
+    // {
+    //     if(v[i].first>currentPos)
+    //     {
+    //         // currentPos=v[i].first;
+    //         int temp=v[i].first%currentPos;
+
+    //         // if(temp==0)
+    //         // {
+    //         //     ans+=v[i].first/currentPos;
+    //         // }
+    //         // else
+    //         // {
+    //         //     ans+=v[i].first/currentPos+1;
+    //         // }
+    //         temp=abs(temp-currentPos);
+    //         // ans+=temp;
+    //         currentPos=v[i].first+temp;
+
+    //         a[i].first=v[i].second;
+    //         a[i].second=temp;
+
+    //         ans++;
+    //     }
+    //     // a[v[i].second].first=currentPos;
+    //     // currentPos++;
+    //     else if(currentPos>v[i].first)
+    //     {
+    //         // int temp=currentPos%v[i].first;
+    //         int temp=currentPos-v[i].first;
+    //         // if(temp==0)
+    //         a[i].first=v[i].second;
+    //         a[i].second=temp;
+
+    //         ans++;
+    //     }
+    //     // else
+    //     // {
+    //     //     a[i].first=v[i].second;
+    //     //     a[i].second=0;
+    //     // }
+    // }
+    // cout<<ans<<nl;
+
+    // for(auto it:a)
+    // {
+    //     if(it.second)
+    //     {
+    //         cout<<it.first+1<<" "<<it.second<<nl;
+    //     }
+    // }
+
+    //simplest way
+
     int n;cin>>n;
-    // vi a(n);
-    vector<pair<int,int>>v(n),a(n);
+
+    int count=0;
+    bool flag=false;
+
+    int arr[n];
+    vi a,b;
+    
     f1(i,0,n)
     {
-        cin>>v[i].first;
-        v[i].second=i;
+        cin>>arr[i];
     }
-    sort(all(v));
-
-    int currentPos=v[0].first;
-    // a[v[0].second].first=0;
-    int ans=0;
+    cout<<n<<nl;
     f1(i,0,n)
     {
-        if(v[i].first>currentPos)
+        int count=1;
+
+
+        while(count<=a[i])
         {
-            // currentPos=v[i].first;
-            int temp=v[i].first%currentPos;
-
-            // if(temp==0)
-            // {
-            //     ans+=v[i].first/currentPos;
-            // }
-            // else
-            // {
-            //     ans+=v[i].first/currentPos+1;
-            // }
-            temp=abs(temp-currentPos);
-            // ans+=temp;
-            currentPos=v[i].first+temp;
-
-            a[i].first=v[i].second;
-            a[i].second=temp;
-
-            ans++;
+            count*=2;
         }
-        // a[v[i].second].first=currentPos;
-        // currentPos++;
-        else if(currentPos>v[i].first)
-        {
-            // int temp=currentPos%v[i].first;
-            int temp=currentPos-v[i].first;
-            // if(temp==0)
-            a[i].first=v[i].second;
-            a[i].second=temp;
 
-            ans++;
-        }
-        // else
-        // {
-        //     a[i].first=v[i].second;
-        //     a[i].second=0;
-        // }
-    }
-    cout<<ans<<nl;
-
-    for(auto it:a)
-    {
-        if(it.second)
-        {
-            cout<<it.first+1<<" "<<it.second<<nl;
-        }
+        cout<<i+1<<" "<<count-a[i]<<nl;
     }
 }
 };

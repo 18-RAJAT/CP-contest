@@ -483,7 +483,7 @@ void solve()
             int l;cin>>l;
             return;
         }
-    }
+    } 
     cout<<"! "<<mx+1<<" "<<n<<nl;
     int l;cin>>l;
 }
