@@ -465,39 +465,54 @@ void solve()
     cin>>n;
     string s;
     cin>>s;
-    int x=1<<n;
-    for(int i=1;i<x;i++)
+    // int x=1<<n;
+    int ct=0;
+
+    // for(int i=1;i<x;i++)
+    // {
+    //     int y=i;
+    //     int j=0;
+    //     bool flag=true;
+    //     while(y)
+    //     {
+    //         if(y&1)
+    //         {
+    //             if(s[j]=='0')
+    //             {
+    //                 flag=false;
+    //                 break;
+    //             }
+    //         }
+    //         else
+    //         {
+    //             if(s[j]=='1')
+    //             {
+    //                 flag=false;
+    //                 break;
+    //             }
+    //         }
+    //         y=y>>1;
+    //         j++;
+    //     }
+    int m=s.size();
+    f1(i,0,m)
     {
-        int y=i;
-        int j=0;
-        bool flag=true;
-        while(y)
+        if(s[i]=='1')
         {
-            if(y&1)
-            {
-                if(s[j]=='0')
-                {
-                    flag=false;
-                    break;
-                }
-            }
-            else
-            {
-                if(s[j]=='1')
-                {
-                    flag=false;
-                    break;
-                }
-            }
-            y=y>>1;
-            j++;
-        }
-        if(flag)
-        {
-            cout<<i<<" ";
+            ct++;
         }
     }
-    cout<<nl;
+    //     if(flag)
+    //     {
+    //         cout<<i<<" ";
+    //     }
+    // }
+    cf(i,(1<<ct),(1<<n)-(1<<(n-ct))+1)
+    {
+        cout<<i<<" ";
+    }
+    // cout<<nl;
+
 }
 };
 
