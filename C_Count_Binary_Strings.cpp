@@ -457,35 +457,81 @@ char fr(int i)
     return i+'a';
 }
 
+
+
+ll a[101][101];
+ll b[101][2];    
+ll key[101][101]; 
 class Solution {
 public:
 void solve()
 {
-     long long n, em = 0;
-        cin>>n;
-        string s;
-        cin>>s;
-        long long one = 0, zero = 0, ans = 1;
-        if(s[0] == '0')zero++;
-        else one++;
-        for(int i = 1; i < n; i++) {
-            if(s[i] == '0')zero++;
-            else one++;
-            em++;
-            if(s[i] != s[i - 1]) {
-                long long diff;
-                if(s[i] == '1') {
-                    diff = zero - one;
-                    if(diff >= 0)em -= (diff + 1), one += (diff + 1);
-                } else {
-                    diff = one - zero;
-                    if(diff >= 0)em -= (diff + 1), zero += (diff + 1);
-                }
-            }
-            ans += power(2, em, 998244353);
-            ans %= 998244353;
-        }
-        cout<<ans<<"\n";
+    int n;
+	cin>>n;
+	int res=0;
+	ll cnt=0;
+	int flag=1;
+	cf(i,1,n)
+	{
+		b[i][0]=i;
+	}
+	cf(i,1,n)
+	{
+		cf(j,i,n)
+		{
+			cin>>a[i][j];
+			if(j==i and a[i][j]!=1)
+			{
+				flag=0;
+			}
+			if(a[i][j]==1)
+			{
+				for(int k=i;k<=j;k++)
+				{
+					b[k][0]=b[i][0];
+				}
+			}
+		}
+	}
+	cf(i,1,n)
+	{
+		if(b[i][0]==i)
+		{
+			b[i][1]=res;
+			res++;
+		}
+	}
+	cnt=(ll)cnt+pow(2,res);
+	cf(i,1,n)
+	{
+		cf(j,i,n)
+		{
+			if(a[i][j]==2)
+			{
+				if(b[i][0]==b[j][0])
+				{
+					flag=0;
+				}
+				else
+				{
+					if(key[b[i][1]][b[j][1]]==0)
+					{
+						cnt-=pow(2,res-(b[j][1]-b[i][1]+1))*2;
+						key[b[i][1]][b[j][1]]==1;
+					}
+				}
+			}
+		}
+	}
+	if(flag==0)
+	{
+		cout<<"0"<<nl;
+	}
+	else
+	{
+        debug(cnt);
+		cout<<cnt%MOD<<nl;
+	}
 }
 };
 

@@ -9,7 +9,7 @@ using namespace std;
  
 const int MAX_N = 2e5 + 5;
 const int MAX_NN = 2e5 + 8;
-const ll MOD = 1e9 + 7;
+const ll MOD = 998244353 ;
 const ll INF = 1e18+20;
 #define revall(x) x.rbegin(), x.rend()
 #define ALL(x) sort(x.begin(), x.end())
@@ -90,7 +90,6 @@ typedef unsigned long long int  uint64;
 #define si set<int>
 #define sc set<char>
 #define vi vector<int>
-
 #define revs(x,y,z) for(ll i=x;i<=y;i+=z)
 
 
@@ -105,7 +104,7 @@ typedef unsigned long long int  uint64;
 #define f1(i,s,e) for(long long int i=s;i<e;i++)
 #define ff1(i,s,e) for(long long int i=s;i>=e;--i)
 #define For1(i,n) (long long int i=0;i<n+1;++i)
-#define cf(i,s,e) for(int i=s;i<=e;i++)
+#define cf(i,s,e) for(long long int i=s;i<=e;i++)
 #define FO(i,s,e) for(long long int i=1;i*i<=y;i++)
 #define rf(i,e,s) for(long long int i=e-1;i>=s;i--)
 #define pass(a)  for(long long int i=n-1;i>=1;i-=2)
@@ -220,7 +219,7 @@ template <typename T> inline T Cone (T radius,T base, T height)
     };
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
- 
+
 /* PRINTS */
 template <class T>
 void print_v(vector<T> &v) { cout << "{"; for (auto x : v) cout << x << ","; cout << "\b}"; }
@@ -369,12 +368,7 @@ bool binarySearch(ll mid,ll k,ll x)
     return tot<x;
 }
 
-int power(int b, int e)
-{
-    int ret = 1;
-    for(int i=0; i<e; ++i) ret *= b;
-    return ret;
-}
+
 
 vi helper(int n)
 {
@@ -442,24 +436,46 @@ bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
       return (x.second.second < y.second.second);
 
 }
+bool isPrime(int n)
+{
+    // Corner case
+    if (n <= 1)
+        return false;
+    for (int i = 2; i < n; i++)
+        if (n % i == 0)
+            return false;
+ 
+    return true;
+}
 
+int ft(char c)
+{
+    return c - 'a';
+}
+char fr(int i)
+{
+    return i+'a';
+}
 
 class Solution {
 public:
 void solve()
 {
-    int n;cin>>n;
-    int temp=1;
+    int n;
+    cin>>n;
+ 
+    int fac=n;
     for(int i=2;i*i<=n;++i)
     {
         if(n%i==0)
         {
-            // temp=i;
-            temp=n/i;
+            fac=i;
             break;
         }
     }
-    cout<<temp<<" "<<n-temp<<nl;
+    fac=n/fac;
+ 
+    cout<<fac<<" "<<abs(n-fac)<<nl;
 }
 };
 
@@ -474,17 +490,18 @@ int main() {
     cin >> tc;
     for (ll t = 1; t <= tc; t++) {
     // //cout << "Case #" << t << ": ";
-    //     if(solve())
+    Solution s;
+    //     if(s.solve())
     //     {
-    //         // cout<<"YES"<<nl;
+    //         // cout<<"Yes"<<nl;
     //     }
     //     else
     //     {
-    //         // cout<<"NO"<<nl;
+    //         // cout<<"No"<<nl;
     //     }
     // }
         // solve();
-        Solution s;
+        // Solution s;
         s.solve();
     }
     return 0;
