@@ -461,64 +461,7 @@ class Solution {
 public:
 void solve()
 {
-    int n,m;
-    cin>>n>>m;
-    vector<vector<int>>v(n,vector<int>(m));
-    vector<int>sum(n);
-    for(int i=0;i<n;i++)
-    {
-        for(int j=0;j<m;j++)
-        {
-            cin>>v[i][j];
-            sum[i]+=v[i][j];
-        }
-    }
-    int avg=accumulate(sum.begin(),sum.end(),0)/n;
-    if(accumulate(sum.begin(),sum.end(),0)%n!=0)
-    {
-        cout<<-1<<nl;
-        return;
-    }
-    vector<vector<int>>ans;
-    for(int i=0;i<n;i++)
-    {
-        for(int j=i+1;j<n;j++)
-        {
-            if(sum[i]>avg)
-            {
-                for(int k=0;k<m;k++)
-                {
-                    if(v[i][k]==1&&v[j][k]==0)
-                    {
-                        ans.push_back({i+1,j+1,k+1});
-                        sum[i]--;
-                        sum[j]++;
-                        if(sum[i]==avg)
-                        {
-                            break;
-                        }
-                    }
-                }
-            }
-            else if(sum[i]<avg)
-            {
-                for(int k=0;k<m;k++)
-                {
-                    if(v[i][k]==0&&v[j][k]==1)
-                    {
-                        ans.push_back({j+1,i+1,k+1});
-                        sum[i]++;
-                        sum[j]--;
-                        if(sum[i]==avg)
-                        {
-                            break;
-                        }
-                    }
-                }
-            }
-        }
-    }
-    cout<<ans.size()<<nl;
+    
 }
 };
 

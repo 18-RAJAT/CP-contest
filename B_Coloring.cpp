@@ -468,15 +468,26 @@ void solve()
     {
         cin>>a[i];
     }
-    int mxi=*max_element(all(a));
-    if(mxi>(n+k-1)/k)
+    // int mxi=*max_element(all(a));
+    // if(mxi>(n+k-1)/k)
+    // {
+    //     cout<<"NO"<<nl;
+    // }
+    // else
+    // {
+    //     cout<<"YES"<<nl;
+    // }
+    bool f=0;
+    int ans=0;
+    f1(i,0,m)
     {
-        cout<<"NO"<<nl;
+        if(k<a[i])
+        {
+            f=1;
+            break;
+        }
     }
-    else
-    {
-        cout<<"YES"<<nl;
-    }
+    cout<<(!f?"YES":"NO")<<nl;
 }
 };
 
