@@ -1,3 +1,11 @@
+// Problem: B. Coloring
+// Contest: Codeforces - Polynomial Round 2022 (Div. 1 + Div. 2, Rated, Prizes!)
+// URL: https://codeforces.com/problemset/problem/1774/B
+// Memory Limit: 256 MB
+// Time Limit: 1000 ms
+// 
+// Powered by CP Editor (https://cpeditor.org)
+
 #include <bits/stdc++.h>
 using namespace std;
  
@@ -461,33 +469,46 @@ class Solution {
 public:
 void solve()
 {
-    int n,m,k;
-    cin>>n>>m>>k;
-    VI a(m);
-    f1(i,0,m)
-    {
-        cin>>a[i];
-    }
-    // int mxi=*max_element(all(a));
-    // if(mxi>(n+k-1)/k)
-    // {
-    //     cout<<"NO"<<nl;
-    // }
-    // else
-    // {
-    //     cout<<"YES"<<nl;
-    // }
-    bool f=0;
-    int ans=0;
-    f1(i,0,m)
-    {
-        if(k<a[i])
+    ll n,m,k;
+        cin>>n>>m>>k;
+        VI a;
+        f1(i,0,m)
         {
-            f=1;
-            break;
+            ll e;
+            cin>>e;
+            a.pb(e);
         }
-    }
-    cout<<(!f?"YES":"NO")<<nl;
+ 
+        sort(a.begin(),a.end(),greater<ll>());
+ 
+        ll maxtimes=n/k;
+        ll extra=n%k;
+        string ans="YES";
+        for(auto &i:a)
+        {
+            if (i>maxtimes)
+            {
+                if (extra)
+                {
+                    if (i>maxtimes+1)
+                    {
+                        ans="NO";
+                        break;
+                    }
+                    else
+                    {
+                    	--extra;
+                    }
+                }
+ 
+                else 
+                {
+                    ans="NO";
+                    break;
+                }
+            }
+        }
+        cout<<ans<<nl;
 }
 };
 
