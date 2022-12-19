@@ -469,21 +469,32 @@ class Solution {
 public:
 void solve()
 {
-    int n;cin>>n;
-    int a[n];
-    f1(i,0,n)
+    int n,k;
+    cin>>n>>k;
+    map<int,int>mp;
+    vector<int>v(n);
+    for(auto &it:v)
     {
-        a[i]=i+1;
+        cin>>it;
+        // cout<<it.first<<" "<<it.second<<nl;
     }
-    for(int i=n-1;i>=1;i-=2)//i-=2
+    f1(i,0,k)
     {
-        swap(a[i],a[i-1]);
+        mp[v[i]]++;
     }
-    f1(i,0,n)
+    sort(all(v));
+
+    int ans=0;
+    f1(i,0,k)
     {
-        cout<<a[i]<<" ";
+        mp[v[i]]++;
+
+        if(mp[v[i]]==1)
+        {
+            ans++;
+        }
     }
-    cout<<nl;
+    cout<<ans<<nl;
 }
 };
 
