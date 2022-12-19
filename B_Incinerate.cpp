@@ -1,3 +1,11 @@
+// Problem: B. Incinerate
+// Contest: Codeforces - Codeforces Round #840 (Div. 2) and Enigma 2022 - Cybros LNMIIT
+// URL: https://codeforces.com/problemset/problem/1763/B
+// Memory Limit: 256 MB
+// Time Limit: 1000 ms
+// 
+// Powered by CP Editor (https://cpeditor.org)
+
 #include <bits/stdc++.h>
 using namespace std;
  
@@ -461,67 +469,57 @@ class Solution {
 public:
 void solve()
 {
-    ll n,k;cin>>n>>k;
-    vi h(n),p(n);
-    f1(i,0,n)cin>>h[i]>>p[i];
-    bool flag=false;
-    vector<pair<ll,ll>>v;
-    f1(i,0,n)
-    {
-        v.push_back({h[i],p[i]});
-    }
-    sort(all(v));
-    f1(i,0,n)
-    {
-        h[i]=v[i].first;
-        p[i]=v[i].second;
-    }
-    VI temp(n);
-    // temp[0]=p[0];
-    temp[n-1]=p[n-1];
-    for(int i=n-2;i>=0;i--)
-    {
-        // temp[i]=max(temp[i+1],p[i]);
-        temp[i]=min(temp[i+1],p[i]);
-    }
-    ll ans=0;
-    ll ct=0;
-
-    while(k>0)
-    {
-        ans+=k;
-        // if(ct==n)
-        // {
-        //     flag=true;
-        //     break;
-        // }
-        // if(k>=h[ct])
-        // {
-        //     k-=h[ct];
-        //     ans+=temp[ct];
-        //     ct++;
-        // }
-        // else
-        // {
-        //     break;
-        // }
-        ct=lower_bound(all(h),ans)-h.begin();
-
-        if(ct==n)
-        {
-            flag=true;
-            break;
-        }
-        k-=h[ct];
-    }
-    if(flag)
-    {
-        cout<<"YES"<<nl;
-    }
-    else
-    {
-        cout<<"NO"<<nl;
-    }
+    ll n,k;
+       cin>>n>>k;
+       VI h(n);
+       VI p(n);
+       for(auto&it:h)cin>>it;
+       for(auto&it:p)cin>>it;
+       priority_queue<pair<ll,ll>,vector<pair<ll,ll>>,greater<pair<ll,ll>>> pq;
+       
+       ll c=k;
+       // while(k>0 and !pq.empty())
+       // {
+           // auto it=pq.top();
+           // pq.pop();
+           // ll health=it.second;
+           // ll power=it.first;
+            // c+=k;
+            // if(c<=health)
+            // {
+               // k-=power;
+               // pq.push(make_pair(power,health));
+            // }
+       // }
+       // if(pq.empty())
+       // {
+            // cout<<"YES"<<endl;
+       // }
+       // else if(k<=0)
+       // {
+           // cout<<"NO"<<endl;
+       // }
+       f1(i,0,n)pq.push(make_pair(p[i],i));
+       while(!pq.empty())
+       {
+       		pair<int,int>vp=pq.top();
+       		if(h[vp.second]<=c)
+       		{
+       			pq.pop();
+       			continue;
+       		}
+       		k-=vp.first;
+       		c+=k;
+       		if(k<=0)break;
+       }
+       if(pq.empty())
+       {
+       	cout<<"YES"<<nl;
+       }
+       else
+       {
+       	cout<<"NO"<<nl;
+       }
 }
 };
 
