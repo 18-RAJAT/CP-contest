@@ -469,20 +469,25 @@ class Solution {
 public:
 void solve()
 {
-    ll n;cin>>n;
-    VI a(n);
-
-    f1(i,0,n)
+    int n;
+    cin>>n;
+    vector<int> a(n);
+    for(int i=0;i<n;i++)
     {
         cin>>a[i];
     }
-
-    set<ll>s;
-    f1(i,0,n-1)
+    // sort(a.begin(),a.end());
+    ll orr=a[0];
+    ll andd=a[0];
+    // int orr=0;
+    // int andd=0;
+    for(int i=0;i<n;i++)
     {
-        s.insert(a[i]);
+        orr|=a[i];
+        andd&=a[i];
     }
-    cout<<s.size()<<nl;
+    cout<<orr-andd<<nl;
+
 }
 };
 

@@ -1,11 +1,3 @@
-// Problem: B1. K for the Price of One (Easy Version)
-// Contest: Codeforces - Codeforces Round #610 (Div. 2)
-// URL: https://codeforces.com/problemset/problem/1282/B1
-// Memory Limit: 256 MB
-// Time Limit: 2000 ms
-// 
-// Powered by CP Editor (https://cpeditor.org)
-
 #include <bits/stdc++.h>
 using namespace std;
  
@@ -469,20 +461,67 @@ class Solution {
 public:
 void solve()
 {
-    ll n;cin>>n;
-    VI a(n);
-
+    ll n,k;cin>>n>>k;
+    vi h(n),p(n);
+    f1(i,0,n)cin>>h[i]>>p[i];
+    bool flag=false;
+    vector<pair<ll,ll>>v;
     f1(i,0,n)
     {
-        cin>>a[i];
+        v.push_back({h[i],p[i]});
     }
-
-    set<ll>s;
-    f1(i,0,n-1)
+    sort(all(v));
+    f1(i,0,n)
     {
-        s.insert(a[i]);
+        h[i]=v[i].first;
+        p[i]=v[i].second;
     }
-    cout<<s.size()<<nl;
+    VI temp(n);
+    // temp[0]=p[0];
+    temp[n-1]=p[n-1];
+    for(int i=n-2;i>=0;i--)
+    {
+        // temp[i]=max(temp[i+1],p[i]);
+        temp[i]=min(temp[i+1],p[i]);
+    }
+    ll ans=0;
+    ll ct=0;
+
+    while(k>0)
+    {
+        ans+=k;
+        // if(ct==n)
+        // {
+        //     flag=true;
+        //     break;
+        // }
+        // if(k>=h[ct])
+        // {
+        //     k-=h[ct];
+        //     ans+=temp[ct];
+        //     ct++;
+        // }
+        // else
+        // {
+        //     break;
+        // }
+        ct=lower_bound(all(h),ans)-h.begin();
+
+        if(ct==n)
+        {
+            flag=true;
+            break;
+        }
+        k-=h[ct];
+    }
+    if(flag)
+    {
+        cout<<"YES"<<nl;
+    }
+    else
+    {
+        cout<<"NO"<<nl;
+    }
 }
 };
 
