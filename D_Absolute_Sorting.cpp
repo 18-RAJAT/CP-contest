@@ -462,33 +462,37 @@ public:
 void solve()
 {
     int n;cin>>n;
-    vi a(n);
-    f1(i,0,n)cin>>a[i];
-    int low=0;
-    int high=1e9;
-    int ans=0;
+    vector<int>a(n);
 
-    for(int i=0;i+1<n;i++)
+    for(auto &it:a)
     {
-        if(a[i+1]>a[i])
+        cin>>it;
+    }
+    int ans=0;
+    int start=0;
+    int end=1e9;
+    for(int i=0;i+1<n;++i)
+    {
+        if(a[i]<a[i+1])
         {
-            // int diff=a[i]-a[i+1];
-            // int temp=ceil(log2(diff));
-            // ans=max(ans,temp);
-            high=min(high,(a[i]+a[i+1])/2);
+            //min element itr
+            int m=(a[i]+a[i+1])/2;
+            end=min(end,m);
         }
         else if(a[i+1]<a[i])
         {
-            low=max(low,(a[i]+a[i+1]+1)/2);
+            //max element itr
+            int oneStepFurther=(1+a[i]+a[i+1])/2;
+            start=max(start,oneStepFurther);
         }
     }
-    if(low>high)
+    if(start>end)
     {
         cout<<-1<<nl;
     }
     else
     {
-        cout<<low<<nl;
+        cout<<start<<nl;
     }
 }
 };

@@ -461,30 +461,34 @@ class Solution {
 public:
 void solve()
 {
-     int k, n;
-    cin>>k>>n;
-    vi ans(n+1, 0);
-    int x=0;
-    int tp=k;
-    int p=0;
-    for(int i=1; i<=n and tp--; i+=x)
+    int k,n;cin>>k>>n;
+    set<int>st;
+    for(int i=1,j=1;i<=n;i+=j,j++)
     {
-        ans[i]++;
-        p++;
-        x++;
+        st.insert(i);
     }
-    int r=abs(k-p);
-    if(r>0)
+    while(st.size()<k)
     {
-        for(int i=n; i>=1 and r;i--)
+        for(int i=n;i>0;--i)
         {
-            if(ans[i]==0)ans[i]++,r--;
+            if(st.find(i)==st.end())
+            {
+                st.insert(i);
+                break;
+            }
         }
+        debug(st.size());
     }
-
-    cf(i,0,n)
+    while(st.size()>k)
     {
-        if(ans[i]>0)cout<<i<<" ";
+        auto it=st.end();
+        it--;
+        st.erase(it);
+    }
+    for(auto it:st)
+    {
+        cout<<it<<" ";
+        // cout<<nl;
     }
     cout<<nl;
 }

@@ -461,7 +461,7 @@ class Solution {
 public:
 void solve()
 {
-    int a[2][2];
+    vector<vector<int>>a(2,vector<int>(2));
     f1(i,0,2)
     {
         f1(j,0,2)
@@ -477,20 +477,13 @@ void solve()
             flag=false;
             break;
         }
-        int temp=a[0][0];
+        int swp=a[0][0];
         a[0][0]=a[0][1];
         a[0][1]=a[1][1];
         a[1][1]=a[1][0];
-        a[1][0]=temp;
+        a[1][0]=swp;
     }
-    if(!flag)
-    {
-        cout<<"YES"<<nl;
-    }
-    else
-    {
-        cout<<"NO"<<nl;
-    }
+    cout<<(flag?"NO\n":"YES\n");
 }
 };
 
