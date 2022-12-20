@@ -462,24 +462,50 @@ class Solution {
 public:
 void solve()
 {
-    ll k,n,a,b;
-    cin>>k>>n>>a>>b;
-    int f=0;
-    int l=n;
-    int ans=-1;
-    while(f<=l)
+    int candies;
+    cin>>candies;
+
+    int candy;
+    vector<int> candy_count(candies+1);
+    vector<bool> used(candies+1);
+    int ans=0;
+
+    f1(i,0,candies)
     {
-        int mid=(f+l)/2;
-        if(k-mid*a>(n-mid)*b)
+        cin>>candy;
+        candy_count[candy]++;
+    }
+
+    sort(all(candy_count));
+    reverse(all(candy_count));
+
+    int count_control=INT_MAX;
+
+    f1(i,0,candies+1)
+    {
+        count_control=min(count_control,candy_count[i]);
+
+        if(!used[count_control])
         {
-            ans=mid;
-            // l=mid-1;
-            f=mid+1;
+            ans+=count_control;
+            used[count_control]=true;
+            count_control--;
         }
         else
         {
-            // f=mid+1;
-            l=mid-1;
+            f1(j,count_control,0)
+            {
+                if(!used[j])
+                {
+                    count_control=j;
+                    break;
+                }
+            }
+            i--;
+        }
+        if(count_control<=0)
+        {
+            break;
         }
     }
     cout<<ans<<nl;
