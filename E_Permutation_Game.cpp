@@ -1,3 +1,11 @@
+// Problem: E. Permutation Game
+// Contest: Codeforces - Codeforces Round #839 (Div. 3)
+// URL: https://codeforces.com/contest/1772/problem/E
+// Memory Limit: 256 MB
+// Time Limit: 4000 ms
+// 
+// Powered by CP Editor (https://cpeditor.org)
+
 #include <bits/stdc++.h>
 using namespace std;
  
@@ -461,26 +469,48 @@ class Solution {
 public:
 void solve()
 {
-    int n;
-    cin>>n;
-    int a[n];
-    f1(i,0,n)cin>>a[i];
-    bool flag1=true;
-    bool flag2=true;
-    f1(i,0,n-1)
-    {
-        if(a[i]>a[i+1])
-        flag1=false;
-        if(a[i]<a[i+1])
-        flag2=false;
-    }
-    if(flag1)
-    cout<<"First"<<nl;
-    else if(flag2)
-    cout<<"Second"<<nl;
-    else
-    cout<<"Tie"<<nl;
-
+		int n;
+        cin>>n;
+        int left=0,right=0,count=0;
+        int a[n+101];
+        cf(i,1,n) 
+        {
+            cin>>a[i];
+            if(a[i]!=i and a[i]!=n-i+1) 
+            {
+                count++;
+            } 
+            else if(a[i]!=i) 
+            {
+                left++;
+            } 
+            else if(a[i]!=n-i+1) 
+            {
+                right++;
+            }
+        }
+        if(right>=left) 
+        {
+            if(left+count>=right) 
+            {
+                cout<<"First"<<nl;
+            } 
+            else 
+            {
+                cout<<"Tie"<<nl;
+            }
+        } 
+        else 
+        {
+            if(left-right>count) 
+            {
+                cout<<"Second"<<nl;
+            } 
+            else 
+            {
+                cout<<"Tie"<<nl;
+            }
+        }
 }
 };
 
