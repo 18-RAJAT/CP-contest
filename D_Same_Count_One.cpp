@@ -461,7 +461,71 @@ class Solution {
 public:
 void solve()
 {
-    
+    int n,m;
+      cin>>n>>m;
+      VVI a(n,VI(m));
+      VI arr(n,0);
+      int ones=0;
+      for(int i=0;i<n;i++)
+      {
+        for(int j=0;j<m;j++)
+        {
+            cin>>a[i][j];
+            arr[i]+=a[i][j];
+            ones+=a[i][j];
+        }
+      }
+ 
+      if(ones%n !=0){
+        cout<<-1<<"\n";
+        return ;
+      }
+ 
+      int all=(ones/n);
+      vvi ans;
+
+      for(int i=0;i<m;i++)
+      {
+        vi req,extra;
+        for(int j=0;j<n;j++)
+        {
+            
+                if(all>arr[j] and a[j][i]==0){req.pb(j);}
+                if(arr[j]>all and  a[j][i]) extra.pb(j);
+
+
+                // debug(req,extra);
+        }
+ 
+        for(int j=0;j<min(req.size(),extra.size());j++)
+        {
+           arr[req[j]]++;
+           arr[extra[j]]--;
+           ans.pb({i,req[j],extra[j]});
+
+
+           debug(req[j],extra[j],i);
+        }
+      }
+
+    //   for(int i=0;i<n;++i)
+    //   {
+    //     for(int j=0;j<m;++j)
+    //     {
+    //         if(arr[i]==all) break;
+    //         if(a[i][j]==0) continue;
+    //         for(int k=j+1;k<m;++k)
+    //         {
+    //             if(arr[i]==all) break;
+    //             if(a[i][k]==1) continue;
+    //             arr[i]++;
+    //             arr[i]--;
+    //             ans.pb({k,i,j});
+    //         }
+    //     }
+    //   }
+      cout<<ans.size()<<nl;
+      for(auto &v:ans) cout<<v[0]+1<<" "<<v[1]+1<<" "<<v[2]+1<<nl;
 }
 };
 

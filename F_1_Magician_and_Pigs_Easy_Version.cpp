@@ -1,3 +1,13 @@
+// Problem: F1. Magician and Pigs (Easy Version)
+// Contest: Codeforces - Polynomial Round 2022 (Div. 1 + Div. 2, Rated, Prizes!)
+// URL: https://codeforces.com/problemset/problem/1774/F1
+// Memory Limit: 256 MB
+// Time Limit: 2000 ms
+// 
+// Powered by CP Editor (https://cpeditor.org)
+
+
+
 #include <bits/stdc++.h>
 using namespace std;
  
@@ -98,8 +108,7 @@ typedef unsigned long long int  uint64;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /* FUNCTIONS */
-#define MINI(a)    ( min_element((a).begin(), (a).end()) - (a).begin())
-#define MAXI(a)    ( max_element((a).begin(), (a).end()) - (a).begin())
+
 
 
 #define f1(i,s,e) for(long long int i=s;i<e;i++)
@@ -461,47 +470,9 @@ char fr(int i)
 class Solution {
 public:
 void solve()
+
 {
-    // vector<vector<int>>a(2,vector<int>(2));
-    // f1(i,0,2)
-    // {
-    //     f1(j,0,2)
-    //     {
-    //         cin>>a[i][j];
-    //     }
-    // }
-    // bool flag=true;
-    // f1(i,0,4)
-    // {
-    //     if(a[0][0]<a[1][0] and a[0][0]<a[0][1] and a[0][0]<a[0][1] and a[1][1]>a[0][1] and a[1][0]<a[1][1])
-    //     {
-    //         flag=false;
-    //         break;
-    //     }
-    //     int swp=a[0][0];
-    //     a[0][0]=a[0][1];
-    //     a[0][1]=a[1][1];
-    //     a[1][1]=a[1][0];
-    //     a[1][0]=swp;
-    // }
-    // cout<<(flag?"NO\n":"YES\n");
-
-
-    vi a(4);
-    cin>>a[0]>>a[1]>>a[3]>>a[2];
-
-    int mn=MINI(a);
-    int mx=MAXI(a);
-
-    if(abs(mn-mx)!=2)
-    {
-        cout<<"NO"<<nl;
-        // return;
-    }
-    else
-    {
-        cout<<"YES"<<nl;
-    }
+    
 }
 };
 
@@ -513,7 +484,7 @@ int main() {
 // freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 // #endif
     ll tc = 1;
-    cin >> tc;
+    // cin >> tc;
     for (ll t = 1; t <= tc; t++) {
     // //cout << "Case #" << t << ": ";
     Solution s;
