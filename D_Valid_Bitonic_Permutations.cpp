@@ -466,7 +466,7 @@ char fr(int i)
     return i+'a';
 }
 
-int dp[10001][10001];
+int dp[MAX_N][MAX_N];
 int n,i,j,x,y;
 
 bool chk(int pos,int k)
