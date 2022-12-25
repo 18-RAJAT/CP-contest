@@ -486,28 +486,32 @@ class Solution {
 public:
 void solve()
 {
-    memset(dp,0,sizeof(dp));
-    cin>>n>>i>>j>>x>>y;
-
-    cf(i,2,n-1)
-	    if(chk(i,n)) dp[i][i]=1;
- 
-		for(int i=n;i>=1;i--)
-		{
-			cf(j,i,n)
-			{
-				int p=n-(j-i+1);
-				if(chk(i-1,p))
-                {
-                    (dp[i-1][j]+=dp[i][j])%MOD;
-                }
-				if(chk(j+1,p))
-                {
-                    (dp[i][j+1]+=dp[i][j])%MOD;
-                }
-			}
-		}
-		cout<<dp[1][n]<<endl;
+    int x,y,n;
+    cin>>x>>y>>n;
+    if(n>y)
+    {
+        cout<<x<<"/"<<y;
+    }
+    else
+    {
+        float x1=x;
+        float x2=y;
+        float lst=n-1;
+        int minimum=0;
+        float j=0;
+        float ans=abs((x1/x2)-(j/lst));
+        minimum=j;
+        f1(i,1,n)
+        {
+            j++;
+            if(abs((x1/x2)-(j/lst))<=ans)
+            {
+                ans=abs((x1/x2)-(j/lst));
+                minimum=j;
+            }
+        }
+        cout<<minimum<<"/"<<lst;
+    }
 }
 };
 
@@ -519,7 +523,7 @@ int main() {
 // freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 // #endif
     ll tc = 1;
-    cin >> tc;
+    // cin >> tc;
     for (ll t = 1; t <= tc; t++) {
     // //cout << "Case #" << t << ": ";
     Solution s;
