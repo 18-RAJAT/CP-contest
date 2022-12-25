@@ -1,11 +1,3 @@
-// Problem: D. Valid Bitonic Permutations
-// Contest: Codeforces - Codeforces Round #840 (Div. 2) and Enigma 2022 - Cybros LNMIIT
-// URL: https://codeforces.com/contest/1763/problem/D
-// Memory Limit: 256 MB
-// Time Limit: 1000 ms
-// 
-// Powered by CP Editor (https://cpeditor.org)
-
 #include <bits/stdc++.h>
 using namespace std;
  
@@ -501,7 +493,8 @@ void solve()
         float j=0;
         float ans=abs((x1/x2)-(j/lst));
         minimum=j;
-        f1(i,1,n)
+        // f1(i,1,n)
+        for(int i=1;i<n;i++)
         {
             j++;
             if(abs((x1/x2)-(j/lst))<=ans)
