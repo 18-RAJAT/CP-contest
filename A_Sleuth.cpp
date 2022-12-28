@@ -461,52 +461,6 @@ class Solution {
 public:
 void solve()
 {
-    ll n;
-    cin>>n;
-    // VI a(n);
-    // f1(i,0,n)
-    // {
-    //     cin>>a[i];
-    // }
-    // ll ans=0;
-
-    // f1(i,0,n)
-    // {
-    //     ll x=0;//xorSum of subarray
-    //     f1(j,i,n)
-    //     {
-    //         x^=a[j];
-    //         if(sqrt(x)!=(ll)(sqrt(x)))
-    //         {
-    //             ans++;
-    //         }
-    //     }
-    // }
-    // cout<<(ll)ans<<nl;
-    ll ct=0;
-    vi a(n);
-    for(auto&it:a)
-    {
-        cin>>it;
-    }
-    for(ll i=0;i*i<=2*n;++i)
-    {
-        map<ll,ll>mp;
-        mp[0]=1;
-        ll temp=i*i;
-        ll Xor=0;
-
-        f1(j,0,n)
-        {
-            Xor^=a[j];
-            ll k=temp^Xor;
-
-            ct+=mp[k];
-            mp[Xor]++;
-        }
-    }
-    ll x=n*(n+1)/2;
-    cout<<abs(x-ct)<<nl;
 }
 };
 
