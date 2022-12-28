@@ -461,6 +461,26 @@ class Solution {
 public:
 void solve()
 {
+    char s[1001];
+    gets(s);
+    int n=strlen(s);
+
+    rf(i,n,0)
+    {
+        if((s[i]>='a' and s[i]<='z') or (s[i]>='A' and s[i]<='Z'))
+        {
+            if(s[i]=='a' or s[i]=='e' or s[i]=='i' or s[i]=='o' or s[i]=='u' or s[i]=='y' or s[i]=='A' or s[i]=='E' or s[i]=='I' or s[i]=='O' or s[i]=='U' or s[i]=='Y')
+            {
+                cout<<"YES"<<nl;
+                return;
+            }
+            else
+            {
+                cout<<"NO"<<nl;
+                return;
+            }
+        }
+    }
 }
 };
 
@@ -472,7 +492,7 @@ int main() {
 // freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 // #endif
     ll tc = 1;
-    cin >> tc;
+    // cin >> tc;
     for (ll t = 1; t <= tc; t++) {
     // //cout << "Case #" << t << ": ";
     Solution s;
