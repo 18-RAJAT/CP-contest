@@ -463,26 +463,50 @@ void solve()
 {
     ll n;
     cin>>n;
-    VI a(n);
-    f1(i,0,n)
-    {
-        cin>>a[i];
-    }
-    ll ans=0;
+    // VI a(n);
+    // f1(i,0,n)
+    // {
+    //     cin>>a[i];
+    // }
+    // ll ans=0;
 
-    f1(i,0,n)
+    // f1(i,0,n)
+    // {
+    //     ll x=0;//xorSum of subarray
+    //     f1(j,i,n)
+    //     {
+    //         x^=a[j];
+    //         if(sqrt(x)!=(ll)(sqrt(x)))
+    //         {
+    //             ans++;
+    //         }
+    //     }
+    // }
+    // cout<<(ll)ans<<nl;
+    int ct=0;
+    vi a(n);
+    for(auto&it:a)
     {
-        ll x=0;//xorSum of subarray
-        f1(j,i,n)
+        cin>>it;
+    }
+    for(int i=0;i*i<=2*n;++i)
+    {
+        map<int,int>mp;
+        mp[0]=1;
+        int temp=i*i;
+        int Xor=0;
+
+        f1(j,0,n)
         {
-            x^=a[j];
-            if(sqrt(x)!=(ll)(sqrt(x)))
-            {
-                ans++;
-            }
+            Xor^=a[j];
+            int k=temp^Xor;
+
+            ct+=mp[k];
+            mp[Xor]++;
         }
     }
-    cout<<(ll)ans<<nl;
+    int x=n*(n+1)/2;
+    cout<<abs(x-ct)<<nl;
 }
 };
 
