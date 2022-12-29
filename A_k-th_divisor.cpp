@@ -465,7 +465,7 @@ void solve()
     VI a;
 
     // cf(i,1,pow(2,n))
-    for(int i=1;i*i<=n;++i)
+    for(ll i=1;i*i<=n;++i)
     {
         if(n%i==0)
         // a.push_back(i);
