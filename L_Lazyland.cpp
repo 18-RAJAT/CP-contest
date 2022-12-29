@@ -461,7 +461,41 @@ class Solution {
 public:
 void solve()
 {
-    
+    int n,k;cin>>n>>k;
+    vi a(n);
+    f1(i,0,n)cin>>a[i];
+
+    vi b(n);
+    f1(i,0,n)cin>>b[i];
+
+    // sort(a.begin(),a.end());
+    map<int,vector<int>>mp;
+    vi temp;
+    f1(i,0,n)
+    {
+        mp[a[i]].pb(b[i]);
+    }
+    int m=mp.size();
+    int need=k-m;
+    for(auto &it:mp)
+    {
+        sort(all(it.second));
+        // reverse(all(it.second));
+        int s=it.second.size();
+        if(s>1)
+        {
+            temp.insert(temp.end(),it.second.begin(),it.second.end()-1);
+            // debug(temp);
+        }
+    }
+    sort(all(temp));
+    // reverse(all(temp));
+    ll ans=0;
+    f1(i,0,need)
+    {
+        ans+=temp[i];
+    }
+    cout<<ans<<nl;
 }
 };
 
