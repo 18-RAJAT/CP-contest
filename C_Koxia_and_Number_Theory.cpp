@@ -101,10 +101,10 @@ typedef unsigned long long int  uint64;
 
 
 
-#define f1(i,s,e) for(long long int i=s;i<e;i++)
+#define f1(i,s,e) for(int i=s;i<e;i++)
 #define ff1(i,s,e) for(long long int i=s;i>=e;--i)
 #define For1(i,n) (long long int i=0;i<n+1;++i)
-#define cf(i,s,e) for(long long int i=s;i<=e;i++)
+#define cf(i,s,e) for(int i=s;i<=e;i++)
 #define FO(i,s,e) for(long long int i=1;i*i<=y;i++)
 #define rf(i,e,s) for(long long int i=e-1;i>=s;i--)
 #define pass(a)  for(long long int i=n-1;i>=1;i-=2)
@@ -486,10 +486,14 @@ class Solution {
 public:
 void solve()
 {
-    ll n;cin>>n;
-    ll a[n];
+    int n;cin>>n;
+    int a[n];
     // ll even=0,odd=0;
     // map<ll,ll>mp;
+    int ct[n+1][n+1];
+    memset(ct,0,sizeof(ct));
+
+    set<int>st;
     f1(i,0,n)
     {
         cin>>a[i];
@@ -502,6 +506,11 @@ void solve()
         //     odd++;
         // }
         // mp[a[i]]++;
+        cf(j,2,n)
+        {
+            ct[j][a[i]%j]++;
+        }
+        st.insert(a[i]);
     }
     // sort(all(a));
     // for(auto it:mp)
@@ -512,16 +521,17 @@ void solve()
     //         return;
     //     }
     // }
-    sort(a,a+n);
-    //check
-    f1(i,1,n)
-    {
-        if(a[i]==a[i-1])
-        {
-            cout<<"NO"<<nl;
-            return;
-        }
-    }
+    // sort(a,a+n);
+    // //check
+    // f1(i,1,n)
+    // {
+    //     if(a[i]==a[i-1])
+    //     {
+    //         cout<<"NO"<<nl;
+    //         return;
+    //     }
+    // }
+
     // if(even>1 and odd>1)
     // {
     //     cout<<"NO"<<nl;
@@ -532,24 +542,44 @@ void solve()
     //     cout<<"YES"<<nl;
     //     // return;
     // }
-    
-    bool f;
-    cf(i,2,n)
+
+    // bool f;
+    // cf(i,2,n)
+    // {
+    //     // f=gcd(a[i],a[i-1]);
+    //     f=takes(n,i,a);
+    //     if(!f)
+    //     {
+    //         cout<<"NO"<<nl;
+    //         // return;
+    //     }
+    //     // else
+    //     // {
+    //     //     cout<<"YES"<<nl;
+    //     //     return;
+    //     // }
+    // }
+    // cout<<"YES"<<nl;
+    if(st.size()!=n)
     {
-        // f=gcd(a[i],a[i-1]);
-        f=takes(n,i,a);
-        if(!f)
+        cout<<"NO"<<nl;
+        return;
+    }
+    // else
+    // {
+    //     cout<<"YES"<<nl;
+    //     return;
+    // }
+    cf(x,2,n)
+    {
+        if(*min_element(ct[x],ct[x]+x+x)>1)
         {
             cout<<"NO"<<nl;
-            // return;
+            return;
         }
-        // else
-        // {
-        //     cout<<"YES"<<nl;
-        //     return;
-        // }
     }
     cout<<"YES"<<nl;
+    return;
 }
 };
 
