@@ -483,6 +483,7 @@ void solve()
     {
         cout<<a[k-1]<<nl;
     }
+    
     else
     {
         cout<<-1<<nl;
