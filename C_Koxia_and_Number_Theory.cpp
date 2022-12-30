@@ -532,6 +532,7 @@ void solve()
     //     cout<<"YES"<<nl;
     //     // return;
     // }
+    
     bool f;
     cf(i,2,n)
     {
