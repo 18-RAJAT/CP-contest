@@ -468,34 +468,62 @@ class Solution {
 public:
 void solve()
 {
-    ll n;
-    cin>>n;
-    ll a[n],b[n];
-    map<ll,ll>mp;
-    for(ll i=0;i<n;i++)
+    int n;cin>>n;
+    int a[1001]={};
+    int has[1001]={};
+    // memset(a,0,sizeof(a));
+    // memset(has,0,sizeof(has));
+
+    int ans=1;
+    int tSum=0;
+
+    int count[1001]={};
+    // memset(count,1,sizeof(count));
+    int flag=1;
+    f1(i,0,n)
     {
-        
         cin>>a[i];
-        mp[a[i]]++;
     }
-    for(ll i=0;i<n;i++)
+    f1(i,0,n)
     {
-        cin>>b[i];
-        mp[b[i]]++;
+        cin>>has[i];
+        if(a[i]==has[i])
+        {
+            tSum++;
+        }
+        count[a[i]]++;
+        count[has[i]]++;
+
+        // if(count[a[i]]>n or count[has[i]]>n)
+        // {
+        //     flag=0;
+        // }
+        if(count[a[i]]>2 or count[has[i]]>2)
+        {
+            // flag=1;
+            flag--;
+        }
     }
-    ll ans=1;
-    for(auto x:mp)
+    
+    if(flag!=1)
     {
-        if(x.second==1)
-        {
-            ans=0;
-            break;
-        }
-        else if(x.second==2)
-        {
-            ans=(ans*2)%998244353;
-        }
+        cout<<"0"<<nl;
+        return;
     }
+    // if(tSum==n)
+    // {
+    //     cout<<"1"<<nl;
+    //     return;
+    // }
+    f1(i,0,tSum)
+    {
+        ans*=(n-i);
+        ans%=998244353;
+    }
+    if(tSum!=n)
+    // ans*=2;
+    ans<<=1;
+    ans%=998244353;
     cout<<ans<<nl;
 }
 };
