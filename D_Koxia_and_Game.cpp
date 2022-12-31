@@ -505,6 +505,12 @@ void solve()
         }
     }
     
+    // f1(i,0,n)
+    // {
+    //     debug(count[i]);
+    //     // debug();
+    // }
+
     if(flag!=1)
     {
         cout<<"0"<<nl;
@@ -521,10 +527,10 @@ void solve()
         ans%=998244353;
     }
     if(tSum!=n)
-    // ans*=2;
-    ans<<=1;
+    ans*=2;
+    // ans<<=1; //bit if 3 then 1000 so 10000
     ans%=998244353;
-    cout<<ans<<nl;
+    cout<<ans%998244353<<nl;
 }
 };
 
