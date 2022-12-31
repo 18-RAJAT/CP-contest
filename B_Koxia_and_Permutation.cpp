@@ -461,14 +461,42 @@ class Solution {
 public:
 void solve()
 {
+    // ll n,k;cin>>n>>k;
+    // for(int i=1;i*2<=n;++i)
+    // {
+    //     cout<<n-i+1<<" "<<i<<" ";
+    // }
+    // if(n%2==1)
+    // {
+    //     cout<<n/2+1;
+    // }
+    // cout<<nl;
+
     ll n,k;cin>>n>>k;
-    for(int i=1;i*2<=n;++i)
+    deque<ll>que(n);
+
+    vi res;
+    iota(all(que),1);
+    reverse(all(que));
+
+    cf(i,1,n)
     {
-        cout<<n-i+1<<" "<<i<<" ";
+        if(i%2)
+        {
+            res.pb(que.front());
+            que.pop_front();
+
+        }
+        else
+        {
+            res.pb(que.back());
+            que.pop_back();
+        }
     }
-    if(n%2==1)
+    int x=res.size();
+    f1(i,0,x)
     {
-        cout<<n/2+1;
+        cout<<res[i]<<" ";
     }
     cout<<nl;
 }
