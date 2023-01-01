@@ -461,44 +461,22 @@ class Solution {
 public:
 void solve()
 {
-    // ll n,k;cin>>n>>k;
-    // for(int i=1;i*2<=n;++i)
-    // {
-    //     cout<<n-i+1<<" "<<i<<" ";
-    // }
-    // if(n%2==1)
-    // {
-    //     cout<<n/2+1;
-    // }
-    // cout<<nl;
-
     ll n,k;cin>>n>>k;
-    deque<ll>que(n);
-
-    vi res;
-    iota(all(que),1);
-    reverse(all(que));
-
-    cf(i,1,n)
+    VI a(n);
+    f1(i,0,n)cin>>a[i];
+    ll ans=INT_MIN;
+    ll maxi=max(0,n-201);
+    f1(i,maxi,n)
     {
-        if(i%2)
+        f1(j,i+1,n)
         {
-            res.pb(que.front());
-            que.pop_front();
-
-        }
-        else
-        {
-            res.pb(que.back());
-            que.pop_back();
+            // ans=max(ans,(i+1)*(j+1)-k*(a[i]|a[j]));
+            ll x=(i+1)*(j+1);
+            x-=k*(a[i]|a[j]);
+            ans=max(ans,(ll)x);
         }
     }
-    int x=res.size();
-    f1(i,0,x)
-    {
-        cout<<res[i]<<" ";
-    }
-    cout<<nl;
+    cout<<ans<<nl;
 }
 };
 
@@ -529,9 +507,3 @@ int main() {
     }
     return 0;
 }
-class Solution {
-public:
-    int distinctPrimeFactors(vector<int>& nums) {
-           
-    }
-};
