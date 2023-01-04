@@ -466,45 +466,91 @@ public:
 void solve()
 {
     cin>>n>>m;
-    ll ans=0,sum=0;
+    // ll ans=0,sum=0;
 
-    cf(i,1,n)
+    // cf(i,1,n)
+    // {
+    //     cin>>a[i];
+    // }
+    // for(int i=m;i>1;--i)
+    // {
+    //     sum+=a[i];
+    //     q.push(a[i]);
+    //     while(sum>0)
+    //     {
+    //         sum-=2*q.top();
+    //         // q.pop();
+    //         ans++;
+    //         q.pop();
+    //     }
+    // }
+    // while(q.size()>0)
+    // {
+    //     // ans++;
+    //     q.pop();
+    // }
+    // sum=0;
+    // cf(i,m+1,n)
+    // {
+    //     sum+=a[i];
+    //     q.push(-a[i]);
+    //     while(sum<0)
+    //     {
+    //         sum+=2*q.top();
+    //         // q.pop();
+    //         ans++;
+    //         q.pop();
+    //     }
+    // }
+    // while(q.size()>0)
+    // {
+    //     q.pop();
+    // }
+    // cout<<ans<<nl;
+
+    //another approach
+    m--;
+    vi a(n),prefix(n,0);
+
+    f1(i,0,n)
     {
         cin>>a[i];
     }
-    for(int i=m;i>1;--i)
+    prefix[0]=a[0];
+    f1(i,1,n)
     {
-        sum+=a[i];
-        q.push(a[i]);
-        while(sum>0)
+        prefix[i]=prefix[i-1]+a[i];
+    }
+    ll ans=0;
+    ll current=prefix[m];
+    ll current1=prefix[m];
+
+    priority_queue<ll>maxHeap;
+    priority_queue<ll,vector<ll>,greater<ll>>minHeap;
+
+    for(ll i=m;i>=0;--i)
+    {
+        while(prefix[i]<current)
         {
-            sum-=2*q.top();
-            // q.pop();
+            ll top=maxHeap.top();
+            maxHeap.pop();
+            current-=2*top;
             ans++;
-            q.pop();
         }
+        maxHeap.push(prefix[i]);
+        maxHeap.push(a[i]);
     }
-    while(q.size()>0)
+    current=current1;
+    f1(i,m+1,n)
     {
-        // ans++;
-        q.pop();
-    }
-    sum=0;
-    cf(i,m+1,n)
-    {
-        sum+=a[i];
-        q.push(-a[i]);
-        while(sum<0)
+        minHeap.push(a[i]);
+        while(prefix[i]<current)
         {
-            sum+=2*q.top();
-            // q.pop();
+            ll top=minHeap.top();
+            minHeap.pop();
+            current+=2*top;
             ans++;
-            q.pop();
         }
-    }
-    while(q.size()>0)
-    {
-        q.pop();
     }
     cout<<ans<<nl;
 }

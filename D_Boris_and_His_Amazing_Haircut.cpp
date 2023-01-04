@@ -511,7 +511,7 @@ void solve()
             j++;
         }
     }
-    cout<<"YES"<<nl;
+    cout<<"YES"<<nl; 
 }
 };
 
