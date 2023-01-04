@@ -510,7 +510,7 @@ void solve()
 
     //another approach
     m--;
-    vi a(n),prefix(n,0);
+    VI a(n),prefix(n,0);
 
     f1(i,0,n)
     {
@@ -537,7 +537,7 @@ void solve()
             current-=2*top;
             ans++;
         }
-        maxHeap.push(prefix[i]);
+        // maxHeap.push(prefix[i]);
         maxHeap.push(a[i]);
     }
     current=current1;
