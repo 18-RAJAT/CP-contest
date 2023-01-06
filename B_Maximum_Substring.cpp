@@ -471,42 +471,7 @@ public:
 void solve()
 {
     int n;cin>>n;
-    string a,b;cin>>a>>b;
-
-    VPII ans;
-    ll isEqual=(a[0]==b[0]);
-
-    f1(i,0,n)
-    {
-        if((a[i]==b[i])!=isEqual)
-        {
-            cout<<"NO"<<nl;
-        }
-    }
-    f1(i,0,n)
-    {
-        if(a[i]=='1')
-        {
-            ans.pb({i+1,i+1});
-            isEqual^=1;
-        }
-    }
-    if(!isEqual)
-    {
-        // cout<<"NO"<<nl;
-        // return;
-        ans.pb({1,1});
-        ans.pb({2,n});
-        ans.pb({1,n});
-    }
-    cout<<"YES"<<nl;
-    cout<<ans.size()<<nl;
-
-    for(auto &it:ans)
-    {
-        cout<<it.ff<<" "<<it.ss<<nl;
-    }
-    cout<<"YES"<<nl;
+    
 }
 };
 
