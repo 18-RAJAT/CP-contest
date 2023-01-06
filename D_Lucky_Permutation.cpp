@@ -457,32 +457,59 @@ char fr(int i)
     return i+'a';
 }
 
+ll fact(int n)
+{
+    ll ans=1;
+    for(ll i=1;i<=n;i++)
+    {
+        ans*=i;
+    }
+    return ans;
+}
 class Solution {
 public:
 void solve()
 {
-    ll n,k;cin>>n>>k;
-    ll a[n];
+    ll n;cin>>n;
+    ll a[n+1];
+    memset(a,0,sizeof(a));
+
     cf(i,1,n)
     {
         cin>>a[i];
     }
-    int currentPos=1;
-    int count=0;
+    vi visited(n+1,0);
+    ll cnt=0,ans=0;
+
+    function<void(ll)>dfs=[&](ll u)
+    {
+        cnt+=1;
+        visited[u]=1;
+
+        if(visited[a[u]]==0)
+        {
+            dfs(a[u]);
+        }
+    };
 
     cf(i,1,n)
-    {
-        if(a[i]==currentPos)
+        if(visited[i]==0)
         {
-            currentPos++;
+            cnt=0;
+            dfs(i);
+            ans+=cnt-1;
         }
-        else
-        {
-            count++;
-        }
-    }
-    int op=(count+k-1)/k;
-    cout<<op<<nl;
+
+        bool flag=false;
+
+        cf(i,1,n)
+        if(a[i]==i+1)
+        ans-=1,flag=true;
+
+        if(flag==false)
+        ans+=1;
+
+        cout<<ans<<nl;
 }
 };
 
