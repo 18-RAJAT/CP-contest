@@ -468,20 +468,19 @@ ll fact(int n)
 }
 class Solution {
 public:
-void solve()
+bool solve()
 {
     int n;cin>>n;
     string a,b;cin>>a>>b;
 
-    VPII ans;
+    vector<pair<int,int>>ans;
     ll isEqual=(a[0]==b[0]);
 
     f1(i,0,n)
     {
         if((a[i]==b[i])!=isEqual)
-        {
-            cout<<"NO"<<nl;
-        }
+            // cout<<"NO"<<nl;
+            return false;
     }
     f1(i,0,n)
     {
@@ -502,11 +501,9 @@ void solve()
     cout<<"YES"<<nl;
     cout<<ans.size()<<nl;
 
-    for(auto &it:ans)
-    {
+    for(auto it:ans)
         cout<<it.ff<<" "<<it.ss<<nl;
-    }
-    cout<<"YES"<<nl;
+    return true;
 }
 };
 
@@ -521,19 +518,19 @@ int main() {
     cin >> tc;
     for (ll t = 1; t <= tc; t++) {
     // //cout << "Case #" << t << ": ";
-    // Solution s;
-    //     if(s.solve())
-    //     {
-    //         // cout<<"Yes"<<nl;
-    //     }
-    //     else
-    //     {
-    //         // cout<<"No"<<nl;
-    //     }
+    Solution s;
+        if(s.solve())
+        {
+            // cout<<"Yes"<<nl;
+        }
+        else
+        {
+            cout<<"No"<<nl;
+        }
     // // }
         // solve();
-        Solution s;
-        s.solve();
+        // Solution s;
+        // s.solve();
     }
     return 0;
 }
