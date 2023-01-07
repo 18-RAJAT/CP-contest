@@ -531,6 +531,7 @@ void solve()
             }
     }
     length=n-start+m;
+    
     ans+=take(length,m);
     cout<<ans<<nl;
 }
