@@ -470,33 +470,16 @@ class Solution {
 public:
 void solve()
 {
-    int n;
-    cin>>n;
+    int a,b,c,d;
+    cin>>a>>b>>c>>d;
 
-    int a[n];
-    f1(i,0,n)
-    {
-        cin>>a[i];
-    }
-    int count=0;
-    f1(i,0,n)
-    {
-        f1(j,i+1,n)
-        {
-            if(a[i]%2!=a[j]%2)
-            {
-                count++;
-            }
-            else
-            {
-                int G=__gcd(a[i],a[j]*2);
+    int maxi1=max(a,b);
+    int maxi2=max(c,d);
 
-                // G>1;
-                count+=G>1;
-            }
-        }
-    }
-    cout<<count<<nl;
+    int mini1=min(a,b);
+    int mini2=min(c,d);
+    
+    cout<<(maxi1>mini2 and maxi2>mini1?"YES":"NO")<<nl;
 }
 };
 
