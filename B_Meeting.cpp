@@ -467,35 +467,41 @@ ll fact(int n)
     return ans;
 }
 
+int x[10],y[10],r[10];
+int x0,y0,x1,y1,n;
+
+int calculate(int x1,int y1)
+{
+    f1(i,0,1001)
+    {
+        if((x1-x[i])*(x1-x[i])+(y1-y[i])*(y1-y[i])<=r[i]*r[i])
+        {
+            return 0;
+        }
+    }
+    return 1;
+}
+
 void solve()
 {
-    int n;cin>>n;
-    // vi a(n);
-    // f1(i,0,n)cin>>a[i];
-
-    int maxi=0,mini=1000000,mxIdx=0,mnIdx=0;
+    cin>>x0>>y0>>x1>>y1;
+    cin>>n;
     f1(i,0,n)
     {
-        int x;cin>>x;
-        if(x>maxi)
-        {
-            maxi=x;
-            mxIdx=i;
-        }
-        if(x<=mini)
-        {
-            mini=x;
-            mnIdx=i;
-        }
+        cin>>x[i]>>y[i]>>r[i];
     }
-    if(mxIdx>mnIdx)
+    int ans=0;
+    cf(i,x0,x1)
     {
-        cout<<mxIdx+(n-1-mnIdx)-1<<nl;
+        ans+=calculate(i,y0);
+        ans+=calculate(i,y1);
     }
-    else
+    f1(i,y0+1,y1)
     {
-        cout<<mxIdx+(n-1-mnIdx)<<nl;
+        ans+=calculate(x0,i);
+        ans+=calculate(x1,i);
     }
+    cout<<ans<<nl;
 }
 
 int main() {

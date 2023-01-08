@@ -467,35 +467,65 @@ ll fact(int n)
     return ans;
 }
 
+string s1,s2;
+ll a[300],b[300];
+bool chk()
+{
+	for(ll i='a';i<'z';++i)
+    {
+		if(a[i]>b[i])
+        {
+            return false;
+        }
+	}
+    return true;
+}
 void solve()
 {
-    int n;cin>>n;
-    // vi a(n);
-    // f1(i,0,n)cin>>a[i];
+    cin>>s1>>s2;
+    ll n=s1.size(),m=s2.size();
+    if(n<m)
+    {
+        cout<<0<<nl;
+        return;
+    }
+    f1(i,0,m)
+    {
+        a[s1[i]]++;
+        b[s2[i]]++;
+    }
+    // f1(i,m,n)
+    // {
+    //     if(chk())
+    //     {
+    //         cout<<1<<nl;
+    //         return;
+    //     }
+    //     a[s1[i-m]]--;
+    //     a[s1[i]]++;
+    // }
+    // if(chk())
+    // {
+    //     cout<<1<<nl;
+    //     return;
+    // }
+    // cout<<2<<nl;
+    ll ans=chk();
+    f1(i,m,n)
+    {
+        // a[s1[i-m]]--;
+        // a[s1[i]]++;
+        a[s1[i]]++;
+        a[s1[i-m]]--;
+        ans+=chk();
+    }
 
-    int maxi=0,mini=1000000,mxIdx=0,mnIdx=0;
-    f1(i,0,n)
+    f1(i,0,300)
     {
-        int x;cin>>x;
-        if(x>maxi)
-        {
-            maxi=x;
-            mxIdx=i;
-        }
-        if(x<=mini)
-        {
-            mini=x;
-            mnIdx=i;
-        }
+        a[i]=0;
+        b[i]=0;
     }
-    if(mxIdx>mnIdx)
-    {
-        cout<<mxIdx+(n-1-mnIdx)-1<<nl;
-    }
-    else
-    {
-        cout<<mxIdx+(n-1-mnIdx)<<nl;
-    }
+    cout<<ans<<nl;
 }
 
 int main() {
