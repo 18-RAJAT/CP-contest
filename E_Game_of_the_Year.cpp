@@ -29,7 +29,7 @@ const ll INF = 1e18+20;
 #define SCLF(t) scanf("%lf",&t)
 #define MEM(a, b) memset(a, (b), sizeof(a))
 
-#define FOR(i, j, k, in) for (ll i=j ; i<k ; i+=in)
+#define FOR(i, j, k, in) for (int i=j ; i<=k ; i+=in)
 #define RFOR(i, j, k, in) for (ll i=j ; i>=k ; i-=in)
 #define rall(cont) cont.end(), cont.begin()
 #define FOREACH(it, l) for (auto it = l.begin(); it != l.end(); it++)
@@ -44,7 +44,7 @@ const ll INF = 1e18+20;
 #define PF push_front
 #define INF (int)1e9
 #define EPS 1e-9
-#define mod 998244353 
+// #define MOD 998244353 
 #define ff first
 #define ss second
 #define PI 3.1415926535897932384626433832795
@@ -101,8 +101,8 @@ typedef unsigned long long int  uint64;
 
 
 
-#define f1(i,s,e) for(long long int i=s;i<e;i++)
-#define ff1(i,s,e) for(long long int i=s;i>=e;--i)
+#define f1(i,s,e) for(int i=s;i<e;i++)
+#define ff1(i,s,e) for(int i=s;i>=e;--i)
 #define For1(i,n) (long long int i=0;i<n+1;++i)
 #define cf(i,s,e) for(long long int i=s;i<=e;i++)
 #define FO(i,s,e) for(long long int i=1;i*i<=y;i++)
@@ -469,40 +469,53 @@ ll fact(int n)
 
 void solve()
 {
-    ll n;
+    int n;
     cin>>n;
-    ll ans=0;
-    vi v(n);
-    for(ll i=0;i<n;i++)
+    vector<int>a(n),b(n);
+    for(int i=0;i<n;i++)
     {
-        cin>>v[i];
+        cin>>a[i];
     }
-    vi prevDP(1000000,0);
-    prevDP[1000000+v[1]]=1;
-    for(ll i=1;i<n-1;i++)
+    for(int i=0;i<n;i++)
     {
-        vi newDP(1000000,0);
-        f1(j,0,1000000)
+        cin>>b[i];
+    }
+    vector<int>bad(n+1);
+    for(int i=0;i<n;i++)
+    {
+        if(a[i]>b[i])
         {
-            
-            if(!prevDP[j]==0)
-                continue;
-            ll realValue=j-1000000;
-            newDP[1000000+v[i+1]-realValue]+=prevDP[j];
-            newDP[1000000+v[i+1]-realValue]%=mod;
-            if(realValue)
-            {
-                newDP[1000000+v[i+1]+realValue]+=prevDP[j];
-                newDP[1000000+v[i+1]+realValue]%=mod;
-            }
+            bad[b[i]]++;
+            bad[a[i]]--;
         }
     }
-    for(ll i=0;i<1000000;i++)
+    for(int i=1;i<=n;i++)
     {
-        ans+=prevDP[i];
-        ans%=mod;
+        bad[i]+=bad[i-1];
     }
-    cout<<ans<<nl;
+    vector<int>terms;
+    for(int k=1;k<=n;k++)
+    {
+        bool good=1;
+        for(int i=k;i<=n;i+=k)
+        {
+            if(bad[i])
+            {
+                good=0;
+                break;
+            }
+        }
+        if(good)
+        {
+            terms.pb(k);
+        }
+    }
+    cout<<terms.size()<<nl;
+    for(auto term:terms)
+    {
+        cout<<term<<" ";
+    }
+    cout<<nl;
 }
 
 int main() {
@@ -512,9 +525,9 @@ int main() {
 // freopen("input.txt","r",stdin); //file input.txt is opened in reading mode i.e "r"
 // freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 // #endif
-    ll tc = 1;
-    // cin >> tc;
-    for (ll t = 1; t <= tc; t++) {
+    int tc = 1;
+    cin >> tc;
+    for (int t = 1; t <= tc; t++) {
     // //cout << "Case #" << t << ": ";
     // Solution s;
         // if(s.solve())

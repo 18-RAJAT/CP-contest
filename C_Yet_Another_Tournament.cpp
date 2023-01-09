@@ -471,33 +471,45 @@ void solve()
 {
     ll n,m;
     cin>>n>>m;
-    ll a[n];
-    ll sum=0;
-    for(ll i=0;i<n;i++)
+    vi pSum(n+1,0);
+    int ans=0;
+    VPII a(n+1);
+
+    cf(i,1,n)
     {
-        cin>>a[i];
-        sum+=a[i];
+        cin>>a[i].first;
+        a[i].second=i;
     }
-    if(sum<=m)
+    sort(all(a));
+    vi position(n+1);
+
+    cf(i,1,n)
     {
-        cout<<1<<nl;
-        return;
+        pSum[i]=pSum[i-1]+a[i].first;
+        position[a[i].second]=i;
     }
-    sort(a,a+n);
-    ll ans=0;
-    for(ll i=0;i<n;i++)
+    int maxi=0;
+    cf(i,1,n)
     {
-        if(m>=a[i])
-        {
-            m-=a[i];
-            ans++;
-        }
-        else
+        if(pSum[i]>m)
         {
             break;
         }
+        if(pSum[i]<=m)
+        {
+            maxi=max(i,maxi);
+        }
+        if(i+1<=n and position[i+1]<=i)
+        {
+            maxi=max(i+1,maxi);
+        }
+        if(i+1<=n and position[i+1]>i and pSum[i-1]+a[position[i+1]].first<=m)
+        {
+            maxi=max(i+1,maxi);
+        }
     }
-    cout<<n-ans<<nl;
+    ans=n-maxi+1;
+    cout<<ans<<nl;
 }
 
 int main() {
