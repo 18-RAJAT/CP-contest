@@ -467,8 +467,24 @@ ll fact(int n)
     return ans;
 }
 
+ll n,m,tp;
+VB v;
 void solve()
 {
+    cin>>n>>m;
+
+    f1(i,0,n)
+    {
+        string s;cin>>s;
+        v.pb(s=="halfplus");
+    }
+    reverse(all(v));
+    // ll tp=0;
+    for(auto it:v)
+    {
+        tp=2*tp+it;
+    }
+    cout<<(2*tp-__builtin_popcountll(tp))*m/2<<nl;
 }
 
 int main() {
@@ -479,7 +495,7 @@ int main() {
 // freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 // #endif
     int tc = 1;
-    cin >> tc;
+    // cin >> tc;
     for (int t = 1; t <= tc; t++) {
     // //cout << "Case #" << t << ": ";
     // Solution s;
