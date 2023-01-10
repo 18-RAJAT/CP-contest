@@ -476,10 +476,10 @@ void solve()
     {
         cin>>a[i];
     }
-    int sum=0;
-    int ans=0;
-    int mini=0;
-    int maxi=0;
+    ll sum=0;
+    ll ans=0;
+    ll mini=0;
+    ll maxi=0;
 
     f1(i,0,n)
     {
