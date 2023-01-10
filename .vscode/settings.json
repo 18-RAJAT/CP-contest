@@ -27,6 +27,7 @@
         "iterator": "cpp",
         "unordered_map": "cpp",
         "type_traits": "cpp",
-        "xlocale": "cpp"
+        "xlocale": "cpp",
+        "cstdlib": "cpp"
     }
 }
