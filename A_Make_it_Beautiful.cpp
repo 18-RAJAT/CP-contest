@@ -471,31 +471,27 @@ void solve()
 {
     ll n;
     cin>>n;
-
-    vi a(n);
+    vi v;
     f1(i,0,n)
     {
-        cin>>a[i];
+        int x;cin>>x;
+        v.pb(x);
     }
-    sort(a.begin(),a.end());
-    if(a[0]==a[n-1])
+    if(v[0]==v[n-1])
     {
-        cout<<"NO"<<nl;
-        return;
+        cout<<"No"<<nl;
     }
-    cout<<"YES"<<nl;
-    int i=0,j=n-1;
-    while(i<=j)
+    else
     {
-        cout<<a[i]<<" ";
-        i++;
-        if(i<=j)
+        cout<<"Yes"<<nl;
+        cout<<v[0]<<" ";
+
+        rf(i,n,1)
         {
-            cout<<a[j]<<" ";
-            j--;
+            cout<<v[i]<<" ";
         }
+        cout<<nl;
     }
-    cout<<nl;
 }
 
 int main() {

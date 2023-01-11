@@ -469,48 +469,47 @@ ll fact(int n)
 
 void solve()
 {
-    ll n;
-    cin>>n;
-    if(n==2)
-    {
-        cout<<"1 3"<<nl;
-        cout<<"4 2"<<nl;
-        return;
-    }
-    vi a(n*n);
-    f1(i,0,n*n)
-    {
-        a[i]=(i+1);
-    }
-    int l=0,r=n*n-1;
-    bool f=true;
-    vector<vi>ans;
+    ll n;cin>>n;
+    ll ans[n][n];
+    int a=1,b=n*n;
+
+    int ct=0;
 
     f1(i,0,n)
     {
-        vi v;
-        f1(j,0,n)
+        if(i%2==0)
         {
-            if(f)
+            f1(j,0,n)
             {
-                v.pb(a[l++]);
-                f=false;
-            }
-            else
-            {
-                v.pb(a[r--]);
-                f=true;
+                if(ct%2==0)
+                {
+                    ans[i][j]=a;
+                    a++;
+                }
+                else
+                {
+                    ans[i][j]=b;
+                    b--;
+                }
+                ct++;
             }
         }
-        ans.pb(v);
-    }
-    if(n%2==0)
-    {
-        f1(i,1,n)
+        else
         {
-            if(i%2==1)
+            // rf(j,n,-1)
+            for(int j=n-1;j>-1;--j)
             {
-                reverse(all(ans[i]));
+                if(ct%2==0)
+                {
+                    ans[i][j]=a;
+                    a++;
+                }
+                else
+                {
+                    ans[i][j]=b;
+                    b--;
+                }
+                ct++;
             }
         }
     }
