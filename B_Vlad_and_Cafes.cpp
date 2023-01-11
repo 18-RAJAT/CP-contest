@@ -480,7 +480,7 @@ void solve()
         cin>>x;
         a[x]=i;
     }
-    ll ans=1e9,temp=0;
+    ll ans=INT_MAX,temp=0;
     f1(i,0,200005)
     {
         if(a[i] and a[i]<ans)
