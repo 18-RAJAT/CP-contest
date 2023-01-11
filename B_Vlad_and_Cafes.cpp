@@ -467,22 +467,30 @@ ll fact(int n)
     return ans;
 }
 
+
 void solve()
 {
-    ll n;cin>>n;
-    ll a[n],b[n];
-    f1(i,0,n)
+    ll n;
+    cin>>n;
+    VI a(200005);
+
+    cf(i,1,n)
     {
-        cin>>a[i];
-        b[i]=INT_MAX;
+        int x;
+        cin>>x;
+        a[x]=i;
     }
-    f1(i,0,n)
+    ll ans=1e9,temp=0;
+    f1(i,0,200005)
     {
-        b[a[i]-1]=i;
+        if(a[i] and a[i]<ans)
+        {
+            ans=a[i];
+            temp=i;
+        }
     }
-    sort(b,b+n);
-    // cout<<2*a[b[1]]+1<<nl;
-    cout<<a[b[0]]<<nl;
+    cout<<temp<<nl;
+    
 }
 
 int main() {
