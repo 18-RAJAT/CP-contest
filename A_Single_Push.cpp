@@ -470,89 +470,83 @@ ll fact(int n)
 }
         
 
-VPII adj[2*MAX_N];
-vi pos[1001];
 
-int count[1001],n,a[1001],prefix[2*MAX_N],total;
 void solve()
 {
-    cin>>n;
-    int maxi=0;
+    int n;cin>>n;
+    VI a(n+1),b(n+1);
+
     cf(i,1,n)
     {
-        int x;
-        cin>>x;
-        maxi=max(maxi,x);
-        pos[x].pb(i);
+        cin>>a[i];
     }
-    cf(i,2,maxi)
+    cf(i,1,n)
     {
-        FOR(i,j,maxi,i)
-        {
-            for(auto it:pos[j])
-            {
-                adj[it].push_back(make_pair(i+n,0));
-                adj[it].push_back(make_pair(it,1));
-            }
-        }
+        cin>>b[i];
     }
-    int start,end;
-    cin>>start>>end;
-
-    memset(count,-1,sizeof(count));
-    deque<int>q;
-    q.push_back(start);
-    count[start]=1;
-
-    while(q.size())
-    {
-        int u=q.front();
-        q.pop_front();
-        for(auto [v,w]:adj[u])
+    int ct=0;
+    
+    // cf(i,1,n)
+    // {
+        // if(a[i]==b[i])
+        // {
+        //     continue;
+        // }
+        cf(i,1,n)
         {
-            if(count[v]==-1)
+            if(a[i]>b[i])
             {
-                count[v]=w+count[u];
-                if(w==0)
-                {
-                    q.pb(v);
-                }
-                else
-                {
-                    q.pb(w);
-                }
+                cout<<"NO"<<nl;
+                return;
             }
         }
-        if(count[end]==-1)
+        cf(i,1,n)
         {
-            cout<<"-1"<<nl;
-        }
-        else
-        {
-            cout<<count[end]<<nl;
-            vi hasPath;
-            int temp=end;
-
-            while(temp!=start)
+            if(a[i]==b[i])
             {
-                hasPath.pb(start);
-                reverse(all(hasPath));
+                continue;
+            }
+            int difference=b[i]-a[i];
+            int temp=i;
 
-                for(auto it:hasPath)
+            while(temp<=n and b[temp]-a[temp]==difference)// or b[temp]-a[temp]==0 or a[temp]==b[temp])
+            {
+                temp++;
+            }
+
+            cf(k,temp,n)
+            {
+                if(a[k]!=b[k])
                 {
-                    if(it<n)
-                    {
-                        cout<<it<<" ";
-                    }
-                    cout<<nl;
-                    // else
-                    // {
-                    //     cout<<it-n<<" ";
-                    // }
+                    cout<<"NO"<<nl;
+                    return;
                 }
             }
+            break;
         }
-    }
+        // if(a[i]>b[i])
+        // {
+        //     cout<<"NO"<<nl;
+        //     return;
+        // }
+        
+    //     if(a[i]==b[i])
+    //     {
+    //         if(ct==1)
+    //         ct=2;
+    //         continue;
+    //     }
+    //     if(a[i]<b[i])
+    //     {
+    //         if(ct==2)
+    //         {
+    //             cout<<"NO"<<nl;
+    //             return;
+    //         }
+    //         ct=1;
+    //     }
+    // }
+    cout<<"YES"<<nl;
 }
 
 int main() {
