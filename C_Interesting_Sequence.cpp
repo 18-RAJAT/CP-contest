@@ -29,7 +29,7 @@ const ll INF = 1e18+20;
 #define SCLF(t) scanf("%lf",&t)
 #define MEM(a, b) memset(a, (b), sizeof(a))
 
-#define FOR(i, j, k, in) for (int i=j ; i<=k ; i+=in)
+#define FOR(i, j, k, in) for (ll i=j ; i<k ; i+=in)
 #define RFOR(i, j, k, in) for (ll i=j ; i>=k ; i-=in)
 #define rall(cont) cont.end(), cont.begin()
 #define FOREACH(it, l) for (auto it = l.begin(); it != l.end(); it++)
@@ -101,8 +101,8 @@ typedef unsigned long long int  uint64;
 
 
 
-#define f1(i,s,e) for(int i=s;i<e;i++)
-#define ff1(i,s,e) for(int i=s;i>=e;--i)
+#define f1(i,s,e) for(long long int i=s;i<e;i++)
+#define ff1(i,s,e) for(long long int i=s;i>=e;--i)
 #define For1(i,n) (long long int i=0;i<n+1;++i)
 #define cf(i,s,e) for(long long int i=s;i<=e;i++)
 #define FO(i,s,e) for(long long int i=1;i*i<=y;i++)
@@ -135,6 +135,8 @@ typedef unsigned long long int  uint64;
 #define BITMASK_FLIP(x, mask) ((x) ^= (mask))
 #define BITMASK_CHECK_ALL(x, mask) (!(~(x) & (mask)))
 #define BITMASK_CHECK_ANY(x, mask) ((x) & (mask))
+#define LSB_ANY(n) (n&(n-1))
+#define LSB_CHECK(n) (n&(-n))
 // ----------------------</BITWISE END>--------------------------
 
 
@@ -466,22 +468,61 @@ ll fact(int n)
     }
     return ans;
 }
+        
 
 
 void solve()
-{ 
+{
 
-    ll n,x;
-    cin>>n>>x;
-    ll ans=0;
-    f1(i,0,64)
+    ll n,x;cin>>n>>x;
+    ll temp=n;
+    // if(n==x)
+    // {
+    //     cout<<n<<nl;
+    //     return;
+    // }
+    // if(n<x)
+    // {
+    //     cout<<-1<<nl;
+    //     return;
+    // }
+    // ll ans=-1;
+    while(x<temp)
     {
-        if((x&(1LL<<i))!=(n&(1LL<<i)))
-        {
-            ans+=(1LL<<i);
-        }
+        n+=LSB_CHECK(n);
+        // if(BIT_CHECK(n,0))
+        // {
+        //     ans++;
+        // }
+        // else if(n<x)
+        // {
+        //     break;
+        // }
+        temp&=n;
+        // // else
+        // // {
+        // //     ans++;
+        // //     n/=2;
+        // // }
+        // if(LSB_ANY(n)==x)
+        // {
+        //     ll chk=n&(-n);
+        //     chk<<=1;
+        //     ans=chk+LSB_ANY(n);
+        //     break;
+        // }
+        // n=LSB_ANY(n);
+        // n=n>>1;
     }
-    cout<<ans<<nl;
+    // cout<<ans<<nl;
+    if(temp==x)
+    {
+        cout<<n<<nl;
+    }
+    else
+    {
+        cout<<-1<<nl;
+    }
 }
 
 int main() {

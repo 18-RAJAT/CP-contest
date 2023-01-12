@@ -469,14 +469,8 @@ ll fact(int n)
 
 
 void solve()
-{ 
-    ll n;
-    cin>>n;
-    ll s,t;
-    cin>>s>>t;
-    ll a[n+1];
-
-   
+{
+    
 }
 
 int main() {

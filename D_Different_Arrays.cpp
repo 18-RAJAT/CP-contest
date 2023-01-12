@@ -491,7 +491,7 @@ void solve()
             newDP[1000000+v[i+1]-realValue]+=prevDP[j];
             newDP[1000000+v[i+1]-realValue]%=mod;
             if(realValue)
-            {
+            { 
                 newDP[1000000+v[i+1]+realValue]+=prevDP[j];
                 newDP[1000000+v[i+1]+realValue]%=mod;
             }
