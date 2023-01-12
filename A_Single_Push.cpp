@@ -500,6 +500,7 @@ void solve()
                 return;
             }
         }
+        
         cf(i,1,n)
         {
             if(a[i]==b[i])
