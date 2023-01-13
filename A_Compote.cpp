@@ -472,50 +472,11 @@ ll fact(int n)
 
 void solve()
 {
-    int n;cin>>n;
-    int a=0,b=0;
+    int a,b,c;
+    cin>>a>>b>>c;
 
-    int tpCount=0;
-    cf(i,1,n)
-    {
-        int x;
-        cin>>x;
-
-        //taking care of the middle element
-        if(x!=i and x!=n-i+1)
-        {
-            tpCount++;
-        }
-        //here take care of the first and last element
-        else if(x!=i)
-        {
-            a++;
-        }
-        else if(x!=n-i+1)
-        {
-            b++;
-        }
-    }
-    // int db=n/2+n%2;
-    // if(abs(a-b)<db)
-
-    //to check if the first player can win
-    if(a+tpCount<=b)
-    {
-        cout<<"First"<<nl;
-    }
-    //to check if the second player can win
-    else if(b+tpCount<a)
-    {
-        cout<<"Second"<<nl;
-    }
-    // else if(a<b)
-    
-    //tie condition
-    else
-    {
-        cout<<"Tie"<<nl;
-    }
+    int res=7*min(a,min(b/2,c/4));
+    cout<<res<<nl;
 }
 
 int main() {
@@ -526,7 +487,7 @@ int main() {
 // freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 // #endif
     ll tc = 1;
-    cin >> tc;
+    // cin >> tc;
     for (ll t = 1; t <= tc; t++) {
     // //cout << "Case #" << t << ": ";
     // Solution s;
