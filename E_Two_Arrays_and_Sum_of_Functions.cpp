@@ -499,13 +499,13 @@ ll Prime(ll x)
     return 1;
 }
 
-const int N = 1e6+69;
-int a[N],b[N];
-int ct[N];
+const ll N = 1e6+69;
+ll a[N],b[N];
+ll ct[N];
 
 void solve()
 {
-    int n;
+    ll n;
     cin>>n;
 
     f1(i,0,n)
@@ -528,7 +528,7 @@ void solve()
     {
         ans+=(ct[n-i-1]%998244353)*(b[i])%998244353;
     }
-    cout<<ans<<nl;
+    cout<<abs(ans)<<nl;
 }
 
 int main() {
