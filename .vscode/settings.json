@@ -28,6 +28,7 @@
         "unordered_map": "cpp",
         "type_traits": "cpp",
         "xlocale": "cpp",
-        "cstdlib": "cpp"
+        "cstdlib": "cpp",
+        "iomanip": "cpp"
     }
 }

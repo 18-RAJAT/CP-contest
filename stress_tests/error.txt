@@ -1,0 +1,5 @@
+Command failed: g++ -o "r:/Competitive_Programmin_Cp/stress_tests/soln.exe" "r:/Competitive_Programmin_Cp/D_Exams.cpp" -std=c++14
+r:/Competitive_Programmin_Cp/D_Exams.cpp: In function 'void solve()':
+r:/Competitive_Programmin_Cp/D_Exams.cpp:525:27: error: expected primary-expression before '<<' token
+             std::cout <<  << std::endl;
+                           ^~

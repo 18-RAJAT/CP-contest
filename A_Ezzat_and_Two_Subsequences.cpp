@@ -501,37 +501,31 @@ ll Prime(ll x)
 
 void solve()
 {
-    ll n,m;cin>>n>>m;
-    ll arr[MAX_N];
-    cf(i,1,n)
-    {
-        cin>>arr[i];
-    }
-    ll temp=m,p;
-    f1(i,0,m)
-    {
-        cin>>p;
-        temp+=p;
-    }
-    cf(i,temp,n)
-        if(arr[i])
-        {   
-            cout<<i<<nl;
-            return;
-        }
-    cout<<-1<<nl;
+    int n;
+    cin>>n;
+    int a[n+1];
+
+    cf(i,1,n)cin>>a[i];
+    sort(a+1,a+n+1);
+    
+    double ans=0;
+    f1(i,1,n)ans+=a[i];
+    ans/=(n-1);ans+=a[n];
+    cout<<ans<<nl;
 }
 
 
 int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
+
+    std::cout << std::setprecision(15); std::cout << std::fixed;
 // #ifndef ONLINE_JUDGE
 // freopen("input.txt","r",stdin); //file input.txt is opened in reading mode i.e "r"
 // freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 // #endif
     ll tc = 1;
-    // cin >> tc;
+    cin >> tc;
     for (ll t = 1; t <= tc; t++) {
     // //cout << "Case #" << t << ": ";
     // Solution s;
