@@ -503,15 +503,10 @@ void solve()
 {
     int n;
     cin>>n;
-    int a[n+1];
 
-    cf(i,1,n)cin>>a[i];
-    sort(a+1,a+n+1);
-
-    double ans=0;
-    f1(i,1,n)ans+=a[i];
-    ans/=(n-1);ans+=a[n];
-    cout<<ans<<nl;
+    cout<<n<<nl;
+    f1(i,0,n)cout<<1<<" ";
+    cout<<nl;
 }
 
 
@@ -525,7 +520,7 @@ int main() {
 // freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 // #endif
     ll tc = 1;
-    cin >> tc;
+    // cin >> tc;
     for (ll t = 1; t <= tc; t++) {
     // //cout << "Case #" << t << ": ";
     // Solution s;
