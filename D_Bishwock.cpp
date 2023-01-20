@@ -510,37 +510,7 @@ ll Prime(ll x)
 
 void solve()
 {
-    int n;
-    cin>>n;
-
-    int a[n];
-    float sum=0;
-    f1(i,0,n)
-    {
-        cin>>a[i];
-        sum+=a[i];
-    }
-    if((sum/n)>=4.5)
-    cout<<0;
-    else
-    {
-        int count=0;
-        sort(a,a+n);
-        f1(i,0,n)
-        {
-            // if(a[i]==5)
-            // {
-            //     continue;
-            // }
-            if(a[i]!=5)
-            {
-                sum=sum-a[i]+5;
-                count++;
-            }
-            if((sum/n)>=4.5)break;
-        }
-        cout<<ans<<nl;
-    }
+    
 }
 
 int main() {
