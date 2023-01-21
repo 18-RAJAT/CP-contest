@@ -9,7 +9,7 @@ using namespace std;
  
 const int MAX_N = 2e5 + 5;
 const int MAX_NN = 2e5 + 8;
-const ll MOD = 10e9 + 7;
+const ll MOD =1000000007;
 const ll INF = 1e18+20;
 #define revall(x) x.rbegin(), x.rend()
 #define ALL(x) sort(x.begin(), x.end())
@@ -503,21 +503,20 @@ void solve()
 {
     ll n;
     cin>>n;
-    ll dp[n+1];
-    memset(dp,0,sizeof(dp));
-    dp[0]=1;
-    f1(i,1,n+1)
+
+    if(n==1)
     {
-        cf(j,1,6)
-        {
-            if(i<j)
-            {
-                break;
-            }
-            dp[i]=(dp[i]+dp[i-j]);
-        }
+        cout<<"0"<<nl;
     }
-    cout<<dp[n]%MOD<<nl;
+    else
+    {
+        ll x=n*(n-1);
+        f1(i,1,n+1)
+        {
+            x=(x*i)%1000000007;
+        }
+        cout<<x%1000000007<<nl;
+    }
 }
 
 int main() {
@@ -530,7 +529,7 @@ int main() {
 // freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 // #endif
     ll tc = 1;
-    // cin >> tc;
+    cin >> tc;
     for (ll t = 1; t <= tc; t++) {
     // //cout << "Case #" << t << ": ";
     // Solution s;

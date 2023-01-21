@@ -501,23 +501,47 @@ ll Prime(ll x)
 
 void solve()
 {
-    ll n;
-    cin>>n;
-    ll dp[n+1];
-    memset(dp,0,sizeof(dp));
-    dp[0]=1;
-    f1(i,1,n+1)
+    int n,m;
+    cin>>n>>m;  
+    int a[n];
+    f1(i,0,n)
     {
-        cf(j,1,6)
+        cin>>a[i];
+    }
+    int b[m];
+    f1(i,0,m)
+    {
+        cin>>b[i];
+    }
+    int c[m];
+    f1(i,0,m)
+    {
+        c[i]=0;
+    }
+    f1(i,0,n)
+    {
+        f1(j,0,m)
         {
-            if(i<j)
+            if(a[i]%b[j]==0)
             {
-                break;
+                c[j]=a[i];
             }
-            dp[i]=(dp[i]+dp[i-j]);
         }
     }
-    cout<<dp[n]%MOD<<nl;
+    int ans=0;
+    f1(i,0,m)
+    {
+        if(c[i]==0)
+        {
+            ans=-1;
+            break;
+        }
+        else
+        {
+            ans=max(ans,c[i]);
+        }
+    }
+    cout<<ans<<endl;
 }
 
 int main() {
@@ -530,7 +554,7 @@ int main() {
 // freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 // #endif
     ll tc = 1;
-    // cin >> tc;
+    cin >> tc;
     for (ll t = 1; t <= tc; t++) {
     // //cout << "Case #" << t << ": ";
     // Solution s;

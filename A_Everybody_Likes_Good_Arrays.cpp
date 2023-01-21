@@ -501,23 +501,28 @@ ll Prime(ll x)
 
 void solve()
 {
-    ll n;
-    cin>>n;
-    ll dp[n+1];
-    memset(dp,0,sizeof(dp));
-    dp[0]=1;
-    f1(i,1,n+1)
+    ll n;cin>>n;
+    ll a[n];
+    f1(i,0,n)
     {
-        cf(j,1,6)
+        cin>>a[i];
+    }
+    ll ans=0;
+    ll count=1;
+    f1(i,1,n)
+    {
+        if(a[i]%2==a[i-1]%2)
         {
-            if(i<j)
-            {
-                break;
-            }
-            dp[i]=(dp[i]+dp[i-j]);
+            count++;
+        }
+        else
+        {
+            ans+=count-1;
+            count=1;
         }
     }
-    cout<<dp[n]%MOD<<nl;
+    ans+=count-1;
+    cout<<ans<<nl;
 }
 
 int main() {
@@ -530,7 +535,7 @@ int main() {
 // freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 // #endif
     ll tc = 1;
-    // cin >> tc;
+    cin >> tc;
     for (ll t = 1; t <= tc; t++) {
     // //cout << "Case #" << t << ": ";
     // Solution s;

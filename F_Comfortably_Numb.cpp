@@ -9,7 +9,7 @@ using namespace std;
  
 const int MAX_N = 2e5 + 5;
 const int MAX_NN = 2e5 + 8;
-const ll MOD = 10e9 + 7;
+const ll MOD =1000000007;
 const ll INF = 1e18+20;
 #define revall(x) x.rbegin(), x.rend()
 #define ALL(x) sort(x.begin(), x.end())
@@ -499,25 +499,40 @@ ll Prime(ll x)
     return 1;
 }
 
+n;
+int a[N];
+long long dp[N][N];
 void solve()
 {
+    This problem can be solved by using dynamic programming.
+We can create a 2D array dp where dp[i][j] represents the maximum numbness of the subarray from i to j (inclusive).
+We can use the following recurrence relation to fill in the dp array:
+dp[i][j] = max(dp[i][j-1], dp[i+1][j], max(a[i]⊕a[i+1]⊕…⊕a[j])⊕max(a[i], a[i+1], …, a[j]))
+The first two terms in the max function represent the maximum numbness of subarrays ending at j and starting at i respectively.
+The third term represents the maximum numbness of the subarray from i to j (inclusive) where the subarray xor is maximum and fourth term represents the maximum numbness of the subarray where the maximum element is maximum.
+Finally, we can return the dp[0][n-1] as the result which will give the maximum numbness over all subarrays of the given array.
+
     ll n;
     cin>>n;
-    ll dp[n+1];
-    memset(dp,0,sizeof(dp));
-    dp[0]=1;
-    f1(i,1,n+1)
-    {
-        cf(j,1,6)
-        {
-            if(i<j)
-            {
-                break;
+
+    cin >> n;
+        for (int i = 0; i < n; i++) cin >> a[i];
+
+        for (int i = n-1; i >= 0; i--) {
+            for (int j = i; j < n; j++) {
+                if (i == j) {
+                    dp[i][j] = a[i];
+                } else {
+                    long long xor_sum = a[i];
+                    for (int k = i+1; k <= j; k++) xor_sum ^= a[k];
+                    dp[i][j] = max(dp[i][j-1], dp[i+1][j]);
+                    dp[i][j] = max(dp[i][j], xor_sum^max(a[i],));
+                }
             }
-            dp[i]=(dp[i]+dp[i-j]);
         }
-    }
-    cout<<dp[n]%MOD<<nl;
+
+        cout << dp[0][n-1] << endl;
+
 }
 
 int main() {
@@ -530,7 +545,7 @@ int main() {
 // freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 // #endif
     ll tc = 1;
-    // cin >> tc;
+    cin >> tc;
     for (ll t = 1; t <= tc; t++) {
     // //cout << "Case #" << t << ": ";
     // Solution s;

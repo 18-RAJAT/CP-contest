@@ -499,25 +499,10 @@ ll Prime(ll x)
     return 1;
 }
 
+
 void solve()
 {
-    ll n;
-    cin>>n;
-    ll dp[n+1];
-    memset(dp,0,sizeof(dp));
-    dp[0]=1;
-    f1(i,1,n+1)
-    {
-        cf(j,1,6)
-        {
-            if(i<j)
-            {
-                break;
-            }
-            dp[i]=(dp[i]+dp[i-j]);
-        }
-    }
-    cout<<dp[n]%MOD<<nl;
+    
 }
 
 int main() {
