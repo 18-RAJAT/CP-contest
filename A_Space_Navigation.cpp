@@ -501,21 +501,27 @@ ll Prime(ll x)
 
 void solve()
 {
-    ll n;
-    cin>>n;
-    ll dp[n+1];
-    memset(dp,0,sizeof(dp));
-    dp[0]=1;
-    f1(i,1,n+1)
+    ll x,y;
+    cin>>x>>y;
+    string s;
+    cin>>s;
+    ll n=s.size();
+    ll curX=0,curY=0,bestX=0,minX=0,bestY=0,minY=0;
+    for(ll i=0;i<n;i++)
     {
-        cf(j,1,6)
-        {
-            if(i<j)
-            break;
-            dp[i]=(dp[i]+dp[i-j])%MOD;
-        }
+        if(s[i]=='R')bestX++;
+        if(s[i]=='L')minX--;
+        if(s[i]=='U')bestY++;
+        if(s[i]=='D')minY--;
     }
-    cout<<dp[n]%MOD<<nl;
+    if(x<=bestX and x>=minX and y<=bestY and y>=minY)
+    {
+        cout<<"YES"<<nl;
+    }
+    else
+    {
+        cout<<"NO"<<nl;
+    }
 }
 
 int main() {
@@ -528,7 +534,7 @@ int main() {
 // freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 // #endif
     ll tc = 1;
-    // cin >> tc;
+    cin >> tc;
     for (ll t = 1; t <= tc; t++) {
     // //cout << "Case #" << t << ": ";
     // Solution s;
