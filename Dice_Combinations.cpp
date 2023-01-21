@@ -501,39 +501,22 @@ ll Prime(ll x)
 
 void solve()
 {
-    ll n,a,b;
-    cin>>n>>a>>b;
-    string s;
-    cin>>s;
-    ll ans=0;
-    for(ll i=0;i<n/2;i++)
+    ll n;
+    cin>>n;
+    ll dp[n+1];
+    dp[0]=1;
+    f1(i,1,n+1)
     {
-        if(s[i]!=s[n-i-1])
+        dp[i]=0;
+        f1(j,1,7)
         {
-            if(s[i]==s[n-i-2])
+            if(i-j>=0)
             {
-                ans+=a;
+                dp[i]+=dp[i-j];
             }
-            else if(s[i+1]==s[n-i-2])
-            {
-                ans+=b;
-            }
-            else if(s[i+1]==s[n-i-1])
-            {
-                ans+=a;
-            }
-            else if(s[i]==s[n-i-1])
-            {
-                ans+=b;
-            }
-            else
-            {
-                ans+=2*a;
-            }
-            
         }
     }
-    cout<<ans<<endl;
+    cout<<dp[n]%MOD<<nl;
 }
 
 int main() {
