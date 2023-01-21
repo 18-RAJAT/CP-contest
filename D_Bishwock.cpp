@@ -1,12 +1,3 @@
-// Problem: B. Getting an A
-// Contest: Codeforces - Codeforces Round #491 (Div. 2)
-// URL: https://codeforces.com/problemset/problem/991/B
-// Memory Limit: 256 MB
-// Time Limit: 1000 ms
-// 
-// Powered by CP Editor (https://cpeditor.org)
-
-
 #include <bits/stdc++.h>
 using namespace std;
  
@@ -510,7 +501,54 @@ ll Prime(ll x)
 
 void solve()
 {
-    
+    string s1,s2;
+    cin>>s1>>s2;
+
+    int n=s1.size();
+    string str1,str2;
+    int ans=0;
+    f1(i,0,n)
+    {
+        str1=s1.substr(i,2);
+        str2=s2.substr(i,2);
+
+        if(str1[0]=='0' and str1[1]=='0' and str2[0]=='0' and str2[1]=='0' and i+2<n and s1[i+2]=='0' and s2[i+1]=='0')
+        {
+            ans+=2;
+            i++;i++;
+        }
+        else if(str1[0]=='0' and str1[1]=='0' and str2[0]=='0')
+        {
+            ans++;
+            i++;
+        }
+        else if(str1[0]=='0' and str1[1]=='0' and str2[1]=='0')
+        {
+            ans++;
+            i++;
+        }
+        else if(str1[0]=='0' and str2[0]=='0' and str2[1]=='0')
+        {
+            ans++;
+            i++;
+        }
+        else if(str1[1]=='0' and str2[0]=='0' and str2[1]=='0')
+        {
+            ans++;
+            i++;
+        }
+        else if(str1[1]=='0' and str2[0]=='0' and str2[1]=='0')
+        {
+            ans++;
+            i++;
+        }
+        else if(str1[0]=='0' and str1[1]=='0' and str2[0]=='0' and str2[1]=='0')
+        {
+            ans++;
+            i++;
+        }
+    }
+    cout<<ans<<nl;
 }
 
 int main() {
