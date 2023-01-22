@@ -499,58 +499,45 @@ ll Prime(ll x)
     return 1;
 }
 
-vi fact[MAX_N];
+const int N=2e5+5;
+int a[N],ans[N];
+int visited[N];
+int n;
 void solve()
 {
-    int n,m;
-    cin>>n>>m;
-    int a[n+1];
+    cin>>n;
     cf(i,1,n)
     {
         cin>>a[i];
+        visited[i]=0;
     }
-    sort(a+1,a+n+1);
-    int ans=INF;
-    int j=1;
-
-    int fz[m+1];
-    memset(fz,-1,sizeof(fz));
-    set<int>st;
     cf(i,1,n)
     {
-        int x=a[i];
-        for(auto it:fact[x])
+        if(visited[i])
         {
-            if(it>m)break;
-            fz[it]++;
-            st.insert(it);
+            continue;
         }
-        if(st.size()==m)
+        int curr=a[i];
+        int len=1;
+
+        vi v;
+        while(!visited[curr])
         {
-            while(st.size()==m)
-            {
-                int y=a[j];
-                for(auto it:fact[y])
-                {
-                    if(it>m)break;
-                    fz[it]--;
-                    if(fz[it]==0)
-                    {
-                        st.erase(it);
-                    }
-                }
-                j++;
-            }
+            v.push_back(curr);
+            len++;
+            visited[curr]=1;
+            curr=a[curr];
+        }
+        for(auto &x:v)
+        {
+            ans[x]=len;
         }
     }
-    if(ans==INF)
+    cf(i,1,n)
     {
-        cout<<-1<<nl;
+        cout<<ans[i]-1<<" ";
     }
-    else
-    {
-        cout<<ans<<nl;
-    }
+    cout<<nl;
 }
 
 int main() {
