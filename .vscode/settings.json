@@ -29,6 +29,7 @@
         "type_traits": "cpp",
         "xlocale": "cpp",
         "cstdlib": "cpp",
-        "iomanip": "cpp"
+        "iomanip": "cpp",
+        "functional": "cpp"
     }
 }
