@@ -499,101 +499,68 @@ ll Prime(ll x)
     return 1;
 }
 
-int node,edge;
-vector<vector<int>>adj;
-vector<pair<int,int>>edges;
-vector<int>ans;
-
-void graph_init()
-{
-    adj.clear();
-    adj.resize(node);
-    edges.clear();
-    ans.assign(node,-1);
-}
-
-void addEdge(int u,int v)
-{
-    int x=edges.size();
-    adj[u].push_back(x);
-    adj[v].push_back(x);
-    edges.push_back({u,v});
-}
-
+const int N=1e6+5;
+int mp[N];
 
 void solve()
 {
-    function<void(int,int,int)>dfs=[&](int v,int p,int val)
+    function<int(int,int)>GCD=[&](int a,int b)
     {
-        for(auto it:adj[v])
+        if(b==0)
         {
-            int u=edges[it].first;
-            if(u==v)u=edges[it].second;
-
-            if(u==p)continue;
-
-            ans[it]=(val==2)?5:2;
-            dfs(u,v,ans[it]);
+            return a;
+        }
+        else
+        {
+            return GCD(b,a%b);
         }
     };
-
-    cin>>node;
-    edge=node-1;
-    graph_init();
-
-    for(int i=0;i<edge;i++)
+    int n;cin>>n;
+    memset(mp,0,sizeof(mp));
+    int maxi=-1;
+    cf(i,1,n)
     {
-        int u,v;
-        cin>>u>>v;
-        // u--,v--;
-        addEdge(u-1,v-1);
+        int m;
+        cin>>m;
+        mp[m]=1;
+        maxi=max(maxi,m);
+        // G=GCD(G,m);
     }
-    bool ok=true;
-    for(int i=0;i<node;i++)
+    int res=0;
+    cf(i,1,maxi)
     {
-        if(adj[i].size()>2)
+        // if(i<G)
+        // {
+        //     continue;
+        // }
+        if(mp[i])
         {
-            ok=false;
-            break;
+            continue;
+        }
+        int ct=0;
+        int G=0;
+        // FOR(j,i,maxi,i)
+        for(int j=i;j<=maxi;j+=i)
+        {
+            // if(j%i==0 and mp[j])
+            // {
+                if(mp[j]==0)
+                {
+                    continue;
+                }
+                ct++;
+                // debug(i,j);
+                int tx=j/i;
+                G=GCD(G,tx);
+            // }
+        }
+        if(ct>1 and G==1)
+        {
+            res++;
+            // debug("MAXI: ",maxi);//4 times
         }
     }
-    if(!ok)
-    {
-        cout<<"-1"<<nl;
-        return;
-    }
-
-    int root=0;
-    f1(i,0,node)
-    {
-        if(adj[i].size()==1)
-        {
-            root=i;
-            break;
-        }
-    }
-    // if(adj[0].size()==1)
-    // {
-    //     // ans[0]=2;
-    //     dfs(0,-1,2);
-    // }
-    // // else if(adj[0].size()==2)
-    // // {
-    // //     dfs(0,1,2);
-    // // }
-    // else
-    // {
-    //     // ans[0]=2;
-    //     // ans[1]=5;
-    //     dfs(1,-1,2);
-    //     // dfs(1,-1,5);
-    // }
-    dfs(root,-1,1);
-    for(int i=0;i<edge;i++)
-    {
-        cout<<ans[i]<<" ";  
-    }
-    cout<<nl;
+    cout<<res<<nl;
 }
 
 int main() {
@@ -606,7 +573,7 @@ int main() {
 // freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 // #endif
     ll tc = 1;
-    cin >> tc;
+    // cin >> tc;
     for (ll t = 1; t <= tc; t++) {
     // //cout << "Case #" << t << ": ";
     // Solution s;
