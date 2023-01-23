@@ -504,54 +504,51 @@ void solve()
 {
     int n;
     cin>>n;
-    vi a(n+1);
-    f1(i,1,n+1)
+    function<int(int)>PRIME=[&](int x)
     {
-        cin>>a[i];
-    }
-    sort(all(a));
-    int ind=1,diff=a[2]-a[1];
-    f1(i,2,n)
-    {
-        if(a[i+1]-a[i]<diff)
+        int sq=sqrt(x);
+        f1(i,2,sq+1)
         {
-            diff=a[i+1]-a[i];
-            ind=i;
+            if(x%i==0)
+            {
+                return 0;
+            }
         }
-    }
-    vi ans;
-    // ans.pb(a[ind]);
-    // f1(i,ind+1,n+1)
+        return 1;
+    };
+    // if(PRIME(n) or n%2!=0)
     // {
-    //     ans.pb(a[i]);
+    //     cout<<"Bob"<<nl;
     // }
-    // f1(i,1,ind)
+    // else if(n%2==0 and (n/2)%2!=0)
     // {
-    //     ans.pb(a[i]);
+    //     cout<<"Bob"<<nl;
     // }
-    if(a[n]-a[1]==diff)
+    // else
+    // {
+    //     cout<<"Alice"<<nl;
+    // }
+    if(n&1)
     {
-        cf(i,1,n)
-        {
-            cout<<a[i]<<" ";
-        }
-        cout<<nl;
+        cout<<"Bob"<<nl;
         return;
     }
-    // f1(i,0,n)
-    // {
-    //     cout<<ans[i]<<" ";
-    // }
-    // cout<<nl;
-    cf(i,ind+1,n)
+    int cnt=0;
+    while(n%2==0)
     {
-        cout<<a[i]<<" ";
+        n/=2;
+        cnt++;
     }
-    cf(i,1,ind)
+    if(n==1 and cnt%2==1)
     {
-        cout<<a[i]<<" ";
+        cout<<"Bob"<<nl;
+        return;
     }
-    cout<<nl;
+    else
+    {
+        cout<<"Alice"<<nl;
+        return;
+    }
 }
 
 int main() {

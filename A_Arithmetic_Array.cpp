@@ -504,54 +504,21 @@ void solve()
 {
     int n;
     cin>>n;
-    vi a(n+1);
-    f1(i,1,n+1)
+    int a[n];
+    f1(i,0,n)cin>>a[i];
+    int sum=0;
+    f1(i,0,n)
     {
-        cin>>a[i];
+        sum+=a[i];
     }
-    sort(all(a));
-    int ind=1,diff=a[2]-a[1];
-    f1(i,2,n)
+    if(sum>=n)
     {
-        if(a[i+1]-a[i]<diff)
-        {
-            diff=a[i+1]-a[i];
-            ind=i;
-        }
-    }
-    vi ans;
-    // ans.pb(a[ind]);
-    // f1(i,ind+1,n+1)
-    // {
-    //     ans.pb(a[i]);
-    // }
-    // f1(i,1,ind)
-    // {
-    //     ans.pb(a[i]);
-    // }
-    if(a[n]-a[1]==diff)
+        cout<<sum-n<<nl;
+    }    
+    else
     {
-        cf(i,1,n)
-        {
-            cout<<a[i]<<" ";
-        }
-        cout<<nl;
-        return;
+        cout<<1<<nl;
     }
-    // f1(i,0,n)
-    // {
-    //     cout<<ans[i]<<" ";
-    // }
-    // cout<<nl;
-    cf(i,ind+1,n)
-    {
-        cout<<a[i]<<" ";
-    }
-    cf(i,1,ind)
-    {
-        cout<<a[i]<<" ";
-    }
-    cout<<nl;
 }
 
 int main() {

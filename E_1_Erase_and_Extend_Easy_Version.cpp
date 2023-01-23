@@ -502,56 +502,39 @@ ll Prime(ll x)
 
 void solve()
 {
-    int n;
-    cin>>n;
-    vi a(n+1);
-    f1(i,1,n+1)
+    ll n,k,l;
+    cin>>n>>k;
+    string s;
+    cin>>s;
+
+    ll cnt=1;
+
+    l=n;
+    function<void()>chk=[&]()
     {
-        cin>>a[i];
-    }
-    sort(all(a));
-    int ind=1,diff=a[2]-a[1];
-    f1(i,2,n)
-    {
-        if(a[i+1]-a[i]<diff)
+        f1(i,1,n)
         {
-            diff=a[i+1]-a[i];
-            ind=i;
+            if(s[i]<s[i%cnt])
+            {
+                // i++;
+                // l=i;
+                cnt=i+1;
+                // break;
+            }
+            if(s[i]>s[i%cnt])
+            {
+                break;
+            }
         }
-    }
-    vi ans;
-    // ans.pb(a[ind]);
-    // f1(i,ind+1,n+1)
-    // {
-    //     ans.pb(a[i]);
-    // }
-    // f1(i,1,ind)
-    // {
-    //     ans.pb(a[i]);
-    // }
-    if(a[n]-a[1]==diff)
+    };
+    
+    // char ch;
+    // ch=s[0];
+    chk();
+    f1(i,0,k)
     {
-        cf(i,1,n)
-        {
-            cout<<a[i]<<" ";
-        }
-        cout<<nl;
-        return;
+        cout<<s[i%cnt];
     }
-    // f1(i,0,n)
-    // {
-    //     cout<<ans[i]<<" ";
-    // }
-    // cout<<nl;
-    cf(i,ind+1,n)
-    {
-        cout<<a[i]<<" ";
-    }
-    cf(i,1,ind)
-    {
-        cout<<a[i]<<" ";
-    }
-    cout<<nl;
 }
 
 int main() {
@@ -564,7 +547,7 @@ int main() {
 // freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 // #endif
     ll tc = 1;
-    cin >> tc;
+    // cin >> tc;
     for (ll t = 1; t <= tc; t++) {
     // //cout << "Case #" << t << ": ";
     // Solution s;
