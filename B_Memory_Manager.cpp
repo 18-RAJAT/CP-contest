@@ -502,35 +502,48 @@ ll Prime(ll x)
 
 void solve()
 {
-    int n,l,r;
-    cin>>n>>l>>r;
-    int a[n];
-    memset(a,0,sizeof(a));  
-    a[1]=l;
+    string s;
+    int n,m;
+    cin>>n>>m;
+    map<int,int>memo;
+    while(n--){
+    cin>>s;
 
-    function<int(int,int)>DivAllCeil=[&](int i,int n)
+    int x=0,y=0,z=0;
+
+    int p;
+    if(s=="defragment")
     {
-        return (i+n-1)/n;
-    };
-    cf(i,2,n)
-    {
-        int x=DivAllCeil(l,i);
-        a[i]=x*i;
+        x=y;
     }
-    cf(i,1,n)
+    else if(s=="erase")
     {
-        if(a[i]>r)
+        cin>>p;
+        if(memo.count(p)==0)
         {
-            cout<<"NO"<<nl;
-            return;
+            cout<<"ILLEGAL_ERASE_ARGUMENT"<<nl;
+        }
+        else
+        {
+            y-=memo[p];
+            memo.erase(p);
         }
     }
-    cout<<"YES"<<nl;
-    cf(i,1,n)
+    else
     {
-        cout<<a[i]<<" ";
-    }
-    cout<<nl;
+        cin>>p;
+        if(x+p>m)
+        {
+            cout<<"NULL"<<nl;
+        }
+        else
+        {
+            y+=p;
+            x+=p;
+            memo[++z]=p;
+            cout<<z<<nl;
+        }
+    }}
 }
 
 int main() {
@@ -543,7 +556,7 @@ int main() {
 // freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 // #endif
     ll tc = 1;
-    cin >> tc;
+    // cin >> tc;
     for (ll t = 1; t <= tc; t++) {
     // //cout << "Case #" << t << ": ";
     // Solution s;

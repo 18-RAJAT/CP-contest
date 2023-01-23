@@ -502,35 +502,54 @@ ll Prime(ll x)
 
 void solve()
 {
-    int n,l,r;
-    cin>>n>>l>>r;
-    int a[n];
-    memset(a,0,sizeof(a));  
-    a[1]=l;
-
-    function<int(int,int)>DivAllCeil=[&](int i,int n)
+    char a[8][8];
+    f1(i,0,8)
     {
-        return (i+n-1)/n;
-    };
-    cf(i,2,n)
-    {
-        int x=DivAllCeil(l,i);
-        a[i]=x*i;
-    }
-    cf(i,1,n)
-    {
-        if(a[i]>r)
+        f1(j,0,8)
         {
-            cout<<"NO"<<nl;
-            return;
+            cin>>a[i][j];
         }
     }
-    cout<<"YES"<<nl;
-    cf(i,1,n)
+    int cnt=0;
+    int ans=0;
+    f1(i,0,8)
     {
-        cout<<a[i]<<" ";
+        cnt=0;
+        f1(j,0,8)
+        {
+            //i is row and j is column
+            if(a[i][j]=='B')
+            {
+                cnt++;
+            }
+        }
+        if(cnt==8)
+        {
+            ans++;
+        }
     }
-    cout<<nl;
+    if(ans==8)
+    {
+        cout<<"8"<<nl;
+        return;
+    }
+    f1(i,0,8)
+    {
+        cnt=0;
+        f1(j,0,8)
+        {
+            //j is row and i is column
+            if(a[j][i]=='B')
+            {
+                cnt++;
+            }
+        }
+        if(cnt==8)
+        {
+            ans++;
+        }
+    }
+    cout<<ans<<nl;
 }
 
 int main() {
@@ -543,7 +562,7 @@ int main() {
 // freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 // #endif
     ll tc = 1;
-    cin >> tc;
+    // cin >> tc;
     for (ll t = 1; t <= tc; t++) {
     // //cout << "Case #" << t << ": ";
     // Solution s;
