@@ -9,7 +9,7 @@ using namespace std;
  
 const int MAX_N = 2e5 + 5;
 const int MAX_NN = 2e5 + 8;
-const ll MOD = 1e9 + 7;
+const ll MOD = 10e9 + 7;
 const ll INF = 1e18+20;
 #define revall(x) x.rbegin(), x.rend()
 #define ALL(x) sort(x.begin(), x.end())
@@ -135,6 +135,8 @@ typedef unsigned long long int  uint64;
 #define BITMASK_FLIP(x, mask) ((x) ^= (mask))
 #define BITMASK_CHECK_ALL(x, mask) (!(~(x) & (mask)))
 #define BITMASK_CHECK_ANY(x, mask) ((x) & (mask))
+#define LSB_ANY(n) (n&(n-1))
+#define LSB_CHECK(n) (n&(-n))
 // ----------------------</BITWISE END>--------------------------
 
 
@@ -457,108 +459,94 @@ char fr(int i)
     return i+'a';
 }
 
-ll power(ll x,ll y,ll p=MOD) 
+ll fact(int n)
 {
-    ll res=1;
-    x=x%p;
-    while(y>0)
-    {
-        if(y&1)res=(res*x)%p;
-        y=y>>1;
-        x=(x*x)%p;
-    }
-    return res;
-}
-
-ll modInverse(ll n,ll p=MOD) 
-{
-    return power(n,p-2,p);
-} 
-
-ll NCR(ll n,ll r,ll p=MOD)
-{
-    if(r>n)return 0;
-    if(r==0)return 1;
-    ll fac[n+1];
-    fac[0]=1;
+    ll ans=1;
     for(ll i=1;i<=n;i++)
     {
-        fac[i]=fac[i-1]*i;
-        fac[i]%=p;
+        ans*=i;
     }
-    return (fac[n]*modInverse(fac[r],p)%p*modInverse(fac[n-r],p)%p)%p;
+    return ans;
 }
 
-ll fact[1000001];
-class Solution {
-public:
+
+set<ll>getFactors(ll x)
+{
+    set<ll>st;
+    ll sq=sqrt(x);
+    f1(i,2,sq+1)
+    {
+        if(x%i==0)
+        {
+            st.insert(i);
+            st.insert(x/i);
+        }
+    }
+    return st;
+}
+
+ll Prime(ll x)
+{
+    ll sq=sqrt(x);
+    f1(i,2,sq+1)
+    {
+        if(x%i==0)
+        {
+            return 0;
+        }
+    }
+    return 1;
+}
+
 void solve()
 {
-    ll n;cin>>n;
-    // ll a[n+1];
-    vi a(n+1);
+    ll n;
+    cin>>n;
+    ll a[n];cin>>a[0];
+    ll mn=a[0];
 
-    ll sum;
-    cf(i,1,n)
+
+    auto popCount=[&]()->void
     {
-        cin>>a[i];
-        if(i==0)
-        sum=a[0];
+        f1(i,1,n)
+        {
+            cin>>a[i];
+            if(__builtin_popcount(a[i])<__builtin_popcount(mn))
+            {
+                mn=a[i];
+            }
+        }
+    };
 
-        sum&=a[i];
-    }
-    // cf(i,1,n-1)
-    // {
-    //     // sum+=a[i];
-    //     sum&=a[i];
-    // }
-    // ll ct=0;
-    ll mini=*min_element(a.begin(),a.end());
-
-
-    int cnt=count(a.begin(),a.end(),mini);
-    // cf(i,0,n-1)
-    // {
-    //     // if(a[i]==sum)
-    //     // {
-    //     //     ct++;
-    //     // }
-    //     a[i]^=sum;
-    //     if(a[i]==0)
-    //     {
-    //         ct++;
-    //     }
-    // }
-
-    if(sum==mini)
+    popCount();
+    ll x=0;
+    f1(i,0,n)
     {
-        // ll ans=ncr(cnt,2)*fact[n-2]%MOD;
-        // cout<<2*ans%MOD<<nl;
-        // return;
-
-    // bool flag=true;
-    // ll f=1;
-
-    cout<<(2*NCR(cnt,2)*fact[n-2])%MOD<<nl;
-    // cf(i,1,n-2)
-    // {
-    //     f*=i;
-    // }
-    // ll ans=ncr(ct,2)*fact[n-2]%MOD;
-    // ll res=f*ct*(ct-1);
-    // cout<<abs(res)<<nl;
-    // cout<<2*ans%MOD<<nl;
+        if((mn&a[i])!=mn)
+        {
+            cout<<"0"<<nl;
+            return;
+        }
+        if(mn==a[i])
+        {
+            x++;
+        }
     }
-    else
+    ll res=x*(x-1);
+    res%=MOD;
+    cf(i,1,n-2)
     {
-        cout<<0<<nl;
+        res*=i;
+        res%=MOD;
     }
+    cout<<res<<nl;
 }
-};
 
 int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
+
+    // std::cout << std::setprecision(15); std::cout << std::fixed;
 // #ifndef ONLINE_JUDGE
 // freopen("input.txt","r",stdin); //file input.txt is opened in reading mode i.e "r"
 // freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
@@ -567,19 +555,17 @@ int main() {
     cin >> tc;
     for (ll t = 1; t <= tc; t++) {
     // //cout << "Case #" << t << ": ";
-    Solution s;
-    //     if(s.solve())
-    //     {
-    //         // cout<<"Yes"<<nl;
-    //     }
-    //     else
-    //     {
-    //         // cout<<"No"<<nl;
-    //     }
-    // }
-        // solve();
-        // Solution s;
-        s.solve();
+    // Solution s;
+        // if(s.solve())
+        // {
+        //     // cout<<"Yes"<<nl;
+        // }
+        // else
+        // {
+        //     // cout<<"No"<<nl;
+        // }
+    // // }
+        solve();
     }
     return 0;
 }
