@@ -9,7 +9,7 @@ using namespace std;
  
 const int MAX_N = 2e5 + 5;
 const int MAX_NN = 2e5 + 8;
-const ll MOD = 10e9 + 7;
+const ll MOD = 1000000007;
 const ll INF = 1e18+20;
 #define revall(x) x.rbegin(), x.rend()
 #define ALL(x) sort(x.begin(), x.end())
