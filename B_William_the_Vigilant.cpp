@@ -500,34 +500,33 @@ ll Prime(ll x)
 
 void solve()
 {
-    int n,q;
+    ll n,q;
     cin>>n>>q;
     string s;
     cin>>s;
-
-    auto chk=[&](int i)->int
+    
+    auto chk=[&](ll i)
     {
         if(i<0 or i+2>=n)
         {
             return 0;
         }
-        return (s.substr(i,3)=="abc");
+        return int(s.substr(i,3)=="abc");
     };
 
-    int curr=0;
+    ll curr=0;
     f1(i,0,n)
     {
         curr+=chk(i);
     }
     while(q--)
     {
-        int i;
-        cin>>i;i--;
+        ll i;
+        cin>>i;--i;
         char ch;
         cin>>ch;
         curr-=chk(i)+chk(i-1)+chk(i-2);
         s[i]=ch;
-        debug(s,curr);
         curr+=chk(i)+chk(i-1)+chk(i-2);
         cout<<curr<<nl;
     }
