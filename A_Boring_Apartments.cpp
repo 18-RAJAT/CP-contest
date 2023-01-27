@@ -500,13 +500,24 @@ ll Prime(ll x)
 
 void solve()
 {
-    int n;
-    cin>>n;
-    VI a(n);
-    f1(i,0,n)
+    string s;
+    cin>>s;
+    int n=s.length();
+    int dig=s[0]-'0';
+    int ans=0;
+    auto sumOFN=[&](int n)
     {
-        cin>>a[i];
+        return n*(n+1)/2;
+    };
+    if(dig<=0)
+    {
+        ans+=10;
     }
+    else
+    {
+        ans+=(dig-1)*10+sumOFN(n);
+    }
+    cout<<ans<<nl;
 }
 
 int main() {

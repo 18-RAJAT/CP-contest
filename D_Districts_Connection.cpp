@@ -502,10 +502,43 @@ void solve()
 {
     int n;
     cin>>n;
-    VI a(n);
+    vi a;
+    int x;
     f1(i,0,n)
     {
-        cin>>a[i];
+        cin>>x;
+        a.pb(x);
+    }
+    vi visited(n,0);
+    VPII res;
+    f1(i,0,n)
+    {
+        f1(j,0,n)
+        {
+            if(i==j or a[i]==a[j])
+            {
+                continue;
+            }
+            if(!visited[j])
+            {
+                res.pb(make_pair(i+1,j+1));
+                visited[j]=true;
+                visited[i]=true;
+            }
+        }
+    }
+    int cnt=count(all(visited),true);
+    if(cnt!=n)
+    {
+        cout<<"NO"<<nl;
+    }
+    else
+    {
+        cout<<"YES"<<nl;
+        for(auto it:res)
+        {
+            cout<<it.first<<" "<<it.second<<nl;
+        }
     }
 }
 

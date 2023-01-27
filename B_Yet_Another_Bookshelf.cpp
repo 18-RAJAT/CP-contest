@@ -507,6 +507,33 @@ void solve()
     {
         cin>>a[i];
     }
+    int first=-1;
+    int last=-1;
+
+    auto chk=[&]()->void
+    {
+        f1(i,0,n)
+        {
+            if(a[i]==1)
+            {
+                if(first<0)
+                {
+                    first=i;
+                }
+                last=i;
+            }
+        }
+    };
+    chk();
+    int zero=0;
+    f1(i,first,last)
+    {
+        if(zero+=a[i]==0)
+        {
+            
+        }
+    }
+    cout<<zero<<nl;
 }
 
 int main() {

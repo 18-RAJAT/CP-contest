@@ -500,13 +500,12 @@ ll Prime(ll x)
 
 void solve()
 {
-    int n;
+    ll n;
     cin>>n;
-    VI a(n);
-    f1(i,0,n)
-    {
-        cin>>a[i];
-    }
+    
+    ll ans[11]={0,1,3,40,1260,72576,6652800,889574400,163459296000,39520825344000,12164510040883200};
+    n/=2;
+    cout<<ans[n]<<nl;
 }
 
 int main() {
@@ -519,7 +518,7 @@ int main() {
 // freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 // #endif
     ll tc = 1;
-    cin >> tc;
+    // cin >> tc;
     for (ll t = 1; t <= tc; t++) {
     // //cout << "Case #" << t << ": ";
     // Solution s;
