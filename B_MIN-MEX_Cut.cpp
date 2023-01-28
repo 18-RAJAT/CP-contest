@@ -500,48 +500,47 @@ ll Prime(ll x)
 
 void solve()
 {
-    int n;
-    cin>>n;
-    string a,b;
-    cin>>a>>b;
-    int ans=0;
-    auto resolve=[&](string s)->int
+    string s;
+    cin>>s;
+    ll n=s.length();
+
+    if(count(all(s),'0')==n)
     {
-        int cnt=count(all(s),'0');
-        int n=s.size();
-        int a=0,b=0;
-        f1(i,0,n)
-        {
-            if(s[i]=='0')
-            {
-                a=1;
-            }
-            if(s[i]=='1')
-            {
-                b=1;
-            }
-            if(a and b)
-            {
-                cnt++;
-                a=b=0;
-            }
-        }
-        return cnt;
-    };
-    string str="";
+        cout<<"1"<<nl;
+        return;
+    }
+    else if(count(all(s),'1')==n)
+    {
+        cout<<"0"<<nl;
+        return;
+    }
+
+    int cnt[2];
+    memset(cnt,0,sizeof(cnt));
     f1(i,0,n)
     {
-        if(a[i]==b[i])
+        int x=s[i]-'0';
+        cnt[x]++;
+    }
+    int diff=0;
+    f1(i,1,n)
+    {
+        if(s[i]!=s[i-1])
         {
-            str+=a[i];
-        }
-        else
-        {
-            ans+=resolve(str)+2;
-            str.clear();
+            diff++;
         }
     }
-    cout<<resolve(str)+ans<<nl;
+    if(diff==1)
+    {
+        cout<<"1"<<nl;
+        return;
+    }
+    if(diff==2 and s[0]=='1')
+    {
+        cout<<"1"<<nl;
+        return;
+    }
+    cout<<"2"<<nl;
 }
 
 int main() {

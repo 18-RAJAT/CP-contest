@@ -500,48 +500,19 @@ ll Prime(ll x)
 
 void solve()
 {
-    int n;
-    cin>>n;
-    string a,b;
-    cin>>a>>b;
-    int ans=0;
-    auto resolve=[&](string s)->int
+    ll n,s;
+    cin>>n>>s;
+    
+    if(n&1)
     {
-        int cnt=count(all(s),'0');
-        int n=s.size();
-        int a=0,b=0;
-        f1(i,0,n)
-        {
-            if(s[i]=='0')
-            {
-                a=1;
-            }
-            if(s[i]=='1')
-            {
-                b=1;
-            }
-            if(a and b)
-            {
-                cnt++;
-                a=b=0;
-            }
-        }
-        return cnt;
-    };
-    string str="";
-    f1(i,0,n)
-    {
-        if(a[i]==b[i])
-        {
-            str+=a[i];
-        }
-        else
-        {
-            ans+=resolve(str)+2;
-            str.clear();
-        }
+        ll cnt=(n+1)/2;
+        cout<<s/cnt<<nl;
     }
-    cout<<resolve(str)+ans<<nl;
+    else
+    {
+        ll cnt=(n+2)/2;
+        cout<<s/cnt<<nl;
+    }
 }
 
 int main() {

@@ -498,50 +498,46 @@ ll Prime(ll x)
     return 1;
 }
 
+
+const ll N=1e5;
 void solve()
 {
-    int n;
+    ll n;
     cin>>n;
-    string a,b;
-    cin>>a>>b;
-    int ans=0;
-    auto resolve=[&](string s)->int
+    map<ll,ll>mp;
+    auto sq=[](ll x)->ll
     {
-        int cnt=count(all(s),'0');
-        int n=s.size();
-        int a=0,b=0;
-        f1(i,0,n)
-        {
-            if(s[i]=='0')
-            {
-                a=1;
-            }
-            if(s[i]=='1')
-            {
-                b=1;
-            }
-            if(a and b)
-            {
-                cnt++;
-                a=b=0;
-            }
-        }
-        return cnt;
+        return sqrt(x);
     };
-    string str="";
+    ll ans=0;
     f1(i,0,n)
     {
-        if(a[i]==b[i])
+        ll x;
+        cin>>x;
+        ll s=sq(x);
+        cf(j,s,s+N)
         {
-            str+=a[i];
-        }
-        else
-        {
-            ans+=resolve(str)+2;
-            str.clear();
+            // cout<<"1"<<j*j<<nl;
+            if(j*j>=x)
+            {
+                // cout<<"2"<<j*j<<nl;
+                mp[(j*j-x)]++;
+                // cout<<"3"<<j*j-x+1<<nl;
+            }
+            else
+            {
+                continue;
+            }
         }
     }
-    cout<<resolve(str)+ans<<nl;
+    for(auto &i:mp)
+    {
+        if(i.second>ans)
+        {
+            ans=i.second;
+        }
+    }
+    cout<<ans<<nl;
 }
 
 int main() {

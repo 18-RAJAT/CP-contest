@@ -502,46 +502,29 @@ void solve()
 {
     int n;
     cin>>n;
-    string a,b;
-    cin>>a>>b;
-    int ans=0;
-    auto resolve=[&](string s)->int
+    vi a(n);
+    for(auto &it:a)
     {
-        int cnt=count(all(s),'0');
-        int n=s.size();
-        int a=0,b=0;
-        f1(i,0,n)
-        {
-            if(s[i]=='0')
-            {
-                a=1;
-            }
-            if(s[i]=='1')
-            {
-                b=1;
-            }
-            if(a and b)
-            {
-                cnt++;
-                a=b=0;
-            }
-        }
-        return cnt;
-    };
-    string str="";
+        cin>>it;
+    }
+    int ans=0;
+    sort(all(a));
+    if(a[0])
+    {
+        ans++;
+    }
     f1(i,0,n)
     {
-        if(a[i]==b[i])
+        if(i<n-1 and a[i+1]<=i+1)
         {
-            str+=a[i];
+            continue;
         }
-        else
+        if(a[i]<=i)
         {
-            ans+=resolve(str)+2;
-            str.clear();
+            ans++;
         }
     }
-    cout<<resolve(str)+ans<<nl;
+    cout<<ans<<nl;
 }
 
 int main() {
