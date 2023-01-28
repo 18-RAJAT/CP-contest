@@ -500,25 +500,43 @@ ll Prime(ll x)
 
 void solve()
 {
-    multiset<ll>st;
-    ll n;cin>>n;
-    ll a[n];
+    int n;
+    cin>>n;
+    vector<int>v;
+    multiset<int>st;
+
+    int x;
     f1(i,0,n)
     {
-        cin>>a[i];
-        st.insert(a[i]);
+        cin>>x;
+        v.push_back(x);
+        st.insert(x);
     }
-    ll ans=0;
-    while(st.size()>1)
+    int ans=0;
+    while(1)
     {
-        ll x=*st.begin();
+        int beg=*st.begin();
+        // int end=*st.rbegin();
         st.erase(st.begin());
-        ll y=*st.begin();
-        st.erase(st.begin());
-        ans+=x+y;
-        st.insert(x+y);
+        ans++;
+        beg++;
+
+        while(st.count(beg))
+        {
+            st.erase(st.find(beg));
+            beg++;
+        }
+        if(st.empty())
+        {
+            break;
+        }
+        // else
+        // {
+        //     st.insert(beg);
+        // }
     }
-    cout<<ans<<endl;
+    ans+=st.size();
+    cout<<ans<<nl;
 }
 
 int main() {
