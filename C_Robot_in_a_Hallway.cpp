@@ -500,19 +500,58 @@ ll Prime(ll x)
 
 void solve()
 {
-    int n;
+    ll n;
     cin>>n;
-    if(n==1)
+    VI a(2,VI(n));
+    f1(i,0,n)
     {
-        cout<<2<<nl;
+        cin>>a[0][i];
     }
-    else if(n<=3)
+    f1(i,0,n)
     {
-        cout<<1<<nl;
+        cin>>a[1][i];
+    }
+    ll leftPos=2*n-1;
+    ll rightPos=INT_MAX;
+
+    auto valCase=[&](int x,int y,VVi&visited)
+    {
+        return x>=0 and x<2 and y>=0 and y<n and !visited[x][y];
+    };
+
+    auto chk=[&](int p,int x,int y,VVI&visited,int idx)
+    {
+        visited[x][y]=1;
+
+        if(idx=n*2)
+        {
+            visited[x][y]=0;
+            return p;
+        }
+        int ans=INT_MAX;
+        int dirX[]={0,0,1,-1};
+        int dirY[]={1,-1,0,0};
+        f1(i,0,4)
+        {
+            int nx=x+dirX[i];
+            int ny=y+dirY[i];
+            if(valCase(nx,ny,visited))
+            {
+                ans=min(ans,chk(p+1,nx,ny,visited,idx+1));
+            }
+        }
+        visited[x][y]=0;
+        return ans;
+    };
+    VVI visited(2,vi(n,0));
+    int res=chk(0,0,0,visited,1);
+    if(res==INT_MAX)
+    {
+        cout<<-1<<nl;
     }
     else
     {
-        cout<<(n+2)/3<<nl;
+        cout<<res<<nl;
     }
 }
 

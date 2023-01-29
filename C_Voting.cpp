@@ -500,19 +500,81 @@ ll Prime(ll x)
 
 void solve()
 {
-    int n;
+    ll n;
     cin>>n;
-    if(n==1)
+    char ch;
+    cin>>ch;
+
+    ll store=ch;
+    ll cntD=0;
+    ll cntR=0;
+
+    if(store=='D')
     {
-        cout<<2<<nl;
-    }
-    else if(n<=3)
-    {
-        cout<<1<<nl;
+        cntD++;
+        // cntR++;
     }
     else
     {
-        cout<<(n+2)/3<<nl;
+        // cntD++;
+        cntR++;
+    }
+    f1(i,0,n-1)
+    {
+        cin>>ch;
+        if(ch=='D')
+        {
+            cntD++;
+        }
+        else if(ch=='R')
+        {
+            cntR++;
+        }
+        else
+        {
+            cntD++;
+            cntR++;
+        }
+    }
+    if(store=='D')
+    {
+        while(cntR>=0 and cntD>=0)
+        {
+            cntR-=cntD;
+            cntD-=cntR;
+        }
+        if(cntR>=0)
+        {
+            cout<<"R";
+        }
+        else if(cntD>=0)
+        {
+            cout<<"D"<<nl;
+        }
+        else
+        {
+            cout<<"D";
+        }
+    }
+    else
+    {
+        while(cntR>=0 and cntD>=0)
+        {
+            cntD-=cntR;
+            cntR-=cntD;
+        }
+        if(cntR>=0)
+        {
+            cout<<"R";
+        }
+        else if(cntD>=0)
+        {
+            cout<<"D";
+        }
+        else 
+        {
+            cout<<"D";
+        }
     }
 }
 
@@ -526,7 +588,7 @@ int main() {
 // freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 // #endif
     ll tc = 1;
-    cin >> tc;
+    // cin >> tc;
     for (ll t = 1; t <= tc; t++) {
     // //cout << "Case #" << t << ": ";
     // Solution s;
