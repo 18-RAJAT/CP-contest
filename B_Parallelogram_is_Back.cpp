@@ -500,24 +500,21 @@ ll Prime(ll x)
 
 void solve()
 {
-    int x,y;
-    cin>>x>>y;
+    // ll x,y;
+    // cin>>x>>y;
     cout<<"3"<<nl;
-    if(x==y)
+    ll f1=0,f2=0;
+    ll a[3][2];
+    memset(a,0,sizeof(a));
+    f1(i,0,3)
     {
-        cout<<"1"<<" "<<"-1"<<nl;
+        cin>>a[i][0]>>a[i][1];
+        f1+=a[i][0];
+        f2+=a[i][1];
     }
-    else if(x>y)
+    f1(i,0,3)
     {
-        cout<<"-1"<<" "<<"1"<<nl;
-    }
-    else if(x<y)
-    {
-        cout<<"1"<<" "<<"1"<<nl;
-    }
-    else
-    {
-        cout<<"0"<<" "<<"0"<<nl;
+        cout<<f1-2*a[i][0]<<" "<<f2-2*a[i][1]<<nl;
     }
 }
 
