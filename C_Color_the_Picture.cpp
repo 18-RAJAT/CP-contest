@@ -9,7 +9,7 @@ using namespace std;
  
 const int MAX_N = 2e5 + 5;
 const int MAX_NN = 2e5 + 8;
-const ll MOD = 1e9 + 7;
+const ll MOD = 1000000007;
 const ll INF = 1e18+20;
 #define revall(x) x.rbegin(), x.rend()
 #define ALL(x) sort(x.begin(), x.end())
@@ -40,6 +40,7 @@ const ll INF = 1e18+20;
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 #define MP make_pair
+#define INS insert
 #define PB push_back
 #define PF push_front
 #define INF (int)1e9
@@ -135,6 +136,8 @@ typedef unsigned long long int  uint64;
 #define BITMASK_FLIP(x, mask) ((x) ^= (mask))
 #define BITMASK_CHECK_ALL(x, mask) (!(~(x) & (mask)))
 #define BITMASK_CHECK_ANY(x, mask) ((x) & (mask))
+#define LSB_ANY(n) (n&(n-1))
+#define LSB_CHECK(n) (n&(-n))
 // ----------------------</BITWISE END>--------------------------
 
 
@@ -368,12 +371,7 @@ bool binarySearch(ll mid,ll k,ll x)
     return tot<x;
 }
 
-int power(int b, int e)
-{
-    int ret = 1;
-    for(int i=0; i<e; ++i) ret *= b;
-    return ret;
-}
+
 
 vi helper(int n)
 {
@@ -453,65 +451,99 @@ bool isPrime(int n)
     return true;
 }
 
-ll a[100001];
-class Solution {
-public:
+int ft(char c)
+{
+    return c - 'a';
+}
+char fr(int i)
+{
+    return i+'a';
+}
+
+ll fact(int n)
+{
+    ll ans=1;
+    for(ll i=1;i<=n;i++)
+    {
+        ans*=i;
+    }
+    return ans;
+}
+
+
+set<ll>getFactors(ll x)
+{
+    set<ll>st;
+    ll sq=sqrt(x);
+    f1(i,2,sq+1)
+    {
+        if(x%i==0)
+        {
+            st.insert(i);
+            st.insert(x/i);
+        }
+    }
+    return st;
+}
+
+ll Prime(ll x)
+{
+    ll sq=sqrt(x);
+    f1(i,2,sq+1)
+    {
+        if(x%i==0)
+        {
+            return 0;
+        }
+    }
+    return 1;
+}
+
 void solve()
 {
-    ll n,m,k;cin>>n>>m>>k;
-    // ll a[100001];
-    // input(a);
-    cf(i,1,k)
+    ll n,m,k;
+    cin>>n>>m>>k;
+    VI a(k);
+    f1(i,0,k)
     {
         cin>>a[i];
     }
-    ll ans=0;
 
-    f1(i,0,2)
+    auto gridChk=[&](ll cnt,ll pigMnt)
     {
-        bool flag=false;
-        ll ct=0;
-
-        cf(i,1,k)
+        ll fill=0;
+        ll mnFill=0;
+        f1(i,0,k)
         {
-            if(2*n<=a[i])// and a[i]<=3*n)
+            ll l=a[i]/pigMnt;
+            if(l>=2)
             {
-                // ct++;
-                // if(ct==n)
+                fill+=l;
+                mnFill+=2;
+                // if(l>2)
                 // {
-                //     f=true;
-                //     break;
+                    // mnFill=1;
                 // }
-                ct+=a[i]/n;
-            }
-
-            if(3*n<=a[i])
-            {
-                flag=true;
             }
         }
-        if(ct>=m and (flag or m%2==0))
-        {
-            ans=true;
-            // cout<<"YES"<<nl;
-            // return;
-            swap(n,m);
-        }
-    }
-    if(ans)
+        return mnFill<=cnt and cnt<=fill;
+    };
+    ll res=gridChk(m,n) or gridChk(n,m);
+    if(res)
     {
-        cout<<"YES"<<nl;
+        cout<<"Yes"<<nl;
     }
     else
     {
-        cout<<"NO"<<nl;
+        cout<<"No"<<nl;
     }
 }
-};
 
 int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
+
+    // std::cout << std::setprecision(15); std::cout << std::fixed;
 // #ifndef ONLINE_JUDGE
 // freopen("input.txt","r",stdin); //file input.txt is opened in reading mode i.e "r"
 // freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
@@ -520,19 +552,17 @@ int main() {
     cin >> tc;
     for (ll t = 1; t <= tc; t++) {
     // //cout << "Case #" << t << ": ";
-    Solution s;
-    //     if(s.solve())
-    //     {
-    //         // cout<<"Yes"<<nl;
-    //     }
-    //     else
-    //     {
-    //         // cout<<"No"<<nl;
-    //     }
-    // }
-        // solve();
-        // Solution s;
-        s.solve();
+    // Solution s;
+        // if(s.solve())
+        // {
+        //     // cout<<"Yes"<<nl;
+        // }
+        // else
+        // {
+        //     // cout<<"No"<<nl;
+        // }
+    // // }
+        solve();
     }
     return 0;
 }
