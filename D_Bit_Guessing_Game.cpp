@@ -40,7 +40,6 @@ const ll INF = 1e18+20;
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 #define MP make_pair
-#define INS insert
 #define PB push_back
 #define PF push_front
 #define INF (int)1e9
@@ -69,6 +68,7 @@ typedef map<string,int> MPSI;
 typedef set<long long> seti;
 typedef multiset<int> MSETI;
 typedef priority_queue<pair<int,int>> PQPII;
+#define Moves(e,x) for(auto &(e):(x))
 typedef long int int32;
 typedef unsigned long int uint32;
 typedef long long int int64;
@@ -498,54 +498,14 @@ ll Prime(ll x)
     }
     return 1;
 }
-
 void solve()
 {
-    int n,m;
-    cin>>n>>m;
-    map<int,int>price;
-    cf(i,1,n)
+    auto query=[&](int x)->
     {
-        int val;
-        cin>>val;
-        price[i]=val;
-    }
-    set<pair<int,int>>adj[n+1];
-    f1(i,0,m)
-    {
-        int x,y;
-        cin>>x>>y;
-        adj[x].INS(MP(price[y],y));
-        adj[y].INS(MP(price[x],x));
-    }
-
-    if(m&1)
-    {
-        int mini=INT_MAX;
-        cf(i,1,n)
-        {
-            int a=adj[i].size();
-            //Number of club members and pairs of friends
-            if(a&1)
-            {
-                mini=min(mini,price[i]);
-            }
-            else if(a!=0)
-            {
-                mini=min(mini,price[i]+adj[i].begin()->first);
-            }
-            else if(a<0)
-            {
-                mini=min(mini,price[i+1]);
-            }
-        }
-        cout<<mini<<nl;
-    }
-    else
-    {
-        cout<<0<<nl;
-        return;
-    }
+        cout<<"- "<<x<<nl;
+        cin>>x;
+        return x;
+    };
 }
 
 int main() {
