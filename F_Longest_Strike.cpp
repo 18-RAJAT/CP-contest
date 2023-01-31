@@ -501,31 +501,45 @@ ll Prime(ll x)
 
 void solve()
 {
-    int n,q;
-    cin>>n>>q;
-    int a[n];
+    int n,k;
+    cin>>n>>k;
+    int lPos=0,rPos=0;
+    map<int,int>mp;
+    vector<int>a(n);
+
     f1(i,0,n)
+    {cin>>a[i];}
+    for(auto& it:a)
+    mp[it]++;
+    set<int>st(all(a));
+    a.clear();
+    for(auto& it:st)
+    a.pb(it);
+    for(auto& it:a)
     {
-      cin>>a[i];
+        int tmp=it;
+        int l=-1,r=-1;
+        int ok=1;
+        while(mp[tmp]>=k)
+        {
+            if(ok)l=r=tmp=ok=0;
+            else
+            r=tmp;
+            tmp++;
+
+            if(r-l>rPos-lPos)
+            lPos=l,rPos=r;
+        }
     }
-    sort(a,a+n,greater<int>());
-    // reverse(a,a+n);
-    f1(i,1,n)
+    if(lPos and rPos)
     {
-      a[i]+=a[i-1];
+        cout<<"-1"<<nl;
+        // cout<<lPos<<" "<<rPos<<nl;
     }
-    while(q--)
+    else
     {
-      int x;
-      cin>>x;
-      if(a[n-1]<x)
-      {
-        cout<<-1<<nl;
-      }
-      else
-      {
-        cout<<lower_bound(a,a+n,x)-a+1<<nl;
-      }
+        // cout<<"-1"<<nl;
+        cout<<lPos<<" "<<rPos<<nl;
     }
 }
 
