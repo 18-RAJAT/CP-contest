@@ -501,17 +501,35 @@ ll Prime(ll x)
 
 void solve()
 {
-    ll n;
-    cin>>n;
-
-    if(n%2==1 or n==2)
+    ll n,q;
+    cin>>n>>q;
+    ll a[MAX_N];
+    ll sm=0;
+    f1(i,0,n)
     {
-        cout<<-1<<nl;
-        return;
+        cin>>a[i];
+        sm+=a[i];
     }
-    //sub
-    n/=2;
-    cout<<(n+2)/3<<" "<<(n/2)<<nl;
+    while(q--)
+    {
+        ll k;
+        cin>>k;
+        if(k==1)
+        {
+            ll x,y;
+            cin>>x>>y;
+            sm=sm-a[x-1]+y;
+            a[x-1]=y;
+        }
+        else
+        {
+            ll o;
+            cin>>o;
+            f1(i,0,n)a[i]=o;
+            sm=n*o;
+        }
+        cout<<sm<<nl;
+    }
 }
 
 int main() {
@@ -525,7 +543,7 @@ int main() {
 // freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 // #endif
     ll tc = 1;
-    cin >> tc;
+    // cin >> tc;
     for (ll t = 1; t <= tc; t++) {
     // //cout << "Case #" << t << ": ";
     // Solution s;
