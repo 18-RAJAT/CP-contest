@@ -501,45 +501,45 @@ ll Prime(ll x)
 
 void solve()
 {
-    ll n,k;cin>>n>>k;
-    string a,b;cin>>a>>b;
-    ll ans=0;
-    f1(i,0,n)
+    int n,k;
+    string a,b;
+
+    function<int(int,int,int)>BITS=[&](int i,int cnt,int mask)->int
     {
-        set<char>st;
-        ll j=i;
-        while(j<n)
-        // f1(j,i,n)
+        if(i==n)
         {
-            if(a[j]==b[j])
-            {
-                ans++;
-                j++;
-            }
-            else
-            {
-                if(st.find(b[j])!=st.end())//present
-                {
-                    ans++;
-                    j++;
-                }
-                else
-                {
-                    if(st.size()<k)
-                    {
-                        st.insert(b[j]);
-                        ans++;
-                        j++;
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-            }
+            return 0;
         }
-    }
-    cout<<ans<<nl;
+        if(a[i]==b[i])
+        {
+            return cnt+1+BITS(i+1,cnt+1,mask);
+        }
+        auto curr=a[i];
+        // if(mask&(1<<ft(curr)))
+        // {
+        //     return 1+BITS(i+1,cnt,mask);
+        // }
+        // else
+        // {
+        //     return 1+BITS(i+1,cnt,mask|(1<<ft(curr)));
+        // }
+        int bit=a[i]-'a';
+        int ans=0;
+
+        if(((1<<bit)&mask) or __builtin_popcount(mask)<k)
+        {
+            ans=max(ans,cnt+1+BITS(i+1,cnt+1,mask|(1<<bit)));
+            // cout<<"1st: "<<ans;
+        }
+        if(not((1<<bit)&mask))
+        {
+            ans=max(ans,BITS(i+1,0,mask));
+            // cout<<"2nd: "<<ans;
+        }
+        return ans;
+    };
+    cin>>n>>k>>a>>b;
+    cout<<BITS(0,0,0)<<nl;
 }
 
 int main() {
