@@ -501,45 +501,59 @@ ll Prime(ll x)
 
 void solve()
 {
-    int n;
-    cin>>n;
-    map<string,int>mp;
-    vector<string>point[3];//gets 3 point
-
-    string s;
-    f1(i,0,3)
+    vector<pair<ll,ll>>vp{{1,0},{0,-1},{1,1},{1,-1},{-1,0},{-1,1},{0,1},{-1,-1}};//,{0,0}};
+    ll n,m;
+    cin>>n>>m;
+    vector<vector<char>>ch(n,vector<char>(m));
+    f1(i,0,n)
     {
-        f1(j,0,n)
+        f1(j,0,m)
         {
-            cin>>s;
-            point[i].pb(s);
-            mp[s]++;
+            cin>>ch[i][j];
         }
     }
-    int cnt[3];
-    memset(cnt,0,sizeof(cnt));
-
-    f1(i,0,3)
+    f1(i,0,n)
     {
-        f1(j,0,n)
+        f1(j,0,m)
         {
-            s=point[i][j];
+            if(ch[i][j]=='*')
+            {
+                ll c=0;
+                for(auto it:vp)
+                {
+                    ll p=i+it.first;
+                    ll q=j+it.second;
 
-            if(mp[s]==1)
-            {
-                cnt[i]+=3;//inc by 3
-            }
-            else if(mp[s]==2)
-            {
-                cnt[i]+=1;//inc by 1
+                    if(p<n and p>=0 and q<m and q>=0 and ch[p][q]=='*' and (p!=i or q!=j))
+                    {
+                        c++;
+                    }
+                    // else if(p>=n or p<0 or q>=m or q<0)
+                    // {
+                    //     c++;
+                    // }
+                    // else if(ch[p][q]!='*')
+                    // {
+                    //     c++;
+                    // }
+                    // else 
+                    // {
+                    //     c++;
+                    // }
+                    else
+                    {
+                        continue;
+                    }
+                }
+                if(c!=2)
+                {
+                    cout<<"NO"<<nl;
+                    return;
+                }
             }
         }
     }
-    for(int i=0;i<3;i++)
-    {
-        cout<<cnt[i]<<" ";
-    }
-    cout<<nl;
+    cout<<"YES"<<nl;
 }
 
 int main() {

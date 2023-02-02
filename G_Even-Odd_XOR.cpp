@@ -501,45 +501,29 @@ ll Prime(ll x)
 
 void solve()
 {
-    int n;
+    ll n;
+    ll k=0;
     cin>>n;
-    map<string,int>mp;
-    vector<string>point[3];//gets 3 point
-
-    string s;
-    f1(i,0,3)
+    if(n==1)
     {
-        f1(j,0,n)
+        cout<<k<<nl;
+    }
+    else if(n==2)
+    {
+        cout<<0<<" "<<k<<nl;
+    }
+    else
+    {
+        f1(i,0,n-3)
         {
-            cin>>s;
-            point[i].pb(s);
-            mp[s]++;
+            cout<<i<<" ";
+            k^=i;
         }
+        //range inc
+        ll x=(1<<20);
+        ll y=(1<<21);
+        cout<<x<<" "<<y<<" "<<(k^x^y)<<nl;
     }
-    int cnt[3];
-    memset(cnt,0,sizeof(cnt));
-
-    f1(i,0,3)
-    {
-        f1(j,0,n)
-        {
-            s=point[i][j];
-
-            if(mp[s]==1)
-            {
-                cnt[i]+=3;//inc by 3
-            }
-            else if(mp[s]==2)
-            {
-                cnt[i]+=1;//inc by 1
-            }
-        }
-    }
-    for(int i=0;i<3;i++)
-    {
-        cout<<cnt[i]<<" ";
-    }
-    cout<<nl;
 }
 
 int main() {
