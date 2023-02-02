@@ -501,16 +501,36 @@ ll Prime(ll x)
 
 void solve()
 {
-    string s;
-    cin>>s;
-    if(s[0]!='y' and s[0]!='Y' or s[1]!='e' and s[1]!='E' or s[2]!='s' and s[2]!='S')
+    int n;
+    cin>>n;
+    vi a(n);
+    f1(i,0,n)
     {
-        no();
+        cin>>a[i];
     }
-    else
+    f1(i,0,n)
     {
-        yes();
+        int x;
+        cin>>x;
+        string s;
+        cin>>s;
+        for(auto it:s)
+        {
+            if(it=='D')
+            {
+                a[i]=(a[i]+1)%10;
+            }
+            else
+            {
+                a[i]=(a[i]+9)%10;
+            }
+        }
     }
+    for(auto it:a)
+    {
+        cout<<it<<" ";
+    }
+    cout<<nl;
 }
 
 int main() {

@@ -501,16 +501,29 @@ ll Prime(ll x)
 
 void solve()
 {
-    string s;
-    cin>>s;
-    if(s[0]!='y' and s[0]!='Y' or s[1]!='e' and s[1]!='E' or s[2]!='s' and s[2]!='S')
+    int n;
+    cin>>n;
+    vector<vector<int>>v(n,vector<int>(n,0));
+    f1(i,0,n)
     {
-        no();
+        f1(j,0,n)
+        {
+            char s;
+            cin>>s;
+            v[i][j]=s-'0';
+        }
     }
-    else
+    int ans=0;
+    f1(i,0,n)
     {
-        yes();
+        f1(j,0,n)
+        {
+            //case
+            int tmp=v[i][j]+v[j][n-1-i]+v[n-1-i][n-1-j]+v[n-1-j][i];
+            ans+=min(tmp,4-tmp);
+        }
     }
+    cout<<ans/4<<nl;
 }
 
 int main() {

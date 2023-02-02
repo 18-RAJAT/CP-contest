@@ -501,16 +501,14 @@ ll Prime(ll x)
 
 void solve()
 {
+    int n;
+    cin>>n;
     string s;
     cin>>s;
-    if(s[0]!='y' and s[0]!='Y' or s[1]!='e' and s[1]!='E' or s[2]!='s' and s[2]!='S')
-    {
-        no();
-    }
-    else
-    {
-        yes();
-    }
+
+    set<char>st;
+    for(auto& it:s)st.insert(it);
+    cout<<s.size()+st.size()<<nl;
 }
 
 int main() {
