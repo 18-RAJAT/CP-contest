@@ -503,34 +503,23 @@ ll Prime(ll x)
 
 void solve()
 {
-    ll n,k;cin>>n>>k;
-    ll a[n];
-    deque<ll>q;
+    int n;
+    cin>>n;
+    int a[n];
+    int sm=0;
     f1(i,0,n)
     {
         cin>>a[i];
+        sm+=a[i];
     }
-    q.pb(a[0]);
-
-    f1(i,1,n)
+    if(sm%n==0)
     {
-        deque<ll>::iterator it=find(all(q),a[i]);
-        if(it!=q.end())
-        {
-            continue;
-        }
-        if(q.size()==k)
-        {
-            q.POB();
-        }
-        q.PF(a[i]);
+        cout<<sm/n<<nl;
     }
-    cout<<q.size()<<nl;
-    for(auto it:q)
+    else
     {
-        cout<<it<<" ";
+        cout<<sm/n+1<<nl;
     }
-    cout<<nl;
 }
 
 
@@ -545,7 +534,7 @@ int main() {
 // freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 // #endif
     ll tc = 1;
-    // cin >> tc;
+    cin >> tc;
     for (ll t = 1; t <= tc; t++) {
     // //cout << "Case #" << t << ": ";
     // Solution s;

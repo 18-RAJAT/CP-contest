@@ -503,30 +503,34 @@ ll Prime(ll x)
 
 void solve()
 {
-    ll n,k;cin>>n>>k;
-    ll a[n];
-    deque<ll>q;
+    int n,k;
+    cin>>n>>k;
+
+    set<int>st;
+    deque<int>curr;
+
+    int sz=0;
     f1(i,0,n)
     {
-        cin>>a[i];
-    }
-    q.pb(a[0]);
+        int x;
+        cin>>x;
 
-    f1(i,1,n)
-    {
-        deque<ll>::iterator it=find(all(q),a[i]);
-        if(it!=q.end())
+        if(st.find(x)==st.end())
         {
-            continue;
+            if(sz==k)
+            {
+                int y=curr.back();
+                curr.POB();
+                st.erase(y);
+                sz--;
+            }
+            curr.PF(x);
+            st.INS(x);
+            sz++;
         }
-        if(q.size()==k)
-        {
-            q.POB();
-        }
-        q.PF(a[i]);
     }
-    cout<<q.size()<<nl;
-    for(auto it:q)
+    cout<<sz<<nl;
+    for(auto it:curr)
     {
         cout<<it<<" ";
     }

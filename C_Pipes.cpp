@@ -503,34 +503,50 @@ ll Prime(ll x)
 
 void solve()
 {
-    ll n,k;cin>>n>>k;
-    ll a[n];
-    deque<ll>q;
+    /*
+        types
+        | , -- , |-- , --| , __| , |__ 
+        mve 90->|->|.....
+    */
+    //2n+1=s[0][i]+s[1][i]==('1'+'0')<<<--- xor idx.......('0'+'1')<<<---no chk with str 1,2 -> s[2];
+
+    int n;
+    cin>>n;
+    string s[2];
+    cin>>s[0]>>s[1];
+    f1(i,0,2)
+    {
+        f1(j,0,n)
+        {
+            if(s[i][j]=='1' or s[i][j]=='2')
+            {
+                s[i][j]='0';
+            }
+            else
+            {
+                s[i][j]='1';
+            }
+        }
+    }
+    int trv=0;
     f1(i,0,n)
     {
-        cin>>a[i];
-    }
-    q.pb(a[0]);
-
-    f1(i,1,n)
-    {
-        deque<ll>::iterator it=find(all(q),a[i]);
-        if(it!=q.end())
+        if((s[0][i]+s[1][i])==('0'+'1') and s[trv][i]=='1')
         {
-            continue;
+            cout<<"NO"<<nl;
+            break;
         }
-        if(q.size()==k)
+        else if((s[0][i]+s[1][i])==('1'+'1'))
         {
-            q.POB();
+            trv=(trv^1);
         }
-        q.PF(a[i]);
     }
-    cout<<q.size()<<nl;
-    for(auto it:q)
+    if(trv==0)
     {
-        cout<<it<<" ";
+        cout<<"NO"<<nl;
+        return;
     }
-    cout<<nl;
+    cout<<"YES"<<nl;
 }
 
 
@@ -545,7 +561,7 @@ int main() {
 // freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 // #endif
     ll tc = 1;
-    // cin >> tc;
+    cin >> tc;
     for (ll t = 1; t <= tc; t++) {
     // //cout << "Case #" << t << ": ";
     // Solution s;
