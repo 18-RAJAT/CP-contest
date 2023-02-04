@@ -604,7 +604,20 @@ int getSum(int v)
 
 void solve()
 {
-    
+    int n,l,r;
+    cin>>n>>l>>r;
+    int mnSum=0,mxSum=0;
+    f1(i,0,l)
+    {
+        mnSum+=pow(2,i);
+    }
+    mnSum+=n-l;
+    f1(i,0,r)
+    {
+        mxSum+=pow(2,i);
+    }
+    mxSum+=(n-r)*pow(2,r-1);
+    cout<<mnSum<<" "<<mxSum<<nl;
 }
 
 int main() {
@@ -618,7 +631,7 @@ int main() {
 // freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 // #endif
     ll tc = 1;
-    cin >> tc;
+    // cin >> tc;
     for (ll t = 1; t <= tc; t++) 
     {
       solve();
