@@ -602,57 +602,9 @@ int getSum(int v)
 }
 void solve()
 {
-    /*
-        as a software developer you have been asked to solve a program to help a company optimize its supply chain.
-        the company wants to determine the number of favorable sequences of items that they can order from their suppliers.
-
-        to solve
-        1.N:the length of the sequence of items
-        2.L:the lower bound of the price range
-        3.R:the upper bound of the price range
-        4.K:the minimum total cost of the sequence
-
-
-        for sequence a of length b,the total cost of a sequence is the sum of the cost of each item in the sequence.(i>0) such that a[i]>max(a0,a1,a2......)
-    */
-
-    ll n,l,r,k;
-    cin>>n>>l>>r>>k;
-    ll ans=0;
-    
-    for(ll i=l;i<=r;i++)
-    {
-        ll sum=0;
-        ll x=i;
-        ll y=i;
-        ll z=i;
-        ll a=0;
-        ll b=0;
-        ll c=0;
-        while(x)
-        {
-            sum+=x%10;
-            x/=10;
-            a++;
-        }
-        while(y)
-        {
-            sum+=y%10;
-            y/=10;
-            b++;
-        }
-        while(z)
-        {
-            sum+=z%10;
-            z/=10;
-            c++;
-        }
-        if(sum>=k and a==n and b==n and c==n)
-        {
-            ans++;
-        }
-    }
-    cout<<ans<<endl;
+    ll n,m;
+    cin>>n>>m;
+    cout<<n+m<<nl;
 }
 
 int main() {
