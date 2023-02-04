@@ -1,3 +1,11 @@
+// Problem: F. Range Update Point Query
+// Contest: Codeforces - Codeforces Round #849 (Div. 4)
+// URL: https://codeforces.com/problemset/problem/1791/F
+// Memory Limit: 256 MB
+// Time Limit: 2000 ms
+// 
+// Powered by CP Editor (https://cpeditor.org)
+
 #include <bits/stdc++.h>
 using namespace std;
  
@@ -263,69 +271,159 @@ bool cmp(pair<int,int>x,pair<int,int>y){
     return x.second<y.second;
 }
  
+
+//SEGMENT TREE TEMPLATE
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+struct Data {
+  // Use required attributes
  
-void two_D_PrifixSum() 
-{
-    //prefix sum in 2 D array
-    int n,m;cin>>n>>m;
-    int a[n][m],prefix[n][m];
-    f1(i,0,n)
-    {
-        f1(j,0,m)
-        {
-            cin>>a[i][j];
-        }
-    }
+  ll sum;
  
-    //create a prefix array
-    f1(i,0,n)
-    {
-        f1(j,0,m)
-        {
-            prefix[i][j]=a[i][j];
-            if(i-1>=0)prefix[i][j]+=prefix[i-1][j];
-            if(j-1>=0)prefix[i][j]+=prefix[i][j-1];
+  // Default Values
+  Data() : sum(0) {};
+};
  
-            if(i-1>=0 and j-1>=0)
-            {
-                prefix[i][j]-=prefix[i-1][j-1];
-            }
-        }
-    }
-    int q;cin>>q;
-    while(q--)
-    {
-        int i1,i2,j1,j2;cin>>i1>>i2>>j1>>j2;
-    }
-}
+struct SegTree {
+  int N;
+  vector<Data> seg;
+  vector<bool> cLazy;
+  vector<ll> lazy;
  
+  void init(int n) {
+    N = n;
+    seg.resize(4 * N + 5);
+    cLazy.assign(4 * N + 5, false);
+    lazy.assign(4 * N + 5, 0);
+  }
  
-//Scanline algorithm
-void scanlineAlgoritm()
-{
-    int n;cin>>n;
-    int a[n];
-    f1(i,0,n)cin>>a[i];
+  // Write reqd merge functions
+  void merge(Data &cur, Data &l, Data &r) {
+    cur.sum = l.sum + r.sum;
+  }
  
-    int prefixSum[n+1];
-    int q;cin>>q;
-    while(q--)
-    {
-        int l,r,x;cin>>l>>r>>x;
-        prefixSum[l]+=x;
-        prefixSum[r+1]-=x;
+  // Handle lazy propagation appriopriately
+  void propagate(int node, int L, int R) {
+    if (L != R) {
+      cLazy[node * 2] = 1;
+      cLazy[node * 2 + 1] = 1;
+      lazy[node * 2] += lazy[node];
+      lazy[node * 2 + 1] += lazy[node];
     }
-    int s=0;
-    f1(i,0,n)
-    {
-        s+=prefixSum[i];
-        a[i]+=s;
+    seg[node].sum += (R - L + 1) * lazy[node];
+    lazy[node] = 0;
+    cLazy[node] = 0;
+  }
+ 
+  void build(int node, int L, int R) {
+    if (L == R) {
+      return;
     }
-    f1(i,0,n)
-    {
-        cout<<a[i]<<" ";
+    int M = (L + R) / 2;
+    build(node * 2, L, M);
+    build(node * 2 + 1, M + 1, R);
+    merge(seg[node], seg[node * 2], seg[node * 2 + 1]);
+  }
+ 
+  Data Query(int node, int L, int R, int i, int j) {
+    if (cLazy[node])
+      propagate(node, L, R);
+    if (j < L || i > R)
+      return Data();
+    if (i <= L && R <= j)
+      return seg[node];
+    int M = (L + R) / 2;
+    Data left = Query(node * 2, L, M, i, j);
+    Data right = Query(node * 2 + 1, M + 1, R, i, j);
+    Data cur;
+    merge(cur, left, right);
+    return cur;
+  }
+ 
+  Data pQuery(int node, int L, int R, int pos) {
+    if (cLazy[node])
+      propagate(node, L, R);
+    if (L == R)
+      return seg[node];
+    int M = (L + R) / 2;
+    if (pos <= M)
+      return pQuery(node * 2, L, M, pos);
+    else
+      return pQuery(node * 2 + 1, M + 1, R, pos);
+  }
+ 
+  void Update(int node, int L, int R, int i, int j, int val) {
+    if (cLazy[node])
+      propagate(node, L, R);
+    if (j < L || i > R)
+      return;
+    if (i <= L && R <= j) {
+      cLazy[node] = 1;
+      lazy[node] = val;
+      propagate(node, L, R);
+      return;
     }
-}
+    int M = (L + R) / 2;
+    Update(node * 2, L, M, i, j, val);
+    Update(node * 2 + 1, M + 1, R, i, j, val);
+    merge(seg[node], seg[node * 2], seg[node * 2 + 1]);
+  }
+ 
+  void pUpdate(int node, int L, int R, int pos, int val) {
+    if (cLazy[node])
+      propagate(node, L, R);
+    if (L == R) {
+      cLazy[node] = 1;
+      lazy[node] += val;
+      propagate(node, L, R);
+      return;
+    }
+    int M = (L + R) / 2;
+    if (pos <= M)
+      pUpdate(node * 2, L, M, pos, val);
+    else
+      pUpdate(node * 2 + 1, M + 1, R, pos, val);
+    merge(seg[node], seg[node * 2], seg[node * 2 + 1]);
+  }
+ 
+  Data query(int pos) { return pQuery(1, 1, N, pos); }
+ 
+  Data query(int l, int r) { return Query(1, 1, N, l, r); }
+ 
+  void update(int pos, int val) { pUpdate(1, 1, N, pos, val); }
+ 
+  void update(int l, int r, int val) { Update(1, 1, N, l, r, val); }
+};
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
 
 
 int findMin(vector<bool>&vis,VI distance)
@@ -499,70 +597,68 @@ ll Prime(ll x)
     return 1;
 }
 
-ll a[MAX_NN],b[MAX_NN],c[MAX_NN];
+
+int getSum(int v) 
+{
+  int ans = 0;
+  while (v) {
+    ans += v % 10;
+    v /= 10;
+  }
+ 
+  return ans;
+}
 void solve()
 {
-    ll n,m;
-    function<ll(ll)>clc=[&](ll x)
+    // function
+    int n,q;
+    cin>>n>>q;
+    vi a;
+    int v;
+    SegTree st;
+    st.init(n+5);
+    f1(i,0,n)
     {
-        ll s=0;
-        while(x) 
-        {
-            s+=x%10;
-            x/=10;
-        }
-        return s;
-    };
-    function<void(ll,ll)>find=[&](ll x,ll y)
-    {
-        while(x<=n)c[x]+=y,x+=x&-x;
-    };
-    function<ll(ll)>query=[&](ll x)
-    {
-        ll r=0;
-        while(x)r+=c[x],x-=(x&-x);
-        return r;
-    };
-    cin>>n>>m;
-    ll q;
+        cin>>v;
+        a.pb(v);
+        // st.update(i+1,v);
+    }
+
+    vi d(n+1,0);
+    vi val(n+1,0);
     cf(i,1,n)
     {
-        cin>>a[i];
-        find(i,a[i]);
-        b[i]=i;
+        val[i]=a[i-1];
     }
-    b[n+1]=n+1;
-    while(m--)
+    while(q--)
     {
-        cin>>q;
-        if(q==2)
+        int tm;
+        cin>>tm;
+
+        if(tm==1)
         {
-            int x;
-            cin>>x;
-            cout<<query(x)-query(x-1)<<nl;
+            int l,r;
+            cin>>l>>r;
+            st.update(l,r,1);
         }
         else
         {
-            ll l,r;
-            cin>>l>>r;
-            for(ll i=l;i<=r;i=(b[i]==i)?i+1:b[i])
+            int x;
+            cin>>x;
+            int ans=st.query(x).sum;
+            int pp=val[x];
+            int qq=d[x];
+
+            while(qq!=ans and pp>9)
             {
-                find(i,(q=clc(a[i]))-a[i]);
-                a[i]=q;
-                if(clc(a[i])==a[i])
-                {
-                    b[i]=i+1;
-                }
-                else
-                {
-                    b[i]=i;
-                }
+                pp=getSum(pp);
+                qq++;
             }
+            qq=ans;
+            val[x]=pp;
+            d[x]=qq;
+            cout<<pp<<nl;
         }
-    }
-    cf(i,1,n)
-    {
-        find(i,-a[i]);
     }
 }
 
