@@ -40,6 +40,7 @@ const ll INF = 1e18+20;
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 #define MP make_pair
+#define INS insert
 #define PB push_back
 #define PF push_front
 #define INF (int)1e9
@@ -262,69 +263,159 @@ bool cmp(pair<int,int>x,pair<int,int>y){
     return x.second<y.second;
 }
  
+
+//SEGMENT TREE TEMPLATE
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+struct Data {
+  // Use required attributes
  
-void two_D_PrifixSum() 
-{
-    //prefix sum in 2 D array
-    int n,m;cin>>n>>m;
-    int a[n][m],prefix[n][m];
-    f1(i,0,n)
-    {
-        f1(j,0,m)
-        {
-            cin>>a[i][j];
-        }
-    }
+  ll sum;
  
-    //create a prefix array
-    f1(i,0,n)
-    {
-        f1(j,0,m)
-        {
-            prefix[i][j]=a[i][j];
-            if(i-1>=0)prefix[i][j]+=prefix[i-1][j];
-            if(j-1>=0)prefix[i][j]+=prefix[i][j-1];
+  // Default Values
+  Data() : sum(0) {};
+};
  
-            if(i-1>=0 and j-1>=0)
-            {
-                prefix[i][j]-=prefix[i-1][j-1];
-            }
-        }
-    }
-    int q;cin>>q;
-    while(q--)
-    {
-        int i1,i2,j1,j2;cin>>i1>>i2>>j1>>j2;
-    }
-}
+struct SegTree {
+  int N;
+  vector<Data> seg;
+  vector<bool> cLazy;
+  vector<ll> lazy;
  
+  void init(int n) {
+    N = n;
+    seg.resize(4 * N + 5);
+    cLazy.assign(4 * N + 5, false);
+    lazy.assign(4 * N + 5, 0);
+  }
  
-//Scanline algorithm
-void scanlineAlgoritm()
-{
-    int n;cin>>n;
-    int a[n];
-    f1(i,0,n)cin>>a[i];
+  // Write reqd merge functions
+  void merge(Data &cur, Data &l, Data &r) {
+    cur.sum = l.sum + r.sum;
+  }
  
-    int prefixSum[n+1];
-    int q;cin>>q;
-    while(q--)
-    {
-        int l,r,x;cin>>l>>r>>x;
-        prefixSum[l]+=x;
-        prefixSum[r+1]-=x;
+  // Handle lazy propagation appriopriately
+  void propagate(int node, int L, int R) {
+    if (L != R) {
+      cLazy[node * 2] = 1;
+      cLazy[node * 2 + 1] = 1;
+      lazy[node * 2] += lazy[node];
+      lazy[node * 2 + 1] += lazy[node];
     }
-    int s=0;
-    f1(i,0,n)
-    {
-        s+=prefixSum[i];
-        a[i]+=s;
+    seg[node].sum += (R - L + 1) * lazy[node];
+    lazy[node] = 0;
+    cLazy[node] = 0;
+  }
+ 
+  void build(int node, int L, int R) {
+    if (L == R) {
+      return;
     }
-    f1(i,0,n)
-    {
-        cout<<a[i]<<" ";
+    int M = (L + R) / 2;
+    build(node * 2, L, M);
+    build(node * 2 + 1, M + 1, R);
+    merge(seg[node], seg[node * 2], seg[node * 2 + 1]);
+  }
+ 
+  Data Query(int node, int L, int R, int i, int j) {
+    if (cLazy[node])
+      propagate(node, L, R);
+    if (j < L || i > R)
+      return Data();
+    if (i <= L && R <= j)
+      return seg[node];
+    int M = (L + R) / 2;
+    Data left = Query(node * 2, L, M, i, j);
+    Data right = Query(node * 2 + 1, M + 1, R, i, j);
+    Data cur;
+    merge(cur, left, right);
+    return cur;
+  }
+ 
+  Data pQuery(int node, int L, int R, int pos) {
+    if (cLazy[node])
+      propagate(node, L, R);
+    if (L == R)
+      return seg[node];
+    int M = (L + R) / 2;
+    if (pos <= M)
+      return pQuery(node * 2, L, M, pos);
+    else
+      return pQuery(node * 2 + 1, M + 1, R, pos);
+  }
+ 
+  void Update(int node, int L, int R, int i, int j, int val) {
+    if (cLazy[node])
+      propagate(node, L, R);
+    if (j < L || i > R)
+      return;
+    if (i <= L && R <= j) {
+      cLazy[node] = 1;
+      lazy[node] = val;
+      propagate(node, L, R);
+      return;
     }
-}
+    int M = (L + R) / 2;
+    Update(node * 2, L, M, i, j, val);
+    Update(node * 2 + 1, M + 1, R, i, j, val);
+    merge(seg[node], seg[node * 2], seg[node * 2 + 1]);
+  }
+ 
+  void pUpdate(int node, int L, int R, int pos, int val) {
+    if (cLazy[node])
+      propagate(node, L, R);
+    if (L == R) {
+      cLazy[node] = 1;
+      lazy[node] += val;
+      propagate(node, L, R);
+      return;
+    }
+    int M = (L + R) / 2;
+    if (pos <= M)
+      pUpdate(node * 2, L, M, pos, val);
+    else
+      pUpdate(node * 2 + 1, M + 1, R, pos, val);
+    merge(seg[node], seg[node * 2], seg[node * 2 + 1]);
+  }
+ 
+  Data query(int pos) { return pQuery(1, 1, N, pos); }
+ 
+  Data query(int l, int r) { return Query(1, 1, N, l, r); }
+ 
+  void update(int pos, int val) { pUpdate(1, 1, N, pos, val); }
+ 
+  void update(int l, int r, int val) { Update(1, 1, N, l, r, val); }
+};
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
 
 
 int findMin(vector<bool>&vis,VI distance)
@@ -498,14 +589,27 @@ ll Prime(ll x)
     return 1;
 }
 
+
+int getSum(int v) 
+{
+  int ans = 0;
+  while (v) {
+    ans += v % 10;
+    v /= 10;
+  }
+ 
+  return ans;
+}
+
+
 void solve()
 {
     int n;
     cin>>n;
     vi a(n);
-    for(auto &it:a)
+    f1(i,0,n)
     {
-        cin>>it;
+        cin>>a[i];
     }
     int ans=0;
     sort(all(a));
@@ -528,6 +632,7 @@ void solve()
 }
 
 int main() {
+    
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
 
@@ -538,19 +643,9 @@ int main() {
 // #endif
     ll tc = 1;
     cin >> tc;
-    for (ll t = 1; t <= tc; t++) {
-    // //cout << "Case #" << t << ": ";
-    // Solution s;
-        // if(s.solve())
-        // {
-        //     // cout<<"Yes"<<nl;
-        // }
-        // else
-        // {
-        //     // cout<<"No"<<nl;
-        // }
-    // // }
-        solve();
+    for (ll t = 1; t <= tc; t++) 
+    {
+      solve();
     }
     return 0;
 }
