@@ -605,7 +605,7 @@ int getSum(int v)
 void solve()
 {
     
-}
+}   
 
 int main() {
     
