@@ -603,7 +603,6 @@ int getSum(int v)
 }
 
 
-//endl=nl
 void solve()
 {
     int n;
@@ -613,26 +612,38 @@ void solve()
     {
         cin>>a[i];
     }
-    int maxi=*max_element(all(a));
-    int cnt=0;
-    int tmp=a[n-1];
-    for(int i=n-2;i>=0;i--)
+    int tall=1,notWatered=0;
+    f1(i,0,n)
     {
-        if(tmp<a[i])
+        if(a[i]==0)
         {
-            cnt++;
-            tmp=a[i];
-            if(a[i]!=maxi)
+            notWatered++;
+        }
+        // else
+        // {
+        //     tall++;
+        // }
+        if(notWatered==2)
+        {
+            // tall++;
+            // notWatered=0;
+            cout<<-1<<nl;
+            return;   
+        }
+        if(a[i]==1)
+        {
+            notWatered=0;
+            if(a[i-1]==1)
             {
-                //mve
+                tall+=5;   
             }
             else
             {
-                break;
+                tall++;
             }
         }
     }
-    cout<<cnt<<nl;
+    cout<<tall<<nl;
 }
 
 
