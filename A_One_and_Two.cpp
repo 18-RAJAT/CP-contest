@@ -623,6 +623,7 @@ void solve()
         return;
     }
     ll ans=0;
+
     ll sum=0;
     f1(i,0,n)
     {
