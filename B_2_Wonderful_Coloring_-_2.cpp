@@ -612,51 +612,58 @@ void solve()
 {
 	ll n,k;
 	cin>>n>>k;
-	VI v(n);
-	VI pos[n];
-	vi neg(n,-1);
-	vi cnt(k);
+	ll a[n];
+	ll chk[MAX_N];
+	memset(chk,0,sizeof(chk));
+	
 	f1(i,0,n)
 	{
-		cin>>v[i];
-		--v[i];
-		if(pos[v[i]].size()<k)
-		{
-			pos[v[i]].pb(i);
-		}
+		cin>>a[i];
+		chk[a[i]]++;
 	}
-	ll cn=0;
+	cf(i,0,n)
+	{
+		//1,2,1,2,3,4,.......chk
+		chk[i]=min(chk[i],k);
+	}
+	vector<pair<ll,ll>>pairs;
 	f1(i,0,n)
 	{
-		for(auto it:pos[i])
+		if(chk[a[i]])
 		{
-			neg[it]=cn++;
-			cn%=k;
+			chk[a[i]]--;
+			pairs.pb(make_pair(a[i],i));
 		}
-	}
-	for(auto it:neg)
-	{
-		if(it>=0)
-		{
-		    cnt[it]++;
-		}
-	}
-	ll mn=n;
-    for(auto it:cnt)
-    {
-        mn=min(mn,it);
     }
-	for(auto &it:neg)
+	// 	else if(chk[a[i]]<0)
+	// 	{
+	// 		//minimal!!
+	// 	}
+	// }
+	while(sza(pairs)%k)
 	{
-		if(it>=0 and cnt[it]>mn)
-		{
-			--cnt[it];it--;
-		}
+		pairs.pop_back();
 	}
-	for(auto it:neg)
+	sort(all(pairs));
+    //after sorting we have to make all the elements 0
+	memset(a,0,sizeof(a));
+	f1(i,0,sza(pairs))
 	{
-		cout<<it+1<<" ";
+		a[pairs[i].second]=i%k+1;
+        debug(pairs[i].second+1,a[pairs[i].second]);
 	}
+	f1(i,0,n)
+	{
+		cout<<a[i]<<" ";
+	}
+    // cf(i,0,n)
+    // {
+    //     if(a[i]==0)
+    //     {
+    //         cout<<-1<<nl;
+    //         return;
+    //     }
+    // }
 	cout<<nl;
 }
 
