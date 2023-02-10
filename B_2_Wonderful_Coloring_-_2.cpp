@@ -6,7 +6,6 @@
 // 
 // Powered by CP Editor (https://cpeditor.org)
 
-
 #include <bits/stdc++.h>
 using namespace std;
  
@@ -52,7 +51,6 @@ const ll INF = 1e18+20;
 #define INS insert
 #define PB push_back
 #define PF push_front
-#define POB pop_back
 #define INF (int)1e9
 #define EPS 1e-9
 // #define MOD 998244353 
@@ -100,7 +98,7 @@ typedef unsigned long long int  uint64;
 #define miid map<double,long>
 #define si set<int>
 #define sc set<char>
-#define vi vector<int>
+#define vi vector<ll>
 #define revs(x,y,z) for(ll i=x;i<=y;i+=z)
 
 
@@ -610,41 +608,57 @@ int getSum(int v)
  
   return ans;
 }
-
-
 void solve()
 {
-	int n,k;
+	ll n,k;
 	cin>>n>>k;
-	vi a(n),cnt(n);
-	vi tmp;
+	VI v(n);
+	VI pos[n];
+	vi neg(n,-1);
+	vi cnt(k);
 	f1(i,0,n)
 	{
-		cin>>a[i];
-		a[i]--;
-		cnt[a[i]]++;
-		if(cnt[a[i]]<=k)
+		cin>>v[i];
+		--v[i];
+		if(pos[v[i]].size()<k)
 		{
-			tmp.pb(i);
+			pos[v[i]].pb(i);
 		}
 	}
-	while((tmp.size())%k!=0)
-	{
-		tmp.POB();
-	}
-    sort(all(tmp),[&](int i,int j){return a[i]<a[j];});
-	
-	vi ans(n);
-	f1(i,0,tmp.size())
-	{
-		ans[tmp[i]]=i%k+1;
-	}
+	ll cn=0;
 	f1(i,0,n)
 	{
-		cout<<a[i]<<" \n"[i==n-1];
+		for(auto it:pos[i])
+		{
+			neg[it]=cn++;
+			cn%=k;
+		}
 	}
+	for(auto it:neg)
+	{
+		if(it>=0)
+		{
+		    cnt[it]++;
+		}
+	}
+	ll mn=n;
+    for(auto it:cnt)
+    {
+        mn=min(mn,it);
+    }
+	for(auto &it:neg)
+	{
+		if(it>=0 and cnt[it]>mn)
+		{
+			--cnt[it];it--;
+		}
+	}
+	for(auto it:neg)
+	{
+		cout<<it+1<<" ";
+	}
+	cout<<nl;
 }
-
 
 int main() {
     
@@ -658,9 +672,19 @@ int main() {
 // #endif
     ll tc = 1;
     cin >> tc;
-    for (ll t = 1; t <= tc; t++) 
-    {
-      solve();
+    for (ll t = 1; t <= tc; t++) {
+    // //cout << "Case #" << t << ": ";
+    // Solution s;
+        // if(s.solve())
+        // {
+        //     // cout<<"Yes"<<nl;
+        // }
+        // else
+        // {
+        //     // cout<<"No"<<nl;
+        // }
+    // // }
+        solve();
     }
     return 0;
 }
