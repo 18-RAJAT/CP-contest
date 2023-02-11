@@ -606,14 +606,14 @@ void solve()
 {
     int c,d,n,m,k;
     cin>>c>>d>>n>>m>>k;
-    int needed=n*m-k;
-    if(needed<0)
+    int need=n*m-k;
+    if(need<0)
     {
         cout<<0<<nl;
     }
     else
     {
-        cout<<min({(needed/n+1)*c,(needed/n)*c+(needed%n)*d,needed*d})<<nl;
+        cout<<min({(need/n+1)*c,(need/n)*c+(need%n)*d,need*d})<<nl;
     }
 }
 
