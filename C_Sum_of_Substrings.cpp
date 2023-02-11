@@ -600,45 +600,60 @@ int getSum(int v)
  
   return ans;
 }
-
-const int nm=3e3+1;
-int dp[nm][nm][2],pre[nm][nm][2],x[nm];
 void solve()
 {
-	ll n;
-	cin>>n;
-	cf(i,1,n)
-	{
-		cin>>x[i];
-	}
-	cf(i,1,n) 
-	{
-		for(ll j=1,k=1;j<i;++j) 
-		{
-			while(x[k]<2*x[j]-x[i])
-			{
-				k++;
-			}
-			dp[i][j][0]=(pre[j][j-1][0]-pre[j][k-1][0]+pre[j][j-1][1]-pre[j][k-1][1])%1000000007;
-			dp[i][j][1]=(2*pre[j][k-1][0]+pre[j][k-1][1]+1)%1000000007;
-			pre[i][j][0]=(pre[i][j-1][0]+dp[i][j][0])%1000000007;
-			pre[i][j][1]=(pre[i][j-1][1]+dp[i][j][1])%1000000007;	
+    ll n,k;
+    cin>>n>>k;
+    string s;
+    cin>>s;
+    ll l,r,cnt=0;
+    l=r=-1;
 
-			debug(dp[i][j][0],dp[i][j][1]);
-		}
-	}
-	ll ans=0;
-	cf(i,0,n)
-	{
-		cf(j,0,n)
-		{
-			f1(k,0,2)
-			{
-				ans=(ans+dp[i][j][k]+1000000007)%1000000007;
-			}
-		}
-	}
-	cout<<ans<<nl;
+    ll tot=0;
+    f1(i,0,n)
+    {
+        f1(i,0,n)
+        {
+            if(s[i]=='1')
+            {
+                l=i;
+                break;
+            }
+        }
+        rf(i,n,0)
+        {
+            if(s[i]=='1')
+            {
+                r=i;
+                break;
+            }
+        }
+        f1(i,0,n)
+        {
+            if(s[i]=='1')
+            {
+                cnt++;
+            }
+        }
+        if(l==-1)
+        {
+            cout<<0<<nl;
+            return;
+        }
+        tot=cnt*11;
+        if(k>=n-1-r)
+        {
+            k-=(n-1-r);
+            tot-=10;
+        }
+        if(k>=l)
+        {
+            k-=l;
+            tot--;
+        }
+        cout<<tot<<nl;
+        return;
+    }
 }
 
 int main() {
@@ -652,7 +667,7 @@ int main() {
 // freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 // #endif
     ll tc = 1;
-    // cin >> tc;
+    cin >> tc;
     for (ll t = 1; t <= tc; t++) {
     // //cout << "Case #" << t << ": ";
     // Solution s;
