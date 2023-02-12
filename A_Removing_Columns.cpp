@@ -604,22 +604,30 @@ int getSum(int v)
 
 void solve()
 {
-    ll w,h;
-    cin>>w>>h;
-    ll cnt=0;
-    ll tmp=0;//=min(w,h);
-    ll i;
-    for(i=2;i<=w;i+=2)
+    int n,m;
+    cin>>n>>m;
+    int ans=0;
+    int a[101][101];
+    f1(i,0,n)
     {
-        // cnt+=i*(i-1)/2;
-        cnt+=w-i+1;
+        f1(j,0,m)
+        {
+            cin>>a[i][j];
+        }
     }
-    for(i=2;i<=h;i+=2)
+    int chk[101]={0};
+    f1(i,1,n)
     {
-        tmp+=h-i+1;
+        f1(j,0,n)
+        {
+            if(a[i][j]<a[i-1][j])
+            {
+                ans++;
+                chk[i]=1;
+            }
+        }
     }
-    cout<<cnt*tmp<<nl;
-    // cout<<cnt<<nl;
+    cout<<ans<<nl;
 }
 
 int main() {
