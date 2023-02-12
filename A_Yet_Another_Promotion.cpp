@@ -604,11 +604,19 @@ int getSum(int v)
 
 void solve()
 {
-    ll L,V,l,r;
-    cin>>L>>V>>l>>r;
-    ll cnt=0;
-    cnt=(L/V)-((r/V)-(l-1)/V);
-    cout<<cnt<<nl;
+    ll a,b,n,m;
+    cin>>a>>b>>n>>m;
+    ll res=0;
+    if(n<=m)
+    {
+        ll mini=min(a,b);
+        cout<<n*mini<<nl;
+        return;
+    }
+    ll tmp=n/(m+1);
+    res+=tmp*min(a*m,b*m+b);
+    res+=(n-tmp*(m+1))*min(a,b);
+    cout<<res<<nl;
 }
 
 int main() {

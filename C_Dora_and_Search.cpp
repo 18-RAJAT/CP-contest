@@ -604,11 +604,50 @@ int getSum(int v)
 
 void solve()
 {
-    ll L,V,l,r;
-    cin>>L>>V>>l>>r;
-    ll cnt=0;
-    cnt=(L/V)-((r/V)-(l-1)/V);
-    cout<<cnt<<nl;
+    ll n;
+    cin>>n;
+    ll a[n];
+    cf(i,1,n)
+    {
+        cin>>a[i];
+    }
+    ll l=1,r=n;
+    ll x=1,y=n;
+    while(l<=r)
+    {
+        if(a[l]==x)
+        {
+            l++;
+            x++;
+        }
+        else if(a[r]==y)
+        {
+            r--;
+            y--;
+        }
+        else if(a[l]==y)
+        {
+            l++;
+            y--;
+        }
+        else if(a[r]==x)
+        {
+            r--;
+            x++;
+        }
+        else
+        {
+            break;
+        }
+    }
+    if(l>r)
+    {
+        cout<<"-1"<<nl;
+    }
+    else
+    {
+        cout<<l<<" "<<r<<nl;
+    }
 }
 
 int main() {

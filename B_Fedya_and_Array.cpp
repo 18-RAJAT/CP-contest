@@ -604,11 +604,22 @@ int getSum(int v)
 
 void solve()
 {
-    ll L,V,l,r;
-    cin>>L>>V>>l>>r;
-    ll cnt=0;
-    cnt=(L/V)-((r/V)-(l-1)/V);
-    cout<<cnt<<nl;
+    ll a,b;
+    cin>>a>>b;
+    vi v;
+    int tmp=(a-b)*2;
+    cout<<tmp<<nl;
+
+    cf(i,b+1,a)
+    {
+        cout<<i<<" ";
+    }
+    // cf(i,1,b)
+    rf(i,a,b)
+    {
+        cout<<i<<" ";
+    }
+    cout<<nl;
 }
 
 int main() {

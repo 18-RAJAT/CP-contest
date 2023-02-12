@@ -604,11 +604,33 @@ int getSum(int v)
 
 void solve()
 {
-    ll L,V,l,r;
-    cin>>L>>V>>l>>r;
-    ll cnt=0;
-    cnt=(L/V)-((r/V)-(l-1)/V);
-    cout<<cnt<<nl;
+    int n,m;
+    cin>>n>>m;
+    int a[n];
+    f1(i,0,n)
+    {
+        cin>>a[i];
+    }
+    int cntOf1=0;
+    f1(i,0,n)
+    {
+        if(a[i]==1)
+        {
+            cntOf1++;
+        }
+        else
+        {
+            //
+        }
+    }
+    if(cntOf1==0)
+    {
+        cout<<-1<<nl;
+    }
+    else
+    {
+        cout<<cntOf1<<nl;
+    }
 }
 
 int main() {
@@ -622,7 +644,7 @@ int main() {
 // freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 // #endif
     ll tc = 1;
-    cin >> tc;
+    // cin >> tc;
     for (ll t = 1; t <= tc; t++) 
     {
         solve();

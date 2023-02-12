@@ -529,6 +529,7 @@ void solve()
         }
         // else if(ch=='?')
         // {
+                
         // }
         else
         {
@@ -574,3 +575,82 @@ int main() {
     }
     return 0;
 }
+
+
+
+
+class Solution {
+public:
+    long long int ans=0;
+    
+    long long minimumFuelCost(vector<vector<int>>& roads, int seats) {
+        
+        //dfs using lambda function
+        long long dfs(vector<vector<int>>& g,int k,int node,vector<int>&vis)
+    {
+        vis[node]=1;
+        long long int num=1;
+        for(int i=0;i<g[node].size();i++)
+        {  
+            if(vis[g[node][i]]==0)
+            {
+                vis[g[node][i]]=1;
+                num+=dfs(g,k,g[node][i],vis);
+                
+            }
+            
+        }
+        
+            ans+=num/k;
+            if(num%k!=0)
+            {
+                ans++;
+            }
+        
+        
+        cout<<ans<<" ";
+        return num;
+    }
+        function<void(vector<vector<int>>& g,int k,int node,vector<int>&vis)>dfs=[&](vector<vector<int>>& g,int k,int node,vector<int>&vis)
+    {
+        vis[node]=1;
+        long long int num=1;
+        for(int i=0;i<g[node].size();i++)
+        {  
+            if(vis[g[node][i]]==0)
+            {
+                vis[g[node][i]]=1;
+                num+=dfs(g,k,g[node][i],vis);
+                
+            }
+            
+        }
+        
+            ans+=num/k;
+            if(num%k!=0)
+            {
+                ans++;
+            }
+            retur
+    }
+
+        
+        vector<vector<int>>graph(roads.size()+1);
+        for(int i=0;i<roads.size();i++)
+        {
+            graph[roads[i][0]].push_back(roads[i][1]);
+            graph[roads[i][1]].push_back(roads[i][0]); 
+        }
+        
+        vector<int>vis(roads.size()+1,0);
+        
+        vis[0]=1;
+        for(int i=0;i<graph[0].size();i++)
+        {
+            dfs(graph,seats,graph[0][i],vis);
+            
+        }
+        return ans;
+        
+    }
+};
