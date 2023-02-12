@@ -604,93 +604,24 @@ int getSum(int v)
 
 void solve()
 {
-    A permutation of length n
- is an array consisting of n
- distinct integers from 1
- to n
- in any order. For example, [2,3,1,5,4]
- is a permutation, but [1,2,2]
- is not a permutation (2
- occurs twice in the array) and [1,3,4]
- is also not a permutation (n=3
-, but 4
- is present in the array).
+    int a,b;
+    cin>>a>>b;
+    int j=abs(a-b)/2;
+    int k=a+b-j;
+    int chk=2-(a+b)%2;
 
-The gorillas had their own permutation q
- of length n
-. They suggested that you count the number of pairs of integers l,r
- (1≤l≤r≤n
-) such that MEX([pl,pl+1,…,pr])=MEX([ql,ql+1,…,qr])
-.
-
-The MEX
- of the sequence is the minimum integer positive number missing from this sequence. For example, MEX([1,3])=2
-, MEX([5])=1
-, MEX([3,1,2,6])=4
-.
-
-You do not want to risk your health, so you will not dare to refuse the gorillas.
-
-Input
-The first line contains a single integer n
- (1≤n≤2⋅105
-) — the permutations length.
-
-The second line contains n
- integers p1,p2,…,pn
- (1≤pi≤n
-) — the elements of the permutation p
-.
-
-The third line contains n
- integers q1,q2,…,qn
- (1≤qi≤n
-) — the elements of the permutation q
-.
-
-Output
-Print a single integer — the number of suitable pairs l
- and r
-.
-
-    ll n;
-    cin>>n;
-    ll a[n],b[n];
-    f(i,0,n)
+    cout<<(k-j)/chk+1<<nl;
+    // cf(i,j,k)
+    // FOR(i,j,k,chk)
+    for(int i=j;i<=k;i+=chk)
     {
-        cin>>a[i];
+        cout<<i<<" ";
     }
-    f(i,0,n)
-    {
-        cin>>b[i];
-    }
-    ll ans=0;
-    f(i,0,n)
-    {
-        ll x=a[i];
-        ll y=b[i];
-        if(x==y)
-        {
-            ans+=n-i;
-        }
-        else
-        {
-            ll j=i+1;
-            while(j<n)
-            {
-                if(a[j]==y)
-                {
-                    break;
-                }
-                j++;
-            }
-            ans+=n-j;
-        }
-    }
-    if()
+    cout<<nl;
 }
 
-int main() {
+int main() 
+{
     
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);

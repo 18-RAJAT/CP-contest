@@ -1,11 +1,3 @@
-// Problem: C. Diluc and Kaeya
-// Contest: Codeforces - Codeforces Round #724 (Div. 2)
-// URL: https://codeforces.com/problemset/problem/1536/C
-// Memory Limit: 256 MB
-// Time Limit: 2000 ms
-// 
-// Powered by CP Editor (https://cpeditor.org)
-
 #include <bits/stdc++.h>
 using namespace std;
  
@@ -612,54 +604,7 @@ int getSum(int v)
 
 void solve()
 {
-    int n;
-    cin>>n;
-    string s;
-    cin>>s;
-    vector<int>chkD(n,0);
-    vector<int>chkK(n,0);
     
-    f1(i,0,n)
-    {
-    	if(s[i]=='D')
-    	{
-    		chkD[i]=1;
-    	}
-    	if(s[i]=='K')
-    	{
-    		chkK[i]=1;
-    	}
-    }
-    f1(i,1,n)
-    {
-    	chkD[i]+=chkD[i-1],chkK[i]+=chkK[i-1];
-    }
-    vector<int>ans(n,1);
-    cf(i,1,n)
-    {
-    	int x=chkD[i-1];
-    	int y=chkK[i-1];
-    	
-    	for(int j=2;i*j<=n;++j)
-    	{
-    		int dt=(j-1)*i;
-    		int kt=dt+i-1;
-    		
-    		int n1=chkD[kt]-chkD[dt-1];
-    		int n2=chkK[kt]-chkD[dt-1];
-    		
-    		if(1LL*n1*n2==1LL*n2*n1)
-    		{
-    			ans[kt]=max(ans[kt],j);
-    		}
-    		else
-    		{
-    			break;
-    		}
-    	}
-    	f1(i,0,n)cout<<ans[i]<<" \n"[i==n-1];
-    	return;
-    }
 }
 
 int main() 
