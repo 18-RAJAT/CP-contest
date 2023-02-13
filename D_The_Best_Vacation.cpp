@@ -626,7 +626,7 @@ void solve()
         }
         else
         {
-            cout<<n+d+a[3]<<nl;
+            cout<<n+d+a[n-1]<<nl;
             return;
         }
     }
