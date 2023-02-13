@@ -604,17 +604,47 @@ int getSum(int v)
 
 void solve()
 {
-    ll x1,y1,x2,y2;
-    cin>>x1>>y1>>x2>>y2;
-    auto dist=[&](ll x1,ll y1,ll x2,ll y2)
+    int n;
+    cin>>n;
+    vi a(n);
+    f1(i,0,n)
     {
-    	return (x2-x1)*(y2-y1);
-    };
-    cout<<1+dist(x1,y1,x2,y2)<<nl;
+        cin>>a[i];
+    }
+    sort(all(a));
+    int cnt=1;
+    int tmp=cnt;
+
+    f1(i,0,n)
+    
+    {
+        if(a[i]<=tmp)
+        {
+            tmp+=1;
+            cnt=tmp;
+        }
+        else
+        {
+            tmp+=1;
+        }
+    }
+    // cnt++;
+    // if(cnt<=2)
+    // {
+    //     cout<<1<<nl;
+    // }
+    // else
+    // {
+    //     cout<<cnt<<nl;
+    // }
+    // if(cnt>1)
+    // {
+    //     cnt++;
+    // }
+    cout<<cnt<<nl;
 }
 
-int main() 
-{
+int main() {
     
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);

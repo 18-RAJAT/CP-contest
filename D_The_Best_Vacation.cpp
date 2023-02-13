@@ -604,17 +604,35 @@ int getSum(int v)
 
 void solve()
 {
-    ll x1,y1,x2,y2;
-    cin>>x1>>y1>>x2>>y2;
-    auto dist=[&](ll x1,ll y1,ll x2,ll y2)
+    int n,d;
+    cin>>n>>d;
+    int a[n];
+    f1(i,0,n)
     {
-    	return (x2-x1)*(y2-y1);
-    };
-    cout<<1+dist(x1,y1,x2,y2)<<nl;
+        cin>>a[i];
+    }
+    sort(a,a+n);
+    f1(i,0,n)
+    {
+        if(a[0]==a[1] and a[1]<a[2])
+        {
+            cout<<n+d<<nl;
+            return;
+        }
+        else if(a[i]==a[i+1])
+        {
+            cout<<d+d<<nl;
+            return;
+        }
+        else
+        {
+            cout<<n+d+a[3]<<nl;
+            return;
+        }
+    }
 }
 
-int main() 
-{
+int main() {
     
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
@@ -625,7 +643,7 @@ int main()
 // freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 // #endif
     ll tc = 1;
-    cin >> tc;
+    // cin >> tc;
     for (ll t = 1; t <= tc; t++) 
     {
         solve();

@@ -604,17 +604,14 @@ int getSum(int v)
 
 void solve()
 {
-    ll x1,y1,x2,y2;
-    cin>>x1>>y1>>x2>>y2;
-    auto dist=[&](ll x1,ll y1,ll x2,ll y2)
-    {
-    	return (x2-x1)*(y2-y1);
-    };
-    cout<<1+dist(x1,y1,x2,y2)<<nl;
+    int n,m;
+    cin>>n>>m;
+    int phase1=(n*m)/2;
+    int phase2=(n*m)%2;
+    cout<<phase1+phase2<<nl;
 }
 
-int main() 
-{
+int main() {
     
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
