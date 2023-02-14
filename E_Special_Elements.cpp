@@ -601,29 +601,35 @@ int getSum(int v)
   return ans;
 }
 
-ll a[8005];
-ll n;
 void solve()
 {
+    int n;
     cin>>n;
-    multiset<ll>st;
-    cf(i,1,n)
+    int a[n];
+    int cnt[n+1];MEM(cnt,0);
+    f1(i,0,n)
     {
         cin>>a[i];
-        st.insert(a[i]);
+        cnt[a[i]]++;
     }
-
-    ll ans=0;
-    cf(i,1,n)
+    int ans=0;
+    f1(i,0,n)
     {
-        ll cur=a[i];
-        cf(j,i+1,n)
+        int sum=a[i];
+        f1(j,i+1,n)
         {
-            cur+=a[j];
-            if(st.find(cur)!=st.end())
+            sum+=a[j];
+            if(sum<=n)
             {
-                ans++;
-                st.erase(st.find(cur));
+                if(cnt[sum]>0)
+                {
+                    ans+=cnt[sum];
+                    cnt[sum]=0;
+                }
+            }
+            else
+            {
+                break;
             }
         }
     }
