@@ -601,6 +601,10 @@ int getSum(int v)
   return ans;
 }
 
+
+/*
+    Ho Jayega bhai time lagega aur thodi si mehnat 
+*/
 void solve()
 {
     int n;
