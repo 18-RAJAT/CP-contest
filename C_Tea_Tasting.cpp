@@ -605,69 +605,86 @@ int getSum(int v)
 //Ho Jayega bhai time lagega aur thodi si mehnat
 
 
-ll a[MAX_NN],b[MAX_NN],c[MAX_NN];
 void solve()
 {
     ll n;
     cin>>n;
-    // ll a[n];MEM(a,0);
-    // ll b[n];MEM(b,0);
-    // ll c[n];MEM(c,0);
-    f1(i,0,n)
+    ll a[n+1];MEM(a,0);
+    cf(i,1,n)
     {
         cin>>a[i];
     }
-    f1(i,0,n)
+    ll b[n+1];MEM(b,0);
+    cf(i,1,n)
     {
         cin>>b[i];
     }
-    f1(i,0,n)
+    multiset<ll>st;
+    ll cnt=0;
+    VI ans;
+    cf(i,1,n)
     {
-        c[i]=0;
-    }
-    f1(i,0,n)
-    {
-        ll j=i;
-        ll last=n-1;
+        ll cur=min(a[i],b[i]);
+        // if(a[i]!=b[i])
+        // {
+        //     st.insert(max(a[i],b[i]));
+        // }
+        // else
+        // {
+        //     cnt++;
+        //     ans.pb(cur);
+        // }
+        a[i]-=cur;
         while(1)
         {
-            if(a[i]>b[j])
-            {
-                c[j]+=b[j];
-                a[i]=a[i]-b[j];
-                // a[i+1]+=a[i];
-            }
-            else
-            {
-                c[j]+=a[i];
-                a[i]=0;
-            }
-            j++;
-            if(a[i]==0)
+            if(st.empty())
             {
                 break;
             }
-            else if(j>last)
-            {
-                // j=0;
-                break;
-            }
-            // else if(a[i]>b[j])
+            ll beg=*st.begin();
+            // if(beg<=a[i])
             // {
-            //     c[j]+=b[j];
-            //     a[i]=a[i]-b[j];
-            //     // a[i+1]+=a[i];
+            //     a[i]-=beg;
+            //     st.erase(st.begin());
             // }
             // else
             // {
-            //     c[j]+=a[i];
-            //     a[i]=0;
+            //     break;
             // }
+            ll chk=beg-cnt;
+            if(chk<=b[i])
+            {
+                cur+=chk;
+                // b[i]-=chk;
+                st.erase(st.begin());
+                // cnt++;
+                // ans.pb(cur);
+                // break;
+                continue;
+            }
+            cur+=(sza(st)*b[i]);
+            cnt+=b[i];
+            // ans.pb(cur);
+            break;
         }
+        // if(a[i]>0)
+        // {
+        //     st.insert(a[i]);
+        // }
+        // else
+        // {
+        //     cnt++;
+        //     ans.pb(cur);
+        // }
+        if(a[i]!=0)
+        {
+            st.INS(a[i]+cnt);
+        }
+        ans.PB(cur);
     }
-    f1(i,0,n)
+    for(auto it:ans)
     {
-        cout<<c[i]<<" ";
+        cout<<it<<" ";
     }
     cout<<nl;
 }
