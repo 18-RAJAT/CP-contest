@@ -639,7 +639,7 @@ void solve()
             previous=tmp;
         }
     }
-    cout<<((ok)?"YES":"NO")<<nl;
+    cout<<((ok)?"Yes":"No")<<nl;
 }
 
 
