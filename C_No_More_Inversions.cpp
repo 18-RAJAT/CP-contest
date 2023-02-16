@@ -609,41 +609,19 @@ void solve()
 {
     int n,k;
     cin>>n>>k;
-    vi v;
-    cf(i,1,k)
+    if(n==k)
     {
-        v.pb(i);
+        cf(i,1,k)cout<<i<<" ";cout<<endl;
     }
-    int swp=n-k;
-    while(swp>0)
+    else
     {
-        int val=swp;
-        for(int i=k-2;i>=0;--i)
-        {
-            if(val==0)
-            {
-                break;
-            }
-            // else if(v[i]<=v[i+1])
-            // {
-            //     continue;
-            // }
-            // else if(v[i]>v[i+1])
-            // {
-            //     swap(v[i],v[i+1]);val--;
-            // }
-            else
-            {
-                swap(v[i],v[i+1]);val--;
-            }
-        }
-        swp--;
+        int r=n-k;
+        r++;
+        int j=k-r;
+        cf(i,1,j)cout<<i<<" ";
+        for(int i=k;i>j;--i)cout<<i<<" ";
+        cout<<endl;
     }
-    for(auto& it:v)
-    {
-        cout<<it<<" ";
-    }
-    cout<<endl;
 }
 
 
