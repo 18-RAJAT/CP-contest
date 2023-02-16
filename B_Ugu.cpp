@@ -608,49 +608,33 @@ int getSum(int v)
 void solve()
 {
     int n;
-    function<int(vector<int>&)>get_gcd=[&](vector<int> &a)->int 
-    {
-        int g=0;
-        for(int &x:a)
-        {
-            g=__gcd(g,x);
-        }
-        return g;
-    };
     cin>>n;
-    vector<int>a(n);
-    for(int &x:a)
+
+    string s;
+    cin>>s;
+    int res=0;
+    f1(i,1,n)
     {
-        cin>>x;
+        // if(s[i]!=s[i-1])
+        // {
+        //     res++;
+        //     i++;
+        // }
+        res+=s[i]!=s[i-1];
     }
-    if(get_gcd(a)==1)
+    if(res and s.front()=='0')
     {
-        cout<<0<<nl;
+        res--;
     }
+    // else if(res and s.front()=='1')
+    // {
+    //     res++;
+    // }
     else
     {
-        int tmp=a[n-1];
-        // a[n-1]=n;
-        a[n-1]=gcd(tmp,n);
-        if(get_gcd(a)==1)
-        {
-            cout<<1<<nl;
-            return;
-        }
-        a[n-1]=tmp;
-        // a[n-1]=a[n-2];
-        tmp=a[n-2];
-        a[n-2]=gcd(tmp,n-1);
-        // a[n-2]=n-1;
-
-        if(get_gcd(a)==1)
-        {
-            cout<<2<<nl;
-            return;
-        }
-        a[n-2]=tmp;
-        cout<<3<<nl;
+        //
     }
+    cout<<res<<nl;
 }
 
 

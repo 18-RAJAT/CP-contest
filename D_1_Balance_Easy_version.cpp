@@ -607,49 +607,34 @@ int getSum(int v)
 
 void solve()
 {
-    int n;
-    function<int(vector<int>&)>get_gcd=[&](vector<int> &a)->int 
-    {
-        int g=0;
-        for(int &x:a)
-        {
-            g=__gcd(g,x);
-        }
-        return g;
-    };
+    ll n;
     cin>>n;
-    vector<int>a(n);
-    for(int &x:a)
-    {
-        cin>>x;
-    }
-    if(get_gcd(a)==1)
-    {
-        cout<<0<<nl;
-    }
-    else
-    {
-        int tmp=a[n-1];
-        // a[n-1]=n;
-        a[n-1]=gcd(tmp,n);
-        if(get_gcd(a)==1)
-        {
-            cout<<1<<nl;
-            return;
-        }
-        a[n-1]=tmp;
-        // a[n-1]=a[n-2];
-        tmp=a[n-2];
-        a[n-2]=gcd(tmp,n-1);
-        // a[n-2]=n-1;
+    ll cnt;
+    set<ll>st;
+    map<ll,ll>mp;
+    st.INS(0);
 
-        if(get_gcd(a)==1)
+    cf(i,1,n)
+    {
+        char ch;
+        cin>>ch;
+        ll x;
+        cin>>x;
+
+        if(ch=='+')
         {
-            cout<<2<<nl;
-            return;
+            st.INS(x);
+            // mp[x]++;
         }
-        a[n-2]=tmp;
-        cout<<3<<nl;
+        else
+        {
+            while(st.count(mp[x]))
+            {
+                mp[x]+=x;
+                // st.erase(mp[x]);
+            }
+            cout<<mp[x]<<nl;
+        }
     }
 }
 
@@ -666,7 +651,7 @@ int main()
 // freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 // #endif
     ll tc = 1;
-    cin >> tc;
+    // cin >> tc;
     for (ll t = 1; t <= tc; t++) 
     {
         solve();
