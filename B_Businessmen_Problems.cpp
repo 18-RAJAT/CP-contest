@@ -1,11 +1,3 @@
-// Problem: J. Robot Factory
-// Contest: Codeforces - Bubble Cup 14 - Finals Online Mirror (Unrated, ICPC Rules, Teams Preferred, Div. 2)
-// URL: https://codeforces.com/problemset/problem/1600/J
-// Memory Limit: 256 MB
-// Time Limit: 1000 ms
-// 
-// Powered by CP Editor (https://cpeditor.org)
-
 #include <bits/stdc++.h>
 using namespace std;
  
@@ -609,80 +601,41 @@ int getSum(int v)
   return ans;
 }
 
-ll dx[4]={-1,0,1,0};
-ll dy[4]={0,1,0,-1};
 
-vector<ll>adj[10000005];
-ll n,m;
 void solve()
 {
-    function<void(int,int,int,int)>addEdge=[&](int cx,int cy,int nx,int ny)->void
+    ll n,a,b;
+    cin>>n;
+    map<ll,ll>mp;
+    f1(i,0,n)
     {
-        int u=(cx-1)*m+cy;
-        int v=(nx-1)*m+ny;
-        adj[u].pb(v);
-    };
-    int visited[1005];MEM(visited,0);
-
-    function<int(int)>dfs=[&](int mve)->int
-    {
-        int ans=1;
-        visited[mve]=1;
-        for(auto it:adj[mve])
-        {
-            if(visited[it])
-            {
-                continue;
-            }
-            ans+=dfs(it);
-        }
-        return ans;
-    };
-    cin>>n>>m;
-    cf(i,1,n)
-    {
-        cf(j,1,m)
-        {
-            int tmp;
-            cin>>tmp;
-
-            for(int k=3;k>=0;--k)
-            {
-                int db=tmp%2;
-                tmp/=2;
-
-                if(db==1)
-                {
-                    continue;
-                }
-                int mveX=i+dx[k];
-                int mveY=j+dy[k];
-                // if(mveX>=1 and mveX<=n and mveY>=1 and mveY<=m)
-                // {
-                //     addEdge(i,j,mveX,mveY);
-                // }
-                addEdge(i,j,mveX,mveY);
-            }
-        }
+        cin>>a>>b;
+        mp[a]=b;
     }
-    vector<int>ans;
-    int tke=n*m;
-    cf(i,1,tke)
+    ll m,x,y;
+    cin>>m;
+    f1(i,0,m)
     {
-        if(visited[i])
+        cin>>x>>y;
+        if(mp[x]==0)
+        {
+            mp[x]=y;
+        }
+        else if(mp[x]<=y)
+        {
+            mp[x]=y;
+        }
+        else
         {
             continue;
         }
-        ans.pb(dfs(i));
     }
-    sort(all(ans));
-    reverse(all(ans));
-    for(auto it:ans)
+    ll ans=0;
+    for(auto it:mp)
     {
-        cout<<it<<" ";
-        // return;
+        ans+=it.second;
     }
-    cout<<nl;
+    cout<<ans<<nl;
 }
 
 int main() 
