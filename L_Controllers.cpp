@@ -646,11 +646,30 @@ void solve()
             {
                 cout<<"NO"<<nl;
             }
-            continue;
+            // continue;
         }
-        ll tmp=abs(b*(x-y))%abs(b-a)==0;
-        ll db=abs(b*(x-y))/abs(b-a)<=n;
-        cout<<((tmp and db)?"YES":"NO")<<nl;
+		else
+		{
+			ll db=b*(y-x);
+			if(db%(a-b)==0)
+			{
+				// ll da=db/(a-b);
+				db/=(a-b);
+				// if(da>=0 and da<=x)
+				if(db>x or y+db<0)
+				{
+					cout<<"NO"<<nl;
+				}
+				else
+				{
+					cout<<"YES"<<nl;
+				}
+			}
+			else
+			{
+				cout<<"NO"<<nl;
+			}
+		}
     }
 }
 
