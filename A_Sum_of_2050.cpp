@@ -603,7 +603,22 @@ int getSum(int v)
 
 void solve()
 {
-    
+    ll n;
+    cin>>n;
+    // if((n&(n-1))!=0)
+    if(n%2050!=0)
+    {
+        cout<<-1<<nl;
+        return;
+    }
+    ll x=n/2050;
+    ll ans=0;
+    while(x)
+    {
+        ans+=x%10;
+        x/=10;
+    }
+    cout<<ans<<nl;
 }
 
 int main() 
@@ -612,13 +627,8 @@ int main()
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
 
-    // std::cout << std::setprecision(15); std::cout << std::fixed;
-// #ifndef ONLINE_JUDGE
-// freopen("input.txt","r",stdin); //file input.txt is opened in reading mode i.e "r"
-// freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
-// #endif
     ll tc = 1;
-    // cin >> tc;
+    cin >> tc;
     for (ll t = 1; t <= tc; t++) 
     {
         solve();
