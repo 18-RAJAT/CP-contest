@@ -1,3 +1,12 @@
+// Problem: B. Chess Tournament
+// Contest: Codeforces - Educational Codeforces Round 113 (Rated for Div. 2)
+// URL: https://codeforces.com/contest/1569/problem/B
+// Memory Limit: 256 MB
+// Time Limit: 2000 ms
+// 
+// Powered by CP Editor (https://cpeditor.org)
+
+
 #include <bits/stdc++.h>
 using namespace std;
  
@@ -600,43 +609,66 @@ int getSum(int v)
   return ans;
 }
 
-
+int n;
+string s;
+char a[55][55];
 void solve()
 {
-    ll n,k,a,b;
-    cin>>n>>k>>a>>b;
-    ll db[]={a+b,a-b,b-a,-a-b,-a+b,-b-a};
-    ll maxi=1;
-    ll mini=n*k;
-    function<ll(ll,ll)>gcd=[&](ll a,ll b)->ll
+    auto print=[&]()->void
     {
-        if(b==0)
+        cout<<"YES"<<nl;
+        cf(i,1,n)
         {
-            return a;
+            cf(j,1,n)
+            {
+                cout<<a[i][j];
+            }
+            cout<<nl;
         }
-        return gcd(b,a%b);
     };
+    cin>>n;
+    cin>>s;
     cf(i,1,n)
     {
-        f1(j,0,4);
+        cf(j,1,n)
         {
-            ll pos=db[j]%k;
-            if(pos<0)
+            if(i==j)
             {
-                pos+=k;
+                a[i][j]='X';
             }
-            mini=min(mini,n*k/gcd(n*k,i*k+pos));
-            maxi=max(maxi,n*k/gcd(n*k,i*k+pos));
+            else
+            {
+                a[i][j]='=';
+            }
         }
     }
-    // if(maxi<=4)
-    // {
-    //     cout<<mini<<" "<<maxi+1<<nl;
-    // }
-    // else
-    // {
-        cout<<mini<<" "<<maxi<<nl;
-    // }
+    vector<int>pos;
+    cf(i,1,n)
+    {
+        if(s[i-1]=='2')
+        {
+            pos.pb(i);
+        }
+    }
+    if(pos.size()==1 or (sza(pos)==2))
+    {
+        cout<<"NO"<<nl;
+    }
+    else if(not sza(pos))
+    {
+        print();
+    }
+    else
+    {
+        f1(i,0,sza(pos))
+        {
+            int x=pos[i];
+            int y=pos[(i+1)%pos.size()];
+            a[x][y]='+';
+            a[y][x]='-';
+        }
+        print();
+    }
 }
 
 int main() 
@@ -646,7 +678,7 @@ int main()
     cin.tie(0); cout.tie(0);
 
     ll tc = 1;
-    // cin >> tc;
+    cin >> tc;
     for (ll t = 1; t <= tc; t++) 
     {
         solve();
