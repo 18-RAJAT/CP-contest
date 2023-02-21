@@ -642,7 +642,7 @@ void solve()
     f1(i,0,sza(a))
     {
         b.pb(a[i]);
-        ans=b[i];
+        ans=a[i];
 
         while(ans<=n/a[i])
         {
