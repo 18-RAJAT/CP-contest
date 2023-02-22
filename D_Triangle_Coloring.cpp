@@ -17,7 +17,6 @@ const ll INF = 1e18+20;
 #define reverseall(x) reverse(all(x))
 
 
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 #define SCD(t) scanf("%d",&t)
@@ -602,49 +601,29 @@ int getSum(int v)
 }
 
 
-//Ho Jayega bhai time lagega aur thodi si mehnat
-
-
 void solve()
 {
-    ll n;
-    cin>>n;
-    ll a[n];
-    f1(i,0,n)
-    {
-        cin>>a[i];
-    }
-    ll ans=0;
-    int mod=998244353;
-    function<void(ll,ll,ll,ll)>dfs=[&](ll i,ll r,ll b,ll w)
-    {
-        if(i==n)
-        {
-            if(r==n/2&&b==n/2)
-            {
-                ans+=w;
-                ans%=mod;
-            }
-            return;
-        }
-        if(r<n/2)
-        {
-            dfs(i+1,r+1,b,w);
-        }
-        if(b<n/2)
-        {
-            dfs(i+1,r,b+1,w);
-        }
-        if(r<n/2&&b<n/2)
-        {
-            dfs(i+1,r+1,b+1,w*a[i]);
-        }
-    };
-    dfs(0,0,0,1);
-    cout<<ans<<endl;
-
+	int n;
+	cin>>n;
+	int ans=2;
+	FOR(i,0,n,3)
+	{
+		map<int,int>mp;
+		f1(j,0,3)
+		{
+			int x;
+			cin>>x;
+			mp[x]++;
+		}
+		ans=ans*mp.begin()->second%998244353;
+	}
+	int cnt=n/3;
+	FOR(i,1,cnt,2)
+	{
+		ans=ans*i%998244353;
+	}
+	cout<<ans<<nl;
 }
-
 
 int main() 
 {
@@ -652,11 +631,6 @@ int main()
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
 
-    // std::cout << std::setprecision(15); std::cout << std::fixed;
-// #ifndef ONLINE_JUDGE
-// freopen("input.txt","r",stdin); //file input.txt is opened in reading mode i.e "r"
-// freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
-// #endif
     ll tc = 1;
     // cin >> tc;
     for (ll t = 1; t <= tc; t++) 
