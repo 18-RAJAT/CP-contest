@@ -1,3 +1,11 @@
+// Problem: A. Vova and Train
+// Contest: Codeforces - Codeforces Round #515 (Div. 3)
+// URL: https://codeforces.com/contest/1066/problem/A
+// Memory Limit: 256 MB
+// Time Limit: 1000 ms
+// 
+// Powered by CP Editor (https://cpeditor.org)
+
 #include <bits/stdc++.h>
 using namespace std;
  
@@ -12,7 +20,7 @@ const int MAX_NN = 2e5 + 8;
 const ll MOD = 1000000007;
 const ll INF = 1e18+20;
 #define revall(x) x.rbegin(), x.rend()
-#define ALL(x) sort(x.begin(), x.end())
+#define ALL(x) sort(x.rbegin(), x.rend())
 #define sortall(x) sort(all(x))
 #define reverseall(x) reverse(all(x))
 
@@ -602,16 +610,23 @@ int getSum(int v)
 }
 
 
+//Ho Jayega bhai time lagega aur thodi si mehnat
+
+
 void solve()
 {
-    ll L,V,l,r;
-    cin>>L>>V>>l>>r;
-    ll cnt=0;
-    cnt=(L/V)-((r/V)-(l-1)/V);
-    cout<<cnt<<nl;
+	int l,v,s,e;
+	cin>>l>>v>>s>>e;
+	
+	s--;
+	int db=l/v;
+	int ert=e/v;
+	int mve=(s)/v;
+	cout<<db-abs(ert-mve)<<nl;
 }
 
-int main() {
+int main() 
+{
     
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);

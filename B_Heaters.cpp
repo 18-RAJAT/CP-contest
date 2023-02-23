@@ -1,3 +1,11 @@
+// Problem: B. Heaters
+// Contest: Codeforces - Codeforces Round #515 (Div. 3)
+// URL: https://codeforces.com/contest/1066/problem/B
+// Memory Limit: 256 MB
+// Time Limit: 1000 ms
+// 
+// Powered by CP Editor (https://cpeditor.org)
+
 #include <bits/stdc++.h>
 using namespace std;
  
@@ -12,7 +20,7 @@ const int MAX_NN = 2e5 + 8;
 const ll MOD = 1000000007;
 const ll INF = 1e18+20;
 #define revall(x) x.rbegin(), x.rend()
-#define ALL(x) sort(x.begin(), x.end())
+#define ALL(x) sort(x.rbegin(), x.rend())
 #define sortall(x) sort(all(x))
 #define reverseall(x) reverse(all(x))
 
@@ -42,6 +50,7 @@ const ll INF = 1e18+20;
 #define MP make_pair
 #define INS insert
 #define PB push_back
+#define INS insert
 #define PF push_front
 #define INF (int)1e9
 #define EPS 1e-9
@@ -602,38 +611,47 @@ int getSum(int v)
 }
 
 
+//Ho Jayega bhai time lagega aur thodi si mehnat
+
+
 void solve()
 {
-    int n,m;
-    cin>>n>>m;
-    int a[n];
-    f1(i,0,n)
-    {
-        cin>>a[i];
-    }
-    int cntOf1=0;
-    f1(i,0,n)
-    {
-        if(a[i]==1)
-        {
-            cntOf1++;
-        }
-        else
-        {
-            //
-        }
-    }
-    if(cntOf1==0)
-    {
-        cout<<-1<<nl;
-    }
-    else
-    {
-        cout<<cntOf1<<nl;
-    }
+	int n,m;
+	cin>>n>>m;
+	set<int>s;
+	int cnt=0;
+	cf(i,1,n)
+	{
+		int x;
+		cin>>x;
+		if(x!=1)
+		{
+			
+		}
+		else
+		{
+			s.INS(i);
+		}
+	}
+	for(int i=0;i<n;)
+	{
+		auto it=s.upper_bound(i+m);
+		if(it==s.begin())
+		{
+			cout<<-1<<nl;
+			return;
+		}
+		it--;
+		i=*it+m-1;
+		s.erase(it);
+		cnt++;
+	}
+	cout<<cnt<<nl;
+	return;
 }
 
-int main() {
+int main() 
+{
     
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
