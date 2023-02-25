@@ -43,6 +43,8 @@ const ll INF = 1e18+20;
 #define INS insert
 #define PB push_back
 #define PF push_front
+#define EM emplace
+#define EB emplace_back
 #define INF (int)1e9
 #define EPS 1e-9
 // #define MOD 998244353 
