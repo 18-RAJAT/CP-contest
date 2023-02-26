@@ -609,12 +609,12 @@ int getSum(int v)
 
 void solve()
 {
-    int n;
+    ll n;
     cin>>n;
-    vi x,y;
+    VI x,y;
     cf(i,1,2*n)
     {
-        int a,b;
+        ll a,b;
         cin>>a>>b;
         if(a==0)
         {
@@ -627,7 +627,7 @@ void solve()
     }
     sort(all(x));
     sort(all(y));
-    long double ans=0;
+    double ans=0;
     cf(i,0,n-1)
     {
         ans+=sqrt(x[i]*x[i]+y[i]*y[i]);
@@ -641,7 +641,7 @@ int main()
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
 
-    // std::cout << std::setprecision(15); std::cout << std::fixed;
+    std::cout << std::setprecision(15); std::cout << std::fixed;
 // #ifndef ONLINE_JUDGE
 // freopen("input.txt","r",stdin); //file input.txt is opened in reading mode i.e "r"
 // freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
