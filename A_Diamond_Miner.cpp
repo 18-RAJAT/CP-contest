@@ -609,34 +609,30 @@ int getSum(int v)
 
 void solve()
 {
-	string s1,s2;
-	cin>>s1>>s2;
-	// int n=sza(s1);
-	// int m=sza(s2);
-	if(s1.length()>s2.length())
-	{
-		swap(s1,s2);
-	}
-	int cnt=0;
-	f1(j,0,s2.length())
-	{
-		if(s1[cnt]==s2[j])
-		{
-			cnt++;
-		}
-		if(cnt==s1.length())
-		{
-			break;
-		}
-	}
-	if(cnt==s1.length())
-	{
-		cout<<"YES"<<nl;
-	}
-	else
-	{
-		cout<<"NO"<<nl;
-	}
+    int n;
+    cin>>n;
+    vi x,y;
+    cf(i,1,2*n)
+    {
+        int a,b;
+        cin>>a>>b;
+        if(a==0)
+        {
+            y.pb(abs(b));
+        }
+        else
+        {
+            x.pb(abs(a));
+        }
+    }
+    sort(all(x));
+    sort(all(y));
+    long double ans=0;
+    cf(i,0,n-1)
+    {
+        ans+=sqrt(x[i]*x[i]+y[i]*y[i]);
+    }
+    cout<<ans<<nl;
 }
 
 int main() 
