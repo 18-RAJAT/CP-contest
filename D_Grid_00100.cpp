@@ -609,15 +609,54 @@ int getSum(int v)
 
 void solve()
 {
-    int n;
-    cin>>n;
-    if(n<=1)
+    int n,k;
+    cin>>n>>k;
+    if(k%n)
     {
-        cout<<1<<nl;
+        cout<<2<<nl;
     }
     else
     {
-        cout<<(n+1)/2<<nl;
+        cout<<0<<nl;
+    }
+    int dp[n][n];MEM(dp,0);
+    int row=0;
+    int col=0;
+    f1(i,0,k)
+    {
+        dp[row][col]=1;
+        row++;
+        col++;
+        col%=n;
+        // if(row==n)
+        // {
+        //     row=1;
+        // }
+        // if(col==k)
+        // {
+        //     col=1;
+        // }
+        // if(col==0)
+        // {
+        //     col=1;
+        // }
+        // if(row==0)
+        // {
+        //     row=1;
+        // }
+        if(abs(row-n)==0)
+        {
+            row=0;
+            col++;
+        }
+    }
+    f1(i,0,n)
+    {
+        f1(j,0,n)
+        {
+            cout<<dp[i][j];
+        }
+        cout<<nl;
     }
 }
 

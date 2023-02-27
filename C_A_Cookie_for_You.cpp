@@ -609,15 +609,21 @@ int getSum(int v)
 
 void solve()
 {
-    int n;
-    cin>>n;
-    if(n<=1)
+    ll a,b,n,m;
+    cin>>a>>b>>n>>m;
+    int guest=a+b-m;
+    // if(guest<0)
+    // {
+    //     cout<<"Yes"<<nl;
+    //     return;
+    // }
+    if(min(a,b)>=m and a+b-m>=n)
     {
-        cout<<1<<nl;
+        cout<<"Yes"<<nl;
     }
     else
     {
-        cout<<(n+1)/2<<nl;
+        cout<<"No"<<nl;
     }
 }
 

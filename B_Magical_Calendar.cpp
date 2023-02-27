@@ -609,16 +609,29 @@ int getSum(int v)
 
 void solve()
 {
-    int n;
-    cin>>n;
-    if(n<=1)
+    ll n,r;
+    cin>>n>>r;
+    r=min(n,r);
+    ll cnt=0;
+    // cf(i,1,r)
+    if(n<=r)
     {
-        cout<<1<<nl;
+        ll db=n*(n-1);
+        cnt=db;
+        cnt/=2;
+        cnt++;
     }
     else
     {
-        cout<<(n+1)/2<<nl;
+        // ll db=r*(r-1);
+        // cnt=db;
+        ll find=(r+1);
+        cnt=r*find;
+        // cnt++;
+        // cnt+=(n-r);
+        cnt/=2;
     }
+    cout<<cnt<<nl;
 }
 
 int main() 

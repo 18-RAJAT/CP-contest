@@ -609,15 +609,44 @@ int getSum(int v)
 
 void solve()
 {
-    int n;
-    cin>>n;
-    if(n<=1)
+    int p,n;
+    cin>>p>>n;
+    int a[n];
+    f1(i,0,n)
     {
-        cout<<1<<nl;
+        cin>>a[i];
     }
-    else
+    int ans=0;
+    sort(a,a+n,greater<int>());
+    // if(a[0]==a[1])
+    // {
+    //     cout<<0<<nl;
+    //     return;
+    // }
+    // else
+    // {
+    //     cout<<1<<nl;
+    // }
+    if(n>p)
     {
-        cout<<(n+1)/2<<nl;
+        cout<<0<<nl;
+        return;
+    }
+    // cout<<1+min(p,n)<<nl;
+    cout<<abs(p-n)<<nl;
+    cf(i,1,n)
+    {
+        if(a[i]==a[i-1])
+        {
+            ans+=1;
+            cout<<0<<nl;
+            return;
+        }
+        else
+        {
+            cout<<1+min(p,n)<<nl;
+            return;
+        }
     }
 }
 
@@ -633,7 +662,7 @@ int main()
 // freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 // #endif
     ll tc = 1;
-    cin >> tc;
+    // cin >> tc;
     for (ll t = 1; t <= tc; t++) 
     {
         solve();
