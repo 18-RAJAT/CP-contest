@@ -614,7 +614,7 @@ void solve()
     string s;
     cin>>s;
     string ans="";
-    cf(i,0,151)
+    cf(i,0,150)
     {
         if(i%3==0)
         {
