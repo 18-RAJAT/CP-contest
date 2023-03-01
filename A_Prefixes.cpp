@@ -1,47 +1,25 @@
-/*
-* Note: This template uses some c++11 functions , so you have to compile it with c++11 flag.
-*       Example:-   $ g++ -std=c++11 c++Template.cpp
-*
-* Author : Rajat Joshi
-* Handle: 18-RAJAT
-*
-*/
-
-// Those who cannot remember the past are condemned to repeat it
-
- 
-/********   All Required Header Files ********/
-
-
-
-#include <iostream>
-#include <string>
-#include <vector>
-#include <algorithm>
-#include <sstream>
-#include <queue>
-#include <deque>
-#include <bitset>
-#include <iterator>
-#include <list>
-#include <stack>
-#include <map>
-#include <set>
-#include <functional>
-#include <numeric>
-#include <utility>
-#include <limits>
-#include <time.h>
-#include <math.h>
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include <assert.h>
-#include<bits/stdc++.h>
-
+#include <bits/stdc++.h>
 using namespace std;
+ 
+#define ll long long
+#define sza(x) ((int)x.size())
+#define all(x) x.begin(), x.end()
+#define revall(x) x.rbegin(), x.rend()
+#define sortall(x) sort(all(x))
+ 
+const int MAX_N = 2e5 + 5;
+const int MAX_NN = 2e5 + 8;
+const ll MOD = 1000000007;
+const ll INF = 1e18+20;
+#define revall(x) x.rbegin(), x.rend()
+#define ALL(x) sort(x.rbegin(), x.rend())
+#define sortall(x) sort(all(x))
+#define reverseall(x) reverse(all(x))
 
-/*******  All Required define Pre-Processors and typedef Constants *******/
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
 #define SCD(t) scanf("%d",&t)
 #define SCLD(t) scanf("%ld",&t)
 #define SCLLD(t) scanf("%lld",&t)
@@ -50,58 +28,97 @@ using namespace std;
 #define SCF(t) scanf("%f",&t)
 #define SCLF(t) scanf("%lf",&t)
 #define MEM(a, b) memset(a, (b), sizeof(a))
-#define FOR(i, j, k, in) for (int i=j ; i<k ; i+=in)
-#define RFOR(i, j, k, in) for (int i=j ; i>=k ; i-=in)
-#define REP(i, j) FOR(i, 0, j, 1)
-#define RREP(i, j) RFOR(i, j, 0, 1)
-#define all(cont) cont.begin(), cont.end()
+
+#define FOR(i, j, k, in) for (ll i=j ; i<k ; i+=in)
+#define RFOR(i, j, k, in) for (ll i=j ; i>=k ; i-=in)
 #define rall(cont) cont.end(), cont.begin()
 #define FOREACH(it, l) for (auto it = l.begin(); it != l.end(); it++)
-#define IN(A, B, C) assert( B <= A  and  A <= C)
+#define IN(A, B, C) assert( B <= A && A <= C)
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
 #define MP make_pair
+#define INS insert
 #define PB push_back
+#define PF push_front
+#define EM emplace
+#define EB emplace_back
 #define INF (int)1e9
 #define EPS 1e-9
+// #define MOD 998244353 
+#define ff first
+#define ss second
 #define PI 3.1415926535897932384626433832795
-#define MOD 1000000007
 #define read(type) readInt<type>()
 const double pi=acos(-1.0);
 #define ll long long
-typedef pair<int, int> PII;
-typedef vector<int> VI;
+typedef pair<int,int> PII;
+typedef vector<long long> VI;
+typedef vector<bool> VB;
+typedef vector<char> VC;
+typedef vector<char> VC;
+typedef vector<vector<long long>> VII;
+typedef vector<pair<ll,ll>>VPII;
 typedef vector<string> VS;
-typedef vector<PII> VII;
+typedef vector<PII> VIII;
 typedef vector<VI> VVI;
-typedef map<int,int> MPII;
-typedef set<int> SETI;
+// typedef vector<string> VS;
+typedef map<ll,ll> MPII;
+typedef map<char,int> MPCI;
+typedef map<string,int> MPSI;
+typedef set<long long> seti;
 typedef multiset<int> MSETI;
+typedef priority_queue<pair<int,int>> PQPII;
 typedef long int int32;
 typedef unsigned long int uint32;
 typedef long long int int64;
 typedef unsigned long long int  uint64;
-
-
-// ----------------------<MATH>--------------------------- 
+#define nl endl
  
-template<typename T> T gcd(T a, T b){return(b?__gcd(a,b):a);} 
+ 
+/* clang-format off */
+ 
+/* TYPES  */
+#define ll long long
+#define pii pair<int, int>
+#define pll pair<long long, long long>
+#define vvi vector<vector<int>>
+#define vll vector<long long>
+#define vd vector<double>
+#define mii map<long,long>
+#define MPC map<char,int> 
+#define miid map<double,long>
+#define si set<int>
+#define sc set<char>
+#define vi vector<int>
+#define revs(x,y,z) for(ll i=x;i<=y;i+=z)
 
-template<typename T> T lcm(T a, T b){return(a*(b/gcd(a,b)));} 
 
-int add(int a, int b, int c = MOD){int res=a+b;
-                         return(res>=c?res-c:res);} 
-int mod_neg(int a, int b, int c = MOD){int res;
-                         if(abs(a-b)<c)res=a-b;else res=(a-b)%c;
-                         return(res<0?res+c:res);} 
-int mul(int a, int b, int c = MOD){ll res=(ll)a*b;
-                         return(res>=c?res%c:res);} 
-int muln(int a, int b, int c = MOD){ll res=(ll)a*b;}
-  
-// // Permutation and Combination
-// int ncr(int n,int r,int c = MOD){ 
-//     return mul(mul(ifact[r],ifact[n-r],c),fact[n],c); 
-// }  
+//////////////////////////////////////////////////////////////////////////////////////////////
 
-// ----------------------</MATH>-------------------------- 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/* FUNCTIONS */
+
+
+
+#define f1(i,s,e) for(long long int i=s;i<e;i++)
+#define ff1(i,s,e) for(long long int i=s;i>=e;--i)
+#define For1(i,n) (long long int i=0;i<n+1;++i)
+#define cf(i,s,e) for(long long int i=s;i<=e;i++)
+#define FO(i,s,e) for(long long int i=1;i*i<=y;i++)
+#define rf(i,e,s) for(long long int i=e-1;i>=s;i--)
+#define pass(a)  for(long long int i=n-1;i>=1;i-=2)
+#define pb push_back
+#define ppb pop_back
+#define eb emplace_back
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -121,27 +138,28 @@ int muln(int a, int b, int c = MOD){ll res=(ll)a*b;}
 #define BITMASK_FLIP(x, mask) ((x) ^= (mask))
 #define BITMASK_CHECK_ALL(x, mask) (!(~(x) & (mask)))
 #define BITMASK_CHECK_ANY(x, mask) ((x) & (mask))
+#define LSB_ANY(n) (n&(n-1))
+#define LSB_CHECK(n) (n&(-n))
 // ----------------------</BITWISE END>--------------------------
 
 
 
 
 
-
 /****************** Prime Generator **********************/ 
-const int N=1e7+10; int prime[20000010]; 
-bool isprime[N]; int nprime; 
-template <typename T> void Sieve(T a) 
-{nprime = 0;memset(isprime,true,sizeof(isprime));
-isprime[1]=false;for(int i=2;i<N;i++){
-if(isprime[i]){prime[nprime++]=i;for(int j=2;i*j<N;j++)
-isprime[i*j]=false;}}}
-template <typename T> inline T PrimeFactors(T n)
-{ll cnt=0,sum=1;for(int i=0; prime[i]*prime[i]<=n 
-and i<nprime;i++){cnt=0;while(n%prime[i]==0)
-{cnt++;n/=prime[i];}sum*=(cnt+1);}
-if(n>1)sum*=2;return sum;} 
-/****************** Prime Generator End **********************/ 
+// const int N=1e7+10; int prime[20000010]; 
+// bool isprime[N]; int nprime; 
+// template <typename T> void Sieve(T a) 
+// {nprime = 0;memset(isprime,true,sizeof(isprime));
+// isprime[1]=false;for(int i=2;i<N;i++){
+// if(isprime[i]){prime[nprime++]=i;for(int j=2;i*j<N;j++)
+// isprime[i*j]=false;}}}
+// template <typename T> inline T PrimeFactors(T n)
+// {ll cnt=0,sum=1;for(int i=0; prime[i]*prime[i]<=n 
+// and i<nprime;i++){cnt=0;while(n%prime[i]==0)
+// {cnt++;n/=prime[i];}sum*=(cnt+1);}
+// if(n>1)sum*=2;return sum;} 
+/**************** Prime Generator End ********************/
 
 
 
@@ -161,7 +179,7 @@ template <typename T> inline T PointDistance3D(T x1,T y1,T z1,T x2,T y2,T z2)
  
 template <typename T> inline T Cube(T a){return a*a*a;} 
 template <typename T> inline T RectengularPrism(T a,T b,T c)
-{return a*b*c;} 
+{return a*b*c;}
 template <typename T> inline T Pyramid(T base, T height)
 {return (1/3)*base*height;}
 template <typename T> inline T Ellipsoid(T r1,T r2,T r3) 
@@ -179,59 +197,8 @@ template <typename T> inline T Cone (T radius,T base, T height)
 /****************** Geometry end *****************/ 
 
 
-
-
-
-
-
-/****** Template of some basic operations *****/
-template<typename T, typename U> inline void amin(T &x, U y) { if(y < x) x = y; }
-template<typename T, typename U> inline void amax(T &x, U y) { if(x < y) x = y; }
-/**********************************************/
-
-/****** Template of Fast I/O Methods *********/
-template <typename T> inline void write(T x)
-{
-    int i = 20;
-    char buf[21];
-    // buf[10] = 0;
-    buf[20] = '\n';
-
-    do
-    {
-        buf[--i] = x % 10 + '0';
-        x/= 10;
-    }while(x);
-    do
-    {
-        putchar(buf[i]);
-    } while (buf[i++] != '\n');
-}
-
-template <typename T> inline T readInt()
-{
-    T n=0,s=1;
-    char p=getchar();
-    if(p=='-')
-        s=-1;
-    while((p<'0'||p>'9') and p!=EOF and p!='-')
-        p=getchar();
-    if(p=='-')
-        s=-1,p=getchar();
-    while(p>='0' and p<='9') {
-        n = (n<< 3) + (n<< 1) + (p - '0');
-        p=getchar();
-    }
-
-    return n*s;
-}
-/************************************/
-
-
 /******* Debugging Class Template *******/
-#define DEBUG
 
-#ifdef DEBUG
 
     #define debug(args...)     (Debugger()) , args
 
@@ -256,54 +223,425 @@ template <typename T> inline T readInt()
         std::string separator;
     };
 
-#else
-    #define debug(args...)                  // Just strip off all debug tokens
-#endif
+//////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/**************************************/
-
-/******** User-defined Function *******/
-
-
-/**************************************/
-
-
-/********** Main()  function **********/
-
-// void Fpresuf(int pre[],int a[],int suf[],int n)
-// {
-//     pre[0]=a[0];
-//     for(int i=1;i<n;++i)
-//         pre[i]=__gcd(pre[i-1],a[i]);
-//     suf[n-1]=a[n-1];
-
-//     for(int i=n-2;i>=0;--i)
-//         suf[i]==__gcd(suf[i+1],a[i]);
-// }
-
-// int gcdR(int l,int r,int pre[],int suf[],int n)
-// {
-//     if(l==0)return suf[r+1];
-//     if(r==n-1)return pre[l-1];
-//     return __gcd(pre[l-1],suf[r+1]);
-// }
-
-int main()
+/* PRINTS */
+template <class T>
+void print_v(vector<T> &v) { cout << "{"; for (auto x : v) cout << x << ","; cout << "\b}"; }
+ 
+/* UTILS */
+ll min(ll a,int b) { if (a<b) return a; return b; }
+ll min(int a,ll b) { if (a<b) return a; return b; }
+ll max(ll a,int b) { if (a>b) return a; return b; }
+ll max(int a,ll b) { if (a>b) return a; return b; }
+ll gcd(ll a,ll b) { if (b==0) return a; return gcd(b, a%b); }
+ll lcm(ll a,ll b) { return a/gcd(a,b)*b; }
+string to_upper(string a) { for (int i=0;i<(int)a.size();++i) if (a[i]>='a'  and  a[i]<='z') a[i]-='a'-'A'; return a; }
+string to_lower(string a) { for (int i=0;i<(int)a.size();++i) if (a[i]>='A'  and  a[i]<='Z') a[i]+='a'-'A'; return a; }
+ 
+ 
+void yes() { cout<<"YES\n"; }
+void no() { cout<<"NO\n"; }
+bool isSorted(vi &arr){for(int i=0;i<(int)arr.size()-1;i++) if(arr[i] >= arr[i+1]) return false;return true;}
+ 
+ 
+ 
+/*  All Required define Pre-Processors and typedef Constants */
+typedef long int int32;
+typedef unsigned long int uint32;
+typedef long long int int64;
+typedef unsigned long long int  uint64;
+ 
+bool isprime(ll n)
 {
-#ifndef ONLINE_JUDGE
-freopen("input.txt","r",stdin); //file input.txt is opened in reading mode i.e "r"
-freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
-#endif
-    // int tc=1;
-    // tc = read(int);
-    //     while(tc--)
-    // {
-    int n,a=0;cin>>n;
-    string s;cin>>s;
-        for(int i=0;i<n;i+=2)
-        {if(s[i]==s[i+1])
-            {a++;s[i]=s[i]=='b'?'a':'b';}}
-        cout<<a<<"\n"<<s;
-    // }   
+    ll x=sqrt(n);
+    for(int i=2;i<=x;i++)
+    {if(n%i==0)return true;}
+    return false;
+}
+ 
+ 
+bool cmp(pair<int,int>x,pair<int,int>y){
+    return x.second<y.second;
+}
+ 
+
+//SEGMENT TREE TEMPLATE
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+struct Data {
+  // Use required attributes
+ 
+  ll sum;
+ 
+  // Default Values
+  Data() : sum(0) {};
+};
+ 
+struct SegTree {
+  int N;
+  vector<Data> seg;
+  vector<bool> cLazy;
+  vector<ll> lazy;
+ 
+  void init(int n) {
+    N = n;
+    seg.resize(4 * N + 5);
+    cLazy.assign(4 * N + 5, false);
+    lazy.assign(4 * N + 5, 0);
+  }
+ 
+  // Write reqd merge functions
+  void merge(Data &cur, Data &l, Data &r) {
+    cur.sum = l.sum + r.sum;
+  }
+ 
+  // Handle lazy propagation appriopriately
+  void propagate(int node, int L, int R) {
+    if (L != R) {
+      cLazy[node * 2] = 1;
+      cLazy[node * 2 + 1] = 1;
+      lazy[node * 2] += lazy[node];
+      lazy[node * 2 + 1] += lazy[node];
+    }
+    seg[node].sum += (R - L + 1) * lazy[node];
+    lazy[node] = 0;
+    cLazy[node] = 0;
+  }
+ 
+  void build(int node, int L, int R) {
+    if (L == R) {
+      return;
+    }
+    int M = (L + R) / 2;
+    build(node * 2, L, M);
+    build(node * 2 + 1, M + 1, R);
+    merge(seg[node], seg[node * 2], seg[node * 2 + 1]);
+  }
+ 
+  Data Query(int node, int L, int R, int i, int j) {
+    if (cLazy[node])
+      propagate(node, L, R);
+    if (j < L || i > R)
+      return Data();
+    if (i <= L && R <= j)
+      return seg[node];
+    int M = (L + R) / 2;
+    Data left = Query(node * 2, L, M, i, j);
+    Data right = Query(node * 2 + 1, M + 1, R, i, j);
+    Data cur;
+    merge(cur, left, right);
+    return cur;
+  }
+ 
+  Data pQuery(int node, int L, int R, int pos) {
+    if (cLazy[node])
+      propagate(node, L, R);
+    if (L == R)
+      return seg[node];
+    int M = (L + R) / 2;
+    if (pos <= M)
+      return pQuery(node * 2, L, M, pos);
+    else
+      return pQuery(node * 2 + 1, M + 1, R, pos);
+  }
+ 
+  void Update(int node, int L, int R, int i, int j, int val) {
+    if (cLazy[node])
+      propagate(node, L, R);
+    if (j < L || i > R)
+      return;
+    if (i <= L && R <= j) {
+      cLazy[node] = 1;
+      lazy[node] = val;
+      propagate(node, L, R);
+      return;
+    }
+    int M = (L + R) / 2;
+    Update(node * 2, L, M, i, j, val);
+    Update(node * 2 + 1, M + 1, R, i, j, val);
+    merge(seg[node], seg[node * 2], seg[node * 2 + 1]);
+  }
+ 
+  void pUpdate(int node, int L, int R, int pos, int val) {
+    if (cLazy[node])
+      propagate(node, L, R);
+    if (L == R) {
+      cLazy[node] = 1;
+      lazy[node] += val;
+      propagate(node, L, R);
+      return;
+    }
+    int M = (L + R) / 2;
+    if (pos <= M)
+      pUpdate(node * 2, L, M, pos, val);
+    else
+      pUpdate(node * 2 + 1, M + 1, R, pos, val);
+    merge(seg[node], seg[node * 2], seg[node * 2 + 1]);
+  }
+ 
+  Data query(int pos) { return pQuery(1, 1, N, pos); }
+ 
+  Data query(int l, int r) { return Query(1, 1, N, l, r); }
+ 
+  void update(int pos, int val) { pUpdate(1, 1, N, pos, val); }
+ 
+  void update(int l, int r, int val) { Update(1, 1, N, l, r, val); }
+};
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+int findMin(vector<bool>&vis,VI distance)
+{
+    int start=-1;
+    int n=vis.size();
+    f1(i,0,n)
+    {
+        if(start==-1 or distance[start]>distance[i])
+            start=i;
+    }
+    return start;
+}
+
+int dist(VPII vis,int n)
+{
+    vector<bool>ar(n,false);
+    VI temp(n,INF);
+    ar[1]=0;
+
+    int val=findMin(ar,temp);
+    if(val==-1)return 0;
+    ar[val]=true;
+    cf(i,0,n)
+    {
+        return temp[n];
+    }
+}
+
+
+bool binarySearch(ll mid,ll k,ll x)
+{
+    ll tot=0;
+    mid-=1;
+    if(mid<=k)
+        tot=(mid*(mid+1))/2;
+    else
+    {
+        tot=(k*(k+1))/2;
+        mid=2*k-1-mid;
+        tot+=((k*(k-1))/2-(mid*(mid+1))/2);
+    }
+    return tot<x;
+}
+
+
+
+vi helper(int n)
+{
+    vi v;
+    for (int i = 1; i <=sqrt(n); i++) 
+    {
+        if (n % i == 0) {
+            if (n / i == i)
+            {
+                v.push_back(i);
+            }else
+            {
+                v.push_back(n/i);
+            }
+        }
+    }
+    return v;
+}
+
+
+
+ll dmod(ll x)
+{
+    return ((x+1000000007)%1000000007);
+}
+
+ll take(ll x,ll y)
+{
+    ll ans=1;
+    while(y)
+    {
+        if(y&1)ans=dmod(ans*x);
+        y/=2;
+        // x=dmod(sqrt(x));
+        x=dmod(x*x);
+    }
+    return ans;
+}
+
+ll help( long long x )
+{
+    ll sum = 0 ;
+    while ( x )
+    { 
+        sum += x % 10 ;
+        x /= 10 ;
+    }
+    return sum ;
+}
+ 
+
+bool c2(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
+{
+    if(x.second.first!=y.second.first)
+     return (x.second.first < y.second.first);
+     else
+     return (x.second.second < y.second.second);
+
+}
+bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
+{
+    if(x.first!=y.first)
+     return (x.first < y.first);
+     else
+      return (x.second.second < y.second.second);
+
+}
+bool isPrime(int n)
+{
+    // Corner case
+    if (n <= 1)
+        return false;
+    for (int i = 2; i < n; i++)
+        if (n % i == 0)
+            return false;
+ 
+    return true;
+}
+
+int ft(char c)
+{
+    return c - 'a';
+}
+char fr(int i)
+{
+    return i+'a';
+}
+
+ll fact(int n)
+{
+    ll ans=1;
+    for(ll i=1;i<=n;i++)
+    {
+        ans*=i;
+    }
+    return ans;
+}
+
+
+set<ll>getFactors(ll x)
+{
+    set<ll>st;
+    ll sq=sqrt(x);
+    f1(i,2,sq+1)
+    {
+        if(x%i==0)
+        {
+            st.insert(i);
+            st.insert(x/i);
+        }
+    }
+    return st;
+}
+
+ll Prime(ll x)
+{
+    ll sq=sqrt(x);
+    f1(i,2,sq+1)
+    {
+        if(x%i==0)
+        {
+            return 0;
+        }
+    }
+    return 1;
+}
+
+
+int getSum(int v) 
+{
+  int ans = 0;
+  while (v) {
+    ans += v % 10;
+    v /= 10;
+  }
+ 
+  return ans;
+}
+
+
+//Ho Jayega bhai time lagega aur thodi si mehnat
+
+
+void solve()
+{
+    int n;
+    cin>>n;
+    string s;
+    cin>>s;
+    int cnt=0;
+    FOR(i,1,n,2)
+    {
+        if(s[i]==s[i-1])
+        {
+            s[i]=((s[i]=='a')?'b':'a');
+            cnt++;
+        }
+    }
+    cout<<cnt<<nl;
+    cout<<s<<nl;
+}
+
+int main() 
+{
+    
+    ios_base::sync_with_stdio(0);
+    cin.tie(0); cout.tie(0);
+
+    std::cout << std::setprecision(15); std::cout << std::fixed;
+// #ifndef ONLINE_JUDGE
+// freopen("input.txt","r",stdin); //file input.txt is opened in reading mode i.e "r"
+// freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
+// #endif
+    ll tc = 1;
+    // cin >> tc;
+    for (ll t = 1; t <= tc; t++) 
+    {
+        solve();
+    }
     return 0;
 }
