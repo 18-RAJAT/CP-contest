@@ -45,10 +45,6 @@ const ll INF = 1e18+20;
 #define PF push_front
 #define EM emplace
 #define EB emplace_back
-#define POB pop_back
-#define POF pop_front
-#define BK back()
-#define FR front()
 #define INF (int)1e9
 #define EPS 1e-9
 // #define MOD 998244353 
@@ -613,52 +609,7 @@ int getSum(int v)
 
 void solve()
 {
-	int n,m,k;
-	cin>>n>>m>>k;
-	string s,t;
-	cin>>s>>t;
-	sort(all(s),greater<char>());
-	sort(all(t),greater<char>());
-	int a,b;a=b=0;
-	string str;
-	while(not s.empty() and not t.empty())
-	{
-		if(s.BK<t.BK)
-		{
-			if(a<k)
-			{
-				a++;
-				b=0;
-				str+=s.BK;
-				s.POB();
-			}
-			else
-			{
-				a=0;
-				b++;
-				str+=t.BK;
-				t.POB();
-			}
-		}
-		else
-		{
-			if(b<k)
-			{
-				b++;
-				a=0;
-				str+=t.BK;
-				t.POB();
-			}
-			else
-			{
-				b=0;
-				a++;
-				str+=s.BK;
-				s.POB();
-			}
-		}
-	}
-	cout<<str<<nl;
+
 }
 
 int main() 
@@ -673,7 +624,7 @@ int main()
 // freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 // #endif
     ll tc = 1;
-    cin >> tc;
+    // cin >> tc;
     for (ll t = 1; t <= tc; t++) 
     {
         solve();
