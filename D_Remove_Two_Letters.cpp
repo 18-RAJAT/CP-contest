@@ -613,28 +613,24 @@ void solve()
     cin>>n;
     string s;
     cin>>s;
-
-    f1(i,0,n)
-    {
-        if(s[i]>='A' and s[i]<='Z')
-        {
-            s[i]=s[i]-'A'+'a';
-        }
-    }
-    VC res={};
-    char ch=s[0];
+    int ans=0;
     f1(i,1,n)
     {
-        if(s[i]!=s[i-1])
+        if(i>=2 and s[i]==s[i-2])
         {
-            res.pb(ch);
-            ch=s[i];
+            continue;
         }
+        ans++;
     }
-    res.pb(ch);
-    VC db={'m','e','o','w'};
-    
-    cout<<((res==db?"YES":"NO"))<<nl;
+    // if(ans>=3)
+    // {
+    //     cout<<ans-1<<nl;
+    // }
+    // else
+    // {
+    //     cout<<ans<<nl;
+    // }
+    cout<<ans<<nl;
 }
 
 int main() 

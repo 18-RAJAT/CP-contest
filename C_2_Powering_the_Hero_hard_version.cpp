@@ -609,32 +609,26 @@ int getSum(int v)
 
 void solve()
 {
-    int n;
+    ll n;
     cin>>n;
-    string s;
-    cin>>s;
-
+    ll ans=0;
+    priority_queue<ll>pq;
     f1(i,0,n)
     {
-        if(s[i]>='A' and s[i]<='Z')
+        ll m;
+        cin>>m;
+        if(not pq.empty() and m==0)
         {
-            s[i]=s[i]-'A'+'a';
+            ans+=pq.top();
+            // pq.push(m);
+            pq.pop();
+        }
+        else if(m!=0)
+        {
+            pq.push(m);
         }
     }
-    VC res={};
-    char ch=s[0];
-    f1(i,1,n)
-    {
-        if(s[i]!=s[i-1])
-        {
-            res.pb(ch);
-            ch=s[i];
-        }
-    }
-    res.pb(ch);
-    VC db={'m','e','o','w'};
-    
-    cout<<((res==db?"YES":"NO"))<<nl;
+    cout<<ans<<nl;
 }
 
 int main() 

@@ -609,32 +609,43 @@ int getSum(int v)
 
 void solve()
 {
-    int n;
-    cin>>n;
+    int n,k;
+    cin>>n>>k;
     string s;
     cin>>s;
+    string t;
+    cin>>t;
+    // int n=sza(s);
+    vi bad(n,0);
+    f1(i,0,n)
+    {
+        if(i-k<0 and i+k>=n)
+        {
+            bad[i]=1;
+        }
+    }
+    bool ok=true;
+    vi cnt(26,0);
+
+    function<int(char)>ft=[&](char c)->int
+    {
+        return c-'a';
+    };
 
     f1(i,0,n)
     {
-        if(s[i]>='A' and s[i]<='Z')
+        if(bad[i])
         {
-            s[i]=s[i]-'A'+'a';
+            ok=ok and (s[i]==t[i]);
+        }
+        else
+        {
+            cnt[ft(s[i])]++;
+            cnt[ft(t[i])]--;
         }
     }
-    VC res={};
-    char ch=s[0];
-    f1(i,1,n)
-    {
-        if(s[i]!=s[i-1])
-        {
-            res.pb(ch);
-            ch=s[i];
-        }
-    }
-    res.pb(ch);
-    VC db={'m','e','o','w'};
-    
-    cout<<((res==db?"YES":"NO"))<<nl;
+    ok=ok and (cnt==vi(26,0));
+    cout<<((ok)?"YES":"NO")<<nl;
 }
 
 int main() 
