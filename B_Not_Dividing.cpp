@@ -609,7 +609,29 @@ int getSum(int v)
 
 void solve()
 {
-
+	int n;
+	cin>>n;
+	vi a(n);
+	f1(i,0,n)
+	{
+		cin>>a[i];
+		if(a[i]==1)
+		{
+			a[i]++;
+		}
+	}
+	f1(i,1,n)
+	{
+		if(a[i]%a[i-1]==0)
+		{
+			a[i]++;
+		}
+	}
+	f1(i,0,n)
+	{
+		cout<<a[i]<<" ";
+	}
+	cout<<nl;
 }
 
 int main() 

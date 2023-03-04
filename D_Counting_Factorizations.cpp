@@ -609,7 +609,41 @@ int getSum(int v)
 
 void solve()
 {
-
+    int n;
+    cin>>n;
+    vi a(n);
+    f1(i,0,n)
+    {
+        cin>>a[i];
+    }
+    int ans=0;
+    f1(i,0,n)
+    {
+        int x=a[i];
+        int y=a[i];
+        int cnt=0;
+        // if(a[0]==a[1])
+        // {
+        //     cout<<*max_element(a.begin(),a.end());
+        // }
+        while(x%2==0)
+        {
+            x/=2;
+            cnt++;
+        }
+        while(y%3==0)
+        {
+            y/=3;
+            cnt++;
+        }
+        if(x!=1 or y!=1)
+        {
+            cout<<2;
+            return;
+        }
+        ans=max(ans,cnt);
+    }
+    cout<<ans;
 }
 
 int main() 
@@ -624,7 +658,7 @@ int main()
 // freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 // #endif
     ll tc = 1;
-    cin >> tc;
+    // cin >> tc;
     for (ll t = 1; t <= tc; t++) 
     {
         solve();

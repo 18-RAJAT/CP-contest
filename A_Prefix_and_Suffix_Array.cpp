@@ -609,7 +609,37 @@ int getSum(int v)
 
 void solve()
 {
+    int n;
+    cin>>n;
+    VS s(2*n-2);
+    f1(i,0,2*n-2)
+    {
+        cin>>s[i];
+    }
+    int ok=0;
+    f1(i,0,2*n-2)
+    {
+        ok=0;
+        string tmp=s[i];
 
+        reverse(all(tmp));
+
+        f1(j,0,2*n-2)
+        {
+            if(i!=j and s[j]==tmp)
+            {
+                ok=1;
+                break;
+            }
+        }
+        ok=not ok;
+        if(ok)
+        {
+            cout<<"NO"<<nl;
+            return;
+        }
+    }
+    cout<<"YES"<<nl;
 }
 
 int main() 

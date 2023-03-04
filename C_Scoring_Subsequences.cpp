@@ -609,7 +609,41 @@ int getSum(int v)
 
 void solve()
 {
-
+	ll n;
+	cin>>n;
+	VI a;
+	ll cnt=1;
+	f1(i,0,n)
+	{
+		ll x;
+		cin>>x;
+		a.pb(x);
+	}
+	cout<<1<<" ";
+	ll db=0;
+	ll mx=a[0];
+	// f1(i,0,n-1)
+	f1(i,1,n)
+	// cf(i,1,n-1)
+	{
+		cnt++;
+		// if(a[i]>mx)
+		// {
+		// 	mx=a[i];
+		// }
+		// else
+		// {
+		// 	cnt--;
+		// }
+		while(i>db and a[db]<cnt)
+		{
+			db++;
+			cnt--;
+		}
+		// debug(db);
+		cout<<cnt<<" ";
+	}
+	cout<<nl;
 }
 
 int main() 
