@@ -6,6 +6,8 @@ using namespace std;
 #define all(x) x.begin(), x.end()
 #define revall(x) x.rbegin(), x.rend()
 #define sortall(x) sort(all(x))
+#define G(x) ll x;cin>>x;
+#define GS(s) string s;cin>>s;
  
 const int MAX_N = 2e5 + 5;
 const int MAX_NN = 2e5 + 8;
@@ -609,47 +611,30 @@ int getSum(int v)
 
 void solve()
 {
-    int n;
-    cin>>n;
-    string s;
-    cin>>s;
-    string ans="";
-    cf(i,0,150)
-    {
-        if(i%3==0)
-        {
-            ans+='F';
-        }
-        if(i%5==0)
-        {
-            ans+='B';
-        }
-    }
-    for(int i=0;i+n<sza(ans);++i)
-    {
-        // string temp=ans.substr(i,n);
-        // if(temp==s)
-        // {
-        //     cout<<"YES"<<endl;
-        //     return;
-        // }
-        bool ok=true;
-        f1(j,0,n)
-        {
-            if(ans[i+j]!=s[j])
-            {
-                ok=false;
-                break;
-            }
-            debug(s[j],ans[i+j]);
-        }
-        if(ok)
-        {
-            cout<<"YES"<<nl;
-            return;
-        }
-    }
-    cout<<"NO"<<nl;
+	G(n);GS(s);
+	string t;
+	f1(i,0,15)
+	{
+		if(i%3==0)
+		{
+			t+='F';
+		}
+		if(i%5==0)
+		{
+			t+='B';
+		}
+	}
+	t+=t;
+	t+=t;
+	ll ans=0;
+	f1(i,0,10)
+	{
+		if(t.substr(i,n)==s)
+		{
+			ans++;
+		}
+	}
+	cout<<((ans)?"YES":"NO")<<nl;
 }
 
 int main() 

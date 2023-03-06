@@ -37,6 +37,8 @@ const ll INF = 1e18+20;
 #define FOREACH(it, l) for (auto it = l.begin(); it != l.end(); it++)
 #define IN(A, B, C) assert( B <= A && A <= C)
 
+#define INPUT(n)  f1(i,0,n){cin>>a[i];}
+#define INPUT1(n)  cf(i,1,n){cin>>a[i];}
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -611,7 +613,42 @@ int getSum(int v)
 
 void solve()
 {
-	
+	G(n);
+    int a[n+1];
+    INPUT1(n);
+    if(n%2==0)
+    {
+        int m=n/2;
+        cf(i,1,n)
+        {
+            int tmp=a[n+1-i];
+            if(i<=m)
+            {
+                // a[n+1-i]=a[i];
+                // a[i]=tmp;
+                tmp*=-1;
+            }
+            cout<<tmp<<" ";
+        }
+        cout<<nl;
+    }
+    else
+    {
+        int m=(n-3)/2;
+        cf(i,1,n-3)
+        {
+            int db=a[n-2-i];
+            if(i<=m)
+            {
+                db*=-1;
+            }
+            cout<<db<<" ";
+        }
+        cout<<a[n]<<" ";
+        cout<<a[n]<<" ";
+        cout<<-(a[n-1]+a[n-2])<<" ";
+        cout<<nl;
+    }
 }
 
 int main() 

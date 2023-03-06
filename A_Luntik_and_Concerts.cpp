@@ -611,7 +611,9 @@ int getSum(int v)
 
 void solve()
 {
-	
+	ll a,b,c;
+    cin>>a>>b>>c;
+    cout<<((a+c)%2?1:0)<<nl;
 }
 
 int main() 
