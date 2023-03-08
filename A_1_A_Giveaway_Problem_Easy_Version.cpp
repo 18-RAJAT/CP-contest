@@ -43,10 +43,8 @@ const ll INF = 1e18+20;
 
 #define MP make_pair
 #define INS insert
-#define PB push_back
 #define ERS erase
-#define LB lower_bound
-#define UB upper_bound
+#define PB push_back
 #define PF push_front
 #define EM emplace
 #define EB emplace_back
@@ -614,7 +612,31 @@ int getSum(int v)
 
 void solve()
 {
-	
+    G(n);
+	seti s;
+	int a[n+1];MEM(a,0);
+	cf(i,1,n)
+	{
+		s.INS(i);
+	}
+	cf(i,1,n)
+	{
+		cin>>a[i];
+		s.ERS(a[i]);
+	}
+	cf(i,1,n)
+	{
+		if(a[i])
+		{
+			cout<<a[i]<<" ";
+		}
+		else
+		{
+			cout<<*s.begin()<<" ";
+			s.ERS(*s.begin());
+		}
+	}
+	cout<<nl;
 }
 
 int main() 
