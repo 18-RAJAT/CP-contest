@@ -618,7 +618,13 @@ void solve()
     cin>>n>>m>>k;
     ll sum=0;
     function<void(int,int,int)> solve=[&](int q,int x,int v)
-    {`
+    {
+        if(q==0)
+        {
+            sum+=n*v;
+        }
+        else
+        {
             sum+=m*v;
         }
     };
