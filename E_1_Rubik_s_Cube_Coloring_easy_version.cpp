@@ -8,10 +8,6 @@ using namespace std;
 #define sortall(x) sort(all(x))
 #define G(x) ll x;cin>>x;
 #define GS(s) string s;cin>>s;
-#define GSS(s1,s2) string s1,s2;cin>>s1>>s2;
-#define GSSS(s1,s2,s3) string s1,s2,s3;cin>>s1>>s2>>s3;
-#define GC(c) char c;cin>>c;
-
  
 const int MAX_N = 2e5 + 5;
 const int MAX_NN = 2e5 + 8;
@@ -618,7 +614,19 @@ int getSum(int v)
 
 void solve()
 {
-
+    G(k);
+    function<ll(ll,ll)>power=[&](ll x,ll y)->ll
+    {
+        ll ans=1;
+        while(y)
+        {
+            if(y&1)ans=dmod(ans*x);
+            y/=2;
+            x=dmod(x*x);
+        }
+        return ans;
+    };
+    cout<<(6*power(4,(1ll<<k)-2))%1000000007<<nl;
 }
 
 
