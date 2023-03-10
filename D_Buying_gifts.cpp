@@ -634,9 +634,9 @@ void solve()
 		// {
 		// 	return false;
 		// }
-		return a.S<b.S;
+		return a.S>b.S;
 	};
-	ll suf[n];MEM(suf,0);
+	ll suf[n];//MEM(suf,0);
 	vector<pair<ll,ll>>a;
 	f1(i,0,n)
 	{
@@ -689,23 +689,23 @@ void solve()
 		st.INS(a[i].S);
 		ll db=-1;
 		if(i!=n-1)
-		{
+		// {
 			db=suf[i+1];
-		}
+		// }
 		ll tmp=INF;
-		if(db!=1)
-		{
+		if(db!=-1)
+		// {
 			//maxi
 			tmp=abs(db-a[i].F);
 			debug("1: ",tmp);
-		}
+		// }
 		// if(lft!=-1)
-		if(ryt>db or db==-1)
+		if(ryt>db or db==-1 and ryt!=-1)
 		{
 			tmp=min(tmp,abs(ryt-a[i].F));
 			debug("2: ",tmp);
 		}
-		if(lft>db or db==-1)
+		if(lft>db or db==-1 and lft!=-1)
 		{
 			tmp=min(tmp,abs(lft-a[i].F));
 			debug("3: ",tmp);
@@ -713,7 +713,7 @@ void solve()
 		ans=min(ans,tmp);
 	}
 	// cout<<((ans>=2)?0:ans)<<nl;
-	cout<<ans<<nl;
+    cout<<ans<<nl;
 }
 
 
