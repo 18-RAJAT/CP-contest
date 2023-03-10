@@ -617,9 +617,36 @@ int getSum(int v)
 //Ho Jayega bhai time lagega aur thodi si mehnat
 
 
+
 void solve()
 {
-    
+    int n,y,x;
+    cin>>n>>y>>x;
+    x-=y;
+    int d=x;
+    for(int i=2;i<=n-1;i++)
+    {
+        if(x%i==0)
+        {
+            d=x/i;
+        }
+    }
+    x+=y;
+    int pos=x;
+    while(pos>0 and n>0)
+    {
+        cout<<pos<<" ";
+        pos-=d;
+        n--;
+    }
+    pos=x+d;
+    while(n>0)
+    {
+        cout<<pos<<" ";
+        pos+=d;
+        n--;
+    }
+    cout<<nl;
 }
 
 

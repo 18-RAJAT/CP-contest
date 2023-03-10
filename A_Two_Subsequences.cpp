@@ -617,9 +617,27 @@ int getSum(int v)
 //Ho Jayega bhai time lagega aur thodi si mehnat
 
 
+
 void solve()
 {
-    
+    GS(s);
+    auto tmp=s;
+    sort(all(tmp));
+    auto del=tmp[0];
+    cout<<del<<" ";
+    int db=0;
+    for(auto it:s)
+    {
+        if(it!=del or db)
+        {
+            cout<<it;
+        }
+        else
+        {
+            db++;
+        }
+    }
+    cout<<nl;
 }
 
 
