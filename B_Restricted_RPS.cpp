@@ -6,14 +6,14 @@ using namespace std;
 #define all(x) x.begin(), x.end()
 #define revall(x) x.rbegin(), x.rend()
 #define sortall(x) sort(all(x))
-#define print(x) cout<<x<<"\n";
-#define PRINT(x,y) cout<<x<<" "<<y<<"\n";
 #define G(x) ll x;cin>>x;
 #define GG(x,y) ll x,y;cin>>x>>y;
 #define GS(s) string s;cin>>s;
 #define GSS(s1,s2) string s1,s2;cin>>s1>>s2;
 #define GSSS(s1,s2,s3) string s1,s2,s3;cin>>s1>>s2>>s3;
 #define GC(c) char c;cin>>c;
+#define print(x) cout<<x<<"\n";
+#define PRINT(x,y) cout<<x<<" "<<y<<"\n";
 
  
 const int MAX_N = 2e5 + 5;
@@ -126,7 +126,6 @@ typedef unsigned long long int  uint64;
 #define pb push_back
 #define ppb pop_back
 #define eb emplace_back
-
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -621,7 +620,74 @@ int getSum(int v)
 
 void solve()
 {
-    
+    GG(n,a);GG(b,c);
+    int win=0;
+    GS(s);
+    string ans="";
+    f1(i,0,n)
+    {
+        if(s[i]=='R')
+        {
+            if(b>0)
+            {
+                b--;
+                win++;
+                ans+='P';
+            }
+            else if(c>0)
+            {
+                c--;ans+='S';
+            }
+            else
+            {
+                a--;ans+='R';
+            }
+        }
+        else if(s[i]=='P')
+        {
+            if(c>0)
+            {
+                c--;
+                win++;
+                ans+='S';
+            }
+            else if(a>0)
+            {
+                a--;ans+='R';
+            }
+            else
+            {
+                b--;ans+='P';
+            }
+        }
+        else
+        {
+            if(a>=0)
+            {
+                a--;
+                win++;
+                ans+='R';
+            }
+            else if(b>0)
+            {
+                b--;ans+='P';
+            }
+            else
+            {
+                c--;ans+='S';
+            }
+        }
+    }
+    int db=(n+1)/2;
+    if(win>=db)
+    {
+        cout<<"YES"<<nl;
+        print(ans);
+    }
+    else
+    {
+        cout<<"NO"<<nl;
+    }
 }
 
 
