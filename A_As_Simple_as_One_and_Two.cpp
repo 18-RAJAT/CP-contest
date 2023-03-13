@@ -88,7 +88,7 @@ typedef unsigned long int uint32;
 typedef long long int int64;
 typedef unsigned long long int  uint64;
 #define nl endl
- 
+#define NEW cout<<endl;
  
 /* clang-format off */
  

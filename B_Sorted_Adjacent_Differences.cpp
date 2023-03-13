@@ -88,7 +88,7 @@ typedef unsigned long int uint32;
 typedef long long int int64;
 typedef unsigned long long int  uint64;
 #define nl endl
- 
+#define NEW cout<<endl; 
  
 /* clang-format off */
  
@@ -621,7 +621,27 @@ int getSum(int v)
 
 void solve()
 {
-    
+    G(n);
+    int a[n];
+    f1(i,0,n)
+    {
+        cin>>a[i];
+    }
+    sort(a,a+n);
+    int db=n/2;
+    f1(i,0,n)
+    {
+        cout<<a[db]<<" ";
+        if(i&1)
+        {
+            db+=i+1;
+        }
+        else
+        {
+            db-=i+1;
+        }
+    }
+    NEW
 }
 
 
