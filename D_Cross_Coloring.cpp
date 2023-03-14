@@ -10,11 +10,12 @@ using namespace std;
 #define PRINT(x,y) cout<<x<<" "<<y<<"\n";
 #define G(x) ll x;cin>>x;
 #define GG(x,y) ll x,y;cin>>x>>y;
+#define VAL(a,b,c,d) ll a,b,c,d;cin>>a>>b>>c>>d;
 #define GS(s) string s;cin>>s;
 #define GSS(s1,s2) string s1,s2;cin>>s1>>s2;
 #define GSSS(s1,s2,s3) string s1,s2,s3;cin>>s1>>s2>>s3;
 #define GC(c) char c;cin>>c;
-
+ 
 const int MAX_N = 2e5 + 5;
 const int MAX_NN = 2e5 + 8;
 const ll MOD = 1000000007;
@@ -620,7 +621,33 @@ int getSum(int v)
 
 void solve()
 {
-    
+    VAL(n,m,k,q;)
+    ll row[n];MEM(row,0);
+    ll col[m];MEM(col,0);
+
+    ll dirX[q];MEM(dirX,0);
+    ll dirY[q];MEM(dirY,0);
+
+    ll cnt=0;
+    ll db=0;
+
+    f1(i,0,q)
+    {
+        cin>>dirX[i]>>dirY[i];
+        --dirX[i];
+        --dirY[i];
+    }
+    ll ans=1;
+    rf(i,q,0)
+    {
+        if(not row[dirX[i]] and not row[dirY[i]])
+        {
+            ans*=k;
+            ans%=998244353;
+            row[dirX[i]]=1;
+        }
+    }
+    print(ans);
 }
 
 

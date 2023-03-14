@@ -620,7 +620,53 @@ int getSum(int v)
 
 void solve()
 {
+    G(n);
+    int q[n+1];MEM(q,0);
+    cf(i,1,n)
+    {
+        cin>>q[i];
+    }
+    int p[n+1];MEM(p,0);
+    int used[n+1];MEM(used,0);
+    int cnt=1;
     
+    p[1]=q[1];
+    used[q[1]]=1;
+    cf(i,2,n)
+    {
+        if(q[i]!=q[i-1])
+        {
+            p[i]=q[i];
+            // used[cnt]=1;
+            // cnt++;
+            used[q[i]]=1;
+        }
+        else
+        {
+            while(used[cnt]==1 and cnt<=n)
+            {
+                cnt++;
+            }
+            used[cnt]=1;
+            p[i]=cnt;
+        }
+    }
+    int mx=p[1];
+    cf(i,2,n)
+    {
+        mx=max(mx,p[i]);
+        if(q[i]!=mx)
+        {
+            print(-1)
+            return;
+        }
+    }
+    // printAll(p[1],p+1,n)
+    cf(i,1,n)
+    {
+        cout<<p[i]<<" ";
+    }
+    NEW;
 }
 
 
