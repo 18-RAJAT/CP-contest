@@ -14,10 +14,6 @@ using namespace std;
 #define GSS(s1,s2) string s1,s2;cin>>s1>>s2;
 #define GSSS(s1,s2,s3) string s1,s2,s3;cin>>s1>>s2>>s3;
 #define GC(c) char c;cin>>c;
-#define SUM(a)     ( accumulate ((a).begin(), (a).end(), 0ll))
-#define MINE(a)    (*min_element((a).begin(), (a).end()))
-#define MAXE(a)    (*max_element((a).begin(), (a).end()))
-
 
 const int MAX_N = 2e5 + 5;
 const int MAX_NN = 2e5 + 8;
@@ -624,7 +620,37 @@ int getSum(int v)
 
 void solve()
 {
-    
+    G(n);
+    ll a[n];MEM(a,0);
+    ll b[n];MEM(b,0);
+
+    f1(i,0,n)
+    {
+        cin>>a[i];
+    }
+    f1(i,0,n)
+    {
+        cin>>b[i];
+    }
+    ll ans=abs(a[0]-b[0]);
+    ll res=abs(a[n-1]-b[n-1]);
+
+    ll AL=1000000001;
+    ll BL=1000000001;
+    ll AR=1000000001;
+    ll BR=1000000001;
+
+    ll db=ans+res;
+    f1(i,0,n)
+    {
+        AL=min(AL,abs(a[0]-b[i]));
+        BL=min(BL,abs(b[0]-a[i]));
+        AR=min(AR,abs(a[n-1]-b[i]));
+        BR=min(BR,abs(b[n-1]-a[i]));
+
+    }
+    db=min(db,AL+BL+AR+BR);
+    print(db);
 }
 
 

@@ -624,7 +624,24 @@ int getSum(int v)
 
 void solve()
 {
-    
+    G(n);
+    ll a[n],b[n];
+    f1(i,0,n)
+    {
+        cin>>a[i];
+        b[i]=a[i];
+    }
+    sort(a,a+n,greater<ll>());
+    sort(b,b+n);//,greater<int>());
+    // int maxi=b[n-1];
+    // 0+1*3*2*1=6
+
+    ll ans=0;
+    f1(i,0,n)
+    {
+        ans=(ans+a[i]*b[i])%10007;
+    }
+    print(ans);
 }
 
 
@@ -640,7 +657,7 @@ int main()
 // freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 // #endif
     ll tc = 1;
-    cin >> tc;
+    // cin >> tc;
     for (ll t = 1; t <= tc; t++) 
     {
         solve();

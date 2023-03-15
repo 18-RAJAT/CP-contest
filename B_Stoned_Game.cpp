@@ -624,7 +624,37 @@ int getSum(int v)
 
 void solve()
 {
-    
+    G(n);
+    vi a(n);
+    for(auto &i:a)cin>>i;
+    if(n==1)
+    {
+        cout<<"T"<<nl;
+        return;
+    }
+    if(n==2)
+    {
+        if(a[0]==a[1])
+        {
+            cout<<"HL"<<nl;
+            return;
+        }
+        else
+        {
+            cout<<"T"<<nl;
+            return;
+        }
+    }
+    if(SUM(a)%2==0)
+    {
+        cout<<"HL"<<nl;
+        return;
+    }
+    else
+    {
+        cout<<"T"<<nl;
+        return;
+    }
 }
 
 
