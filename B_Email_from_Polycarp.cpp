@@ -624,7 +624,27 @@ int getSum(int v)
 
 void solve()
 {
-    
+    GSS(a,b);
+    bool flag=false;
+    int n=sza(a);
+    int m=sza(b);
+    int i=0;
+    for(int j=0;i<n and j<m;j++)
+    {
+        if(a[i]==b[j])
+        {
+            i++;
+        }
+    }
+    if(i==n and a[0]==b[0] and a[n-1]==b[m-1])
+    {
+        flag=true;
+    }
+    else
+    {
+        flag=false;
+    }
+    cout<<((flag)?"YES":"NO")<<nl;
 }
 
 
