@@ -624,7 +624,44 @@ int getSum(int v)
 
 void solve()
 {
-    
+	function<ll(vector<ll>,vector<ll>)>calc=[&](vector<ll> a,vector<ll> b)->ll
+	{
+		ll ans=0;
+		f1(i,0,sza(a))
+		{
+			ans+=abs(a[i]-b[i]);
+		}
+		return ans;
+	};
+	G(n);
+	n*=2;
+	VI a(n);
+	f1(i,0,n)
+	{
+		cin>>a[i];
+	}
+	sort(all(a));
+	VI b(n,0);
+	ll ans=calc(a,b);
+	if(n==4)
+	{
+		b.assign(n,2);
+		ans=min(ans,calc(a,b));
+	}
+	if((n/2)%2==0)
+	{
+		b.assign(n,-1);
+		b[n-1]=n/2;
+		ans=min(ans,calc(a,b));
+	}
+	if(n==2)
+	{
+		print(abs(a[0]-a[1]));
+	}
+	else
+	{
+		print(ans);
+	}
 }
 
 
