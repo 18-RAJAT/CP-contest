@@ -624,32 +624,7 @@ int getSum(int v)
 
 void solve()
 {
-    G(n);
-    GS(s);
-    ll c1=0,c2=0;
-    f1(i,0,n)
-    {
-        if(s[i]=='0')
-        {
-            c1++;
-        }
-        else
-        {
-            c2++;
-        }
-    }
-    if(c1==0 or c2==0)
-    {
-        print(0);
-    }
-    if(c1==1 or c2==1)
-    {
-        print(1);
-    }
-    else
-    {
-        print(1000000000001);
-    }
+    
 }
 
 
