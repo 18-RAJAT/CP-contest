@@ -6,13 +6,25 @@ using namespace std;
 #define all(x) x.begin(), x.end()
 #define revall(x) x.rbegin(), x.rend()
 #define sortall(x) sort(all(x))
- 
+#define print(x) cout<<x<<"\n";
+#define PRINT(x,y) cout<<x<<" "<<y<<"\n";
+#define G(x) ll x;cin>>x;
+#define GG(x,y) ll x,y;cin>>x>>y;
+#define GS(s) string s;cin>>s;
+#define GSS(s1,s2) string s1,s2;cin>>s1>>s2;
+#define GSSS(s1,s2,s3) string s1,s2,s3;cin>>s1>>s2>>s3;
+#define GC(c) char c;cin>>c;
+#define SUM(a)     ( accumulate ((a).begin(), (a).end(), 0ll))
+#define MINE(a)    (*min_element((a).begin(), (a).end()))
+#define MAXE(a)    (*max_element((a).begin(), (a).end()))
+
+
 const int MAX_N = 2e5 + 5;
 const int MAX_NN = 2e5 + 8;
-const ll MOD = 1e9 + 7;
+const ll MOD = 1000000007;
 const ll INF = 1e18+20;
 #define revall(x) x.rbegin(), x.rend()
-#define ALL(x) sort(x.begin(), x.end())
+#define ALL(x) sort(x.rbegin(), x.rend())
 #define sortall(x) sort(all(x))
 #define reverseall(x) reverse(all(x))
 
@@ -29,7 +41,7 @@ const ll INF = 1e18+20;
 #define SCLF(t) scanf("%lf",&t)
 #define MEM(a, b) memset(a, (b), sizeof(a))
 
-#define FOR(i, j, k, in) for (ll i=j ; i<k ; i+=in)
+#define FOR(i, j, k, in) for (ll i=j ; i<=k ; i+=in)
 #define RFOR(i, j, k, in) for (ll i=j ; i>=k ; i-=in)
 #define rall(cont) cont.end(), cont.begin()
 #define FOREACH(it, l) for (auto it = l.begin(); it != l.end(); it++)
@@ -40,13 +52,19 @@ const ll INF = 1e18+20;
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 #define MP make_pair
+#define INS insert
 #define PB push_back
+#define ERS erase
+#define LB lower_bound
+#define UB upper_bound
 #define PF push_front
+#define EM emplace
+#define EB emplace_back
 #define INF (int)1e9
 #define EPS 1e-9
 // #define MOD 998244353 
-#define ff first
-#define ss second
+#define F first
+#define S second
 #define PI 3.1415926535897932384626433832795
 #define read(type) readInt<type>()
 const double pi=acos(-1.0);
@@ -73,7 +91,7 @@ typedef unsigned long int uint32;
 typedef long long int int64;
 typedef unsigned long long int  uint64;
 #define nl endl
- 
+#define NEW cout<<endl;
  
 /* clang-format off */
  
@@ -90,7 +108,6 @@ typedef unsigned long long int  uint64;
 #define si set<int>
 #define sc set<char>
 #define vi vector<int>
-
 #define revs(x,y,z) for(ll i=x;i<=y;i+=z)
 
 
@@ -105,7 +122,7 @@ typedef unsigned long long int  uint64;
 #define f1(i,s,e) for(long long int i=s;i<e;i++)
 #define ff1(i,s,e) for(long long int i=s;i>=e;--i)
 #define For1(i,n) (long long int i=0;i<n+1;++i)
-#define cf(i,s,e) for(int i=s;i<=e;i++)
+#define cf(i,s,e) for(long long int i=s;i<=e;i++)
 #define FO(i,s,e) for(long long int i=1;i*i<=y;i++)
 #define rf(i,e,s) for(long long int i=e-1;i>=s;i--)
 #define pass(a)  for(long long int i=n-1;i>=1;i-=2)
@@ -136,6 +153,8 @@ typedef unsigned long long int  uint64;
 #define BITMASK_FLIP(x, mask) ((x) ^= (mask))
 #define BITMASK_CHECK_ALL(x, mask) (!(~(x) & (mask)))
 #define BITMASK_CHECK_ANY(x, mask) ((x) & (mask))
+#define LSB_ANY(n) (n&(n-1))
+#define LSB_CHECK(n) (n&(-n))
 // ----------------------</BITWISE END>--------------------------
 
 
@@ -220,7 +239,7 @@ template <typename T> inline T Cone (T radius,T base, T height)
     };
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
- 
+
 /* PRINTS */
 template <class T>
 void print_v(vector<T> &v) { cout << "{"; for (auto x : v) cout << x << ","; cout << "\b}"; }
@@ -261,69 +280,159 @@ bool cmp(pair<int,int>x,pair<int,int>y){
     return x.second<y.second;
 }
  
+
+//SEGMENT TREE TEMPLATE
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+struct Data {
+  // Use required attributes
  
-void two_D_PrifixSum() 
-{
-    //prefix sum in 2 D array
-    int n,m;cin>>n>>m;
-    int a[n][m],prefix[n][m];
-    f1(i,0,n)
-    {
-        f1(j,0,m)
-        {
-            cin>>a[i][j];
-        }
-    }
+  ll sum;
  
-    //create a prefix array
-    f1(i,0,n)
-    {
-        f1(j,0,m)
-        {
-            prefix[i][j]=a[i][j];
-            if(i-1>=0)prefix[i][j]+=prefix[i-1][j];
-            if(j-1>=0)prefix[i][j]+=prefix[i][j-1];
+  // Default Values
+  Data() : sum(0) {};
+};
  
-            if(i-1>=0 and j-1>=0)
-            {
-                prefix[i][j]-=prefix[i-1][j-1];
-            }
-        }
-    }
-    int q;cin>>q;
-    while(q--)
-    {
-        int i1,i2,j1,j2;cin>>i1>>i2>>j1>>j2;
-    }
-}
+struct SegTree {
+  int N;
+  vector<Data> seg;
+  vector<bool> cLazy;
+  vector<ll> lazy;
  
+  void init(int n) {
+    N = n;
+    seg.resize(4 * N + 5);
+    cLazy.assign(4 * N + 5, false);
+    lazy.assign(4 * N + 5, 0);
+  }
  
-//Scanline algorithm
-void scanlineAlgoritm()
-{
-    int n;cin>>n;
-    int a[n];
-    f1(i,0,n)cin>>a[i];
+  // Write reqd merge functions
+  void merge(Data &cur, Data &l, Data &r) {
+    cur.sum = l.sum + r.sum;
+  }
  
-    int prefixSum[n+1];
-    int q;cin>>q;
-    while(q--)
-    {
-        int l,r,x;cin>>l>>r>>x;
-        prefixSum[l]+=x;
-        prefixSum[r+1]-=x;
+  // Handle lazy propagation appriopriately
+  void propagate(int node, int L, int R) {
+    if (L != R) {
+      cLazy[node * 2] = 1;
+      cLazy[node * 2 + 1] = 1;
+      lazy[node * 2] += lazy[node];
+      lazy[node * 2 + 1] += lazy[node];
     }
-    int s=0;
-    f1(i,0,n)
-    {
-        s+=prefixSum[i];
-        a[i]+=s;
+    seg[node].sum += (R - L + 1) * lazy[node];
+    lazy[node] = 0;
+    cLazy[node] = 0;
+  }
+ 
+  void build(int node, int L, int R) {
+    if (L == R) {
+      return;
     }
-    f1(i,0,n)
-    {
-        cout<<a[i]<<" ";
+    int M = (L + R) / 2;
+    build(node * 2, L, M);
+    build(node * 2 + 1, M + 1, R);
+    merge(seg[node], seg[node * 2], seg[node * 2 + 1]);
+  }
+ 
+  Data Query(int node, int L, int R, int i, int j) {
+    if (cLazy[node])
+      propagate(node, L, R);
+    if (j < L || i > R)
+      return Data();
+    if (i <= L && R <= j)
+      return seg[node];
+    int M = (L + R) / 2;
+    Data left = Query(node * 2, L, M, i, j);
+    Data right = Query(node * 2 + 1, M + 1, R, i, j);
+    Data cur;
+    merge(cur, left, right);
+    return cur;
+  }
+ 
+  Data pQuery(int node, int L, int R, int pos) {
+    if (cLazy[node])
+      propagate(node, L, R);
+    if (L == R)
+      return seg[node];
+    int M = (L + R) / 2;
+    if (pos <= M)
+      return pQuery(node * 2, L, M, pos);
+    else
+      return pQuery(node * 2 + 1, M + 1, R, pos);
+  }
+ 
+  void Update(int node, int L, int R, int i, int j, int val) {
+    if (cLazy[node])
+      propagate(node, L, R);
+    if (j < L || i > R)
+      return;
+    if (i <= L && R <= j) {
+      cLazy[node] = 1;
+      lazy[node] = val;
+      propagate(node, L, R);
+      return;
     }
-}
+    int M = (L + R) / 2;
+    Update(node * 2, L, M, i, j, val);
+    Update(node * 2 + 1, M + 1, R, i, j, val);
+    merge(seg[node], seg[node * 2], seg[node * 2 + 1]);
+  }
+ 
+  void pUpdate(int node, int L, int R, int pos, int val) {
+    if (cLazy[node])
+      propagate(node, L, R);
+    if (L == R) {
+      cLazy[node] = 1;
+      lazy[node] += val;
+      propagate(node, L, R);
+      return;
+    }
+    int M = (L + R) / 2;
+    if (pos <= M)
+      pUpdate(node * 2, L, M, pos, val);
+    else
+      pUpdate(node * 2 + 1, M + 1, R, pos, val);
+    merge(seg[node], seg[node * 2], seg[node * 2 + 1]);
+  }
+ 
+  Data query(int pos) { return pQuery(1, 1, N, pos); }
+ 
+  Data query(int l, int r) { return Query(1, 1, N, l, r); }
+ 
+  void update(int pos, int val) { pUpdate(1, 1, N, pos, val); }
+ 
+  void update(int l, int r, int val) { Update(1, 1, N, l, r, val); }
+};
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
 
 
 int findMin(vector<bool>&vis,VI distance)
@@ -369,12 +478,7 @@ bool binarySearch(ll mid,ll k,ll x)
     return tot<x;
 }
 
-int power(int b, int e)
-{
-    int ret = 1;
-    for(int i=0; i<e; ++i) ret *= b;
-    return ret;
-}
+
 
 vi helper(int n)
 {
@@ -442,78 +546,165 @@ bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
       return (x.second.second < y.second.second);
 
 }
+bool isPrime(int n)
+{
+    // Corner case
+    if (n <= 1)
+        return false;
+    for (int i = 2; i < n; i++)
+        if (n % i == 0)
+            return false;
+ 
+    return true;
+}
+
+int ft(char c)
+{
+    return c - 'a';
+}
+char fr(int i)
+{
+    return i+'a';
+}
+
+ll fact(int n)
+{
+    ll ans=1;
+    for(ll i=1;i<=n;i++)
+    {
+        ans*=i;
+    }
+    return ans;
+}
 
 
-class Solution {
-public:
+set<ll>getFactors(ll x)
+{
+    set<ll>st;
+    ll sq=sqrt(x);
+    f1(i,2,sq+1)
+    {
+        if(x%i==0)
+        {
+            st.insert(i);
+            st.insert(x/i);
+        }
+    }
+    return st;
+}
+
+ll Prime(ll x)
+{
+    ll sq=sqrt(x);
+    f1(i,2,sq+1)
+    {
+        if(x%i==0)
+        {
+            return 0;
+        }
+    }
+    return 1;
+}
+
+
+int getSum(int v) 
+{
+  int ans = 0;
+  while (v) {
+    ans += v % 10;
+    v /= 10;
+  }
+ 
+  return ans;
+}
+
+
+//Ho Jayega bhai time lagega aur thodi si mehnat
+
+
 void solve()
 {
-    ll n,k;cin>>n>>k;
-    ll visited[n+1];
-    memset(visited,0,sizeof(visited));
-
-    bool flag;
-    cf(i,1,k)
+    GG(n,k);
+    vector<int>ele(k);
+    for(auto &it:ele)
     {
-        int x;cin>>x;
-        visited[x]=true;
+        cin>>it;
     }
-    vector<ll>used[n+1];
+    vector<int>adj[n];
+    f1(i,0,n-1)
+    {
+        GG(u,v);
+        u--,v--;
+        adj[u].pb(v);
+        adj[v].pb(u);
+    }
+    int src=0;
+    int win[n];MEM(win,src);
+    auto check=[&](int node)->bool
+    {
+        if(sza(adj[node])==1 and win[node]==1)
+        {
+            return true;
+        }
+        return false;
+    };
+
+    function<void(int)>bfs=[&](int node)->void
+    //node is the parent of the current node int the bfs tree
+    {
+        queue<int>bfs;
+        int jo=-1;
+        for(auto& it:ele)
+        {
+            bfs.push(it+jo);
+            win[it-1]=jo;
+        }
+        win[src]=1;
+        bfs.push(src);
+        while(not bfs.empty())
+        {
+            int F=bfs.front();
+            bfs.pop();
+            for(auto& element:adj[F])
+            {
+                if(win[element]==src)
+                {
+                    win[element]=win[F];
+                    bfs.push(element);
+                }
+            }
+            // debug(F,win[F]);
+        }
+    };
+    bfs(src);
+    bool can=false;
     f1(i,1,n)
     {
-        ll x,y;cin>>x>>y;
-        // if(visited[x] and visited[y])
-        // {
-        //     used[x]=true;
-        //     used[y]=true;
-        // }
-        used[x].pb(y);
-        used[y].pb(x);
-    }
-    flag=false;
-    for(auto it:used[1])
-    {
-        if(visited[it]==false)
+        if(check(i))
         {
-            flag=true;
+            can=true;
             break;
         }
     }
-    // cout<<flag?"YES\n":"NO\n";
-    if(flag)
-    {
-        cout<<"YES"<<nl;
-    }
-    else
-    {
-        cout<<"NO"<<nl;
-    }
+    cout<<((can)?"YES":"NO")<<nl;
 }
-};
 
-int main() {
+int main() 
+{
+    
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
+
+    std::cout << std::setprecision(15); std::cout << std::fixed;
 // #ifndef ONLINE_JUDGE
 // freopen("input.txt","r",stdin); //file input.txt is opened in reading mode i.e "r"
 // freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 // #endif
     ll tc = 1;
     cin >> tc;
-    for (ll t = 1; t <= tc; t++) {
-    // //cout << "Case #" << t << ": ";
-    //     if(solve())
-    //     {
-    //         // cout<<"YES"<<nl;
-    //     }
-    //     else
-    //     {
-    //         // cout<<"NO"<<nl;
-    //     }
-    // }
-        // solve();
-        Solution s;
-        s.solve();
+    for (ll t = 1; t <= tc; t++) 
+    {
+        solve();
     }
     return 0;
 }
