@@ -624,7 +624,32 @@ int getSum(int v)
 
 void solve()
 {
-    
+    GS(s);
+    int n=sza(s);
+    f1(i,1,n)
+    {
+		auto ch=s[i-1];
+        if(s[i]==ch)
+        {
+            for(auto j='a';j<='z';++j)
+			{
+				if(j!=s[i-1])
+				{
+					if(i<n-1 and j!=s[i+1])
+					{
+						s[i]=j;
+						break;
+					}
+					else if(i==n-1)
+					{
+						s[i]=j;
+						break;
+					}
+				}
+			}
+        }
+    }
+	print(s);
 }
 
 
@@ -640,7 +665,7 @@ int main()
 // freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 // #endif
     ll tc = 1;
-    cin >> tc;
+    // cin >> tc;
     for (ll t = 1; t <= tc; t++) 
     {
         solve();
