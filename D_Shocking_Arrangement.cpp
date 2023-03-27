@@ -624,7 +624,47 @@ int getSum(int v)
 
 void solve()
 {
-    
+    G(n);
+    ll sm=0;
+    VI a,b;
+    cf(i,1,n)
+    {
+        G(x);
+        if(x>=0)
+        {
+            a.pb(x);
+        }
+        else
+        {
+            b.pb(x);
+        }
+    }
+    if(sza(a)==0 or sza(b)==0)
+    {
+        print("No");
+        return;
+    }
+    // sort(all(a));
+    print("Yes");
+    int chk1,chk2;
+    chk1=chk2=0;
+
+    while(chk1+chk2<n)
+    {
+        if(sm<=0)
+        {
+            cout<<a[chk1]<<" ";
+            sm+=a[chk1];
+            chk1++;
+        }
+        else
+        {
+            cout<<b[chk2]<<" ";
+            sm+=b[chk2];
+            chk2++;
+        }
+    }
+    NEW;
 }
 
 
