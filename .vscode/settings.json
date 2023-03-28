@@ -65,6 +65,9 @@
         "xmemory": "cpp",
         "xstddef": "cpp",
         "xtr1common": "cpp",
-        "chrono": "cpp"
+        "chrono": "cpp",
+        "array": "cpp",
+        "forward_list": "cpp",
+        "optional": "cpp"
     }
 }
