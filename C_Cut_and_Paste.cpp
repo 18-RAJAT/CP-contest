@@ -632,9 +632,9 @@ void solve()
     f1(i,0,x)
     {
         now=s[i]-'0';now--;
-        cur=(ans-1-i+1000000007)%1000000007;
-        y=(now*cur+1000000007)%1000000007;
-        ans=(ans+y+1000000007)%1000000007;
+        cur=(ans-1-i+mod)%mod;
+        y=(now*cur+mod)%mod;
+        ans=(ans+y+mod)%mod;
         
         if(x<sza(s))
         {
