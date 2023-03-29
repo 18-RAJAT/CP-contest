@@ -624,7 +624,38 @@ int getSum(int v)
 
 void solve()
 {
-    
+    ll l,r;
+    cin>>l>>r;
+    ll luck=-1;
+    ll ert;
+    cf(i,l,r)
+    {
+        ll mn=-1,mx=10;
+        ll tmp=i;
+        while(tmp)
+        {
+            ll rem=tmp%10;
+            mn=max(mn,rem);
+            mx=min(mx,rem);
+            tmp/=10;
+        }
+
+        if(luck<mn-mx)
+        {
+            luck=mn-mx;
+            ert=i;
+        }
+        // if(luck==mx-mn)
+        // {
+        //     ert=min(ert,i);
+        // }
+        if(luck==9)
+        {
+            print(i);
+            return;
+        }
+    }
+    print(ert);
 }
 
 

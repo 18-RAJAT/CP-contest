@@ -621,10 +621,48 @@ int getSum(int v)
 
 //Ho Jayega bhai time lagega aur thodi si mehnat
 
-
+const int N=3000001;
+VI v[N];
 void solve()
 {
-    
+    ll n,m;
+    cin>>n>>m;
+    ll ans=0;
+    cf(i,1,m)v[i].clear();
+    cf(i,1,n)
+    {
+        cf(j,1,m)
+        {
+            ll x;
+            cin>>x;
+            v[j].pb(x);
+        }
+    }
+    cf(i,1,m)
+    {
+        sort(all(v[i]));
+    }
+    cf(i,1,m)
+    {
+        // cf(j,1,n)
+        f1(j,1,n)
+        {
+            v[i][j]+=v[i][j-1];
+        }
+    }
+    cf(i,1,m)
+    {
+        f1(j,1,n)
+        {
+            // ll jo=v[i][n]-v[i][j-1];
+
+            // ll ert=j-v[i][j-1];
+
+            // ans+=ert*jo;
+            ans+=(v[i][j]-v[i][j-1])*j-v[i][j-1];
+        }
+    }
+    print(ans);
 }
 
 

@@ -624,7 +624,33 @@ int getSum(int v)
 
 void solve()
 {
-    
+    ll n,k;
+    cin>>n>>k;
+    ll a[n];
+    f1(i,0,n)
+    {
+        cin>>a[i];
+    }
+    ll ans=0;
+    ll i=0,j=k-1;
+    while(j<n)
+    {
+        ll l=i,r=j;
+        ll cnt=0;
+        while(l<r)
+        {
+            if(a[l]!=a[r])
+            {
+                cnt++;
+            }
+            l++;
+            r--;
+        }
+        ans+=cnt;
+        i++;
+        j++;
+    }
+    print(ans);
 }
 
 
@@ -640,7 +666,7 @@ int main()
 // freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
 // #endif
     ll tc = 1;
-    cin >> tc;
+    // cin >> tc;
     for (ll t = 1; t <= tc; t++) 
     {
         solve();

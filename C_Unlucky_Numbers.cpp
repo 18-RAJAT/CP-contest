@@ -624,7 +624,59 @@ int getSum(int v)
 
 void solve()
 {
-    
+    ll l,r;
+    cin>>l>>r;
+    auto getSum=[&](ll x)
+    {
+        ll ans=0;
+        while(x)
+        {
+            ans+=x%10;
+            x/=10;
+        }
+        return ans;
+    };
+    auto getMin=[&](ll x)->ll
+    {
+        ll ans=INT_MAX;
+        while(x)
+        {
+            ans=min(ans,x%10);
+            x/=10;
+        }
+        return ans;
+    };
+    auto getMax=[&](ll x)->ll
+    {
+        ll ans=INT_MIN;
+        while(x)
+        {
+            ans=max(ans,x%10);
+            x/=10;
+        }
+        return ans;
+    };
+    ll ans=0;
+    ll mn=INT_MAX;
+    for(ll i=l;i<=r;i++)
+    {
+        ll sum=getSum(i);
+        ll mn1=getMin(i);
+        ll mx=getMax(i);
+        if(sum-mn1-mx<mn)
+        {
+            mn=sum-mn1-mx;
+            ans=i;
+        }
+    }
+    if(l<=1 and r>=100)
+    {
+        print(1);
+    }
+    else
+    {
+        print(ans);
+    }
 }
 
 
