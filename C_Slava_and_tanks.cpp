@@ -629,23 +629,27 @@ void solve()
     {
         print(n+1);
         print("2 1 2");
+        return;
     }
-    else
+    vi v;
+    FOR(i,2,n,2)
     {
-        print(2*n-2);
-        cf(i,2,n-1)
-        {
-            if(i>=3)
-            cout<<" ";
-            cout<<i;
-        }
-        cout<<" 1 "<<n;
-        cf(i,2,n-1)
-        {
-            cout<<" "<<i;
-        }
-        NEW;
+        v.pb(i);
     }
+    FOR(i,1,n,2)
+    {
+        v.pb(i);
+    }
+    FOR(i,2,n,2)
+    {
+        v.pb(i);
+    }
+    print(sza(v));
+    f1(i,0,sza(v))
+    {
+        cout<<v[i]<<" ";
+    }
+    NEW;
 }
 
 
