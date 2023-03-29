@@ -622,11 +622,79 @@ int getSum(int v)
 //Ho Jayega bhai time lagega aur thodi si mehnat
 
 
+multiset<int>st[510001];
 void solve()
 {
-    
-}
+    G(n);
+    vi v;
+    map<int,int>mp;
+    cf(i,1,n)
+    {
+        v.pb(i);
+    }
+    auto cmp=[&](int a,int b)->int
+    {
+        // return sza(st[a])<sza(st[b]);
+        return mp[b]<mp[a];
+    };
 
+    function<void(int,int,int)>itr=[&](int a,int b,int c)->void
+    {
+        f1(i,0,n-2)
+        {
+            GG(a,b);G(c);
+            mp[a]++;mp[b]++;mp[c]++;
+            st[a].INS(b);
+            st[a].INS(c);
+
+            st[c].INS(a);
+            st[c].INS(b);
+
+            st[b].INS(a);
+            st[b].INS(c);
+        }
+    };
+
+    itr(1,2,3);
+    // debug(sza(st[1]));
+    deque<int>dq;
+
+    // dq.pb(1);
+
+    sort(all(v),cmp);
+    f1(i,0,sza(v))
+    {
+        if(i%2)
+        {
+            dq.pb(v[i]);
+        }
+        else
+        {
+            dq.PF(v[i]);
+        }
+    }
+    f1(i,0,sza(dq)-1)
+    {
+        bool ok=false;
+        for(auto it:st[dq[i]])
+        {
+            if(it==dq[i+1])
+            {
+                ok=true;
+            }
+        }
+        ok=not ok;
+        if(ok)
+        {
+            swap(dq[i],dq[sza(dq)-1-i]);
+        }
+    }
+    for(auto& it:dq)
+    {
+        cout<<it<<" ";
+    }
+    NEW;
+}
 
 int main() 
 {
