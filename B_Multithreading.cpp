@@ -622,197 +622,29 @@ int getSum(int v)
 //Ho Jayega bhai time lagega aur thodi si mehnat
 
 
+const int N=1e5+5;
+int a[N];
 void solve()
 {
-    GG(l,r);
-    vi digitL,digitR;
-    int cntL=l,cntR=r;
-
-    while(cntL>0)
+    G(n);
+    cf(i,1,n)
     {
-        digitL.pb(cntL%10);
-        cntL/=10;
-        // cntL++;
+        cin>>a[i];
     }
-    while(cntR>0)
+    int lst=n-1;
+    rf(i,n,1)
     {
-        digitR.pb(cntR%10);
-        cntR/=10;
-        // cntR++;
-    }
-    int n=sza(digitL);
-    int m=sza(digitR);
-
-    while(n<m)
-    {
-        digitL.pb(0);
-        // n++;
-    }
-    // while(n>m)
-    // {
-    //     digitR.pb(0);
-    // }
-
-    reverse(all(digitL));
-    reverse(all(digitR));
-
-    vi ert;
-    int limit=9;
-    cf(i,0,limit)
-    {
-        cf(j,0,limit-i)
+        if(a[i]>a[i+1])
         {
-            int mx=i+j;
-            vi allPos;
-            bool ok=true;
-            int jo=0;
-            while(jo<n and digitL[jo]==digitR[jo])
-            {
-                // allPos.pb(digitL[jo]);
-                // jo++;
-                if(digitR[jo]<j or digitR[jo]>mx)
-                {
-                    ok=false;
-                    break;
-                }
-                allPos.pb(digitR[jo]);  
-                jo++;
-            }
-
-            ok=not ok;
-            if(ok)
-            {
-                continue;
-            }
-            if(sza(allPos)==n and ok)
-            {
-                ert=allPos;
-                // ert.pb(i);
-                // ert.pb(j);
-                break;
-            }
-            vi choice;
-            if(digitL[jo]==0 and jo==0)
-            {
-                choice.pb(0);
-            }
-            // else
-            // {
-            //     choice.pb(digitL[jo]-1);
-            // }
-
-            cf(x,digitL[jo],digitR[jo])
-            {
-                // choice.pb(i);
-                if(x>=j and x<=mx)
-                {
-                    choice.pb(x);
-                }
-            }
-
-            for(auto it:choice)
-            {
-                vi D=allPos;
-                D.pb(it);
-                jo++;
-
-                bool okayed=true;
-                if(it==digitL[jo-1])
-                {
-                    f1(k,jo,n)
-                    {
-                        if(digitL[k]<mx)
-                        {
-                            while(sza(D)<n)
-                            {
-                                D.pb(mx);
-                            }
-                            // okayed=false;
-                            break;
-                        }
-                        else if(digitL[k]==mx)
-                        {
-                            D.pb(digitL[k]);
-                        }
-                        else
-                        {
-                            okayed=false;
-                            break;
-                        }
-                    }
-                    if(okayed)
-                    {
-                        //chg
-                        allPos=D;
-                        break;
-                    }
-                    jo--;
-                    continue;
-                }
-                //new segs
-                if(it!=digitL[jo-1] and it!=digitR[jo-1])
-                {
-                    while(sza(D)<n)
-                    {
-                        D.pb(mx);
-                    }
-                    allPos=D;
-                    break;
-                }
-
-                if(it==digitR[jo-1])
-                {
-                    f1(p,jo,m)
-                    {
-                        if(digitR[p]>j)
-                        {
-                            while(sza(D)<n)
-                            {
-                                D.pb(j);
-                            }
-                            break;
-                        }
-                        else if(digitR[p]==j)
-                        {
-                            D.pb(digitR[p]);
-                        }
-                        else
-                        {
-                            okayed=false;
-                            break;
-                        }
-                    }
-                    if(okayed)
-                    {
-                        allPos=D;
-                        break;
-                    }
-                    jo--;
-                    continue;
-                }
-            }
-            if(sza(ert)==n)
-            {
-                //seg2
-                ert=allPos;
-                break;
-            }
-        }
-        if(sza(ert)==n)
-        {
+            lst=i;
             break;
         }
+        else
+        {
+            lst--;
+        }
     }
-    reverse(all(ert));
-    while(ert.back()==0)
-    {
-        ert.pop_back();
-    }
-    rf(i,sza(ert),0)
-    {
-        print(ert[i]);
-    }
-    NEW;
+    print(lst);
 }
 
 
