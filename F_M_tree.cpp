@@ -260,7 +260,44 @@ bool isprime(ll n)
 
 void solve()
 {
+    int n,m,q;
+    cin>>n>>m>>q;
 
+    vi a(n);
+    f1(i,0,n)
+    {
+        cin>>a[i];
+    }
+
+    f1(i,0,q)
+    {
+        int x,y;
+        cin>>x>>y;
+        x--;
+        a[x]=y;
+
+        multiset<int>st;
+        f1(j,0,n)
+        {
+            st.INS(a[j]);
+        }
+        while(sza(st)>1)
+        {
+            int mxi=0;
+            f1(k,0,m)
+            {
+                mxi=max(mxi,*st.begin());
+                if(mxi<0)
+                {
+                    break;
+                }
+                st.ERS(st.begin());
+            }
+            st.INS(mxi+1);
+        }
+        cout<<*st.begin()<<" ";
+    }
+    NEW;
 }
 
 
