@@ -260,7 +260,34 @@ bool isprime(ll n)
 
 void solve()
 {
-    
+    int n;
+    cin>>n;
+    string s;
+    cin>>s;
+    s=" "+s;
+    int mn=INT_MAX;
+    cf(i,1,n)
+    {
+        mn=min(mn,s[i]*1LL);
+    }
+    for(int i=n;i>0;--i)
+    {
+        if(s[i]==mn)
+        {
+            // print(s[i]);
+            cout<<s[i];
+            cf(j,1,n)
+            {
+                if(i!=j)
+                {
+                    // print(s[j]);
+                    cout<<s[j];
+                }
+            }
+            NEW;
+            return;
+        }
+    }
 }
 
 

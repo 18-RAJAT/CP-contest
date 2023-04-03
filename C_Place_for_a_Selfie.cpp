@@ -1,3 +1,11 @@
+// Problem: C. Place for a Selfie
+// Contest: Codeforces - Codeforces Round 862 (Div. 2)
+// URL: https://codeforces.com/contest/1805/problem/C
+// Memory Limit: 256 MB
+// Time Limit: 2000 ms
+// 
+// Powered by CP Editor (https://cpeditor.org)
+
 #include <bits/stdc++.h>
 using namespace std;
  
@@ -257,10 +265,42 @@ bool isprime(ll n)
 
 //Ho Jayega bhai time lagega aur thodi si mehnat
 
-
+// const ll N=1919810;
+// ll a[N],b[N],c[N],k[N];
 void solve()
 {
-    
+    int n,m;
+    cin>>n>>m;
+    VI k(n);
+    f1(i,0,n)
+    {
+        cin>>k[i];
+    }
+    sort(all(k));
+    f1(i,0,m)
+    {
+        ll a,b,c;cin>>a>>b>>c;
+
+        int low=floor(b-sqrt(4LL*a*c))+1LL;
+        int high=ceil(b+sqrt(4LL*a*c))-1LL;
+
+        auto c1=lower_bound(all(k),low);
+        auto c2=upper_bound(all(k),high);
+
+        int ans=c2-c1-1;
+        if(a*c<0)
+        {
+            print("NO");
+        }
+        else if(ans>=0)
+        {
+            cout<<"YES\n"<<*c1<<nl;
+        }
+        else
+        {
+            print("NO");
+        }
+    }
 }
 
 

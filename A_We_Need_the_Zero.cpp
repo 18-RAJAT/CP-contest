@@ -260,7 +260,30 @@ bool isprime(ll n)
 
 void solve()
 {
-    
+    int n;
+    cin>>n;
+    int a[n];MEM(a,0);
+    int ans=0;
+    cf(i,1,n)
+    {
+        cin>>a[i];
+        ans^=a[i];
+    }
+    if(n%2)
+    {
+        print(ans);
+    }
+    else
+    {
+        if(ans==0)
+        {
+            print(0);
+        }
+        else
+        {
+            print(-1);
+        }
+    }
 }
 
 

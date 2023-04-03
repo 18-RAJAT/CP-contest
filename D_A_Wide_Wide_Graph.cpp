@@ -257,10 +257,51 @@ bool isprime(ll n)
 
 //Ho Jayega bhai time lagega aur thodi si mehnat
 
-
+const int N=1e18;
+int a[N],b[N],c[N],k[N];
 void solve()
 {
-    
+    int n,m;
+    cin>>n>>m;
+    cf(i,1,n)
+    {
+        cin>>k[i];
+    }
+    cf(i,1,m)
+    {
+        cin>>a[i]>>b[i]>>c[i];
+    }
+    sort(k+1,k+n+1);
+    cf(i,1,m)
+    {
+        int R=4*a[i]*c[i];//b[i]*c[i];
+        int tmp=b[i];
+
+        auto it=lower_bound(k+1,k+n+1,tmp);
+
+        if(it!=k+n+1)
+        {
+            if((b[i]-*it)*(b[i]-*it)<R)
+            {
+                print("YES");
+                print(*it);
+                continue;
+            }
+        }
+        it--;
+
+        if(it!=k)
+        {
+            if((b[i]-*it)*(b[i]-*it)<R)
+            {
+                print("YES");
+                print(*it);
+                continue;
+            }
+        }
+        print("NO");
+    }
+    cout<<" ";
 }
 
 
