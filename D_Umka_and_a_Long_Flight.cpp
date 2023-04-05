@@ -257,9 +257,38 @@ bool isprime(ll n)
 
 //Ho Jayega bhai time lagega aur thodi si mehnat
 
+int fib[46];
 void solve()
 {
-    
+    function<int(int,int,int)>query=[&](int n,int x,int y)->int
+    {
+        if(n==1)return 1;
+        int a=fib[n];
+        int b=fib[n+1];
+
+        y=max(y,b+1-y);
+        if(y<=a)
+        {
+            return 0;
+        }
+        else
+        {
+            return query(n-1,y-a,x);
+        }
+    };
+
+    auto sol=[&]()->void
+    {
+        int n,x,y;
+        cin>>n>>x>>y;
+        cout<<((query(n,x,y))?"YES":"NO")<<nl;
+    };
+    sol();
+    fib[0]=fib[1]=1;
+    f1(i,2,46)
+    {
+        fib[i]=fib[i-1]+fib[i-2];
+    }
 }
 
 
