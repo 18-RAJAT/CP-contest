@@ -283,12 +283,12 @@ void solve()
         cin>>n>>x>>y;
         cout<<((query(n,x,y))?"YES":"NO")<<nl;
     };
-    sol();
     fib[0]=fib[1]=1;
     f1(i,2,46)
     {
         fib[i]=fib[i-1]+fib[i-2];
     }
+    sol();
 }
 
 
