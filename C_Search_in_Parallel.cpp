@@ -272,16 +272,16 @@ void solve()
     vector<ll>u,v;
     for(auto&[it,itr]:vp)
     {
-        int cost1=it*(sza(u)+1)*s1;
-        int cost2=it*(sza(v)+1)*s2;
+        ll cost1=it*(sza(u)+1)*s1;
+        ll cost2=it*(sza(v)+1)*s2;
 
-        if(cost1>cost2)
+        if(cost2<=cost1)
         {
-            v.pb(itr);
+            v.EB(itr);
         }
         else
         {
-            u.pb(itr);
+            u.EB(itr);
         }
     }
     cout<<sza(u)<<" ";
