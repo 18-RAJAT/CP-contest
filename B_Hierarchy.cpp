@@ -8,8 +8,9 @@ using namespace std;
 #define sortall(x) sort(all(x))
 #define print(x) cout<<x<<"\n";
 #define PRINT(x,y) cout<<x<<" "<<y<<"\n";
-#define G(x) ll x;cin>>x;
-#define GG(x,y) ll x,y;cin>>x>>y;
+#define G(x) int x;cin>>x;
+#define GG(x,y) int x,y;cin>>x>>y;
+#define GGG(x,y,z) int x,y,z;cin>>x>>y>>z;
 #define GS(s) string s;cin>>s;
 #define GSS(s1,s2) string s1,s2;cin>>s1>>s2;
 #define GSSS(s1,s2,s3) string s1,s2,s3;cin>>s1>>s2>>s3;
@@ -119,10 +120,10 @@ typedef unsigned long long int  uint64;
 
 
 
-#define f1(i,s,e) for(long long int i=s;i<e;i++)
+#define f1(i,s,e) for(int i=s;i<e;i++)
 #define ff1(i,s,e) for(long long int i=s;i>=e;--i)
 #define For1(i,n) (long long int i=0;i<n+1;++i)
-#define cf(i,s,e) for(long long int i=s;i<=e;i++)
+#define cf(i,s,e) for(int i=s;i<=e;i++)
 #define FO(i,s,e) for(long long int i=1;i*i<=y;i++)
 #define rf(i,e,s) for(long long int i=e-1;i>=s;i--)
 #define pass(a)  for(long long int i=n-1;i>=1;i-=2)
@@ -259,27 +260,78 @@ bool isprime(ll n)
 
 void solve()
 {
-    GG(a,b);
-    ll mn=INT_MAX;
-    auto MINI=[&](ll a,ll b)
-    {
-        if(a<b)
-        {
-            return a;
-        }
-        return b;
-    };
-    f1(i,1,1000001)
-    {
-        ll ert=a/i;
-        ll ert1=b/i;
-        ll jo=a%i;
-        ll jo1=b%i;
-        ll tmp=ert+(jo==0?0:1)+ert1+(jo1==0?0:1)+(i-1);
+    vector<bool>visited;
+    vector<vector<pair<int,int>>>adj;
+    vector<vector<pair<int,int>>>cost;
 
-        mn=MINI(mn,tmp);
+    function<void(int)>dfs=[&](int u)->void
+    {
+        if(visited[u])
+        {
+            return;
+        }
+        visited[u]=true;
+        // for(auto [v,w]:adj[u])
+        // {
+        //     if(dist[u][v]>w)
+        //     {
+        //         dist[u][v]=w;
+        //         dist[v][u]=w;
+        //     }
+        //     dfs(v);
+        // }
+        for(auto it:adj[u])
+        {
+            dfs(it.F);
+        }
+    };
+    G(n);
+    int q,indx;
+    q=indx=-1;
+
+    cf(i,1,n)
+    {
+        G(x);
+        if(q<x)
+        {
+            q=x;
+            indx=i;
+        }
     }
-    print(mn);
+    visited.resize(n+1);//,false);
+    adj.resize(n+1);
+    cost.resize(n+1);
+    G(m);
+    f1(i,0,m)
+    {
+        GGG(a,b,c);
+        adj[a].EB(MP(b,c));
+        cost[b].EB(MP(a,c));
+    }
+    dfs(indx);
+    cf(i,1,n)
+    {
+        if(visited[i]==false)
+        {
+            print(-1);
+            return;
+        }
+        else
+    }
+    int ans=0;
+    int tmp=INF;
+    cf(i,1,n)
+    {
+        for(auto&it:cost[i])
+        {
+            int M=min(tmp,it.S);
+            tmp=M;
+        }
+        // debug(i);
+        ans+=(tmp==INF?0:tmp);
+        // ans+=tmp;
+    }
+    print(ans);
 }
 
 
@@ -290,7 +342,7 @@ int main()
  
     std::cout << std::setprecision(15); std::cout << std::fixed;
     ll tc = 1;
-    cin >> tc;
+    // cin >> tc;
     for (ll t = 1; t <= tc; t++) 
     {
         solve();
