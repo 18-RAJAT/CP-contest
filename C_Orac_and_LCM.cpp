@@ -257,34 +257,10 @@ bool isprime(ll n)
 
 //Ho Jayega bhai time lagega aur thodi si mehnat
 
+
 void solve()
 {
-    G(n);
-    ll s[n+1];
-    cf(i,1,n)
-    {
-        cin>>s[i];
-    }
-    ll a[n+1];MEM(a,0);
-    ll maxi=0;
-    cf(i,1,n)
-    {
-        a[i]++;
-        maxi=max(maxi,a[i]);
-        // cf(j,2*i,n)
-        FOR(j,2*i,n,i)
-        {
-            if(s[i]<s[j])
-            {
-                a[j]=max(a[i]*1LL,a[j]*1LL);
-            }
-            // else
-            // {
-            //     a[j]=0;
-            // }
-        }
-    }
-    print(maxi);
+    
 }
 
 
