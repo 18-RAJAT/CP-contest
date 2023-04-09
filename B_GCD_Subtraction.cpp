@@ -257,54 +257,21 @@ bool isprime(ll n)
 
 //Ho Jayega bhai time lagega aur thodi si mehnat
 
-
 void solve()
 {
-    GG(n,k);
-    ll a[n];MEM(a,0);
-    bool ok=false;
-    f1(i,0,n)
+    ll a,b;
+    cin>>a>>b;
+    if(a<b)swap(a,b);
+    ll ans=0;
+    while(a!=0 and b!=0)
     {
-        cin>>a[i];
-        if(a[i]==k)
-        {
-            ok=true;
-        }
+        ll x=a/b;
+        ans+=x;
+        a-=b*x;
+        swap(a,b);
     }
-    if(not ok)
-    {
-        print("no");
-        return;
-    }
-    ok=false;
-    f1(i,1,n)
-    {
-        if(k<=a[i] and k<=a[i-1])// and a[i-1]==a[i])
-        {
-            ok=true;
-            break;
-        }
-        if(2<=i and k<=a[i] and k<=a[i-2])// and a[i-1]==a[i])
-        {
-            ok=true;
-            break;
-        }
+    cout<<ans<<endl;
 
-    }
-    if(a[0]==k and n==1)//and k==1)
-    {
-        ok=true;
-    }
-    if(ok)
-    {
-        print("yes");
-        // return;
-    }
-    else
-    {
-        print("no");
-        // return;
-    }
 }
 
 
@@ -315,7 +282,7 @@ int main()
  
     std::cout << std::setprecision(15); std::cout << std::fixed;
     ll tc = 1;
-    cin >> tc;
+    // cin >> tc;
     for (ll t = 1; t <= tc; t++) 
     {
         solve();

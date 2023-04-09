@@ -257,54 +257,39 @@ bool isprime(ll n)
 
 //Ho Jayega bhai time lagega aur thodi si mehnat
 
-
 void solve()
 {
-    GG(n,k);
-    ll a[n];MEM(a,0);
-    bool ok=false;
-    f1(i,0,n)
+    GG(n,m);
+    GG(x1,y1); GG(x2,y2);
+    x1--; y1--; x2--; y2--;
+    vector<pair<int,int>>dir{{1,0},{-1,0},{0,1},{0,-1}};
+    auto nbgCnt=[&](int x,int y)->int
     {
-        cin>>a[i];
-        if(a[i]==k)
+        int res=0;
+        for(auto& [dr,dc]:dir)
         {
-            ok=true;
+            int newX=x+dr;
+            int newY=y+dc;
+            if(0<=newX and newX<n and 0<=newY and newY<m)
+            {
+                ++res;
+            }
+            // else if(newX<0 or newX>=n)
+            // {
+            //     ++res;
+            // }
+            // else if(newY<0 or newY>=m)
+            // {
+            //     ++res;
+            // }
+            // else
+            // {
+            //     assert(false);
+            // }
         }
-    }
-    if(not ok)
-    {
-        print("no");
-        return;
-    }
-    ok=false;
-    f1(i,1,n)
-    {
-        if(k<=a[i] and k<=a[i-1])// and a[i-1]==a[i])
-        {
-            ok=true;
-            break;
-        }
-        if(2<=i and k<=a[i] and k<=a[i-2])// and a[i-1]==a[i])
-        {
-            ok=true;
-            break;
-        }
-
-    }
-    if(a[0]==k and n==1)//and k==1)
-    {
-        ok=true;
-    }
-    if(ok)
-    {
-        print("yes");
-        // return;
-    }
-    else
-    {
-        print("no");
-        // return;
-    }
+        return res;
+    };
+    print(min(nbgCnt(x1,y1),nbgCnt(x2,y2)));
 }
 
 
