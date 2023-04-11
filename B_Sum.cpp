@@ -6,13 +6,25 @@ using namespace std;
 #define all(x) x.begin(), x.end()
 #define revall(x) x.rbegin(), x.rend()
 #define sortall(x) sort(all(x))
- 
+#define print(x) cout<<x<<"\n";
+#define PRINT(x,y) cout<<x<<" "<<y<<"\n";
+#define G(x) ll x;cin>>x;
+#define GG(x,y) ll x,y;cin>>x>>y;
+#define GS(s) string s;cin>>s;
+#define GSS(s1,s2) string s1,s2;cin>>s1>>s2;
+#define GSSS(s1,s2,s3) string s1,s2,s3;cin>>s1>>s2>>s3;
+#define GC(c) char c;cin>>c;
+#define SUM(a)     ( accumulate ((a).begin(), (a).end(), 0ll))
+#define MINE(a)    (*min_element((a).begin(), (a).end()))
+#define MAXE(a)    (*max_element((a).begin(), (a).end()))
+
+
 const int MAX_N = 2e5 + 5;
 const int MAX_NN = 2e5 + 8;
-const ll MOD = 10e9 + 7;
+const ll MOD = 1000000007;
 const ll INF = 1e18+20;
 #define revall(x) x.rbegin(), x.rend()
-#define ALL(x) sort(x.begin(), x.end())
+#define ALL(x) sort(x.rbegin(), x.rend())
 #define sortall(x) sort(all(x))
 #define reverseall(x) reverse(all(x))
 
@@ -29,7 +41,7 @@ const ll INF = 1e18+20;
 #define SCLF(t) scanf("%lf",&t)
 #define MEM(a, b) memset(a, (b), sizeof(a))
 
-#define FOR(i, j, k, in) for (ll i=j ; i<k ; i+=in)
+#define FOR(i, j, k, in) for (ll i=j ; i<=k ; i+=in)
 #define RFOR(i, j, k, in) for (ll i=j ; i>=k ; i-=in)
 #define rall(cont) cont.end(), cont.begin()
 #define FOREACH(it, l) for (auto it = l.begin(); it != l.end(); it++)
@@ -40,13 +52,19 @@ const ll INF = 1e18+20;
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 #define MP make_pair
+#define INS insert
 #define PB push_back
+#define ERS erase
+#define LB lower_bound
+#define UB upper_bound
 #define PF push_front
+#define EM emplace
+#define EB emplace_back
 #define INF (int)1e9
 #define EPS 1e-9
 // #define MOD 998244353 
-#define ff first
-#define ss second
+#define F first
+#define S second
 #define PI 3.1415926535897932384626433832795
 #define read(type) readInt<type>()
 const double pi=acos(-1.0);
@@ -73,7 +91,7 @@ typedef unsigned long int uint32;
 typedef long long int int64;
 typedef unsigned long long int  uint64;
 #define nl endl
- 
+#define NEW cout<<endl;
  
 /* clang-format off */
  
@@ -135,28 +153,9 @@ typedef unsigned long long int  uint64;
 #define BITMASK_FLIP(x, mask) ((x) ^= (mask))
 #define BITMASK_CHECK_ALL(x, mask) (!(~(x) & (mask)))
 #define BITMASK_CHECK_ANY(x, mask) ((x) & (mask))
+#define LSB_ANY(n) (n&(n-1))
+#define LSB_CHECK(n) (n&(-n))
 // ----------------------</BITWISE END>--------------------------
-
-
-
-
-
-/****************** Prime Generator **********************/ 
-// const int N=1e7+10; int prime[20000010]; 
-// bool isprime[N]; int nprime; 
-// template <typename T> void Sieve(T a) 
-// {nprime = 0;memset(isprime,true,sizeof(isprime));
-// isprime[1]=false;for(int i=2;i<N;i++){
-// if(isprime[i]){prime[nprime++]=i;for(int j=2;i*j<N;j++)
-// isprime[i*j]=false;}}}
-// template <typename T> inline T PrimeFactors(T n)
-// {ll cnt=0,sum=1;for(int i=0; prime[i]*prime[i]<=n 
-// and i<nprime;i++){cnt=0;while(n%prime[i]==0)
-// {cnt++;n/=prime[i];}sum*=(cnt+1);}
-// if(n>1)sum*=2;return sum;} 
-/**************** Prime Generator End ********************/
-
-
 
 
 
@@ -254,253 +253,69 @@ bool isprime(ll n)
     {if(n%i==0)return true;}
     return false;
 }
- 
- 
-bool cmp(pair<int,int>x,pair<int,int>y){
-    return x.second<y.second;
-}
- 
- 
-void two_D_PrifixSum() 
-{
-    //prefix sum in 2 D array
-    int n,m;cin>>n>>m;
-    int a[n][m],prefix[n][m];
-    f1(i,0,n)
-    {
-        f1(j,0,m)
-        {
-            cin>>a[i][j];
-        }
-    }
- 
-    //create a prefix array
-    f1(i,0,n)
-    {
-        f1(j,0,m)
-        {
-            prefix[i][j]=a[i][j];
-            if(i-1>=0)prefix[i][j]+=prefix[i-1][j];
-            if(j-1>=0)prefix[i][j]+=prefix[i][j-1];
- 
-            if(i-1>=0 and j-1>=0)
-            {
-                prefix[i][j]-=prefix[i-1][j-1];
-            }
-        }
-    }
-    int q;cin>>q;
-    while(q--)
-    {
-        int i1,i2,j1,j2;cin>>i1>>i2>>j1>>j2;
-    }
-}
- 
- 
-//Scanline algorithm
-void scanlineAlgoritm()
-{
-    int n;cin>>n;
-    int a[n];
-    f1(i,0,n)cin>>a[i];
- 
-    int prefixSum[n+1];
-    int q;cin>>q;
-    while(q--)
-    {
-        int l,r,x;cin>>l>>r>>x;
-        prefixSum[l]+=x;
-        prefixSum[r+1]-=x;
-    }
-    int s=0;
-    f1(i,0,n)
-    {
-        s+=prefixSum[i];
-        a[i]+=s;
-    }
-    f1(i,0,n)
-    {
-        cout<<a[i]<<" ";
-    }
-}
 
 
-int findMin(vector<bool>&vis,VI distance)
-{
-    int start=-1;
-    int n=vis.size();
-    f1(i,0,n)
-    {
-        if(start==-1 or distance[start]>distance[i])
-            start=i;
-    }
-    return start;
-}
+//Ho Jayega bhai time lagega aur thodi si mehnat
 
-int dist(VPII vis,int n)
-{
-    vector<bool>ar(n,false);
-    VI temp(n,INF);
-    ar[1]=0;
-
-    int val=findMin(ar,temp);
-    if(val==-1)return 0;
-    ar[val]=true;
-    cf(i,0,n)
-    {
-        return temp[n];
-    }
-}
-
-
-bool binarySearch(ll mid,ll k,ll x)
-{
-    ll tot=0;
-    mid-=1;
-    if(mid<=k)
-        tot=(mid*(mid+1))/2;
-    else
-    {
-        tot=(k*(k+1))/2;
-        mid=2*k-1-mid;
-        tot+=((k*(k-1))/2-(mid*(mid+1))/2);
-    }
-    return tot<x;
-}
-
-
-
-vi helper(int n)
-{
-    vi v;
-    for (int i = 1; i <=sqrt(n); i++) 
-    {
-        if (n % i == 0) {
-            if (n / i == i)
-            {
-                v.push_back(i);
-            }else
-            {
-                v.push_back(n/i);
-            }
-        }
-    }
-    return v;
-}
-
-
-
-ll dmod(ll x)
-{
-    return ((x+1000000007)%1000000007);
-}
-
-ll take(ll x,ll y)
-{
-    ll ans=1;
-    while(y)
-    {
-        if(y&1)ans=dmod(ans*x);
-        y/=2;
-        // x=dmod(sqrt(x));
-        x=dmod(x*x);
-    }
-    return ans;
-}
-
-ll help( long long x )
-{
-    ll sum = 0 ;
-    while ( x )
-    { 
-        sum += x % 10 ;
-        x /= 10 ;
-    }
-    return sum ;
-}
- 
-
-bool c2(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
-{
-    if(x.second.first!=y.second.first)
-     return (x.second.first < y.second.first);
-     else
-     return (x.second.second < y.second.second);
-
-}
-bool c1(pair<string,pair<int,int>> &x,pair<string,pair<int,int>>&y)
-{
-    if(x.first!=y.first)
-     return (x.first < y.first);
-     else
-      return (x.second.second < y.second.second);
-
-}
-bool isPrime(int n)
-{
-    // Corner case
-    if (n <= 1)
-        return false;
-    for (int i = 2; i < n; i++)
-        if (n % i == 0)
-            return false;
- 
-    return true;
-}
-
-int ft(char c)
-{
-    return c - 'a';
-}
-char fr(int i)
-{
-    return i+'a';
-}
-
-class Solution {
-public:
 void solve()
 {
-    string l,k;
-    cin>>l>>k;
-    int n=l.size();
-    int m=k.size();
-    
-    if(n+m==2)
+    GG(a,b);
+    GS(s);
+    s+=to_string(a);
+    s+=to_string(b);
+
+    auto mx='0';
+    for(auto it:s)
     {
-        cout<<n+m<<nl;
+        mx=max(mx,it);
     }
-    else
+
+    int cnv=(mx-'0')+1;
+    ll ans=0;
+    ll pw=1;
+
+    while(a)
     {
-        cout<<abs(n+m-1)<<nl;
+        ans+=(a%cnv)*pw;
+        a/=cnv;
+        pw*=cnv;
+    }
+    pw=1;
+    while(b)
+    {
+        ans+=(b%cnv)*pw;
+        b/=cnv;
+        pw*=cnv;
+    }
+    ll ans2=0;
+    int i=0;
+    while(ans)
+    {
+        if(ans<ans2)
+        {
+            print(i);
+            return;
+        }
+        // ans2+=(ans%cnv)*pow(cnv,i);
+        // ans/=cnv;
+        
+        ans2*=cnv;
+        i++;
     }
 }
-};
 
-int main() {
+
+int main() 
+{
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
-// #ifndef ONLINE_JUDGE
-// freopen("input.txt","r",stdin); //file input.txt is opened in reading mode i.e "r"
-// freopen("output.txt","w",stdout);  //file output.txt is opened in writing mode i.e "w"
-// #endif
+ 
+    std::cout << std::setprecision(15); std::cout << std::fixed;
     ll tc = 1;
     // cin >> tc;
-    for (ll t = 1; t <= tc; t++) {
-    // //cout << "Case #" << t << ": ";
-    Solution s;
-    //     if(s.solve())
-    //     {
-    //         // cout<<"Yes"<<nl;
-    //     }
-    //     else
-    //     {
-    //         // cout<<"No"<<nl;
-    //     }
-    // }
-        // solve();
-        // Solution s;
-        s.solve();
+    for (ll t = 1; t <= tc; t++) 
+    {
+        solve();
     }
     return 0;
 }

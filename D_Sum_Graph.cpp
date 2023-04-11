@@ -273,6 +273,14 @@ void solve()
         G(x);
         return x;
     };
+
+    function<int(int)>query=[&](int n)->int
+    {
+        if(n==1)return 1;
+        int x=query(n/2);
+        int y=query(n-n/2);
+        return ask(2,x,y);
+    };
     G(n);
     vi v;
     int a=1,b=n;
@@ -296,6 +304,10 @@ void solve()
         {
             ert=tmp;
             jo=i;
+        }
+        else if(tmp)
+        {
+            query(1);
         }
     }
     int rank1[n+2];MEM(rank1,0);
