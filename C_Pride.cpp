@@ -43,7 +43,7 @@ int main()
 	}
 	else
 	{
-		long long int mimimumOperations=1e18;
+		long long int minimumOperations=1e18;
 		for(int i=0;i<n-1;++i)
 		{
 			for(int j=i+1;j<n;++j)
@@ -51,11 +51,11 @@ int main()
 				long long int greatest=__gcd(array[i],array[j]);
 				if(greatest==1)
 				{
-					mimimumOperations=min<long long int>(mimimumOperations,j-i);
+					minimumOperations=min<long long int>(mimimumOperations,j-i);
 					break;
 				}
 			}
 		}
-		cout<<mimimumOperations+n-1-pos<<"\n";
+		cout<<minimumOperations+n-1-pos<<"\n";
 	}
 }
