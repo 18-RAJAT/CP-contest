@@ -13,49 +13,48 @@ using namespace std;
 
 int main()
 {
-	long long int n;
+	int n;
 	cin>>n;
-	long long int array[n];
+	int array[2005];
 	memset(array,0,sizeof(array));
 	
-	map<long long int,long long int>mp;
-	int pos=0;
+	int GCD=0;
+	int operations=0;
+	
 	for(int i=0;i<n;++i)
 	{
 		cin>>array[i];
+		GCD=__gcd(array[i],GCD);
+		
 		if(array[i]==1)
 		{
-			pos++;
+			operations++;
 		}
 	}
-	long long int G=array[0];
-	for(int i=1;i<n;++i)
+	if(operations)
 	{
-		G=__gcd(G,array[i]);
+		cout<<n-operations;
+		return 0;
 	}
-	if(G!=1)
+	if(GCD>1)
 	{
-		cout<<-1<<"\n";
+		cout<<"-1";
+		return 0;
 	}
-	else if(pos>0)
+	int minimumNumberOfOperations=1e9;
+	for(int i=0;i<=n;++i)
 	{
-		cout<<n-pos<<"\n";
-	}
-	else
-	{
-		long long int minimumOperations=1e18;
-		for(int i=0;i<n-1;++i)
+		int restore=array[i];
+		for(int j=i+1;j<n;++j)
 		{
-			for(int j=i+1;j<n;++j)
+			restore=__gcd(restore,array[j]);
+			
+			if(restore==1)
 			{
-				long long int greatest=__gcd(array[i],array[j]);
-				if(greatest==1)
-				{
-					minimumOperations=min<long long int>(minimumOperations,j-i);
-					break;
-				}
+				minimumNumberOfOperations=min(minimumNumberOfOperations,j-i);
 			}
 		}
-		cout<<minimumOperations+n-1-pos<<"\n";
 	}
+	cout<<abs(n+minimumNumberOfOperations-1);
+	return 0;
 }
