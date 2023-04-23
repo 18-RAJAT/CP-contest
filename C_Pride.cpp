@@ -51,7 +51,7 @@ int main()
 				long long int greatest=__gcd(array[i],array[j]);
 				if(greatest==1)
 				{
-					minimumOperations=min<long long int>(mimimumOperations,j-i);
+					minimumOperations=min<long long int>(minimumOperations,j-i);
 					break;
 				}
 			}
