@@ -71,7 +71,8 @@ void sol()
             }
             if(l==1)
             {
-                cout<<f[i]<<" "<<g[i]<<"\n";
+                cout<<n+1<<"\n";
+                cout<<flush;
                 for(int m=0;m<n;m++)
                 {
                     if(b[m]==0)
@@ -95,7 +96,8 @@ void sol()
                 }
                 if(m==1)
                 {
-                    cout<<f[i]<<" "<<g[i]<<"\n";
+                    cout<<2<<"\n";
+                    cout<<flush;
                     for(int n=0;n<n;n++)
                     {
                         if(b[n]==c[n])
@@ -119,7 +121,8 @@ void sol()
                     }
                     if(n==1)
                     {
-                        cout<<f[i]<<" "<<g[i]<<"\n";
+                        cout<<1<<"\n";
+                        cout<<flush;
                         for(int o=0;o<n;o++)
                         {
                             if(b[o]==d[j])
@@ -143,7 +146,9 @@ void sol()
                         }
                         if(o==1 and h[j]==0)
                         {
-                            cout<<f[i]<<" "<<g[i]<<"\n";
+                            cout<<e[j]<<"\n";
+                            h[j]=1;
+                            cout<<flush;
                             for(int p=0;p<n;p++)
                             {
                                 if(b[p]==e[j])
@@ -157,6 +162,7 @@ void sol()
                         else
                         {
                             cout<<g[i]<<"\n";
+                            cout<<flush;
                             for(int p=0;p<n;p++)
                             {
                                 if(b[p]==d[j])
