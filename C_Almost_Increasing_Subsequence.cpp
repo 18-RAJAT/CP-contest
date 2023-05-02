@@ -63,7 +63,6 @@ void sol()
         //     continue;
         // }
         // cout<<r-l+1-max((prefix[r]-prefix[l]),0)-max((suffix[l]-suffix[r]),0)<<"\n";
-
         if(suffix[right]==1)
         {
             cout<<right-left+1-max<int>((prefix[right]-prefix[left]-1),0)<<"\n";
