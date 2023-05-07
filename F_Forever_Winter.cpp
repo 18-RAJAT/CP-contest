@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 
-void probF()
+void F()
 {
     int n,m;
     std::cin>>n>>m;
@@ -39,7 +39,7 @@ int main()
     std::cin>>tc;
     while(tc--)
     {
-        probF();
+        F();
     }
     return 0;
 }
