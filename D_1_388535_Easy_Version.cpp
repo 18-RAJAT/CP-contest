@@ -31,8 +31,7 @@ void sol()
         }
         if(mv1<mv2)
         {
-            // ans|=(1<<i);
-            ans^=arr[i];
+            ans|=(1<<i);
         }
     }
     cout<<ans<<"\n";
