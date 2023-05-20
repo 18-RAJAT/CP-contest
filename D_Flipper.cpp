@@ -9,7 +9,7 @@ int main()
     {
         int n;
         cin>>n;
-        int *a=new int[n];
+        vector<int>a(n);
         int right=-1;
         for(int i=0;i<n;++i)
         {
@@ -22,8 +22,9 @@ int main()
         if(n==1)
         {
             cout<<"1"<<"\n";
-            delete[] a;
-            return 0;
+            // delete[] a;            
+            // return 0;
+            continue;
         }
         if(right==0)
         {
@@ -35,11 +36,11 @@ int main()
                 }
             }
         }
-        int* ans=new int[n];
-        for(int i=0;i<n;++i)
-        {
-            ans[i]=1;
-        }
+        vector<int>ans(n);
+        // for(int i=0;i<n;++i)
+        // {
+        //     ans[i]=1;
+        // }
         if(right==n-1)
         {
             ans[0]=a[n-1];
@@ -50,7 +51,7 @@ int main()
         }
         for(int left=0;left<right;left++)
         {
-            int* curr=new int[n];
+            vector<int>curr(n);
             int cnt=0;
             for(int j=right;j<n;j++)
             {
@@ -85,14 +86,18 @@ int main()
             {
                 swap(ans,curr);
             }
-            delete[] curr;
+            // if(ans<curr)
+            // {
+            //     swap(ans,curr);
+            // }
+            // delete[] curr;
         }
-        for(int i=0;i<n;++i)
+        for(auto it:ans)
         {
-            cout<<ans[i]<<" ";
+            cout<<it<<" ";
         }
         cout<<"\n";
-        delete[] ans;
-        delete[] a;
+        // delete[] ans;
+        // delete[] a;
     }
 }
