@@ -9,76 +9,90 @@ int main()
     {
         int n;
         cin>>n;
-        int* a=new int[n];
-        for(int i=0;i<n;i++)
-        {
-            cin>>a[i];
-        }
-        int* res=new int[n];
-        int flip=0;
-        int move=n+1;
-
+        int *a=new int[n];
+        int right=-1;
         for(int i=0;i<n;++i)
         {
+            cin>>a[i];
             if(a[i]==n)
             {
-                res[flip]=a[i];
-                flip++;
-                move=i;
-            }
-            else if(move<i)
-            {
-                res[flip]=a[i];
-                flip++;
+                right=i;
             }
         }
-
-        //pos and all
-        //same as prev but revert
-        if(move==n-1)
+        if(n==1)
         {
-            int revert=move-1;
-            while(revert>0 and a[0]<a[revert])//=
-            {
-                res[flip]=a[revert];
-                flip++;
-                revert--;
-            }
-            for(int i=0;i<=revert;++i)
-            {
-                res[flip]=a[i];
-                flip++;
-            }
+            cout<<"1"<<"\n";
+            delete[] a;
+            return 0;
+        }
+        if(right==0)
+        {
             for(int i=0;i<n;++i)
             {
-                cout<<res[i]<<" ";
+                if(a[i]==n-1)
+                {
+                    right=i;
+                }
             }
-            cout<<"\n";
         }
-        else
+        int* ans=new int[n];
+        for(int i=0;i<n;++i)
         {
-            res[flip]=a[flip-1];
-            flip++;
-            int revert1=move-1;
-
-            while(revert1>0 and a[0]<a[revert1])//=
+            ans[i]=1;
+        }
+        if(right==n-1)
+        {
+            ans[0]=a[n-1];
+            for(int i=1;i<n;++i)
             {
-                res[flip]=a[revert1];
-                flip++;
-                revert1--;
+                ans[i]=a[i-1];
             }
-            for(int i=0;i<=revert1;++i)
+        }
+        for(int left=0;left<right;left++)
+        {
+            int* curr=new int[n];
+            int cnt=0;
+            for(int j=right;j<n;j++)
             {
-                res[flip]=a[i];
-                flip++;
+                curr[cnt++]=a[j];
             }
+            for(int j=right-1;j>=left;j--)
+            {
+                curr[cnt++]=a[j];
+            }
+            for(int j=0;j<left;j++)
+            {
+                curr[cnt++]=a[j];
+            }
+            // if(memcmp(curr,ans,n*sizeof(int))>0)
+            // {
+            //     swap(ans,curr);
+            // }
+            bool currGreater=false;
             for(int i=0;i<n;++i)
             {
-                cout<<res[i]<<" ";
+                if(ans[i]<curr[i])
+                {
+                    currGreater=true;
+                    break;
+                }
+                else if(ans[i]>curr[i])
+                {
+                    break;
+                }
             }
-            cout<<"\n";
+            if(currGreater)
+            {
+                swap(ans,curr);
+            }
+            delete[] curr;
         }
+        for(int i=0;i<n;++i)
+        {
+            cout<<ans[i]<<" ";
+        }
+        cout<<"\n";
+        delete[] ans;
         delete[] a;
-        delete[] res;
     }
 }
