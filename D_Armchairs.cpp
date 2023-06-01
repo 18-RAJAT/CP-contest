@@ -1,38 +1,36 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-int dp[50001];
-int check[50001];
 int main()
 {
     int n;
     cin>>n;
-    for(int i=1;i<=n;++i)
+    vector<int>ar(50001);
+    for(auto&it:ar)
     {
-        cin>>dp[i];
-        check[i]=dp[i];
+        cin>>it;
     }
-    int ans=0;
-    for(int i=1;i<=n;++i)
+    vector<int>dp(n+1,0);
+    for(int i=0;i<n;++i)
     {
-        if(dp[i])
+        if(ar[i]==0)
         {
-            int MN=1e9;
-            int temp=0;
-            for(int j=1;j<=n;++j)
-            {
-                if(not check[j])
-                {
-                    if(abs(i-j)<MN or dp[j])
-                    {
-                        MN=abs(i-j);
-                        temp=j;
-                    }
-                }
-            }
-            check[temp]=1;
-            ans+=MN;
+            continue;
         }
+        vector<int>dp2(n+1,10000001);
+        for(int j=1;j<n+1;++j)
+        {
+            if(ar[j-1]!=1)
+            {
+                dp2[j]=dp[j-1]+abs(i-(j-1));
+            }
+            // else
+            // {
+            //     dp2[j]=dp[j-1];
+            // }
+            dp2[j]=min(dp2[j],dp2[j-1]);
+        }
+        swap(dp,dp2);
     }
-    cout<<ans<<"\n";
+    cout<<*min_element(dp.begin(),dp.end());
 }
