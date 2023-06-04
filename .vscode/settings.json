@@ -69,5 +69,6 @@
         "array": "cpp",
         "forward_list": "cpp",
         "optional": "cpp"
-    }
+    },
+    "cph.general.onceMaintainerMessage": false
 }
