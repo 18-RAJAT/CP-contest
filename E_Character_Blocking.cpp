@@ -8,63 +8,70 @@ int main()
     while(t-->0)
     {
         vector<string>s(2);
+        set<int>st;
         cin>>s[0]>>s[1];
         long long int n=s[0].size();
-        set<long long int>st;
-
-        auto check=[&](long long int i)->void
+        int p,q;
+        for(int i=0;i<n;++i)
         {
-            st.erase(i);
-            if(s[0][i]!=s[1][i])
+            if(s[0][i]==s[1][i])
             {
-                st.insert(i);
+                continue;
             }
-        };
-        for(long long int i=0;i<n;++i)
-        {
-            check(i);
+            st.insert(i);
         }
-
-        long long int x,y;
-        cin>>x>>y;
-        vector<vector<long long int>>vec(y+1);
-
-        for(long long int i=0;i<y;++i)
+        map<int,vector<int>>mp;
+        cin>>p>>q;
+        for(int i=1;i<=q;++i)
         {
-            for(auto it:vec[i])
+            for(auto& it:mp[i])
             {
-                // vec[i].push_back(it-'0');
-                check(it);
-            }
-
-            long long int follow;
-            cin>>follow;
-
-            if(follow==1)
-            {
-                long long int p;
-                cin>>p;
-                p--;
-                st.erase(p);
-
-                if(i+x<static_cast<long long int>(vec.size()))
+                if(s[0][it]!=s[1][it])
                 {
-                    vec[i+x].push_back(p);
+                    st.insert(it);
                 }
             }
-            else if(follow==2)
+            int type;
+            cin>>type;
+            if(type==1)
             {
-                long long int xx,xy,yy,yx;
-                cin>>xx>>xy>>yy>>yx;
-                xx--;xy--;yy--;yx--;
+                int x;
+                cin>>x;
+                x--;
 
-                swap(s[xx][yy],s[xy][yx]);
-                check(yy);
-                check(yx);
+                if(s[0][x]!=s[1][x])
+                {
+                    st.erase(x);
+                    mp[i+p].push_back(x);
+                }
             }
-            else
+            if(type==2)
             {
-                cout<<(st.empty()?"YES":"NO")<<"\n";
+                int xx,xy,yx,yy;
+                cin>>xx>>yx>>xy>>yy;
+                xx--;xy--;yx--;yy--;
+
+                if(s[0][yx]!=s[1][yx])
+                {
+                    st.erase(yx);
+                }
+                if(s[0][yy]!=s[1][yy])
+                {
+                    st.erase(yy);
+                }
+                swap(s[xx][yx],s[xy][yy]);
+                if(s[0][yx]!=s[1][yx])
+                {
+                    st.insert(yx);
+                }
+                if(s[0][yy]!=s[1][yy])
+                {
+                    st.insert(yy);
+                }
+            }
+            if(type==3)
+            {
+                cout<<((not st.size()?"YES":"NO"))<<"\n";
             }
         }
     }
