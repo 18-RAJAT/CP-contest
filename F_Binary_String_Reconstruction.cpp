@@ -8,39 +8,37 @@ int main()
     {
         int a,b,c;
         cin>>a>>b>>c;
-        if(not a or c)
+        string s="";
+        if(b)
         {
-            for(int i=0;i<a;+i)
+            for(int i=0;i<=c;++i)
             {
-                cout<<0;
+                s+="1";
+            }
+            b--;
+            for(    int i=0;i<=a;++i)
+            {
+                s+="0";
+            }
+            for(int i=0;i<b;++i)
+            {
+                s+=(s.back()=='0'?'1':'0');
+            }
+        }
+        else if(c)
+        {
+            for(int i=0;i<=c;++i)
+            {
+                s+="1";
             }
         }
         else
         {
-            for(int i=0;i<a+1;+i)
+            for(int i=0;i<=a;++i)
             {
-                cout<<0;
+                s+="0";
             }
         }
-        b=(b+1)/2;;
-        for(int i=0;i<b;++i)
-        {
-            cout<<"01";
-        }
-        if(not c or a)
-        {
-            for(int i=0;i<c;+i)
-            {
-                cout<<1;
-            }
-        }
-        else
-        {
-            for(int i=0;i<c+1;+i)
-            {
-                cout<<1;
-            }
-        }
-        cout<<"\n";
+        cout<<s<<"\n";
     }
 }
