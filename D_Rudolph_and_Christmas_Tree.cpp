@@ -10,27 +10,17 @@ void sol()
     {
         cin>>a[i];
     }
-    sort(a.begin(),a.end());
-    long long count=0;
-    vector<int>tmp;
-    for(int i=0;i<n;++i)
+    long double ans=(b*h*(long double)(n))/2.0;
+    for(int i=n-2;i>=0;--i)
     {
-        if(a[i]<count)
+        long double tp=h-(a[i+1]-a[i]);
+        if(tp>0)
         {
-            tmp.push_back(count-a[i]);
+            long double nw=b*(tp/h);
+            ans-=(nw*tp)/2.0;
         }
-        count=h+a[i];
     }
-    double res=n*b*h*1.0;res/=2;
-    double cnt=0;
-    for(auto& it:tmp)
-    {
-        // cnt++;
-        cnt+=it*it;
-    }
-    cnt=(cnt*1.0*b)/(2.0*h);
-    res-=cnt;
-    cout<<double(res)<<"\n";
+    cout<<fixed<<setprecision(15)<<ans<<"\n";
 }
 int main()
 {
