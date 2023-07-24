@@ -7,7 +7,7 @@ int main()
 	while(t--)
 	{
 		int n,k;cin>>n>>k;
-		vector<int>a(n);
+		vector<long long>a(n);
 		a.resize(n+1);
 
 		for(int i=1;i<=n;i+=1)
