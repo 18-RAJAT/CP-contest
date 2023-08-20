@@ -13,6 +13,7 @@ void sol()
         cin>>x;
         a.push_back(x);
     }
+    
     sort(a.begin(),a.end());
     int pos=0;
     for(int i=n-1;i>=1;i--)
