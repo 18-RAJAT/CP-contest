@@ -1,37 +1,34 @@
 #include<bits/stdc++.h>
 using namespace std;
-#define ll long long
+#define int long long
 void sol()
 {
-    ll n;
+    int n;
     cin>>n;
-    vector<ll>a(n*(n-1)/2);
-    for(ll i=0;i<n*(n-1)/2;++i)
+    vector<int>a;
+    int ert=n*(n-1)/2;
+    for(int i=1;i<=ert;i++)
     {
-        cin>>a[i];
+        int x;
+        cin>>x;
+        a.push_back(x);
     }
     sort(a.begin(),a.end());
-    ll idx=0;
-    ll cnt=n-1;
-    for(ll i=0;i<n-1;++i)
+    int pos=0;
+    for(int i=n-1;i>=1;i--)
     {
-        ll mn=INT_MAX;
-        for(ll j=0;j<cnt;++j)
-        {
-            mn=min<ll>(mn,a[idx++]);
-        }
-        cnt--;
-        cout<<mn<<" ";
+        cout<<a[pos]<<" ";
+        pos+=i;
     }
-    cout<<1000000000<<" ";
-    cout<<"\n";
+    cout<<a.back()<<"\n";
 }
 signed main()
 {
-    ll t;
+    int t;
     cin>>t;
     while(t--)
     {
-        sol();
+    	sol();
     }
+    return 0;
 }

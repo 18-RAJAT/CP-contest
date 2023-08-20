@@ -68,7 +68,8 @@
     "chrono": "cpp",
     "array": "cpp",
     "forward_list": "cpp",
-    "optional": "cpp"
+    "optional": "cpp",
+    "regex": "cpp"
   },
   "cph.general.onceMaintainerMessage": false,
   "C_Cpp_Runner.msvcBatchPath": "",
