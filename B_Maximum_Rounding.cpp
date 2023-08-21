@@ -5,6 +5,7 @@ void sol()
 {
     string s;
     cin>>s;
+    
     int n=s.size();
     reverse(s.begin(),s.end());
     s+='0';
