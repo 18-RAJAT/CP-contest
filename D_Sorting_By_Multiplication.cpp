@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define int long long
-int sol()
+void sol()
 {
     int n;
     cin>>n;
@@ -10,72 +10,29 @@ int sol()
     {
         cin>>a[i];
     }
-    if(a[0]==a[1])
+    vector<int>prefix(n,0),suffix(n,0);
+    for(int i=1;i<n;++i)
     {
-        cout<<a[0]+a[n-1]<<endl;
-        return 0;
-    }
-    if(is_sorted(a.begin(),a.end()))
-    {
-        cout<<0<<"\n";
-        return 0;
-    }
-    //is reverse sorted then 1;
-    vector<int>dp;
-    dp.push_back(0);
-    dp.push_back(1);
-    //pruning
-    if(n==2)
-    {
-        cout<<1<<"\n";
-        return 0;
-    }
-    //base case
-    // if(a[0]>a[1])
-    // {
-    //     dp.push_back(1);
-    // }
-    // else
-    // {
-    //     dp.push_back(0);
-    // }
-
-    //cache check 1
-    if(dp[n-1]==dp[n-2])
-    {
-        return dp[n-1];
-    }
-    //cache check 2
-    // if(dp[n-1]!=-1)
-    // {
-    //     return dp[n-1];
-    // }
-
-    for(int i=2;i<=n;++i)
-    {
-        //transition
-        dp.push_back(dp[i-1]+i);
-        dp.erase(unique(dp.begin(),dp.end()),dp.end());
-    }
-    for(int i=0;i<=n;++i)
-    {
-        // cout<<dp[i]<<" ";
-        if(dp[i]>=n)
+        prefix[i]=prefix[i-1];
+        if(a[i]>=a[i-1])
         {
-            cout<<i-1<<"\n";
-            return 0;
+            prefix[i]++;
         }
     }
-    assert(dp[n]>=n);
-    /*
-        5 4 3 2 5 1
-        
-        compute
-        1 2 3 4 5 5
-        1 2 3 4 5 5
-        1 2 3 4 5 5
-    */
-    return 0;
+    for(int i=n-2;i>=0;--i)
+    {
+        suffix[i]=suffix[i+1];
+        if(a[i]>=a[i+1])
+        {
+            suffix[i]++;
+        }
+    }
+    int ans=prefix[0]+suffix[0];
+    for(int i=1;i<n;++i)
+    {
+        ans=min<int>(ans,prefix[i-1]+suffix[i]+1);
+    }
+    cout<<ans<<endl;
 }
 signed main()
 {
@@ -83,7 +40,7 @@ signed main()
     cin>>t;
     while(t--)
     {
-    	sol();
+        sol();
     }
     return 0;
 }
