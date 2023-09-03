@@ -69,7 +69,11 @@
     "array": "cpp",
     "forward_list": "cpp",
     "optional": "cpp",
-    "regex": "cpp"
+    "regex": "cpp",
+    "thread": "cpp",
+    "ratio": "cpp",
+    "scoped_allocator": "cpp",
+    "complex": "cpp"
   },
   "cph.general.onceMaintainerMessage": false,
   "C_Cpp_Runner.msvcBatchPath": "",
