@@ -73,7 +73,8 @@
     "thread": "cpp",
     "ratio": "cpp",
     "scoped_allocator": "cpp",
-    "complex": "cpp"
+    "complex": "cpp",
+    "*.tcc": "cpp"
   },
   "cph.general.onceMaintainerMessage": false,
   "C_Cpp_Runner.msvcBatchPath": "",
