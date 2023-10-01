@@ -74,7 +74,9 @@
     "ratio": "cpp",
     "scoped_allocator": "cpp",
     "complex": "cpp",
-    "*.tcc": "cpp"
+    "*.tcc": "cpp",
+    "random": "cpp",
+    "valarray": "cpp"
   },
   "cph.general.onceMaintainerMessage": false,
   "C_Cpp_Runner.msvcBatchPath": "",
