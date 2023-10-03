@@ -8,6 +8,7 @@ void sol()
         Determine the maximum possible value of x.
         Then, iterate through all possible values of x and check if the array can be transformed to the array x^a[i] for all i.
     */
+   
     int n;
     cin>>n;
     vector<int>a(n),tmp(n);
