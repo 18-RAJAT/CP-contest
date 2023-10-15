@@ -12,7 +12,7 @@ void sol()
     }
     int ctr1,ctr2;
     ctr1=ctr2=0;
-    vector<int>pos(n);
+    vector<int>pos(m);
     for(auto& it:pos)
     {
         cin>>it;
@@ -28,6 +28,17 @@ void sol()
             // ans+=a[pos[ctr2]];
             ans++;
         }
+        // else if(pos[ctr2]==a[ctr1])
+        // {
+        //     ctr1++;
+        //     ans++;
+        // }
+        // else if(st.find(a[ctr1])!=st.end())
+        // {
+        //     st.erase(st.find(a[ctr1]));
+        //     ans++;
+        //     ctr1++;
+        // }
         else
         {
             int tmp=pos[ctr2];
