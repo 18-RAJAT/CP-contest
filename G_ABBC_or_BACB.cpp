@@ -1,33 +1,39 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define int long long
-int maxiCoin(string s)
-{
-    int n=s.size();
-    int ans=0;
-    for(int i=0;i<n-1;++i)
-    {
-        if(s[i]=='A' && s[i+1]=='B')
-        {
-            ans++;
-            i++;
-        }
-    }
-    for(int i=0;i<n-1;++i)
-    {
-        if(s[i]=='B' && s[i+1]=='A')
-        {
-            ans++;
-            i++;
-        }
-    }
-    return ans;
-}
 void sol()
 {
     string s;
     cin>>s;
-    cout<<maxiCoin(s)<<"\n";
+    vector<int>a;
+    int cnt=0;
+    for(int i=0;i<s.size();++i)
+    {
+        if(s[i]=='A')
+        {
+            cnt++;
+        }
+        else
+        {
+            a.push_back(cnt);
+            cnt=0;
+        }
+    }
+    if(s.back()=='B')
+    {
+        a.push_back(0);
+    }
+    else
+    {
+        a.push_back(cnt);
+    }
+    int sum=0,mn=INT_FAST16_MAX;
+    for(int i=0;i<a.size();++i)
+    {
+        sum+=a[i];
+        mn=min(mn,a[i]);
+    }
+    cout<<max(0ll,sum-mn)<<endl;
 }
 signed main()
 {
