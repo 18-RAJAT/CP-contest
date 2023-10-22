@@ -76,7 +76,8 @@
     "complex": "cpp",
     "*.tcc": "cpp",
     "random": "cpp",
-    "valarray": "cpp"
+    "valarray": "cpp",
+    "future": "cpp"
   },
   "cph.general.onceMaintainerMessage": false,
   "C_Cpp_Runner.msvcBatchPath": "",
