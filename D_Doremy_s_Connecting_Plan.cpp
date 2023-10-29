@@ -5,53 +5,26 @@ void sol()
 {
     int n,c;
     cin>>n>>c;
-    function<bool(int,int)>f=[&](int i,int j)->bool
-    {
-        return i*j*c?true:false;
-    };
-    //dfs
-    vector<int>a(n);
-    for(int i=0;i<n;i++)
+    int a[n+1];
+    for(int i=1;i<=n;++i)
     {
         cin>>a[i];
     }
-    vector<vector<int>>g(n);
-    for(int i=0;i<n;i++)
+    int curr=a[1],tmp=a[1];
+    bool ok=false;
+    for(int i=2;i<=n;++i)
     {
-        for(int j=0;j<n;j++)
+        tmp+=a[i];
+        if(curr+a[i]>=c*i)
         {
-            if(i==j)
+            curr=tmp;
+            if(i==n)
             {
-                continue;
-            }
-            if(f(a[i],a[j])>=a[i]+a[j])
-            {
-                g[i].push_back(j);
+                ok=true;
             }
         }
     }
-    vector<bool>vis(n);
-    function<void(int)>dfs=[&](int u)
-    {
-        vis[u]=true;
-        for(auto v:g[u])
-        {
-            if(!vis[v])
-            {
-                dfs(v);
-            }
-        }
-    };
-    dfs(0);
-    for(int i=0;i<n;i++)
-    {
-        if(!vis[i] || f(0,0))
-        {
-            cout<<"Yes"<<endl;
-            return;
-        }
-    }
-    cout<<"No"<<endl;
+    cout<<(ok?"Yes":"No")<<"\n";
 }
 signed main()
 {
