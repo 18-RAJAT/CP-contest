@@ -14,6 +14,7 @@ void sol()
     ans=min(ans,z-p);
     cout<<ans<<endl;
 }
+
 signed main()
 {
     int t;
