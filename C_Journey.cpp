@@ -12,6 +12,10 @@ void dfs(int node,int parent,int depth)
         cnt++;
         return;
     }
+    else
+    {
+        cnt=0;
+    }
     for(auto& child:tree[node])
     {
         if(child==parent)
