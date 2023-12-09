@@ -15,56 +15,63 @@ void sol()
         cin>>b[i];
     }
     int matrix[n][m];
+    memset(matrix,-1,sizeof(matrix));
     for(int i=0;i<n;++i)
     {
         for(int j=0;j<a[i];++j)
         {
             matrix[i][j]=1;
         }
-    }
-    for(int j=0;j<m;++j)
-    {
-        for(int i=0;i<b[j];++i)
+        if(a[i]<m)
         {
-            matrix[i][j]=1;
+            matrix[i][a[i]]=0;
         }
     }
-    for(int i=0;i<n;++i)
+    bool ok=true;
+    for(int j=0;j<m && ok;++j)
     {
-        if(a[i]==m)
+        for(int i=0;i<b[j] && ok;++i)
         {
-            continue;
-        }
-        if(matrix[i][a[i]]==1)
-        {
-            cout<<0<<endl;
-            return;
-        }
-    }
-    for(int j=0;j<m;++j)
-    {
-        if(b[j]==n)
-        {
-            continue;
-        }
-        if(matrix[b[j]][j]==1)
-        {
-            cout<<0<<endl;
-            return;
-        }
-    }
-    int ans=1;
-    for(int i=0;i<n;++i)
-    {
-        for(int j=0;j<m;++j)
-        {
-            if(j>a[i]&&i>b[j])
+            if(matrix[i][j]==0)
             {
-                ans=ans*2%1000000007;
+                ok=false;
+            }
+            else
+            {
+                matrix[i][j]=1;
+            }
+        }
+        if(b[j]<n)
+        {
+            if(matrix[b[j]][j]==1)
+            {
+                ok=false;
+            }
+            else
+            {
+                matrix[b[j]][j]=0;
             }
         }
     }
-    cout<<ans<<endl;
+    if(ok)
+    {
+        int ans=1;
+        for(int i=0;i<n;++i)
+        {
+            for(int j=0;j<m;++j)
+            {
+                if(matrix[i][j]==-1)
+                {
+                    ans=(ans*1LL*2)%1000000007;
+                }
+            }
+        }
+        cout<<ans<<endl;
+    }
+    else
+    {
+        cout<<0<<endl;
+    }
 }
 signed main()
 {
