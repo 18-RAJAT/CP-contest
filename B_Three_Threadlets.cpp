@@ -1,32 +1,35 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define int long long
-int gcd(int a,int b)
-{
-    if(b==0)
-    {
-        return a;
-    }
-    return gcd(b,a%b);
-}
 void sol()
 {
-    vector<int>a(3);
+    int a[3];
+    cin>>a[0]>>a[1]>>a[2];
+    set<int>st;
     for(int i=0;i<3;i++)
     {
-        cin>>a[i];
+        for(int j=1;j<=4;++j)
+        {
+            if(a[i]%j==0)
+            {
+                st.insert(a[i]/j);
+            }
+        }
     }
-    int ans=0;
-    for(auto&it:a)
+    for(auto& s:st)
     {
-        ans=gcd(ans,it);
+        int ans=0;
+        for(int i=0;i<3;++i)
+        {
+            a[i]%s==0?ans+=a[i]/s-1:ans=-INT_MAX;
+        }
+        if(ans>=0 && ans<4)
+        {
+            cout<<"YES"<<endl;
+            return;
+        }
     }
-    int cnt=0;
-    for(auto&it:a)
-    {
-        cnt+=it/ans-1;
-    }
-    cout<<(cnt<4?"YES":"NO")<<endl;
+    cout<<"NO"<<endl;
 }
 signed main()
 {
