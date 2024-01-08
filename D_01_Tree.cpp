@@ -24,6 +24,7 @@ void sol()
     st1.push(0);
     st2.push(n-1);
     vector<int>right(n),left(n);
+    
     right.assign(n,0);
     left.assign(n,0);
     for(int i=0;i<n;++i)
