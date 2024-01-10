@@ -1,3 +1,23 @@
+// answ = [[1], [13, 14, 31]]
+
+// for i in range(2, 50):
+//     arr = []
+//     for x in answ[i - 1]:
+//         arr.append(x * 10)
+//     arr.append(10 ** i + 3)
+//     arr.append(3 * 10 ** i + 1)
+//     answ.append(arr)
+
+// t = int(input())
+
+// while t > 0:
+//     t -= 1
+//     n = int(input())
+//     x = n // 2
+//     for i in answ[x]:
+//         print(i * i)
+
+// convert c++
 #include<bits/stdc++.h>
 using namespace std;
 #define int long long
@@ -7,61 +27,15 @@ void sol()
     cin>>n;
     if(n==1)
     {
-        cout<<1<<endl;
+        cout<<"1\n";
         return;
     }
-    int cnt=(n-3)/2;
-    int c=cnt;
-    while(c-->=0)
+    cout<<196<<string(n-3,'0')<<endl;
+    for(int i=0;i<n/2;++i)
     {
-        cout<<1;
-        c++;
-        int make_cpy=c;
-        while(make_cpy--)
-        cout<<0;
-        cout<<6;
-        make_cpy=c;
-        while(make_cpy--)
-        cout<<0;
-        cout<<9;
-        make_cpy=n-3-c*2;
-        while(make_cpy--)
-        cout<<0;
-        c--;
-        // cout<<endl;
-        cout<<" ";
+        cout<<1<<string(i,'0')<<6<<string(i,'0')<<9<<string(n-3-i*2,'0')<<endl;
+        cout<<9<<string(i,'0')<<6<<string(i,'0')<<1<<string(n-3-i*2,'0')<<endl;
     }
-    cout<<196;
-    // cout<<" ";
-    // cout<<endl;
-    int again_cnt=n-3;//to make 196=1+9+6=3 digits
-    while(again_cnt--)
-    cout<<0;
-    // cout<<endl;
-    cout<<" ";
-    c=cnt;
-    while(c-->=0)
-    {
-        cout<<9;
-        c++;
-        int make_cpy=c;
-        while(make_cpy--)
-        cout<<0;
-        cout<<6;
-        make_cpy=c;
-        while(make_cpy--)
-        cout<<0;
-        cout<<1;
-        make_cpy=n-3-cnt*2;
-        while(make_cpy--)
-        cout<<0;
-        c--;
-        // cout<<endl;
-        cout<<" ";
-        // cout<<endl;
-    }
-    // cout<<691;
-    cout<<endl;
 }
 signed main()
 {
