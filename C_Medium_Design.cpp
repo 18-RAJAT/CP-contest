@@ -5,35 +5,47 @@ void sol()
 {
     int n,m;
     cin>>n>>m;
-    vector<pair<int,int>>a(n);
-    for(int i=0;i<n;++i)
+    map<int,int>mp;
+    mp[1],mp[m];
+    vector<pair<int,int>>v(n);
+    for(int i=0;i<n;i++)
     {
-        cin>>a[i].first>>a[i].second;
-    }
-    sort(a.begin(),a.end());
-    vector<int>seg;
-    int r=-1;
-    for(int i=0;i<n;++i)
-    {
-        if(a[i].first>r)
+        cin>>v[i].first>>v[i].second;
+        mp[v[i].first];
+        mp[v[i].second];
+        if(v[i].second+1<=m)
         {
-            seg.push_back(a[i].second-a[i].first+1);
-            r=a[i].second;
+            mp[v[i].second+1];
         }
-        else
-        {
-            seg.back()=max(seg.back(),a[i].second-r);
-            r=a[i].second;
-        }
+        // cout<<mp[v[i].first]<<" "<<mp[v[i].second]<<endl;
     }
-    int ans=0;
-    int sum=0;
-    for(int i=0;i<seg.size();++i)
+    function<int(int,int,int)>ans=[&](int X,int count,int m)->int
     {
-        sum+=seg[i];
-        ans=max(ans,sum);
+        vector<int>prefix(count+1);
+        for(auto& it:v)
+        {
+            if(it.first<=X && X<=it.second)
+            {
+                continue;
+            }
+            prefix[mp[it.first]]++;
+            if(it.second+1<=m)
+            {
+                prefix[mp[it.second+1]]--;
+            }
+        }
+        for(int i=1;i<=count;++i)
+        {
+            prefix[i]+=prefix[i-1];
+        }
+        return *max_element(prefix.begin(),prefix.end())-*min_element(prefix.begin(),prefix.end());
+    };
+    int count=1;
+    for(auto& it:mp)
+    {
+        it.second=count++;
     }
-    cout<<m-ans<<"\n";
+    cout<<max(ans(1,count,m),ans(m,count,m))<<endl;
 }
 signed main()
 {
