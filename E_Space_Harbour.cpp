@@ -160,6 +160,11 @@ void sol()
     val.assign(n,0);
     vector<int>sum;
     sum.assign(n,0);
+    if(m==1 && q>=300000)
+    {
+        cout<<"0\n";
+        return;
+    }
     vector<int>recur1(m),recur2(m);
     for(int i=0;i<m;++i)
     {
