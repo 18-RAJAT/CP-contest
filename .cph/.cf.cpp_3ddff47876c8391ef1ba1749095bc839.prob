@@ -1,0 +1,1 @@
+{"name":"Local: cf","url":"r:\\Competitive_Programmin_Cp\\cf.cpp","tests":[{"id":1706711461123,"input":"3\n4\n1 2 3 4\n4 3 2 1\n3\n3 2 1\n2 3 1\n3\n3 1 1\n1 2 3","output":"10 6 3 1 \n6 4 3 \n5 2 1 "}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"r:\\Competitive_Programmin_Cp\\cf.cpp","group":"local","local":true}
