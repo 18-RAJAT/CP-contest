@@ -14,7 +14,7 @@ void sol()
     int count=0;
     for(int i=4;i<=n;++i)
     {
-        if((i&(i-1))==0)
+        if((i&(i-1))==0 || i==4)
         {
             dp[i]=((i*dp[i-1])+i)%p;
             count=0;
