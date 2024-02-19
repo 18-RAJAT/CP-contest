@@ -34,7 +34,7 @@ void sol()
             {
                 mp.erase(it);
             }
-            // count--;
+            count--;
         }
         if(mp.empty())
         {
