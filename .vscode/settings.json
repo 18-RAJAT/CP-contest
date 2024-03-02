@@ -3,7 +3,16 @@
   "files.associations": {
     "*.js": "javascript",
     "vector": "cpp",
-    "ostream": "cpp"
+    "ostream": "cpp",
+    "*.tcc": "cpp",
+    "deque": "cpp",
+    "string": "cpp",
+    "array": "cpp",
+    "bitset": "cpp",
+    "initializer_list": "cpp",
+    "regex": "cpp",
+    "utility": "cpp",
+    "valarray": "cpp"
   },
   "C_Cpp_Runner.cCompilerPath": "gcc",
   "C_Cpp_Runner.cppCompilerPath": "g++",
