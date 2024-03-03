@@ -5,46 +5,48 @@ void sol()
 {
     int n;
     cin>>n;
-    vector<string>tables(n);
+    vector<pair<int,int>>pairs;
+    int one=0,zero=0;
     for(int i=0;i<n;++i)
     {
-        cin>>tables[i];
-    }
-    function<int(int,vector<string>&)>solve=[&](int n,vector<string>&tables)->int
-    {
-        int moves=0;
-        vector<array<int,2>>counts(n,{0,0});
-        for(int i=0;i<n;++i)
+        string s;
+        cin>>s;
+        int one_count=0;
+        for(auto& it:s)
         {
-            for(auto table:tables[i])
-            {
-                counts[i][table-'0']++;
-            }
-            int mismatch=min(counts[i][0],counts[i][1]);
-            moves+=mismatch;
-            counts[i][0]-=mismatch;
-            counts[i][1]-=mismatch;
-            if(counts[i][0])
-            {
-                if(i+1<n && counts[i+1][0])
-                {
-                    int mismatch=min(counts[i][0],counts[i+1][0]);
-                    moves+=mismatch;
-                    counts[i][0]-=mismatch;
-                    counts[i+1][0]-=mismatch;
-                }
-            }
-            else if(counts[i][1])
-            {
-                if(i+1>=n)
-                {
-                    return 0;
-                }
-            }
+            one_count+=(it=='1');
         }
-        return moves;
-    };
-    cout<<solve(n,tables)<<endl;
+        pairs.push_back({s.size()-one_count,one_count});
+        zero+=pairs.back().first;
+        one+=pairs.back().second;
+    }
+    if(zero==0 || one==0)
+    {
+        cout<<0<<endl;
+        return;
+    }
+    int ans=1e18;
+    //for 0 table
+    int a=pairs[0].second;
+    for(int i=1;i<n;++i)
+    {
+        a+=min(pairs[i].first,pairs[i].second);
+    }
+    for(int i=1;i<n;++i)
+    {
+        ans=min(ans,a+pairs[i].first-min(pairs[i].first,pairs[i].second));
+    }
+    //for 1 table
+    a=pairs[0].first;
+    for(int i=1;i<n;++i)
+    {
+        a+=min(pairs[i].first,pairs[i].second);
+    }
+    for(int i=1;i<n;++i)
+    {
+        ans=min(ans,a+pairs[i].second-min(pairs[i].first,pairs[i].second));
+    }
+    cout<<ans<<endl;
 }
 signed main()
 {
