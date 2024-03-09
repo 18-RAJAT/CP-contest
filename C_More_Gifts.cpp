@@ -2,7 +2,7 @@
 using namespace std;
 #define int long long
 void sol()
-{\
+{
     int n,k,t;
     cin>>n>>k>>t;
     vector<int>arr(n);
