@@ -3,9 +3,9 @@ using namespace std;
 #define int long long
 void sol()
 {
-    int a,b;
-    cin>>a>>b;
-    cout<<a*b<<endl;
+    int n,m,a,b;
+    cin>>n>>m>>a>>b;
+    cout<<max(n-a,a-1)+max(m-b,b-1)<<endl;
 }
 signed main()
 {
