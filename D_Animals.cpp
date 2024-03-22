@@ -9,20 +9,18 @@ void sol()
     for(int i=0;i<n;++i)
     {
         cin>>a[i];
-        a[i]*=(n-i);
     }
-    int sum=0,ans=0;
-    sort(a.begin(),a.end());
+    vector<int>dp(n+1);
     for(int i=0;i<n;++i)
     {
-        sum+=a[i];
-        if(sum<=x)
+        dp[i+1]=dp[i]+a[i];
+    }
+    int ans=0;
+    for(int i=0;i<n;++i)
+    {
+        if(dp[n]-dp[i]<=x)
         {
             ans++;
-        }
-        else
-        {
-            break;
         }
     }
     cout<<ans<<endl;
