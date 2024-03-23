@@ -1,45 +1,39 @@
 #include<bits/stdc++.h>
 using namespace std;
-
+#define int long long
+#define Mod 1000000007
 void sol()
 {
-    long long int n,k;
+    int n,k;
     cin>>n>>k;
-    vector<long long int>arr(n,0);
-
-    arr.resize(n+1);
-    for(long long int i=1;i<=n;++i)
+    vector<int> a(n);
+    int res=0;
+    for(int i=0;i<n;++i)
     {
-        cin>>arr[i];
+        cin>>a[i];
+        res+=a[i];
     }
-    sort(arr.begin()+1,arr.end());
-    for(long long int i=1;i<=n;++i)
+    int sum=0,ans=0;
+    for(int i=0;i<n;++i)
     {
-        arr[i]+=arr[i-1];
-    }
-
-    auto query=[&](long long int left,long long int right)->long long int
-    {
-        if(right<left)
+        if(a[i]>=0 && sum<0)
         {
-            return 0;
+            sum=0;
         }
-        return arr[right]-arr[left-1];
-    };
-    long long int ans=0;
-    
-    for(long long int i=0;i<=k;++i)
-    {
-        long long int init=arr[n];
-        init-=query(n-(k-i)+1,n);
-        init-=arr[i*2];
-        ans=max(ans,init);
+        sum+=a[i];
+        ans=max(ans,sum);
     }
-    cout<<ans<<'\n';
+    res-=ans;
+    for(int i=0;i<k;++i)
+    {
+        ans*=2,ans%=Mod;
+    }
+    if(res<0)res+=((abs(res)/Mod+1)*Mod);
+    res+=ans,cout<<res%Mod<<endl;
 }
-int main()
+signed main()
 {
-    long long int t;
+    int t;
     cin>>t;
     while(t--)
     {
