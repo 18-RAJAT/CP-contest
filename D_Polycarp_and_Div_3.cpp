@@ -5,34 +5,44 @@ void sol()
 {
     string s;
     cin>>s;
-    int n=s.size();
-    int ans=-1;
-    array<bool,3>dp;
+    int ans=0;
+    array<bool,3>dp={false,false,false};
     auto state=[&]()
     {
-        return dp[0]||dp[1]||dp[2];
+        dp[0]=dp[1]=dp[2]=false;
     };
     for(auto& it:s)
     {
         int val=(it-'0')%3;
-        if(val==0)
+        if(val%3==0)
         {
-            dp[0]=true;
-            dp[1]=dp[2]=false;
+            state();
             ans++;
-        }
-        else if(val==1)
-        {
-            (dp[2]?dp[2]=false,dp[0]=true,ans++:dp[2]=true);
         }
         else
         {
-            (dp[1]?dp[1]=false,dp[0]=true,ans++:dp[1]=true);
+            if(dp[3-val]==true)
+            {
+                state();
+                ans++;
+            }
+            else
+            {
+                vector<int>ndp;
+                for(int i=1;i<=2;++i)
+                {
+                    if(dp[i])
+                    {
+                        ndp.push_back((i+val)%3);
+                    }
+                }
+                for(int i=0;i<ndp.size();++i)
+                {
+                    dp[ndp[i]]=true;
+                }
+                dp[val]=true;
+            }
         }
-    }
-    if(state())
-    {
-        ans++;
     }
     cout<<ans<<endl;
 }
