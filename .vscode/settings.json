@@ -59,6 +59,7 @@
   "files.associations": {
     "*.js": "javascript",
     "tuple": "cpp",
-    "iostream": "cpp"
+    "iostream": "cpp",
+    "array": "cpp"
   }
 }
