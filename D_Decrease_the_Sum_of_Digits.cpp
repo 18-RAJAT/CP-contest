@@ -18,7 +18,7 @@ void sol()
         P1+=min(Res[0],Res[1])*D1;
         P2-=min(Res[0],Res[1])*D2;
         Ans+=min(Res[0],Res[1]);
-        if(Res[0]<Res[1])`
+        if(Res[0]<Res[1])
         {
             D1++;
             Left++;
