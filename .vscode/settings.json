@@ -60,6 +60,9 @@
     "*.js": "javascript",
     "tuple": "cpp",
     "iostream": "cpp",
-    "array": "cpp"
+    "array": "cpp",
+    "deque": "cpp",
+    "string": "cpp",
+    "vector": "cpp"
   }
 }
