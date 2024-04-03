@@ -55,14 +55,5 @@
   "C_Cpp_Runner.useLeakSanitizer": false,
   "C_Cpp_Runner.showCompilationTime": false,
   "C_Cpp_Runner.useLinkTimeOptimization": false,
-  "C_Cpp_Runner.msvcSecureNoWarnings": false,
-  "files.associations": {
-    "*.js": "javascript",
-    "tuple": "cpp",
-    "iostream": "cpp",
-    "array": "cpp",
-    "deque": "cpp",
-    "string": "cpp",
-    "vector": "cpp"
-  }
+  "C_Cpp_Runner.msvcSecureNoWarnings": false
 }
