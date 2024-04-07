@@ -5,41 +5,73 @@ void sol()
 {
     int a,b,x;
     cin>>a>>b>>x;
-    string s="";
-    if(a>b)
+    if(x&1)
     {
-        swap(a,b);
-        s+='0';
-        a--;
-    }
-    else
-    {
-        s+='1';
-        b--;
-    }
-    for(int i=0;i<x;++i)
-    {
-        if(s.back()=='0')
+        if(a>b)
         {
-            s+='1';
-            b--;
+            for(int i=0;i<x/2;++i)
+            {
+                cout<<"01";
+            }
+            for(int i=0;i<a-x/2;++i)
+            {
+                cout<<"0";
+            }
+            for(int i=0;i<b-x/2;++i)
+            {
+                cout<<"1";
+            }
         }
         else
         {
-            s+='0';
-            a--;
+            for(int i=0;i<x/2;++i)
+            {
+                cout<<"10";
+            }
+            for(int i=0;i<b-x/2;++i)
+            {
+                cout<<"1";
+            }
+            for(int i=0;i<a-x/2;++i)
+            {
+                cout<<"0";
+            }
         }
     }
-    for(int i=0;i<a;++i)
+    else
     {
-        s='0'+s;
+        if(a>b)
+        {
+            for(int i=0;i<x/2;++i)
+            {
+                cout<<"01";
+            }
+            for(int i=0;i<b-x/2;++i)
+            {
+                cout<<"1";
+            }
+            for(int i=0;i<a-x/2;++i)
+            {
+                cout<<"0";
+            }
+        }
+        else
+        {
+            for(int i=0;i<x/2;++i)
+            {
+                cout<<"10";
+            }
+            for(int i=0;i<a-x/2;++i)
+            {
+                cout<<"0";
+            }
+            for(int i=0;i<b-x/2;++i)
+            {
+                cout<<"1";
+            }
+        }
     }
-    for(int i=0;i<b;++i)
-    {
-        s+='1';
-    }
-    sort(s.begin(),s.end(),greater<char>());
-    cout<<s<<endl;
+    cout<<endl;
 }
 signed main()
 {
