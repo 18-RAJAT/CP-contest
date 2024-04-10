@@ -6,58 +6,50 @@ void sol()
     int n,m,k;
     cin>>n>>m>>k;
     vector<int>a(n),b(m);
-    for(int i=0;i<n;++i)
+    for(int i=0;i<n;i++)
     {
         cin>>a[i];
     }
-    for(int i=0;i<m;++i)
+    map<int,int>mp1,mp2,check;
+    for(int i=0;i<m;i++)
     {
         cin>>b[i];
+        mp2[b[i]]++;
+        check[b[i]]=1;
     }
-    vector<int>mp1(1e6+1,0),mp2(1e6+1,0);
-    for(int i=0;i<b.size();++i)
+    int cnt=0,ans=0;
+    for(int i=0;i<m;i++)
     {
-        mp1[b[i]]++;
+        mp1[a[i]]++;
+        if(check[a[i]] && mp1[a[i]]<=mp2[a[i]])
+        {
+            cnt++;
+        }
     }
-    int current=0,ans=0;
-    for(int i=0;i<m;++i)//m
-    {
-        mp2[a[i]]++;
-    }
-    if(current>=k)
+    if(cnt>=k)
     {
         ans++;
     }
-    if(n==m)
+    for(int i=1;i<=n-m;i++)
     {
-        cout<<ans<<endl;
-        return;
-    }
-    for(int i=0;i<n-m;++i)
-    {
-        if(a[i]!=a[i+m])
+        mp1[a[i-1]]--;
+        mp1[a[i+m-1]]++;
+        if(a[i-1]!=a[i+m-1])
         {
-            current-=min(mp1[a[i]],mp2[a[i]]);
-            current-=min(mp1[a[i+m]],mp2[a[i+m]]);
-            mp2[a[i]]--;
-            mp2[a[i+m]]++;
-            current+=min(mp1[a[i]],mp2[a[i]]);
-            current+=min(mp1[a[i+m]],mp2[a[i+m]]);
-            // for(int i=mp1.size()-1;i>=0;--i)
-            // {
-            //     if(mp2[i]>0)
-            //     {
-            //         cout<<i<<" ";
-            //     }
-            // }
+            if(check[a[i-1]] && mp1[a[i-1]]<mp2[a[i-1]])
+            {
+                cnt--;
+            }
+            if(check[a[i+m-1]] && mp1[a[i+m-1]]<=mp2[a[i+m-1]])
+            {
+                cnt++;
+            }
         }
-        if(current>=k)
+        if(cnt>=k)
         {
             ans++;
         }
     }
-    // mp1.clear();
-    // mp2.clear();
     cout<<ans<<endl;
 }
 signed main()
