@@ -12,10 +12,7 @@ void sol()
     }
     sort(a.begin(),a.end());
     array<int,2005>dp[n];
-    for(int i=0;i<n;++i)
-    {
-        dp[i][i]=0;
-    }
+    dp[0][0]=0;
     for(int i=1;i<n;++i)
     {
         for(int j=0;j+i<n;++j)
