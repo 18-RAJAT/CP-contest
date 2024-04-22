@@ -5,30 +5,23 @@ void sol()
 {
     int n,m;
     cin>>n>>m;
-    string x;
-    cin>>x;
-    string s;
-    cin>>s;
-    int cnt=0;
-    while(n<m)
+    string x,s;
+    cin>>x>>s;
+    auto check=[&](string &x,string &s)
     {
-        n*=2;
+        return x.find(s)!=-1;
+    };
+    int ans=-1;
+    for(int i=0;i<7;++i)
+    {
+        if(check(x,s))
+        {
+            ans=i;
+            break;
+        }
         x+=x;
-        cnt++;
     }
-    if(x.find(s)!=string::npos)
-    {
-        cout<<cnt<<endl;
-        return;
-    }
-    x+=x;
-    cnt++;
-    if(x.find(s)!=string::npos)
-    {
-        cout<<cnt<<endl;
-        return;
-    }
-    cout<<-1<<endl;
+    cout<<ans<<endl;
 }
 signed main()
 {
