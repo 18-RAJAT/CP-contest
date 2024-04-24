@@ -31,7 +31,7 @@ void sol()
             b--;
         }
     }
-    cout<<distance<<endl;
+    cout<<distance<<endl; 
     cout<<0<<" ";
     for(int i=0;i<ans.size();++i)
     {
