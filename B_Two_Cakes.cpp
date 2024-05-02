@@ -6,7 +6,7 @@ void sol()
     int n,a,b;
     cin>>n>>a>>b;
     int ans=0;
-    
+
     auto binary_search=[&](int l,int r)->void
     {
         while(l<=r)
