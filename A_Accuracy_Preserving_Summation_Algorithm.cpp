@@ -48,23 +48,9 @@ Algo sum_sequence(const vector<double>&seq)
         ans.val.push_back(2);
         ans.val.push_back(3);
     }
-    else if(seq.size()==4)
-    {
-        ans.type='f';
-        ans.val.push_back(1);
-        ans.val.push_back(2);
-        ans.val.push_back(3);
-        ans.val.push_back(4);
-    }
     else
     {
-        int exp=0;
-        double sum=0.0;
-        for(int i=0;i<seq.size();++i)
-        {
-            sum+=check_condition(seq[i],&exp);
-        }
-        if(sum==0.0)
+        if(seq.size()%2==0)
         {
             ans.type='d';
             for(int i=1;i<=seq.size();++i)
@@ -75,10 +61,14 @@ Algo sum_sequence(const vector<double>&seq)
         else
         {
             ans.type='f';
-            for(int i=1;i<=seq.size();++i)
+            int exp=0;
+            double sum=0.0;
+            for(int i=0;i<seq.size();++i)
             {
-                ans.val.push_back(i);
+                sum+=check_condition(seq[i],&exp);
             }
+            ans.val.push_back(exp);
+            ans.val.push_back(sum);
         }
     }
     return ans;
