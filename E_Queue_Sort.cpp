@@ -10,9 +10,10 @@ void sol()
     {
         cin>>a[i];
     }
+    int mn=*min_element(a.begin(),a.end());
     for(int i=0;i<n;++i)
     {
-        if(a[i]==*min_element(a.begin(),a.end()))
+        if(a[i]==mn)
         {
             cout<<(is_sorted(a.begin()+i,a.end())?i:-1)<<endl;
             return;
