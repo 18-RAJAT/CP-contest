@@ -6,20 +6,10 @@ void sol()
     string s;
     cin>>s;
     int n=s.size();
-    function<void(string)> recur=[&](string s)->void
-    {
-        sort(s.begin(),s.end());
-        if(s==string(n,s[0]))
-        {
-            cout<<"NO"<<endl;
-        }
-        else
-        {
-            cout<<"YES"<<endl;
-            cout<<s<<endl;
-        }
-    };
-    recur(s);
+    string t=s;
+    sort(t.begin(),t.end());
+    if(s==t)reverse(t.begin(),t.end());
+    cout<<(((s==t)?"NO":"YES\n"+t))<<endl;
 }
 signed main()
 {
