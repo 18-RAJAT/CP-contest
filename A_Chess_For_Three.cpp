@@ -3,36 +3,25 @@ using namespace std;
 #define int long long
 void sol()
 {
-    int n;
-    cin>>n;
-    vector<int> a(n);
-    for(int i=0;i<n;++i)
+    int a,b,c;
+    cin>>a>>b>>c;
+    if(((a+b+c)%2==1))
     {
-        cin>>a[i];
+       cout<<-1<<endl;
     }
-    pair<array<int,2>,int>pr={{1,2},3};
-    int game=3;
-    bool ok=true;
-    for(int i=0;i<n;++i)
+    else
     {
-        if(a[i]==pr.first[0])
-        {
-            swap(game,pr.first[1]);
-        }
-        else if(a[i]==pr.first[1])
-        {
-            swap(game,pr.first[0]);
-        }
-        else
-        {
-            ok=false;
-            break;
-        }
+       int res=min(a+b,(a+b+c)/2);
+       cout<<res<<endl;
     }
-    cout<<((ok)?"YES":"NO")<<endl;
 }
 signed main()
 {
-    sol();
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        sol();
+    }
     return 0;
 }
