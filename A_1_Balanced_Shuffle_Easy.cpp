@@ -1,28 +1,19 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define int long long
+vector<pair<int,int>>pr;
+string s;
 void sol()
 {
-    string s;
     cin>>s;
-    int n=s.size();
-    vector<int>pref(n+1,0);
-    for(int i=0;i<n;++i)
+    int count=0;
+    for(int i=0;i<s.size();++i)
     {
-        pref[i+1]=pref[i]+(s[i]=='('?1:-1);
+        pr.push_back({-count,i});
+        (s[i]=='(')?count++:count--;
     }
-    vector<pair<int,int>>a(n);
-    for(int i=0;i<n;++i)
-    {
-        a[i]={pref[i],i};
-    }
-    sort(a.begin(),a.end());
-    string ans;
-    for(int i=0;i<n;++i)
-    {
-        ans+=s[a[i].second];
-    }
-    cout<<ans<<endl;
+    sort(pr.rbegin(),pr.rend());
+    for(auto& it:pr)cout<<s[it.second];
 }
 signed main()
 {
