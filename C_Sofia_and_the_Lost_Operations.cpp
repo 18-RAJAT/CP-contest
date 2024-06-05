@@ -10,34 +10,33 @@ void sol()
     {
         cin>>a[i];
     }
-    multiset<int>s,ms;
     for(int i=0;i<n;++i)
     {
         cin>>b[i];
-        s.insert(b[i]);
     }
+    multiset<int>ms;
     for(int i=0;i<n;++i)
     {
         if(a[i]!=b[i])ms.insert(b[i]);
     }
     int m;
     cin>>m;
+    vector<int>check(m);
     int ok=0;
     for(int i=0;i<m;++i)
     {
-        int x;
-        cin>>x;
-        if(ms.count(x))
+        cin>>check[i];
+        if(ms.count(check[i]))
         {
-            ms.erase(ms.find(x));
-            if(i==m-1)ok=1;
-        }
-        else if(s.count(x))
-        {
-            if(i==m-1)ok=1;
+            ms.erase(ms.find(check[i]));
         }
     }
-    cout<<((ms.size()==0 && ok)?"YES":"NO")<<endl;
+    for(int i=0;i<n;++i)
+    {
+        if(b[i]==check[m-1])ok=1;
+    }
+    if(!ms.empty())ok=0;
+    cout<<((ok)?"YES":"NO")<<endl;
 }
 signed main()
 {
