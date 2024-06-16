@@ -12,7 +12,7 @@ class matrix
     }
     void state()
     {
-        for(int i=0;i<n;++i)dp[i][i]=1;
+        for(int i=0;i<MAX;++i)dp[i][i]=1;
     }
     matrix operator*(const matrix &mat)const
     {
