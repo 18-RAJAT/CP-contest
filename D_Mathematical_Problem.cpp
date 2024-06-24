@@ -1,41 +1,46 @@
-// answ = [[1], [13, 14, 31]]
-
-// for i in range(2, 50):
-//     arr = []
-//     for x in answ[i - 1]:
-//         arr.append(x * 10)
-//     arr.append(10 ** i + 3)
-//     arr.append(3 * 10 ** i + 1)
-//     answ.append(arr)
-
-// t = int(input())
-
-// while t > 0:
-//     t -= 1
-//     n = int(input())
-//     x = n // 2
-//     for i in answ[x]:
-//         print(i * i)
-
-// convert c++
 #include<bits/stdc++.h>
 using namespace std;
 #define int long long
+int recur(vector<int>a,int start)
+{
+    int ans=0,count0=0,count1=0;
+    for(int i=start;i<a.size();++i)
+    {
+        if(a[i]==0)count0++;
+        if(a[i]==1)count1++;
+    }
+    if(count0>0)return 0;
+    if(count1==a.size())return 1;
+    for(int i=start;i<a.size();++i)
+    {
+        if(a[i]>1)ans+=a[i];
+    }
+    return ans;
+}
 void sol()
 {
     int n;
     cin>>n;
-    if(n==1)
+    string s;
+    cin>>s;
+    int ans=INT_MAX;
+    for(int i=0;i+1<n;++i)
     {
-        cout<<"1\n";
-        return;
+        vector<int>pos;
+        for(int j=0;j<n;++j)
+        {
+            if(i==j)
+            {
+                pos.push_back(stoi(s.substr(j,2))),j++;
+            }
+            else
+            {
+                pos.push_back(s[j]-'0');
+            }
+        }
+        ans=min(ans,recur(pos,0));
     }
-    cout<<196<<string(n-3,'0')<<endl;
-    for(int i=0;i<n/2;++i)
-    {
-        cout<<1<<string(i,'0')<<6<<string(i,'0')<<9<<string(n-3-i*2,'0')<<endl;
-        cout<<9<<string(i,'0')<<6<<string(i,'0')<<1<<string(n-3-i*2,'0')<<endl;
-    }
+    cout<<ans<<endl;
 }
 signed main()
 {
