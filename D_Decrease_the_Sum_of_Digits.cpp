@@ -3,34 +3,42 @@ using namespace std;
 #define int long long
 void sol()
 {
-    int n,s;
-    cin>>n>>s;
-    vector<int>a(n);
-    for(int i=0;i<n;++i)
+    string s;
+    cin>>s;
+    int n;
+    cin>>n;
+    string temp="0";
+    auto calculate_sum=[&](string& s)->int
     {
-        cin>>a[i];
-    }
-    double D1=1,D2=1,P1=0,P2=s,Ans=0;
-    int Left=0,Right=n-1;
-    while(Left<=Right)
+        int sum=0;
+        for(auto& it:s)
+        {
+            sum+=(it-'0');
+        }
+        return sum;
+    };
+    temp+=s;
+    int ans=0,sum=calculate_sum(s);
+    int sz=temp.size();
+    int i=sz-1,res=1;
+    while(n<sum)
     {
-        double Res[2]={(a[Left]-P1)/D1,(P2-a[Right])/D2};
-        P1+=min(Res[0],Res[1])*D1;
-        P2-=min(Res[0],Res[1])*D2;
-        Ans+=min(Res[0],Res[1]);
-        if(Res[0]<Res[1])
+        if(temp[i]!='0')
         {
-            D1++;
-            Left++;
+            ans+=res*(10-(temp[i]-'0'));
+            sum-=(temp[i]-'0');
+            sum++;
+            temp[i]='0';
+            int j=i-1;
+            while(j>=0 && temp[j]=='9')
+            {
+                temp[j]='0',j--,sum-=9;
+            }
+            temp[j]++;
         }
-        else
-        {
-            D2++;
-            Right--;
-        }
+        i--,res*=10;
     }
-    Ans+=(P2-P1)/(D1+D2);
-    cout<<fixed<<setprecision(8)<<Ans<<endl;
+    cout<<ans<<endl;
 }
 signed main()
 {
