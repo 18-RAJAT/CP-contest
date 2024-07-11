@@ -14,7 +14,7 @@ void sol()
         if(it[1]<it[0])swap(it[0],it[1]);
         b[it[0]].push_back({it[1],it[2]});
     }
-    vector<int>mask(n,(1LL<<31)-1);
+    vector<int>mask(n,(1LL<<32)-1);
     for(auto& it:a)
     {
         int x=it[0],y=it[1],z=it[2];
@@ -41,6 +41,7 @@ void sol()
         }
     }
     for(auto& it:ans)cout<<it<<" ";
+    cout<<endl;
 }
 signed main()
 {
