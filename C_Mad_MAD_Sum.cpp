@@ -10,32 +10,37 @@ void sol()
     {
         cin>>a[i];
     }
-    int ans=0,maxima=1e9;
-    for(;;)
+    int ans=0,mx=0;
+    for(int i=0;i<n;++i)
     {
-        bool bits=1;
-        for(int i=0;i<n;++i)
-        {
-            ans+=a[i];
-            bits&=(a[i]==0?1:0);
-        }
-        if(bits)
-        {
-            break;
-        }
-        int res=0;
-        map<int,int>fz;
-        fz.clear();
-        for(int i=0;i<n;++i)
-        {
-            fz[a[i]]++;
-            if(fz[a[i]]==2)
-            {
-                res=max(res,a[i]);
-            }
-            a[i]=res;
-        }
+        ans+=a[i];
     }
+    map<int,int>fz;
+    for(auto& it:a)
+    {
+        fz[it]++;
+        if(fz[it]>=2)
+        {
+            mx=max(it,mx);
+        }
+        it=mx;
+    }
+    for(int i=0;i<n;++i)
+    {
+        ans+=a[i];
+    }
+    mx=0;
+    fz.clear();
+    for(auto& it:a)
+    {
+        fz[it]++;
+        if(fz[it]>=2)
+        {
+            mx=max(it,mx);
+        }
+        it=mx;
+    }
+    for(int i=0;i<n;++i)ans+=a[i]*(n-i);
     cout<<ans<<endl;
 }
 signed main()
