@@ -1,68 +1,52 @@
 #include<bits/stdc++.h>
-#define Rajat_Joshi            main;
-#define  CSE             ios_base::sync_with_stdio(false);
-#define Joshi           cin.tie(NULL);
-#include <iostream>
-#include <string>
-#include <vector>
-#include <algorithm>
-#include <sstream>
-#include <queue>
-#include <deque>
-#include <bitset>
-#include <iterator>
-#include <list>
-#include <stack>
-#include <map>
-#include <set>
-#include <functional>
-#include <numeric>
-#include <utility>
-#include <limits>
-#include <time.h>
-#include <math.h>
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include <assert.h>
 using namespace std;
-#define read(type) readInt<type>()
-#define ll long long
-#define nL
-
-
-#define pb push_back
-#define mk make_pair
-#define pii pair<int, int>
-#define a first
-#define b second
-#define vi vector<int>
-#define all(x) (x).begin(), (x).end()
-#define umap unordered_map
-#define uset unordered_set
-#define MOD 1000000007
-#define imax INT_MAX
-#define imin INT_MIN
-#define exp 1e9
-#define sz(x) (int((x).size()))
-int32_t main()
+#define int long long
+void sol()
 {
-ios_base::sync_with_stdio(false);
-cin.tie(NULL);
-int ttt; cin >> ttt;
-while(ttt--) {
-//_______________________________________________________//
-Rajat_Joshi CSE;
-int n;cin>>n;
-string a, b;
-    cin>>a>>b;
-    for(int i=0; i<n; i++){
-        if(a[i]==b[i]){continue;}
-        else if(i<n-1 and a[i]=='a' and b[i]=='b'){a[i+1] = 'a';}
-        else if(i<n-1 and a[i]=='b' and b[i]=='c'){a[i+1] = 'b';}
-        else{cout<<"NO\n";break;}
+    int n;
+    cin>>n;
+    string s,t;
+    cin>>s>>t;
+    string sp,tp;
+    for(int i=0;i<n;++i)
+    {
+        if(s[i]!='b')
+        {
+            sp.push_back(s[i]);
+        }
+        if(t[i]!='b')
+        {
+            tp.push_back(t[i]);
+        }
     }
-    cout<<"YES\n";
+    if(sp!=tp)
+    {
+        cout<<"NO"<<endl;
+        return;
+    }
+    int a=0,c=0;
+    for(int i=0;i<n;++i)
+    {
+        a+=(s[i]=='a'?true:false);
+        a-=(t[i]=='a'?true:false);
+        c+=(t[i]=='c'?true:false);
+        c-=(s[i]=='c'?true:false);
+
+        if(a<0 || c<0)
+        {
+            cout<<"NO"<<endl;
+            return;
+        }
+    }
+    cout<<"YES"<<endl;
 }
-return 0;
+signed main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        sol();
+    }
+    return 0;
 }
