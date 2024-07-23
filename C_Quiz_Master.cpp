@@ -1,53 +1,48 @@
 #include<bits/stdc++.h>
 using namespace std;
-
+#define int long long
 void sol()
 {
-    long long a,b;
-    cin>>a>>b;
-    long long int array[a];
-    for(long long int i=0;i<a;i++)
+    int n,m;
+    cin>>n>>m;
+    vector<int>a(n),check(m+1,-1);
+    for(int i=0;i<n;++i)
     {
-        cin>>array[i];
+        cin>>a[i];
     }
-    sort(array,array+a);
-    long long int mini=INT_MAX;
-    long long int maxi=INT_MIN;
-
-    bool flag=false;
-    
-    for(int i=2;i<=b;++i)
+    int ans=2e9;
+    multiset<int>ms;
+    sort(a.begin(),a.end());
+    for(int i=0;i<n;++i)
     {
-        flag=false;
-        for(int j=a-1;j>=0;--j)
+        for(int j=1;j*j<=a[i];++j)
         {
-            if(array[j]%i==0)
+            if(a[i]%j==0)
             {
-                if(mini>j)
+                vector<int>vals={j,a[i]/j};
+                for(int idx=0;idx<vals.size();++idx)
                 {
-                    mini=j;
+                    int k=vals[idx];
+                    if(m<k)continue;
+                    if(~check[k])ms.erase(ms.find(check[k]));
+                    check[k]=i;
+                    ms.insert(check[k]);
                 }
-                if(maxi<j)
-                {
-                    maxi=j;
-                }
-                flag=true;
-                break;
             }
         }
-        if(flag==false)
+        if(ms.size()==m)
         {
-            break;
+            ans=min(ans,a[*ms.rbegin()]-a[*ms.begin()]);
         }
     }
-    cout<<((flag==false)?-1:maxi-mini)<<"\n";
+    if(ans==2e9)ans=-1;
+    cout<<ans<<endl;
 }
-
-int main()
+signed main()
 {
-    int testCases;
-    cin>>testCases;
-    while(testCases--)
+    int t;
+    cin>>t;
+    while(t--)
     {
         sol();
     }
