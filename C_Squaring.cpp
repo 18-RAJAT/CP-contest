@@ -13,7 +13,8 @@ void sol()
     int ans=0,mx=0;
     for(int i=0;i<n;++i)
     {
-        if(a[i]==1 && mx>=2)ans=-1;mx=max(mx,a[i]);
+        if(a[i]==1 && mx>=2)ans=-1;mx=max(mx,a[i]);cpp
+        
     }
     if(ans==-1)
     {
