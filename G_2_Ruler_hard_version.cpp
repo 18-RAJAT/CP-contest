@@ -13,7 +13,7 @@ void sol()
     int l=2,r=1000;
     while(l<r)
     {
-        int m1=l+(r-l)/3,m2=l+(r-l)/3;
+        int m1=l+(r-l)/3,m2=r-(r-l)/3;
         int take=query(m1,m2);
         if(take==m1*m2)l=m2+1;
         else if(take==(m1+1)*(m2+1))r=m1;
