@@ -5,13 +5,14 @@ void sol()
 {
     int x,y,k;
     cin>>x>>y>>k;
-    int p=x*k,q=y*k;
-    for(int i=0;i<k-1;++i)
+    vector<array<int,2>>ans;
+    if(k&1)ans.push_back({x,y});k--;
+    for(int i=1;i<=k;i+=2)
     {
-        cout<<i+1<<" "<<i+1<<endl;
-        p-=i+1,q-=i+1;
+        ans.push_back({x+i,y+i});
+        ans.push_back({x-i,y-i});
     }
-    cout<<p<<" "<<q<<endl;
+    for(auto& it:ans)cout<<it[0]<<" "<<it[1]<<endl;
 }
 signed main()
 {
