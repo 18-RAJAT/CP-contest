@@ -5,10 +5,10 @@ const int N=1e7+10;
 vector<int>nim(N,-1),primes(N,1);
 void compute()
 {
-    primes[0]=0,primes[1]=1;
+    primes[0]=0,primes[1]=0;
     nim[0]=0,nim[1]=1;
     int ans=0;
-    for(int i=2;i<N;++i)
+    for(int i=1;i<N;++i)
     {
         if(primes[i])
         {
@@ -32,7 +32,6 @@ void sol()
         cin>>a[i];
     }
     int ans=0;
-    compute();
     for(int i=0;i<n;++i)
     {
         ans^=nim[a[i]];
@@ -41,6 +40,7 @@ void sol()
 }
 signed main()
 {
+    compute();
     int t;
     cin>>t;
     while(t--)
