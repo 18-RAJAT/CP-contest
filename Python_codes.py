@@ -1,12 +1,13 @@
-score=int(input("Enter score: "))
-if score>=90:
-    grade='A'
-elif score>=80:
-    grade='B'
-elif score>=70:
-    grade='C'
-elif score>=60:
-    grade='D'
+import random
+choices=["rock","paper","scissors"]
+user=input("Select one (rock, paper, or scissors): ").lower()
+computer=random.choice(choices)
+win_conditions={"rock":"scissors","paper":"rock","scissors":"paper"}
+if user==computer:
+    result="It's a tie"
+elif win_conditions[user]==computer:
+    result="You win"
 else:
-    grade='E'
-print(f"Grade: {grade}")
+    result="Computer wins"
+print(f"Computer chose: {computer}")
+print(result)
