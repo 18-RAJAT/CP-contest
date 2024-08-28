@@ -20,9 +20,9 @@ int Combination(int n,int r)
     for(int i=0;i<r;++i)
     {
         ans=(ans*(n-i))%MOD;
-        ans=(ans*mod_exp(i+1,MOD-2,MOD))%MOD;
+        ans=(ans*mod_exp(i+1,MOD-2,MOD)%MOD)%MOD;
     }
-    return ans;
+    return ans%MOD;
 }
 void sol()
 {
@@ -40,7 +40,7 @@ void sol()
     {
         if(One<i)break;
         if(Zero<(k-i))continue;
-        ans=(ans+(Combination(One,i)*max(Combination(Zero,k-i),(int)1))%MOD);
+        ans=(ans+(Combination(One,i)*max(Combination(Zero,k-i),(int)1)%MOD)%MOD);
     }
     cout<<ans%MOD<<endl;
 }
