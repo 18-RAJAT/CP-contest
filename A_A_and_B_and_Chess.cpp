@@ -1,35 +1,38 @@
-#include<bits/stdc++.h>
-using namespace std;
-#define int long long
-void sol()
-{
-    int black=0,white=0;
-    array<int,26>arr;
-    arr.fill(0);
-    arr['Q'-'A']=9;
-    arr['R'-'A']=5;
-    arr['B'-'A']=3;
-    arr['N'-'A']=3;
-    arr['P'-'A']=1;
-    for(int i=0;i<8*8;++i)
+class Solution {
+public:
+    bool recur(const array<int,100001>& par,int u,int v)
     {
-        char ch;
-        cin>>ch;
-        if(ch>='a' && ch<='z')
+        for (;~u && u!=v;u=par[u]);
+        return u==v?true:false;
+    }
+    void dfs(int node,int par,array<int,100001>& arr,map<int,vector<int>>& mp) {
+        arr[node]=par;
+        if (mp.find(node)!=mp.end())
         {
-            black+=arr[ch-'a'];
-        }
-        else if(ch>='A' && ch<='Z')
-        {
-            white+=arr[ch-'A'];
+            for(auto& it:mp[node])
+            {
+                if(it!=par)dfs(it,node,arr,mp);
+            }
         }
     }
-    if(black<white)cout<<"White";
-    else if(black>white)cout<<"Black";
-    else cout<<"Draw";
-}
-signed main()
-{
-    sol();
-    return 0;
-}
+    vector<vector<int>> twoMax(int n, int m, int rootServer, vector<vector<int>>& edges, vector<int>& requests) {
+        array<int,100001>par;
+        fill(par.begin(),par.end(),-1);
+        map<int,vector<int>>mp;
+        for(auto& it:edges)
+        {
+            mp[it[0]].push_back(it[1]);
+            mp[it[1]].push_back(it[0]);
+        }
+        dfs(rootServer,-1,par,mp);
+        vector<vector<int>>res;
+        for(auto& it:requests)
+        {
+            int maximum=0;
+            array<int,2>ans={-1,-1};
+            for(int i=n;i>=1 && maximum<2;--i)if(!recur(par,i,it))ans[maximum++]=i;
+            res.push_back({ans[0],ans[1]});
+        }
+        return res;
+    }
+};
