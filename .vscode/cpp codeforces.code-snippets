@@ -5,7 +5,7 @@
 	// same ids are connected.
 	// Example:
 	"codeforces": {
-		"prefix": "cpp codeforces",
+		"prefix": "cppcodeforces",
 		"body": [
 			"#include<bits/stdc++.h>",
 			"using namespace std;",
