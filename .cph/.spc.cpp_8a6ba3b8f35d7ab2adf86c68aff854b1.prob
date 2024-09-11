@@ -1,0 +1,1 @@
+{"name":"Local: spc","url":"r:\\Competitive_Programmin_Cp\\spc.cpp","tests":[{"id":1725954753503,"input":"2\n20\n50","output":"2 3 5 7 \n2 3 5 7 23 29 31 37 "}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"r:\\Competitive_Programmin_Cp\\spc.cpp","group":"local","local":true}
