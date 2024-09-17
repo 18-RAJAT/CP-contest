@@ -49,7 +49,7 @@ void sol()
             }
         }
     }
-    cout<<(ok?"Yes\n":"No\n");
+    cout<<(ok?"Yes":"No")<<endl;
 }
 signed main()
 {
