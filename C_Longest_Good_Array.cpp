@@ -11,7 +11,7 @@ void sol()
         cout<<1<<endl;
         return;
     }
-    int good=1+sqrtl(2*ans);
+    int good=sqrtl(2*ans)+1;
     for(;good*(good-1)/2>ans;--good);
     cout<<good<<endl;
 }
