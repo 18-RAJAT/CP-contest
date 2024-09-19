@@ -35,7 +35,11 @@ void sol()
             }
         }
     }
-    for(auto& it:ans)cout<<it<<" ";cout<<endl;
+    for(auto& it:ans)
+    {
+        cout<<it<<" ";
+    }
+    cout<<endl;
 }
 signed main()
 {
