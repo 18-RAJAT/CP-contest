@@ -3,22 +3,25 @@ using namespace std;
 #define int long long
 void sol()
 {
-    int n;cin>>n;
+    int n;
+    cin>>n;
     string str;
     bool ok=1;
-    int x=str.size();
-    while(x<n)
+    while(str.size()<n)
     {
         bool a,b;
         if(ok==0)
         {
-            cout<<"? "<<"1"<<endl;
+            cout<<"? 1"<<str<<endl;
             cin>>a;
-            if(a)str="1"+str;
-        }
-        else
-        {
-            str="0"+str;
+            if(a)
+            {
+                str="1"+str;
+            }
+            else
+            {
+                str="0"+str;
+            }
             continue;
         }
         str.push_back('0');
@@ -26,7 +29,7 @@ void sol()
         cin>>a;
         if(!a)
         {
-            str.pop_back();str.push_back('1');
+            str.back()='1';
             cout<<"? "<<str<<endl;
             cin>>b;
             if(!b)
