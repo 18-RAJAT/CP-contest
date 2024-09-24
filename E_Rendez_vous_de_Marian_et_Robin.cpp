@@ -1,85 +1,91 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define int long long
-
-/*
-    Solve this problem using Dijkstra: O((E+V)logV) where (E<<V^2)
-    Similarly Floyd-WarShall: O(V^3) where (E≈V^2)
-*/
+#define INF 1e17
+vector<int>Dijkstra(int start,int h,vector<bool>& Horse,vector<vector<array<int,2>>>& adj,vector<int> DpDistance)
+{
+    priority_queue<array<int,2>,vector<array<int,2>>,function<bool(array<int,2>,array<int,2>)>>pq([&]
+    (array<int,2>a,array<int,2>b)->bool
+    {
+        return a[1]>b[1]?true:false;
+    });
+    int n=adj.size()-1;
+    vector<int>NdpDistance(n+1,INF);
+    if(h)
+    {
+        for(int i=1;i<=n;++i)
+        {
+            if(Horse[i])
+            {
+                pq.push(array<int,2>{i,DpDistance[i]});
+                NdpDistance[i]=DpDistance[i];
+            }
+        }
+    }
+    else
+    {
+        pq.push(array<int,2>{start,0});
+        NdpDistance[start]=0;
+    }
+    while(!pq.empty())
+    {
+        array<int,2>top_element=pq.top();
+        pq.pop();
+        int Node=top_element[0],dir=top_element[1];
+        if(NdpDistance[Node]<dir)continue;
+        for(const array<int,2>&nbg:adj[Node])
+        {
+            int v=nbg[0],w=nbg[1];
+            if(h)
+            {
+                if(NdpDistance[v]>NdpDistance[Node]+w/2)
+                {
+                    NdpDistance[v]=NdpDistance[Node]+w/2;
+                    pq.push(array<int,2>{v,NdpDistance[v]});
+                }
+            }
+            else
+            {
+                if(NdpDistance[v]>NdpDistance[Node]+w)
+                {
+                    NdpDistance[v]=NdpDistance[Node]+w;
+                    pq.push(array<int,2>{v,NdpDistance[v]});
+                }
+            }
+        }
+    }
+    return NdpDistance;
+}
 void sol()
 {
     int n,m,h;
     cin>>n>>m>>h;
-    vector<vector<int>>graph(n,vector<int>(n,1000000007));
-    vector<int>Horse(n,0);
-    int Vertex;
+    vector<vector<array<int,2>>>adj(n+1);
+    vector<bool>Horse(n+1);
     for(int i=0;i<h;++i)
     {
-        cin>>Vertex;
-        Horse[Vertex-1]=1;
+        int x;
+        cin>>x;
+        Horse[x]=true;
     }
     for(int i=0;i<m;++i)
     {
         int u,v,w;
         cin>>u>>v>>w;
-        graph[u-1][v-1]=graph[v-1][u-1]=w;
+        adj[u].emplace_back(array<int,2>{v,w});
+        adj[v].emplace_back(array<int,2>{u,w});
     }
-    vector<vector<int>>DpDistance(n,vector<int>(n,1000000007));
-    vector<int>Source(n,1000000007),Destination(n,1000000007);
-    for(int i=0;i<n;++i)
+    vector<int>Distance_Init=Dijkstra(1,false,Horse,adj,vector<int>(n+1,INF));
+    vector<int>Distance_Final=Dijkstra(n,false,Horse,adj,vector<int>(n+1,INF));
+    vector<int>Horse_Init=Dijkstra(n,true,Horse,adj,Distance_Init);
+    vector<int>Horse_Final=Dijkstra(1,true,Horse,adj,Distance_Final);
+
+    int ans=min(Horse_Init[n],Distance_Init[n]);
+    for(int i=1;i<n;++i)
     {
-        DpDistance[i][i]=0;
+        ans=min(ans,max(min(Distance_Init[i],Horse_Init[i]),min(Distance_Final[i],Horse_Final[i])));
     }
-    for(int i=0;i<n;++i)
-    {
-        for(int j=0;j<n;++j)
-        {
-            if(graph[i][j]!=1000000007)
-            {
-                DpDistance[i][j]=graph[i][j];
-            }
-        }
-    }
-    auto FloydWarShall=[&]()->void
-    {
-        for(int k=0;k<n;++k)
-        {
-            for(int i=0;i<n;++i)
-            {
-                for(int j=0;j<n;++j)
-                {
-                    DpDistance[i][j]=min(DpDistance[i][j],DpDistance[i][k]+DpDistance[k][j]);
-                }
-            }
-        }
-    };
-    FloydWarShall();
-    int ans=DpDistance[0][n-1];
-    for(int i=0;i<n;++i)
-    {
-        Source[i]=DpDistance[0][i];
-        Destination[i]=DpDistance[n-1][i];
-    }
-    for(int i=0;i<n;++i)
-    {
-        if(Horse[i])
-        {
-            for(int j=0;j<n;++j)
-            {
-                Source[j]=min(DpDistance[0][i]+DpDistance[i][j]/2,Source[j]);
-                Destination[j]=min(DpDistance[n-1][i]+DpDistance[i][j]/2,Destination[j]);
-            }
-        }
-    }
-    for(int i=0;i<n;++i)
-    {
-        ans=min(ans,max(Source[i],Destination[i]));
-    }
-    if(50000005<=ans)
-    {
-        cout<<-1<<endl;
-        return;
-    }
+    if(INF<=ans)ans=-1;
     cout<<ans<<endl;
 }
 signed main()
