@@ -1,11 +1,9 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define int long long
-// map<int,map<int,int>>Tree;
-// map<int,int>Dp,Ndp,Pruning1,Pruning2,Traversed;
 vector<vector<int>>Tree;
 vector<int>Dp,Ndp,Pruning1,Pruning2,Traversed;
-void Reset(int n)
+void Init(int n)
 {
     Tree.assign(n+1,vector<int>());
     Dp.assign(n+1,0);
@@ -20,22 +18,13 @@ void dfs(int Edges)
     Ndp[Edges]=Dp[Edges];
     for(auto& it:Tree[Edges])
     {
-        // if(Traversed[it.first])
-        // {
-        //     continue;
-        // }
-        // Dp[it.first]=Dp[Edges]+1;
-        // dfs(it.first);//,dfs(it.second);
-        // Ndp[Edges]=max(Ndp[Edges],Ndp[it.first]);
         if(Traversed[it])
         {
             continue;
         }
         Dp[it]=Dp[Edges]+1;
-        dfs(it);//,dfs(it.second);
+        dfs(it);
         Ndp[Edges]=max(Ndp[Edges],Ndp[it]);
-        // cout<<Edges<<" "<<it<<" "<<Ndp[Edges]<<endl;
-
     }
 }
 int TreePruning(int n)
@@ -50,10 +39,6 @@ int TreePruning(int n)
     {
         Right+=Pruning1[i];
     }
-    // for(int i=n-1;~i;--i)
-    // {
-    //     Left+=Pruning2[i];
-    // }
     int ans=INT_MAX;
     for(int i=1;i<=n;++i)
     {
@@ -68,12 +53,13 @@ void sol()
 {
     int n;
     cin>>n;
-    Reset(n);
+    Init(n);
     for(int i=1;i<n;++i)
     {
         int Left,Right;
         cin>>Left>>Right;
-        Tree[Left][Right]=1,Tree[Right][Left]=1;
+        Tree[Left].push_back(Right);
+        Tree[Right].push_back(Left);
     }
     cout<<TreePruning(n)<<endl;
 }
