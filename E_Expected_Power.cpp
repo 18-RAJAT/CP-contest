@@ -21,14 +21,20 @@ int CountINV(int a,int x=mod)
     return pow(a,x-2,x);
 }
 int Inverse[N],a[N],p[N];
-int n;
+int n,Inv10000;
 int Dp[2][1024];
 void sol()
 {
     cin>>n;
     for(int i=1;i<=n;++i)cin>>a[i];
     for(int i=1;i<=n;++i)cin>>p[i];
-    for(int j=0;j<1024;++j)Dp[0][j]=Dp[1][j]=0;
+    int inv10000_p[n+1];
+    for(int i=1;i<=n;++i)
+    {
+        inv10000_p[i]=(10000-p[i])%mod*Inv10000%mod;
+    }
+    memset(Dp[0],0,sizeof(Dp[0]));
+    memset(Dp[1],0,sizeof(Dp[1]));
     Dp[0][0]=1;
     for(int i=1;i<=n;++i)
     {
@@ -51,6 +57,7 @@ signed main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    Inv10000=CountINV(10000);
     for(int i=1;i<N;++i)Inverse[i]=CountINV(i);
     int t;
     cin>>t;
