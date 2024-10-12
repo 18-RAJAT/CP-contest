@@ -1,92 +1,65 @@
-#pragma GCC optimize("Ofast", "unroll-loops")
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
-
 #define int long long
-#define double long double
-using pii = pair<int, int>;
-template<typename T>
-using Prior = std::priority_queue<T>;
-template<typename T>
-using prior = std::priority_queue<T, vector<T>, greater<T>>;
-
-#define X first
-#define Y second
-#define eb emplace_back
-#define ALL(x) begin(x), end(x)
-#define RALL(x) rbegin(x), rend(x)
-#define fastIO() ios_base::sync_with_stdio(0), cin.tie(0)
-
-mt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());
-
-inline int getRand(int L, int R) {
-    if (L > R) swap(L, R);
-    return (int)(rng() % (uint64_t)(R - L + 1) + L);
+struct Dsu
+{
+    vector<int>parent;
+    Dsu(int n)
+    {
+        parent=vector<int>(n,-1);
+    }
+    int Get(int x)
+    {
+        return parent[x]<0?x:parent[x]=Get(parent[x]);
+    }
+    bool Unite(int x,int y)
+    {
+        x=Get(x),y=Get(y);
+        if(x==y) return false;
+        if(parent[x]>parent[y])swap(x,y);
+        parent[x]+=parent[y];
+        parent[y]=x;
+        return true;
+    }
+};
+void sol()
+{
+    int n,m;
+    cin>>n>>m;
+    int dots=11;
+    vector<vector<int>>Dp(n,vector<int>(dots));
+    for(int i=0;i<m;++i)
+    {
+        int a,d,k;
+        cin>>a>>d>>k;
+        a--;
+        Dp[a][d]=max(Dp[a][d],k);
+    }
+    Dsu dsu(n);
+    for(int i=0;i<n;++i)
+    {
+        int j=1;
+        while(i+j<n && j<dots)
+        {
+            if(Dp[i][j]>=1)dsu.Unite(i,i+j);
+            Dp[i+j][j]=max(Dp[i+j][j],Dp[i][j]-1);
+            j++;
+        }
+    }
+    int ans=0;
+    for(int i=0;i<n;++i)
+    {
+        if(dsu.Get(i)==i)ans++;
+    }
+    cout<<ans<<endl;
 }
-
-template<typename T1, typename T2>
-ostream& operator << (ostream &os, pair<T1, T2> p) {
-    os << "(" << p.first << "," << p.second << ")";
-    return os;
-}
-
-template<typename T>
-ostream& operator << (ostream &os, vector<T> vec) {
-    for (int i = 0; i < vec.size(); ++i) {
-        if (i) os << " ";
-        os << vec[i];
+signed main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        sol();
     }
-    return os;
-}
-
-const int maxn = 3E5 + 5;
-const int mod = 1E9 + 7;
-
-vector<int> adj[maxn], subval, val;
-vector<pii> ch;
-
-void dfs(int now, int lst = -1) {
-    for (auto x : adj[now]) {
-        if (x == lst) continue;
-        dfs(x, now);
-    }
-
-    ch.clear();
-    for (auto x : adj[now]) {
-        if (x != lst) ch.eb(subval[x], x);
-    }
-    sort(RALL(ch));
-
-    int tok = 1;
-    for (auto& p : ch) val[p.second] = tok++;
-    for (auto x : adj[now]) {
-        if (x != lst) subval[now] += val[x] * subval[x];
-    }
-}
-
-void solve() {
-    int N, X; cin >> N >> X;
-
-    subval.assign(N, 1), val.assign(N, 0);
-    for (int i = 0; i < N; ++i) vector<int>().swap(adj[i]);
-
-    for (int i = 0; i < N-1; ++i) {
-        int u, v; cin >> u >> v, --u, --v;
-        adj[u].eb(v), adj[v].eb(u);
-    }
-
-    dfs(0);
-
-    cout << subval[0] % mod * X % mod << "\n";
-}
-
-int32_t main() {
-    fastIO();
-
-    int t = 1; cin >> t;
-    for (int _ = 1; _ <= t; ++_) {
-        solve();
-    }
-
     return 0;
 }
