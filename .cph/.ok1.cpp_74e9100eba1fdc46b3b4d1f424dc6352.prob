@@ -1,0 +1,1 @@
+{"name":"Local: ok1","url":"r:\\Competitive_Programmin_Cp\\ok1.cpp","tests":[{"id":1729091425434,"input":"2\n2\n1 2\n4\n1 2\n2 3\n3 4","output":"-1\n3 4 2 1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"r:\\Competitive_Programmin_Cp\\ok1.cpp","group":"local","local":true}
