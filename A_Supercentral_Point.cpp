@@ -13,7 +13,10 @@ void sol()
         bool right=0,left=0,up=0,down=0;
         for(int j=0;j<n;++j)
         {
-            if(j==i)continue;
+            if(j==i)
+            {
+                continue;
+            }
             if(x[j]==x[i])
             {
                 if(y[j]>y[i])up=1;
