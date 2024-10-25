@@ -4,17 +4,16 @@ using namespace std;
 int segment(vector<int>&a,int n)
 {
     unordered_map<int,int>mp;
-    int ans=0,sum=0,last=-1;
-    mp[0]=-1;
+    int ans=0,sum=0;
+    mp[sum]=1;
     for(int i=0;i<n;++i)
     {
         sum+=a[i];
-        if(mp.count(sum))
+        if(mp[sum])
         {
-            int prev=mp[sum];
-            if(prev>=last)ans++,last=i;
+            mp.clear(),sum=0,ans++;
         }
-        mp[sum]=i;
+        mp[sum]=1;
     }
     return ans;
 }
