@@ -13,7 +13,7 @@ void sol()
         mn=min<int>(mn,a[i]);
         mx=max<int>(mx,a[i]);
     }
-    cout<<(mx-mn)*(n-1)<<endl;
+    cout<<(n-1)*(mx-mn)<<endl;
 }
 signed main()
 {
