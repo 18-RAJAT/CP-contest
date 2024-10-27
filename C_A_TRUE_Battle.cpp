@@ -12,7 +12,7 @@ void sol()
     {
         (s[i]=='1')?one++,mx=max(mx,one):one=0;
     }
-    cout<<((s[0]=='1' || s[n-1]=='1' || mx>1)?"YES":"NO")<<endl;
+    cout<<((s[0]=='1' || s[n-1]=='1' || mx>=2)?"YES":"NO")<<endl;
 }
 signed main()
 {
