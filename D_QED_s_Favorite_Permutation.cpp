@@ -64,7 +64,6 @@ public:
 };
 void UpdateQuery(int a,int b,bool ok,set<QueryTake>&intervals,SegmentTree&Seg,int&flag,int n)
 {
-    //base
     if(a<1 || b>n || a>=b){return;}
     if(ok)
     {
