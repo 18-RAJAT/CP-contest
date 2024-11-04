@@ -14,7 +14,7 @@ void sol()
     }
     sort(a.begin(),a.end(),greater<int>());
     int ans=0;
-    for(int i=0;i<min(n,k);++i)ans+=a[i];
+    for(int i=0;i<min(n,k+5);++i)ans+=a[i];
     cout<<ans<<endl;
 }
 signed main()
