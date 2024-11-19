@@ -9,28 +9,27 @@ int query(string q)
     cin>>res;
     return res;
 }
-void guess(int i,char c)
+void guess(int i,int  j)
 {
-    cout<<"0 "<<i<<" "<<c<<endl;
+    cout<<"0 "<<i<<" "<<j<<endl;
     cout.flush();
     int res;
     cin>>res;
-    if(res==-1)exit(0);
+    return;
 }
 void sol()
 {
     int n;
     cin>>n;
-    int cnt1=query("0");
-    if(cnt1>0)
+    if(n==1)
     {
-        int m=(n+1)/2;
-        guess(m,'0');
+        int cnt0=query("0");
+        if(cnt0==0)guess(1,1);
+        else guess(1,0);
     }
-    else
-    {
-        guess(1,'1');
-    }
+    int z=query("0"),zz=query("00"),zo=query("01");
+    if(z==zz+zo)guess(n,1);
+    else guess(n,0);
 }
 signed main()
 {
