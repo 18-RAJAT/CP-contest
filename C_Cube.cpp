@@ -2,17 +2,11 @@
 using namespace std;
 #define int long long
 
-const int INF=LLONG_MAX;
-const int N=12;
-int n,cube[N][N][N];
-struct State
-{
-    int cost,x,mask;
-    bool operator<(const State&other)const{return cost>other.cost;}
-};
-
+const int N=20;
+int dp[5000][5000],cube[20][20][20];
 void sol()
 {
+    int n;
     cin>>n;
     for(int i=0;i<n;++i)
     {
@@ -24,38 +18,40 @@ void sol()
             }
         }
     }
-    priority_queue<State>pq;
-    unordered_map<int,int>dp;
-    pq.push({0,0,0});
-    while(!pq.empty())
+    //percompute
+    for(int i=0;i<(1<<n);++i)
     {
-        State current=pq.top();
-        pq.pop();
-        int cur=current.cost,x=current.x,mask=current.mask;
-        if(x==n)
+        for(int j=0;j<(1<<n);++j)
         {
-            cout<<cur<<endl;
-            return;
+            dp[i][j]=1e18;
         }
-        if(dp.count(mask) && dp[mask]<=cur)continue;
-        dp[mask]=cur;
-        for(int i=0;i<n;++i)
+    }
+    dp[0][0]=0;
+    for(int i=0;i<n;++i)
+    {
+        for(int p=0;p<(1<<n);++p)
         {
-            if(mask&(1<<i))continue;
-            for(int j=0;j<n;++j)
+            if(__builtin_popcount(p)!=i)continue;
+            for(int q=0;q<(1<<n);++q)
             {
-                if(mask&(1<<(j+n)))continue;
-                int newMask=mask|(1<<i)|(1<<(j+n));
-                int newCost=cur+cube[x][i][j];
-                pq.push({newCost,x+1,newMask});
+                if(__builtin_popcount(q)!=i)continue;
+                for(int j=0;j<n;++j)
+                {
+                    if((p>>j)&1)continue;
+                    for(int k=0;k<n;++k)
+                    {
+                        if((q>>k)&1)continue;
+                        dp[p|(1<<j)][q|(1<<k)]=min<int>(dp[p|(1<<j)][q|(1<<k)],dp[p][q]+cube[i][j][k]);
+                    }
+                }
             }
         }
     }
+    int ls=(1<<n);
+    cout<<dp[ls-1][ls-1];
 }
 signed main()
 {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
     sol();
     return 0;
 }
