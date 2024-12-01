@@ -1,56 +1,52 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define int long long
-
-const int N=3e5+5;
-int a[N];
 void sol()
 {
     int n;
     cin>>n;
-    vector<pair<int,int>>res;
-    set<int>st[5];
-    for(int i=1;i<=n;++i)
+    int a[n],arr[3]={};
+    for(int i=0;i<n;++i)
+    cin>>a[i];
+    set<int>st[3];
+    for(int i=0;i<n;++i)
     {
-        cin>>a[i];
+        arr[a[i]]++;
         st[a[i]].insert(i);
     }
-    function<void(int,int)>recur=[&](int x,int y)->void
+    vector<pair<int,int>>vp;
+    while((st[2].size() && *st[2].begin()<arr[0]+arr[1])||*st[1].begin()<arr[0])
     {
-        if(abs(a[x]-a[y])!=1)assert(0);if(a[x]<a[y])swap<int>(x,y);a[x]--,a[y]++;
-    };
-    int ans=(!st[2].empty()?2:1);
-    vector<int>Arr(5);
-    for(int i=n;i>=1;--i)
-    {
-        if(a[i]!=ans)
+        if(st[2].size() && *st[1].rbegin()>=arr[1]+arr[0])
         {
-            int Tmp=*st[a[i]+1].begin();
-            res.push_back({i,Tmp});
-            st[a[i]+1].erase(Tmp);
-            st[a[i]].erase(i);
-            st[a[i]+1].insert(i);
-            st[a[i]].insert(Tmp);
-            recur(i,Tmp);
+            int i=*st[1].rbegin(),j=*st[2].begin();
+            vp.push_back({i+1,j+1});
+            st[1].erase(i);
+            st[2].erase(j);
+            st[1].insert(j);
+            st[2].insert(i);
         }
-        if(a[i]!=ans)
+        if(st[0].size() && *st[0].rbegin()>=arr[0])
         {
-            int Tmp=*st[a[i]+1].begin();
-            res.push_back({i,Tmp});
-            st[a[i]+1].erase(Tmp);
-            st[a[i]].erase(i);
-            st[a[i]+1].insert(i);
-            st[a[i]].insert(Tmp);
-            recur(i,Tmp);
+            int i=*st[0].rbegin(),j=*st[1].begin();
+            vp.push_back({i+1,j+1});
+            st[0].erase(i);
+            st[1].erase(j);
+            st[0].insert(j);
+            st[1].insert(i);
         }
-        Arr[ans]++;
-        if(st[ans].size()==Arr[ans])ans--;
     }
-    cout<<res.size()<<endl;
-    for(auto it:res)cout<<it.first<<" "<<it.second<<endl;
+    cout<<vp.size()<<endl;
+    for(auto& it:vp)
+    cout<<it.first<<" "<<it.second<<endl;
 }
 signed main()
 {
-    sol();
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        sol();
+    }
     return 0;
 }
