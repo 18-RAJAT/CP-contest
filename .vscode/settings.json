@@ -59,6 +59,7 @@
   "C_Cpp_Runner.msvcSecureNoWarnings": false,
   "files.associations": {
     "*.js": "javascript",
-    "array": "cpp"
+    "array": "cpp",
+    "iostream": "cpp"
   }
 }
