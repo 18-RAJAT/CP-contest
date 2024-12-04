@@ -60,6 +60,7 @@
   "files.associations": {
     "*.js": "javascript",
     "array": "cpp",
-    "iostream": "cpp"
+    "iostream": "cpp",
+    "*.tcc": "cpp"
   }
 }
