@@ -3,11 +3,15 @@ using namespace std;
 #define int long long
 void sol()
 {
-    int m,a,b,c;
-    cin>>m>>a>>b>>c;
-    int r1=min(m,a),r2=min(m,b);
-    int x=m-r1,y=m-r2;
-    cout<<r1+r2+min(c,x+y)<<endl;
+    string s;
+    cin>>s;
+    reverse(s.begin(),s.end());
+    for(char &c:s)
+    {
+        if(c=='p')c='q';
+        else if(c=='q')c='p';
+    }
+    cout<<s<<endl;
 }
 signed main()
 {
