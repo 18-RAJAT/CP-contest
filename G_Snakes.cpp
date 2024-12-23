@@ -5,40 +5,42 @@ void sol()
 {
     int n,q;
     cin>>n>>q;
-    vector<pair<int,char>>pr(q);
-    for(int i=0;i<q;++i)
+    vector<int>l(n),r(n);
+    vector<vector<int>>adj(n,vector<int>(n)),dp(n,vector<int>(1<<n,1e9));
+    for(int i=1;i<=q;++i)
     {
-        cin>>pr[i].first>>pr[i].second;
-    }
-    vector<int>count(n+1,0);
-    for(int i=0;i<q;++i)
-    {
-        if(pr[i].second=='+') count[pr[i].first]++;
-    }
-    vector<int>arr(n+1,q+1),cur(n+1,0);
-    for(int i=0;i<q;++i)
-    {
-        int s=pr[i].first;
-        if(pr[i].second=='+')
+        int x;
+        cin>>x;
+        char s;
+        cin>>s;
+        x--;
+        (s=='+')?r[x]++:l[x]++;
+        for(int j=0;j<n;++j)
         {
-            cur[s]++;
-            if(cur[s]==count[s]) arr[s]=i+1;
+            if(j!=x)
+            {
+                adj[j][x]=max(adj[j][x],r[j]-l[x]);
+                adj[x][j]=max(adj[x][j],r[x]-l[j]);
+            }
         }
     }
-    vector<pair<int,int>>vp;
-    for(int i=1;i<=n;++i)
+    for(int i=0;i<n;++i)dp[i][1LL<<i]=1;
+    for(int i=0;i<1LL<<n;++i)
     {
-        if(count[i]>0) vp.emplace_back(arr[i],count[i]);
+        for(int j=0;j<n;++j)
+        {
+            if(!(i&(1LL<<j)))continue;
+            else
+            {
+                for(int k=0;k<n;++k)
+                {
+                    dp[j][i]=min(dp[j][i],dp[k][i-(1LL<<j)]+adj[k][j]+1);
+                }
+            }
+        }
     }
-    sort(vp.begin(),vp.end());
-    int ans=1;
-    for(auto& it:vp) ans+=it.second;
-    int z=0;
-    for(int i=1;i<=n;++i)
-    {
-        if(count[i]==0)z++;
-    }
-    ans+=z;
+    int ans=1e9;
+    for(int i=0;i<n;++i)ans=min(ans,r[i]+dp[i][(1LL<<n)-1]);
     cout<<ans<<endl;
 }
 signed main()
