@@ -6,42 +6,32 @@ void sol()
     int n,k;
     cin>>n>>k;
     vector<int>a(n);
-    int ans=2e18+5;
-    for(int i=0;i<n;++i)
+    for(int i=0;i<n;++i)cin>>a[i];
+    if(k>=3)
     {
-        cin>>a[i];
-    }
-    if(k>2)
-    {
-        cout<<"0"<<endl;
+        cout<<0<<endl;
         return;
     }
     sort(a.begin(),a.end());
-    for(int i=0;i+k<n;++i)
+    int ans=a[0];
+    for(int i=1;i<n;++i) ans=min(ans,a[i]-a[i-1]);
+    if(k==1)
     {
-        int diff=abs<int>(a[i]-a[i+1]);
-        ans=min(ans,diff);
-        if(k==2)
+        cout<<ans<<endl;
+        return;
+    }
+    for(int i=0;i<n;++i)
+    {
+        for(int j=i+1;j<n;++j)
         {
-            auto lb=lower_bound(a.begin(),a.end(),diff);
-            if(lb==a.end())
-            {
-                continue;
-            }
-            if(lb==a.begin())
-            {
-                ans=min<int>(ans,abs<int>(a[*lb]-diff));
-            }
-            else
-            {
-                ans=min<int>(ans,abs<int>(a[*lb]-diff));
-                lb--;
-                ans=(lb==a.end()?ans:min<int>(ans,abs<int>(a[*lb]-diff)));
-            }
+            int tmp=a[j]-a[i];
+            auto UB=upper_bound(a.begin(),a.end(),tmp);
+            if(UB!=a.begin()) ans=min(ans,tmp-*prev(UB));
+            UB=lower_bound(a.begin(),a.end(),tmp);
+            if(UB!=a.end()) ans=min(ans,*UB-tmp);
         }
     }
-    int minimum_ans=*min_element(a.begin(),a.end());
-    cout<<min(ans,minimum_ans)<<endl;
+    cout<<ans<<endl;
 }
 signed main()
 {
