@@ -23,18 +23,18 @@ void sol()
     else if(Y)cout<<1<<endl<<x<<endl;
     else
     {
-        int ok=0,f;
+        int ok=0,track=-1;
         vector<int>dx={-1,-1,1,1},dy={-1,1,-1,1};
         for(int i=0;i<n;++i)
         {
             for(int j=0;j<4;++j)
             {
-                int Npos=pos[i]+dx[j]*x;
-                if(Npos>=0 && Npos<=l && Npos)
+                int newPos=pos[i]+dx[j]*x;
+                if(newPos>=0 && newPos<=l)
                 {
-                    if(pts.count(Npos+dy[j]*y))
+                    if(pts.count(newPos+dy[j]*y))
                     {
-                        f=pos[i]+dx[j]*x;
+                        track=newPos;
                         ok=1;
                         break;
                     }
@@ -42,7 +42,8 @@ void sol()
             }
             if(ok)break;
         }
-        cout<<(ok?1:2)<<endl<<(ok?f:x)<<" "<<(ok?y:y)<<endl;
+        if(ok)cout<<1<<endl<<track<<endl;
+        else cout<<2<<endl<<x<<" "<<y<<endl;
     }
 }
 signed main()
