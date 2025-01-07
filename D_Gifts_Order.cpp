@@ -1,130 +1,68 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define int long long
-//Rajat joshi template
-struct MinSegmentTree
+const int N=2e5+10;
+int n,q,a[N];
+struct st
 {
-    int n;
-    vector<int>tree;
-    MinSegmentTree(int size)
+    int a[N];
+    array<int,3>mask[N<<2];
+    array<int,3>Merge(array<int,3>a,array<int,3>b)
     {
-        n=1;
-        while(n<size)n<<=1;
-        tree.assign(2*n,LLONG_MAX);
+        array<int,3>Ans;
+        Ans[1]=min(a[1],b[1]);
+        Ans[2]=max(a[2],b[2]);
+        Ans[0]=max({a[0],b[0],b[2]-a[1]});
+        return Ans;
     }
-    void update(int idx,int val)
+    void Build(int l=0,int r=n,int id=1)
     {
-        idx+=n;
-        tree[idx]=val;
-        idx>>=1;
-        while(idx>=1)
+        if(r-l==1)
         {
-            tree[idx]=min(tree[2*idx],tree[2*idx+1]);
-            idx>>=1;
+            mask[id]={0,a[l],a[l]};
+            return;
         }
+        int m=(l+r)/2;
+        Build(l,m,2*id),Build(m,r,2*id+1);
+        mask[id]=Merge(mask[2*id],mask[2*id+1]);
     }
-    int query_min(int l,int r)const
+    void Update(int i,int l=0,int r=n,int id=1)
     {
-        int res=LLONG_MAX;
-        int left=l+n,right=r+n;
-        while(left<right)
+        if(r-l==1)
         {
-            if(left&1)res=min(res,tree[left++]);
-            if(right&1)res=min(res,tree[--right]);
-            left>>=1;
-            right>>=1;
+            mask[id]={0,a[l],a[l]};
+            return;
         }
-        return res;
+        int m=(l+r)/2;
+        if(i<m)Update(i,l,m,2*id);
+        else Update(i,m,r,2*id+1);
+        mask[id]=Merge(mask[2*id],mask[2*id+1]);
+    }
+    int Result()
+    {
+        return mask[1][0];
     }
 };
-struct MaxSegmentTree
-{
-    int n;
-    vector<int>tree;
-    MaxSegmentTree(int size)
-    {
-        n=1;
-        while(n<size)n<<=1;
-        tree.assign(2*n,LLONG_MIN);
-    }
-    void update(int idx,int val)
-    {
-        idx+=n;
-        tree[idx]=val;
-        idx>>=1;
-        while(idx>=1)
-        {
-            tree[idx]=max(tree[2*idx],tree[2*idx+1]);
-            idx>>=1;
-        }
-    }
-    int query_max(int l,int r)const
-    {
-        int res=LLONG_MIN;
-        int left=l+n,right=r+n;
-        while(left<right)
-        {
-            if(left&1)res=max(res,tree[left++]);
-            if(right&1)res=max(res,tree[--right]);
-            left>>=1;
-            right>>=1;
-        }
-        return res;
-    }
-};
-int CalculateMax(int n,MinSegmentTree &mnTree,MaxSegmentTree &mxTree,const vector<int> &c1,const vector<int> &c2)
-{
-    int MxDiff1=LLONG_MIN,MxDiff2=LLONG_MIN;
-    for(int j=1;j<n;++j)
-    {
-        int curr=c1[j];
-        int mni=mnTree.query_min(0,j);
-        int diff1=curr-mni;
-        MxDiff1=max(MxDiff1,diff1);
-    }
-    for(int j=1;j<n;++j)
-    {
-        int curr=c2[j];
-        int mxi=mxTree.query_max(0,j);
-        int diff2=mxi-curr;
-        MxDiff2=max(MxDiff2,diff2);
-    }
-    return max({0LL,MxDiff1,MxDiff2});
-}
+pair<st,st>sg;
 void sol()
 {
-    int n,q;
     cin>>n>>q;
-    vector<int>a(n);
     for(int i=0;i<n;++i)cin>>a[i];
-    vector<int>c1(n,0),c2(n,0);
     for(int i=0;i<n;++i)
     {
-        c1[i]=a[i]-(i+1);
-        c2[i]=a[i]+(i+1);
+        sg.first.a[i]=a[i]-i,sg.second.a[n-1-i]=a[i]-(n-1-i);
     }
-    MinSegmentTree mnTree(n);
-    MaxSegmentTree mxTree(n);
-    for(int i=0;i<n;++i)
-    {
-        mnTree.update(i,c1[i]);
-        mxTree.update(i,c2[i]);
-    }
-    int maxi=CalculateMax(n,mnTree,mxTree,c1,c2);
-    cout<<maxi<<endl;
+    sg.first.Build(0,n),sg.second.Build(0,n);
+    cout<<max(sg.first.Result(),sg.second.Result())<<endl;
     while(q--)
     {
-        int p;
-        int x;
+        int p,x;
         cin>>p>>x;
         p--;
-        a[p]=x;
-        c1[p]=a[p]-(p+1);
-        c2[p]=a[p]+(p+1);
-        mnTree.update(p,c1[p]);
-        mxTree.update(p,c2[p]);
-        int ans=CalculateMax(n,mnTree,mxTree,c1,c2);
-        cout<<ans<<endl;
+        sg.first.a[p]=x-p;
+        sg.second.a[n-p-1]=x-(n-p-1);
+        sg.first.Update(p,0,n),sg.second.Update(n-p-1,0,n);
+        cout<<max(sg.first.Result(),sg.second.Result())<<endl;
     }
 }
 signed main()
