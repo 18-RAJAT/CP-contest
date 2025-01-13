@@ -5,53 +5,43 @@ void sol()
 {
     int n,q;
     cin>>n>>q;
-    unordered_map<int,int>ar,br;
+    set<int>ar,br;
+    vector<int>a(n,0),b(n,0);
+    for(int i=0;i<=n;++i)
+    {
+        ar.insert(i);
+        br.insert(i);
+    }
+    int x,y,x1,y1,t;
     while(q--)
     {
-        int t;
         cin>>t;
         if(t==1)
         {
-            int x,y;
             cin>>x>>y;
-            ar[x]++,br[y]++;
+            x--,y--;
+            if(a[x]==0)ar.erase(x);
+            if(b[y]==0)br.erase(y);
+            a[x]++,b[y]++;
         }
-        else if(t==2)
+        if(t==2)
         {
-            int x,y;
             cin>>x>>y;
-            ar[x]--,br[y]--;
+            x--,y--,a[x]--,b[y]--;
+            if(a[x]==0)ar.insert(x);
+            if(b[y]==0)br.insert(y);
         }
-        else
+        if(t==3)
         {
-            int x1,x2,y1,y2;
-            cin>>x1>>y1>>x2>>y2;
-            int f=1,ok=1;
-            if(ar.size()!=n && br.size()!=n)
-            {
-                for(int i=x1;i<=x2;++i)
-                {
-                    if(ar[i]==0)
-                    {
-                        f=0;
-                        break;
-                    }
-                }
-                for(int i=y1;i<=y2;++i)
-                {
-                    if(br[i]==0)
-                    {
-                        ok=0;
-                        break;
-                    }
-                }
-            }
-            cout<<((!(f || ok)?"No":"Yes"))<<endl;
+            cin>>x>>y>>x1>>y1;
+            x--,y--;
+            if(*ar.lower_bound(x)>=x1 || *br.lower_bound(y)>=y1)cout<<"Yes"<<endl;
+            else cout<<"No"<<endl;
         }
     }
 }
 signed main()
 {
-    sol(); 
+    sol();
     return 0;
 }
