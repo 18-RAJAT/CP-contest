@@ -3,39 +3,37 @@ using namespace std;
 #define int long long
 void sol()
 {
-    int n;
-    cin>>n;
+    int n;cin>>n;
     vector<int>a(n);
     for(auto& it:a)cin>>it;
-    auto count=[&](int n)
+    auto count=[&](int n){return 1LL*n*(n+1)/2;};
+    int ans=count(n);
+    for(int i=0;i<=10;++i)
     {
-        return ((n+1)/2)*((n+2)/2);
-    };
-    int odd=count(n);
-    vector<vector<int>>ar(11,vector<int>(n+1,0)),br(11,vector<int>(n+1,0));
-    for(int x=1;x<=10;++x)
-    {
-        for(int i=1;i<=n;++i)
+        vector<int>ar=a,b(n);
+        unordered_map<int,int>br;
+        for(int j=0;j<n;++j)
         {
-            ar[x][i]=ar[x][i-1]+(a[i-1]<x?1:0);
-            br[x][i]=br[x][i-1]+(a[i-1]==x?1:0);
+            ar[j]=(ar[j]>i)?1:-1;
+            if(j)ar[j]+=ar[j-1];
         }
-    }
-    int even=0;
-    for(int x=1;x<=10;++x)
-    {
-        for(int l=2;l<=n;l+=2)
+        for(int j=0;j<n;++j)
         {
-            int k=l/2;
-            for(int j=l;j<=n;++j)
+            if(a[j]==i)b[j]=1;
+            if(j)b[j]+=b[j-1];
+        }
+        int res=n;
+        for(int j=n-1;~j;--j)
+        {
+            if(a[j]==i)
             {
-                int i=j-l+1,ok1=ar[x][j]-ar[x][i-1],ok2=br[x][j]-br[x][i-1];
-                if((x==1 || x==10) && (ok2>=k+1) && ok1==k)even++;
-                else if(ok1<=k-1 && (ok1+ok2)>=k+1)even++;
+                for(int k=j;k<res;++k)br[ar[k]+n]++;
+                res=j;
             }
+            ans-=br[(j?ar[j-1]:0)+n];
         }
     }
-    cout<<odd+even<<endl;
+    cout<<ans<<endl;
 }
 signed main()
 {
