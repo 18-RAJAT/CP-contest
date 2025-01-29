@@ -6,11 +6,9 @@ void sol()
     int n,m;
     cin>>n>>m;
     int a[n];
-    vector<pair<int,int>>vp;
     for(int i=0;i<n;++i)
     {
         cin>>a[i];
-        vp.push_back({a[i],i});
     }
     int ans=0;
     for(int i=0;i<m;++i)
