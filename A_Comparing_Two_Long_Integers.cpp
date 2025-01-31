@@ -3,10 +3,11 @@ using namespace std;
 #define int long long
 void sol()
 {
-    int a,b;
+    string a,b,a1,b1;
     cin>>a>>b;
-    if(a>b)cout<<">";
-    else if(a<b)cout<<"<";
+    a1=string(b.size(),'0')+a,b1=string(a.size(),'0')+b;
+    if(a1>b1)cout<<">";
+    else if(a1<b1)cout<<"<";
     else cout<<"=";
 }
 signed main()
